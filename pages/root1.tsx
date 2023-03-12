@@ -14,6 +14,7 @@ export const SketchComponent = () => {
   const setup = (p5: p5Types, canvasParentRef: Element) => {
     p5.createCanvas(100, 100).parent(canvasParentRef);
     p5.background(196);
+    p5.line(10, 0, 10, 100);
   };
 
   const draw = (p5: p5Types) => {
@@ -28,13 +29,16 @@ export const SketchComponent = () => {
 }
 
 
-export default function Home() {
+export default function RouteOne() {
   const sourceCode = `function setup() {
   createCanvas(100, 100);
   background(196);
+  line(10, 0, 10, 100);
 }
   `;
-
+  const handleClick = () => {
+    history.back();
+  };
 
   return (
     <>
@@ -46,7 +50,7 @@ export default function Home() {
       </Head>
       <main className="font-mono px-6">
         <h1 className="text-3xl font-bold underline p-2">Prog Touch</h1>
-        <h2 className="text-2xl">Problem 1:</h2>
+        <h2 className="text-2xl">Problem 1: root1</h2>
         <p>
           繰り返しを使って描画する練習として、9本の縦線を書くプログラムを作成してみましょう。 
         </p>
@@ -73,8 +77,9 @@ export default function Home() {
         </div>
         </h2>
 
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleClick}>一手戻る</button>
         <ul className="m-2 text-xl list-disc list-inside">方針:
-          <li><Link href="/root1" className="text-blue-500 hover:underline">線を1本引いてみる (line(x1, y1, x2, y2))</Link></li>
+          <li><Link href="/root1" className="text-blue-500 hover:underline">もう1本線を引いてみる (line(x1, y1, x2, y2))</Link></li>
           <li><Link href="/for" className="text-blue-500 hover:underline">繰り返しを使う (for(;;))</Link></li>
         </ul>
 

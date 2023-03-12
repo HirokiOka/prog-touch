@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import problemPic from '../public/sec2_2.png';
+import problemPic from '../../public/sec2_2.png';
 import dynamic from 'next/dynamic';
 import p5Types from 'p5';
 
@@ -14,6 +14,8 @@ export const SketchComponent = () => {
   const setup = (p5: p5Types, canvasParentRef: Element) => {
     p5.createCanvas(100, 100).parent(canvasParentRef);
     p5.background(196);
+    for(let i = 0; i < 9; i++) {
+    }
   };
 
   const draw = (p5: p5Types) => {
@@ -28,14 +30,17 @@ export const SketchComponent = () => {
 }
 
 
-export default function Home() {
+export default function For() {
   const sourceCode = `function setup() {
   createCanvas(100, 100);
   background(196);
+  for (let i = 0; i < 9; i++) {
+  }
 }
   `;
-
-
+  const handleClick = () => {
+    history.back();
+  };
   return (
     <>
       <Head>
@@ -73,6 +78,7 @@ export default function Home() {
         </div>
         </h2>
 
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleClick}>一手戻る</button>
         <ul className="m-2 text-xl list-disc list-inside">方針:
           <li><Link href="/root1" className="text-blue-500 hover:underline">線を1本引いてみる (line(x1, y1, x2, y2))</Link></li>
           <li><Link href="/for" className="text-blue-500 hover:underline">繰り返しを使う (for(;;))</Link></li>
