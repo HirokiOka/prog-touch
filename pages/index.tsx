@@ -1,29 +1,4 @@
-import Head from 'next/head';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
-import p5Types from 'p5';
-
-const Sketch = dynamic(import('react-p5'), {
-  loading: () => <>loading...</>,
-  ssr: false,
-});
-
-export const SketchComponent = () => {
-  const setup = (p5: p5Types, canvasParentRef: Element) => {
-    p5.createCanvas(100, 100).parent(canvasParentRef);
-    p5.background(196);
-  };
-
-  const draw = (p5: p5Types) => {
-  };
-
-  return (
-    <Sketch
-      setup={setup}
-      draw={draw}
-    />
-  );
-}
 
 
 export default function Home() {

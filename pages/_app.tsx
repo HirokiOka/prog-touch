@@ -1,7 +1,7 @@
-import '@/styles/globals.scss';
+import 'styles/globals.scss';
 import type { AppProps } from 'next/app'
-import ProgHead from '../compoments/ProgHead';
-import Header from '../compoments/Header';
+import ProgHead from 'components/ProgHead';
+import Header from 'components/Header';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

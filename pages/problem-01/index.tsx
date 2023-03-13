@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import p5Types from 'p5';
-import Sketch from 'compoments/Sketch';
-import ExerciseOne from 'compoments/ExerciseOne';
+import Sketch from 'components/Sketch';
+import ExerciseOne from 'components/ExerciseOne';
+import CodePane from 'components/CodePane';
 
 export const SketchComponent = () => {
   const setup = (p5: p5Types, canvasParentRef: Element) => {
@@ -26,10 +27,8 @@ export default function ProblemOne() {
   createCanvas(100, 100);
   background(196);
 }`;
-
-
+  
   return (
-    <>
       <main className="font-mono px-6">
         <ExerciseOne />
         <div className="float">
@@ -37,15 +36,8 @@ export default function ProblemOne() {
           <SketchComponent />
         </div>
 
-        <h2 className="p-2">あなたのコード：
-        <div className="border border-black w-1/3">
-            <pre>
-              <code>
-                {sourceCode}
-              </code>
-            </pre>
-        </div>
-        </h2>
+        <CodePane code={sourceCode} />
+
 
         <ul className="m-2 text-xl list-disc list-inside">方針:
           <li><Link href="/problem-01/line" className="text-blue-500 hover:underline">線を1本引いてみる (line(10, 0, 10, 100);)</Link></li>
@@ -54,6 +46,5 @@ export default function ProblemOne() {
         </ul>
 
       </main>
-    </>
   );
 }

@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import p5Types from 'p5';
-import Sketch from 'compoments/Sketch';
-import ExerciseOne from 'compoments/ExerciseOne';
+import Sketch from 'components/Sketch';
+import ExerciseOne from 'components/ExerciseOne';
+import CodePane from 'components/CodePane';
 
 export const SketchComponent = () => {
   const setup = (p5: p5Types, canvasParentRef: Element) => {
@@ -42,15 +43,7 @@ export default function ProblemOne() {
           <SketchComponent />
         </div>
 
-        <h2 className="p-2">あなたのコード：
-        <div className="border border-black w-1/3">
-            <pre>
-              <code>
-                {sourceCode}
-              </code>
-            </pre>
-        </div>
-        </h2>
+        <CodePane code={sourceCode} />
 
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleClick}>一手戻る</button>
 
