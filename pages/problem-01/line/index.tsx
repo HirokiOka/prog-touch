@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import problemPic from 'public/sec2_2.png';
 import Sketch from 'compoments/Sketch';
+import ExerciseOne from 'compoments/ExerciseOne';
 import p5Types from 'p5';
 
 
@@ -37,18 +36,7 @@ export default function Line() {
   return (
     <>
       <main className="font-mono px-6">
-        <h2 className="text-2xl font-bold">Problem 1:</h2>
-        <p>
-          繰り返しを使って描画する練習として、9本の縦線を書くプログラムを作成してみましょう。 
-        </p>
-
-        <div className="float-left mx-2">
-          <p>正解：</p>
-          <Image
-            src={problemPic}
-            alt="Image of problem (Section2-2)"
-          />
-        </div> 
+        <ExerciseOne />
         <div className="float">
           <p>出力: </p>
           <SketchComponent />
@@ -66,8 +54,8 @@ export default function Line() {
 
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleClick}>一手戻る</button>
         <ul className="m-2 text-xl list-disc list-inside">方針:
-          <li><Link href="/problem-01/line/more-line" className="text-blue-500 hover:underline">あと8本線をひく (line(x1, y1, x2, y2))</Link></li>
-          <li><Link href="/problem-01/for" className="text-blue-500 hover:underline">繰り返しを使う (for(;;))</Link></li>
+          <li><Link href="/problem-01/line/more-line" className="text-blue-500 hover:underline">あと8本同じように線をひく (line(20, 0, 20, 100) ... line(90, 0, 90, 100))</Link></li>
+          <li><Link href="/problem-01/for/line" className="text-blue-500 hover:underline">繰り返しを使う (for(;;))</Link></li>
         </ul>
 
       </main>
