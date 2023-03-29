@@ -10,7 +10,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     problemState = context.query.problemState;
   }
 
-  const dataPath = path.join(process.cwd(), 'public', 'data', 'sample.json');
+  const dataPath = path.join(process.cwd(), 'public', 'data', 'problem01.json');
   const jsonData = fs.readFileSync(dataPath).toString();
   const data = JSON.parse(jsonData);
   const problemData = data[problemState];
@@ -34,7 +34,7 @@ export default function ProblemOne(data: any) {
         <ul className="m-2 list-disc list-inside">方針:
           {data.choices.map((c: any, i: number) => {
             return (
-              <li key={i}><Link href={`/math/?problemState=${c.next}`} className="text-blue-500 hover:underline">{c.text}</Link></li>
+              <li key={i}><Link href={`/problem-01-json/?problemState=${c.next}`} className="text-blue-500 hover:underline">{c.text}</Link></li>
             );
           })}
         </ul>
