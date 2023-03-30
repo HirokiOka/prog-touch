@@ -13,14 +13,6 @@ const CodePane = (props: any) => {
                 style={docco}
                 showLineNumbers={true}
                 wrapLines={true}
-                lineProps={lineNumber => {
-                  let style = { display: 'block', backgroundColor: '' };
-                  let diff: number[] = props.diffLine;
-                  if (diff.includes(lineNumber)) {
-                    style.backgroundColor = '#dbffdb';
-                  }
-                  return { style };
-                }}
                 >
                 {props.code}
               </SyntaxHighlighter>
