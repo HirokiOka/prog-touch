@@ -50,7 +50,7 @@
   },
   "1-2": {
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line(10, 0, 10, 100); }\n}",
-    "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); for (let i = 0; i < 9; i++) { p5.line(10, 0, 10, 100); }\n }",
+    "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); for (let i = 0; i < 9; i++) { p5.line(10, 0, 10, 100); }",
     "question": "",
     "diffLine": [4, 5, 6],
     "choices": [

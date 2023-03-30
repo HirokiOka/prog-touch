@@ -55,12 +55,12 @@ export default function ProblemOne(data: any) {
   }
 
   return (
-      <main className="font-mono px-6">
-        <div className="float w-2/3">
-          <p className="bg-gray-300 rounded p-2 my-2">[問題]:{data.problem}</p>
+      <main className="font-mono px-6 text-sm lg:text-base">
+        <div className="float md:w-2/3">
+          <p className="bg-gray-300 rounded p-2 my-2">[問題]: {data.problem}</p>
           <p className="bg-yellow-300 rounded p-2">[質問]: {data.question}</p>
         </div>
-        <div className="pt-2 grid grid-cols-4">
+        <div className="pt-2 grid grid-cols-2 md:grid-cols-4">
           <div>
             <p>正解：</p>
             <Image
