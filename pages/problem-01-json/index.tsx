@@ -9,7 +9,6 @@ import Sketch from 'components/Sketch';
 import CodePane from 'components/CodePane';
 
 
-
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
   let problemState = 'start';
   if (context.query.problemState !== undefined) {
@@ -20,6 +19,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const jsonData = fs.readFileSync(dataPath).toString();
   const data = JSON.parse(jsonData);
   const problemData = data[problemState];
+
   return {
     props : {
       problem: data.problem,
@@ -27,12 +27,16 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
       instanceSource: problemData.instanceSource,
       question: problemData.question,
       choices: problemData.choices,
+      diffLine: problemData.diffLine,
     },
   };
 };
 
 export default function ProblemOne(data: any) {
   const sourceCode =  data.sourceCode;
+  const handleClick = () => {
+    history.back();
+  };
 
   const s = (p5: p5Types, canvasParentRef: Element) => {
     eval(data.instanceSource);
@@ -52,20 +56,26 @@ export default function ProblemOne(data: any) {
 
   return (
       <main className="font-mono px-6">
-        <div className="float w-1/3">
-          <p className="bg-gray-300 rounded p-2 my-2">問題:{data.problem}</p>
-          <p className="bg-yellow-300 rounded p-2">質問: {data.question}</p>
+        <div className="float w-2/3">
+          <p className="bg-gray-300 rounded p-2 my-2">[問題]:{data.problem}</p>
+          <p className="bg-yellow-300 rounded p-2">[質問]: {data.question}</p>
         </div>
-        <div>
-          <p>正解：</p>
-          <Image
-            src={problemPic}
-            alt="Image of problem (Section2-2)"
-          />
-          <p>出力: </p>
-          <SketchComponent />
+        <div className="pt-2 grid grid-cols-4">
+          <div>
+            <p>正解：</p>
+            <Image
+              src={problemPic}
+              alt="Image of problem (Section2-2)"
+            />
+          </div>
+          <div>
+            <p>出力: </p>
+            <SketchComponent  />
+          </div>
         </div>
-        <CodePane code={sourceCode} />
+        <CodePane code={sourceCode} added={data.diffLine} />
+
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-1 rounded" onClick={handleClick}>一手戻る</button>
 
         <ul className="m-2 list-disc list-inside">方針:
           {data.choices.map((c: any, i: number) => {

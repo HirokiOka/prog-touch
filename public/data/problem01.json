@@ -4,6 +4,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196);",
     "question": "はじめに何をしましょうか？",
+    "diffLine": [],
     "choices": [
       {
         "text": "線を1本引いてみる (line(10, 0, 10, 100);)",
@@ -23,6 +24,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); p5.line(10, 0, 10, 100);",
     "question": "次に何をしますか？",
+    "diffLine": [3],
     "choices": [
       {
         "text": "あと8本同じように線をひく (line(20, 0, 20, 100) ... line(90, 0, 90, 100))",
@@ -38,6 +40,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n  line(30, 0, 30, 100);\n  line(40, 0, 40, 100);\n  line(50, 0, 50, 100);\n  line(60, 0, 60, 100);\n  line(70, 0, 70, 100);\n  line(80, 0, 80, 100);\n  line(90, 0, 90, 100);\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); p5.line(10, 0, 10, 100); p5.line(20, 0, 20, 100); p5.line(30, 0, 30, 100); p5.line(40, 0, 40, 100); p5.line(50, 0, 50, 100); p5.line(60, 0, 60, 100); p5.line(70, 0, 70, 100); p5.line(80, 0, 80, 100); p5.line(90, 0, 90, 100);",
     "question": "",
+    "diffLine": [ 5, 6, 7, 8, 9, 10, 11, 12],
     "choices": [
       {
         "text": "問題1終了！",
@@ -47,8 +50,9 @@
   },
   "1-2": {
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line(10, 0, 10, 100); }\n}",
-    "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); for (let i = 0; i < 9; i++) { p5.line(10, 0, 10, 100); }",
+    "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); for (let i = 0; i < 9; i++) { p5.line(10, 0, 10, 100); }\n }",
     "question": "",
+    "diffLine": [4, 5, 6],
     "choices": [
       {
         "text": "引数を変更してみる (line(x1, y1, x2, y2))",
@@ -60,6 +64,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line((i + 1) * 10, 0, (i + 1) * 10, 100);\n  }\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); for (let i = 0; i < 9; i++) { p5.line((i + 1) * 10, 0, (i + 1) * 10, 100); }",
     "question": "",
+    "diffLine": [5],
     "choices": [
       {
         "text": "問題1終了！",
@@ -71,6 +76,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); for (let i = 0; i < 9; i++) {  }",
     "question": "次に何をしますか？",
+    "diffLine": [3, 4, 5],
     "choices": [
       {
         "text": "線を1本引いてみる (line(10, 0, 10, 100))",
@@ -82,6 +88,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line(10, 0, 10, 100);\n  }\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); for (let i = 0; i < 9; i++) { p5.line(10, 0, 10, 100); }",
     "question": "次に何をしますか？",
+    "diffLine": [5],
     "choices": [
       {
         "text": "引数を変更してみる (line(x1, y1, x2, y2))",
@@ -93,6 +100,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line((i + 1) * 10, 0, (i + 1) * 10, 100);\n  }\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); for (let i = 0; i < 9; i++) { p5.line((i + 1) * 10, 0, (i + 1) * 10, 100); }",
     "question": "",
+    "diffLine": [5],
     "choices": [
       {
         "text": "問題1終了！",
@@ -104,6 +112,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  const x = 10;\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); const x = 10;",
     "question": "次に何をしますか？",
+    "diffLine": [4],
     "choices": [
       {
         "text": "線を1本引いてみる (line(x, 0, x, 100);)",
@@ -119,6 +128,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  const x = 10;\n  line(x, 0, x, 100);\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); const x = 10; p5.line(x, 0, x, 100);",
     "question": "次に何をしますか？",
+    "diffLine": [5],
     "choices": [
       {
         "text": "繰り返しを使う (for(;;))",
@@ -130,6 +140,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    conse x = 10;\n    line(x, 0, x, 100);\n  }\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); for (let i = 0; i < 9; i++) { const x = 10; p5.line(x, 0, x, 100); }",
     "question": "次に何をしますか？",
+    "diffLine": [4, 7],
     "choices": [
       {
         "text": "変数を調整する (const x = (i + 1) * 10;)",
@@ -141,6 +152,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    const x = (i + 1) * 10;\n    line(x, 0, x, 100);\n  }\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); for (let i = 0; i < 9; i++) {  const x = (i + 1) * 10; p5.line(x, 0, x, 100); }",
     "question": "",
+    "diffLine": [5],
     "choices": [
       {
         "text": "問題1終了！",
@@ -152,6 +164,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i  = 0; i < 9; i++) {\n    const x = 10;\n  }\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); for (let i = 0; i < 9; i++) {  const x = 10; }",
     "question": "次に何をしますか？",
+    "diffLine": [4, 6],
     "choices": [
       {
         "text": "線を1本引いてみる (line(x, 0, x, 100);)",
@@ -163,6 +176,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i  = 0; i < 9; i++) {\n    const x = 10;\n    line(x, 0, x, 100);\n  }\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); for (let i = 0; i < 9; i++) {  const x = 10; p5.line(x, 0, x, 100);}",
     "question": "次に何をしますか？",
+    "diffLine": [6],
     "choices": [
       {
         "text": "変数を調整する (const x = (i + 1) * 10;)",
@@ -174,6 +188,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i  = 0; i < 9; i++) {\n    const x = (i + 1) * 10;\n    line(x, 0, x, 100);\n  }\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); for (let i = 0; i < 9; i++) {  const x = (i + 1) * 10; p5.line(x, 0, x, 100);}",
     "question": "",
+    "diffLine": [5],
     "choices": [
       {
         "text": "問題1終了！",
