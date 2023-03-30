@@ -73,7 +73,7 @@ export default function ProblemOne(data: any) {
             <SketchComponent  />
           </div>
         </div>
-        <CodePane code={sourceCode} added={data.diffLine} />
+        <CodePane code={sourceCode} diffLine={data.diffLine} />
 
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-1 rounded" onClick={handleClick}>一手戻る</button>
 

@@ -76,7 +76,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
     "instanceSource": "p5.createCanvas(100, 100).parent(canvasParentRef); p5.background(196); for (let i = 0; i < 9; i++) {  }",
     "question": "次に何をしますか？",
-    "diffLine": [3, 4, 5],
+    "diffLine": [4, 5],
     "choices": [
       {
         "text": "線を1本引いてみる (line(10, 0, 10, 100))",
