@@ -7,6 +7,8 @@ import { GetServerSideProps } from 'next';
 import problemPic from 'public/sec2_2.png';
 import Sketch from 'components/Sketch';
 import CodePane from 'components/CodePane';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
@@ -56,11 +58,14 @@ export default function ProblemOne(data: any) {
 
   return (
       <main className="font-mono px-6 text-sm lg:text-base">
-        <div className="float md:w-2/3">
+        <Tabs>
+          <TabList>
+            <Tab>Problem</Tab>
+            <Tab>Code</Tab>
+          </TabList>
+        <TabPanel>
+        <div className="md:w-2/3">
           <p className="bg-gray-300 rounded p-2 my-2">[問題]: {data.problem}</p>
-          <p className="bg-yellow-300 rounded p-2">[質問]: {data.question}</p>
-        </div>
-        <div className="pt-2 grid grid-cols-2 md:grid-cols-4">
           <div>
             <p>正解：</p>
             <Image
@@ -68,22 +73,34 @@ export default function ProblemOne(data: any) {
               alt="Image of problem (Section2-2)"
             />
           </div>
+        </div>
+
+        <div className="md:w-2/3 mt-2">
+          <p className="bg-yellow-300 rounded p-2">[質問]: {data.question}</p>
+        </div>
+        <ul className="m-2 list-decimal list-inside">方針:
+          {data.choices.map((c: any, i: number) => {
+            return (
+              <li key={i}><Link href={`/problem-01-json/?problemState=${c.next}`} className="text-blue-500 hover:underline text-sm">{c.text}</Link></li>
+            );
+          })}
+        </ul>
+        </TabPanel>
+
+        <TabPanel>
           <div>
             <p>出力: </p>
             <SketchComponent  />
           </div>
-        </div>
-        <CodePane code={sourceCode} diffLine={data.diffLine} />
+          <CodePane code={sourceCode} diffLine={data.diffLine} />
+        </TabPanel>
+
+        </Tabs>
+
+
 
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-1 rounded" onClick={handleClick}>一手戻る</button>
-
-        <ul className="m-2 list-disc list-inside">方針:
-          {data.choices.map((c: any, i: number) => {
-            return (
-              <li key={i}><Link href={`/problem-01-json/?problemState=${c.next}`} className="text-blue-500 hover:underline">{c.text}</Link></li>
-            );
-          })}
-        </ul>
+        <button className="m-1 bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><Link href="/">問題一覧へ</Link></button>
 
       </main>
   );
