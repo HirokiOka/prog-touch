@@ -60,9 +60,31 @@ export default function ProblemOne(data: any) {
       <main className="font-mono px-6 text-sm lg:text-base">
         <Tabs>
           <TabList>
-            <Tab>Problem</Tab>
             <Tab>Code</Tab>
+            <Tab>Problem</Tab>
           </TabList>
+
+        <TabPanel>
+          <div>
+            <p>出力: </p>
+            <SketchComponent  />
+          </div>
+          <CodePane code={sourceCode} diffLine={data.diffLine} />
+
+          {/*
+          <div className="md:w-2/3 mt-2">
+            <p className="bg-yellow-300 rounded p-2">[質問]: {data.question}</p>
+          </div>
+          */}
+          <ul className="m-2 list-decimal list-inside">方針:
+            {data.choices.map((c: any, i: number) => {
+              return (
+                <li key={i}><Link href={`/problem-01-json/?problemState=${c.next}`} className="text-blue-500 hover:underline text-sm">{c.text}</Link></li>
+              );
+            })}
+          </ul>
+        </TabPanel>
+
         <TabPanel>
         <div className="md:w-2/3">
           <p className="bg-gray-300 rounded p-2 my-2">[問題]: {data.problem}</p>
@@ -75,25 +97,8 @@ export default function ProblemOne(data: any) {
           </div>
         </div>
 
-        <div className="md:w-2/3 mt-2">
-          <p className="bg-yellow-300 rounded p-2">[質問]: {data.question}</p>
-        </div>
-        <ul className="m-2 list-decimal list-inside">方針:
-          {data.choices.map((c: any, i: number) => {
-            return (
-              <li key={i}><Link href={`/problem-01-json/?problemState=${c.next}`} className="text-blue-500 hover:underline text-sm">{c.text}</Link></li>
-            );
-          })}
-        </ul>
         </TabPanel>
 
-        <TabPanel>
-          <div>
-            <p>出力: </p>
-            <SketchComponent  />
-          </div>
-          <CodePane code={sourceCode} diffLine={data.diffLine} />
-        </TabPanel>
 
         </Tabs>
 
