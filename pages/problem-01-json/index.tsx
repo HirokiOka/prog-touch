@@ -64,44 +64,47 @@ export default function ProblemOne(data: any) {
             <Tab>Problem</Tab>
           </TabList>
 
-        <TabPanel>
-          <div>
+          <TabPanel>
             <p>出力: </p>
-            <SketchComponent  />
-          </div>
-          <CodePane code={sourceCode} diffLine={data.diffLine} />
+              <SketchComponent  />
 
-          {/*
-          <div className="md:w-2/3 mt-2">
-            <p className="bg-yellow-300 rounded p-2">[質問]: {data.question}</p>
-          </div>
-          */}
-          <ul className="m-2 list-decimal list-inside">方針:
-            {data.choices.map((c: any, i: number) => {
-              return (
-                <li key={i}><Link href={`/problem-01-json/?problemState=${c.next}`} className="text-blue-500 hover:underline text-sm">{c.text}</Link></li>
-              );
-            })}
-          </ul>
-        </TabPanel>
-
-        <TabPanel>
-        <div className="md:w-2/3">
-          <p className="bg-gray-300 rounded p-2 my-2">[問題]: {data.problem}</p>
-          <div>
-            <p>正解：</p>
-            <Image
-              src={problemPic}
-              alt="Image of problem (Section2-2)"
-            />
-          </div>
-        </div>
-
-        </TabPanel>
+              <CodePane code={sourceCode} diffLine={data.diffLine} />
 
 
+            {/*
+            <div className="md:w-2/3 mt-2">
+              <p className="bg-yellow-300 rounded p-2">[質問]: {data.question}</p>
+            </div>
+            */}
+            <ul className="m-2 list-decimal list-inside">方針:
+              {data.choices.map((c: any, i: number) => {
+                return (
+                  <li key={i}><Link href={`/problem-01-json/?problemState=${c.next}`} className="text-blue-500 hover:underline text-sm">{c.text}</Link></li>
+                );
+              })}
+            </ul>
+          </TabPanel>
+
+          <TabPanel>
+            <div className="md:w-2/3">
+              <p className="bg-gray-300 rounded p-2 my-2">[問題]: {data.problem}</p>
+              <div className="grid grid-cols-2 md:grid-cols-4">
+                <div>
+                <p>正解：</p>
+                <Image
+                  src={problemPic}
+                  alt="Image of problem (Section2-2)"
+                />
+                </div>
+                <div>
+                  <p>出力: </p>
+                  <SketchComponent  />
+                </div>
+              </div>
+            </div>
+
+          </TabPanel>
         </Tabs>
-
 
 
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-1 rounded" onClick={handleClick}>一手戻る</button>
