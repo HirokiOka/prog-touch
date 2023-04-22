@@ -2,11 +2,11 @@ import * as fs from 'fs';
 import * as path from 'path';
 import Link from 'next/link';
 import Image from 'next/image';
-import p5Types from 'p5';
+//import p5Types from 'p5';
 import { GetServerSideProps } from 'next';
 import problemPic from 'public/sec2_2.png';
-import Sketch from 'components/Sketch';
-import CodePane from 'components/CodePane';
+//import Sketch from 'components/Sketch';
+//import CodePane from 'components/CodePane';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     problemState = context.query.problemState;
   }
 
-  const dataPath = path.join(process.cwd(), 'public', 'data', 'problem01.json');
+  const dataPath = path.join(process.cwd(), 'public', 'data', 'problem01_v2.json');
   const jsonData = fs.readFileSync(dataPath).toString();
   const data = JSON.parse(jsonData);
   const problemData = data[problemState];
@@ -25,11 +25,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   return {
     props : {
       problem: data.problem,
-      sourceCode: problemData.sourceCode,
-      instanceSource: problemData.instanceSource,
-      question: problemData.question,
       choices: problemData.choices,
-      diffLine: problemData.diffLine,
     },
   };
 };
@@ -40,21 +36,6 @@ export default function ProblemOne(data: any) {
     history.back();
   };
 
-  const s = (p5: p5Types, canvasParentRef: Element) => {
-    eval(data.instanceSource);
-  };
-
-  const d = (p5: p5Types) => {
-  };
-
-  const SketchComponent = () => {
-    return (
-      <Sketch
-        setup={s}
-        draw={d}
-      />
-    );
-  }
 
   return (
       <main className="font-mono px-6 text-sm lg:text-base">
@@ -66,10 +47,6 @@ export default function ProblemOne(data: any) {
 
           <TabPanel>
             <p>出力: </p>
-              <SketchComponent  />
-
-              <CodePane code={sourceCode} diffLine={data.diffLine} />
-
 
             {/*
             <div className="md:w-2/3 mt-2">
@@ -79,7 +56,7 @@ export default function ProblemOne(data: any) {
             <ul className="m-2 list-decimal list-inside">方針:
               {data.choices.map((c: any, i: number) => {
                 return (
-                  <li key={i}><Link href={`/problem-01-json/?problemState=${c.next}`} className="text-blue-500 hover:underline text-sm">{c.text}</Link></li>
+                  <li key={i}><Link href={`/problem-01-v2/?problemState=${c.next}`} className="text-blue-500 hover:underline text-sm">{c.text}</Link></li>
                 );
               })}
             </ul>
@@ -98,7 +75,7 @@ export default function ProblemOne(data: any) {
                 </div>
                 <div>
                   <p>出力: </p>
-                  <SketchComponent  />
+                  {/* <SketchComponent  /> */}
                 </div>
               </div>
             </div>

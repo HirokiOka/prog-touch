@@ -1,0 +1,111 @@
+{
+  "problem": "繰り返しを使って描画する練習として、9本の縦線を書くプログラムを作成してみましょう。",
+  "start": {
+    "choices": [
+      {
+        "text": "線を1本引いてみる",
+        "next": "line"
+      },
+      {
+        "text": "繰り返しを使う",
+        "next": "for"
+      },
+      {
+        "text": "線のx座標を表す変数を宣言する",
+        "next": "var"
+      }
+    ]
+  },
+  "line": {
+    "choices": [
+      {
+        "text": "同様に線を8本引く",
+        "next": "line_line"
+      },
+      {
+        "text": "繰り返しを使って複数の線を引く",
+        "next": "line_for"
+      },
+      {
+        "text": "変数を使ってx座標を表現する",
+        "next": "line_var"
+      }
+    ]
+  },
+  "line_line": {
+    "choices": [
+      {
+        "text": "正解?",
+        "next": "start"
+      }
+    ]
+  },
+  "line_for": {
+    "choices": [
+      {
+        "text": "変数を使ってx座標を表現する",
+        "next": "line_for_var"
+      }
+    ]
+  },
+  "line_for_var": {
+    "choices": [
+      {
+        "text": "完成!",
+        "next": "start"
+      }
+    ]
+  },
+  "line_var": {
+    "choices": [
+      {
+        "text": "繰り返しを使って複数の線を引く",
+        "next": "line_for_var"
+      }
+    ]
+  },
+  "for": {
+    "choices": [
+      {
+        "text": "線を1本引く",
+        "next": "for_line"
+      },
+      {
+        "text": "変数を使ってx座標を表現する",
+        "next": "for_var"
+      }
+    ]
+  },
+  "for_line": {
+    "choices": [
+      {
+        "text": "変数を使ってx座標を表現する",
+        "next": "for_line_var"
+      }
+    ]
+  },
+  "for_var": {
+    "choices": [
+      {
+        "text": "変数xを使って線を引く",
+        "next": "for_line_var"
+      }
+    ]
+  },
+  "var": {
+    "choices": [
+      {
+        "text": "変数xを使って線を引く",
+        "next": "var_line"
+      }
+    ]
+  },
+  "var_line": {
+    "choices": [
+      {
+        "text": "繰り返しを使って線を複数引く",
+        "next": "line_for_var"
+      }
+    ]
+  }
+}
