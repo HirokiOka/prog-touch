@@ -9,7 +9,49 @@ import Sketch from 'components/Sketch';
 import CodePane from 'components/CodePane';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { parseScript } from 'esprima';
+import { replace } from 'estraverse';
+import { generate } from 'escodegen';
 
+const replacedNode = {
+  "type": "ExpressionStatement",
+  "expression": {
+    "type": "CallExpression",
+    "callee": {
+      "type": "MemberExpression",
+      "computed": false,
+      "object": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "Identifier",
+          "name": "p5.createCanvas"
+        },
+        "arguments": [
+          {
+            "type": "Literal",
+            "value": 100,
+            "raw": "100"
+          },
+          {
+            "type": "Literal",
+            "value": 100,
+            "raw": "100"
+          }
+        ]
+      },
+      "property": {
+        "type": "Identifier",
+        "name": "parent"
+      }
+    },
+    "arguments": [
+      {
+        "type": "Identifier",
+        "name": "canvasParentRef"
+      }
+    ]
+  }
+};
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
   let problemState = 'start';
@@ -17,31 +59,54 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     problemState = context.query.problemState;
   }
 
-  const dataPath = path.join(process.cwd(), 'public', 'data', 'problem01.json');
-  const jsonData = fs.readFileSync(dataPath).toString();
-  const data = JSON.parse(jsonData);
-  const problemData = data[problemState];
+  const problemDataPath = path.join(process.cwd(), 'public', 'data', 'problem01.json');
+  const p5MethodsPath = path.join(process.cwd(), 'public', 'data', 'p5_methods.json');
+
+  const p5Methods = JSON.parse(fs.readFileSync(p5MethodsPath).toString());
+  const problemData = JSON.parse(fs.readFileSync(problemDataPath).toString());
+  const problemDataContent = problemData[problemState];
+
+  const sourceCode = problemDataContent.sourceCode;
+  const ast: any = parseScript(sourceCode);
+
+  replace(ast, {
+    enter: function(node: any) {
+      if (node.type === 'CallExpression') {
+        const functionName = node.callee.name;
+        if (p5Methods.includes(functionName)) node.callee.name = 'p5.' + functionName;
+        return node;
+      } else if (node.type === 'ExpressionStatement' && node.expression.callee.name === 'createCanvas') {
+        return replacedNode;
+      }
+    }
+  });
+
+  ast.body = ast.body[0].body.body;
+
+  const instanceSource = generate(ast);
+  console.log(instanceSource);
 
   return {
     props : {
-      problem: data.problem,
-      sourceCode: problemData.sourceCode,
-      instanceSource: problemData.instanceSource,
-      question: problemData.question,
-      choices: problemData.choices,
-      diffLine: problemData.diffLine,
+      problem: problemData.problem,
+      sourceCode: sourceCode,
+      instanceSource: instanceSource,
+      question: problemDataContent.question,
+      choices: problemDataContent.choices,
+      diffLine: problemDataContent.diffLine,
     },
   };
 };
 
 export default function ProblemOne(data: any) {
   const sourceCode =  data.sourceCode;
+  const instanceSource = data.instanceSource;
   const handleClick = () => {
     history.back();
   };
 
   const s = (p5: p5Types, canvasParentRef: Element) => {
-    eval(data.instanceSource);
+    eval(instanceSource);
   };
 
   const d = (p5: p5Types) => {
