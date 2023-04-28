@@ -119,7 +119,7 @@ export default function ProblemOne(data: any) {
   }
 
   return (
-      <main className="font-mono px-6 text-sm lg:text-base">
+      <main className="px-6 text-sm lg:text-base">
         <Tabs>
           <TabList>
             <Tab>Code</Tab>
@@ -137,10 +137,13 @@ export default function ProblemOne(data: any) {
             </div>
             */}
 
-            <ul className="m-2 list-decimal list-inside">方針:
+            <ul className="m-2 list-inside list-none">方針:
               {data.choices.map((c: any, i: number) => {
                 return (
-                  <li key={i}><Link href={`/problem-01-v2/?problemState=${c.next}`} className="text-blue-500 hover:underline text-sm">{c.text}</Link></li>
+                <li key={i} className="mt-2 mb-4">
+                  <Link href={`/problem-01-v2/?problemState=${c.next}`} className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full text-sm">{i+1}: {c.text}
+                  </Link>
+                </li>
                 );
               })}
             </ul>
