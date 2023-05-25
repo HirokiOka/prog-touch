@@ -84,10 +84,12 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   ast.body = ast.body[0].body.body;
 
   const instanceSource = generate(ast);
+  const documentUrl = problemDataContent.documentUrl ?? ''; 
 
   return {
     props : {
       problem: problemData.problem,
+      documentUrl: documentUrl,
       sourceCode: sourceCode,
       instanceSource: instanceSource,
       choices: problemDataContent.choices,
@@ -98,6 +100,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 export default function ProblemOne(data: any) {
   const sourceCode =  data.sourceCode;
   const instanceSource = data.instanceSource;
+  const documentUrl = data.documentUrl;
   const handleClick = () => {
     history.back();
   };
@@ -137,11 +140,21 @@ export default function ProblemOne(data: any) {
             </div>
             */}
 
+            {documentUrl ? 
+              <iframe id="inlineFrameExample"
+                title="p5 document"
+                width="300"
+                height="200"
+                src={documentUrl}>
+              </iframe>
+              : ''}
+
+
             <ul className="m-2 list-inside list-none">方針:
               {data.choices.map((c: any, i: number) => {
                 return (
                 <li key={i} className="mt-2 mb-4">
-                  <Link href={`/problem-01-v2/?problemState=${c.next}`} className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full text-sm">{i+1}: {c.text}
+                  <Link href={`/problem-01-v2/?problemState=${c.next}`} className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
                   </Link>
                 </li>
                 );

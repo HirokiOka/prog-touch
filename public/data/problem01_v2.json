@@ -5,7 +5,7 @@
     "choices": [
       {
         "text": "線を1本引いてみる",
-        "next": "line"
+        "next": "line_prev"
       },
       {
         "text": "繰り返しを使う",
@@ -14,6 +14,60 @@
       {
         "text": "線のx座標を表す変数を宣言する",
         "next": "var"
+      }
+    ]
+  },
+  "line_prev": {
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196); \n}",
+    "choices": [
+      {
+        "text": "p5.jsで線を引く方法を調べる",
+        "next": "line_search"
+      }
+    ]
+  },
+  "line_search": {
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196); \n}",
+    "documentUrl": "https://p5js.org/reference/#/p5/line",
+    "choices": [
+      {
+        "text": "lineを使って線を引く",
+        "next": "pre_line"
+      }
+    ]
+  },
+  "pre_line": {
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196); \n}",
+    "choices": [
+      {
+        "text": "line(10, 0, 10, 100)",
+        "next": "line"
+      },
+      {
+        "text": "line(10, 10, 10, 100)",
+        "next": "line_incorrect_one"
+      },
+      {
+        "text": "line(0, 0, 10, 100)",
+        "next": "line_incorrect_two"
+      }
+    ]
+  },
+  "line_incorrect_one": {
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 10, 10, 100);\n}",
+    "choices": [
+      {
+        "text": "戻る",
+        "next": "pre_line"
+      }
+    ]
+  },
+  "line_incorrect_two": {
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(0, 0, 10, 100);\n}",
+    "choices": [
+      {
+        "text": "戻る",
+        "next": "pre_line"
       }
     ]
   },
@@ -163,7 +217,42 @@
     ]
   },
   "line_for": {
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line((i + 1) * 10, 0, (i + 1) * 10, 100);\n  }\n}",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  }",
+    "choices": [
+      {
+        "text": "for (let i = i < 8; i++) {  }",
+        "next": "line_for_incorrect_one"
+      },
+      {
+        "text": "for (let i = i < 9; i++) {  }",
+        "next": "line_for_correct"
+      },
+      {
+        "text": "for (let i = i <= 9; i++) {  }",
+        "next": "line_for_incorrect_two"
+      }
+    ]
+  },
+  "line_for_incorrect_one": {
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 8; i++) {\n    line(10, 0, 10, 100);\n  }\n}",
+    "choices": [
+      {
+        "text": "戻る",
+        "next": "line_for"
+      }
+    ]
+  },
+  "line_for_incorrect_two": {
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i <= 9; i++) {\n    line(10, 0, 10, 100);\n  }\n}",
+    "choices": [
+      {
+        "text": "戻る",
+        "next": "line_for"
+      }
+    ]
+  },
+  "line_for_correct": {
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line(10, 0, 10, 100);\n  }\n}",
     "choices": [
       {
         "text": "変数を使ってx座標を表現する",
@@ -172,6 +261,50 @@
     ]
   },
   "line_for_var": {
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i  = 0; i < 9; i++) {\n    const x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "choices": [
+      {
+        "text": "xにループ変数を使い，複数の線をかく",
+        "next": "line_for_var_loop"
+      }
+    ]
+  },
+  "line_for_var_loop": {
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i  = 0; i < 9; i++) {\n    const x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "choices": [
+      {
+        "text": "const x = i * 10;",
+        "next": "line_for_var_loop_incorrect_one"
+      },
+      {
+        "text": "const x = (i + 1) *10;",
+        "next": "line_for_var_loop_correct"
+      },
+      {
+        "text": "const x = i + 1 * 10;",
+        "next": "line_for_var_loop_incorrect_two"
+      }
+    ]
+  },
+  "line_for_var_loop_incorrect_one": {
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i  = 0; i < 9; i++) {\n    const x = i * 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "choices": [
+      {
+        "text": "戻る",
+        "next": "line_for_var_loop"
+      }
+    ]
+  },
+  "line_for_var_loop_incorrect_two": {
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i  = 0; i < 9; i++) {\n    const x = i + 1 * 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "choices": [
+      {
+        "text": "戻る",
+        "next": "line_for_var_loop"
+      }
+    ]
+  },
+  "line_for_var_loop_correct": {
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i  = 0; i < 9; i++) {\n    const x = (i + 1) * 10;\n    line(x, 0, x, 100);\n  }\n}",
     "choices": [
       {
@@ -190,6 +323,19 @@
     ]
   },
   "for": {
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  \n}",
+    "choices": [
+      {
+        "text": "線を1本引く",
+        "next": "for_line"
+      },
+      {
+        "text": "変数を使ってx座標を表現する",
+        "next": "for_var"
+      }
+    ]
+  },
+  "for_correct": {
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
     "choices": [
       {
