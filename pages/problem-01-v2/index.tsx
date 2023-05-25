@@ -85,12 +85,14 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 
   const instanceSource = generate(ast);
   const documentUrl = problemDataContent.documentUrl ?? ''; 
+  const message = problemDataContent.message ?? '';
 
   return {
     props : {
       problem: problemData.problem,
       documentUrl: documentUrl,
       sourceCode: sourceCode,
+      message: message,
       instanceSource: instanceSource,
       choices: problemDataContent.choices,
     },
@@ -101,6 +103,7 @@ export default function ProblemOne(data: any) {
   const sourceCode =  data.sourceCode;
   const instanceSource = data.instanceSource;
   const documentUrl = data.documentUrl;
+  const message = data.message;
   const handleClick = () => {
     history.back();
   };
@@ -130,6 +133,11 @@ export default function ProblemOne(data: any) {
           </TabList>
 
           <TabPanel>
+
+            {message ? 
+              <p className="rounded bg-green-100 p-2 w-2/3">{message}</p>
+              : ''}
+
             <p>出力: </p>
               <SketchComponent />
               <CodePane code={sourceCode} diffLine={[]} />
