@@ -59,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     problemState = context.query.problemState;
   }
 
-  const problemDataPath = path.join(process.cwd(), 'public', 'data', 'problem01.json');
+  const problemDataPath = path.join(process.cwd(), 'public', 'data', 'problem_01.json');
   const p5MethodsPath = path.join(process.cwd(), 'public', 'data', 'p5_methods.json');
 
   const p5Methods = JSON.parse(fs.readFileSync(p5MethodsPath).toString());
@@ -84,23 +84,28 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   ast.body = ast.body[0].body.body;
 
   const instanceSource = generate(ast);
-  console.log(instanceSource);
+  const documentUrl = problemDataContent.documentUrl ?? ''; 
+  const message = problemDataContent.message ?? '';
 
   return {
     props : {
       problem: problemData.problem,
+      optionType: problemDataContent.optionType,
+      documentUrl: documentUrl,
       sourceCode: sourceCode,
+      message: message,
       instanceSource: instanceSource,
-      question: problemDataContent.question,
       choices: problemDataContent.choices,
-      diffLine: problemDataContent.diffLine,
     },
   };
 };
 
 export default function ProblemOne(data: any) {
+  const optionType = data.optionType;
   const sourceCode =  data.sourceCode;
   const instanceSource = data.instanceSource;
+  const documentUrl = data.documentUrl;
+  const message = data.message;
   const handleClick = () => {
     history.back();
   };
@@ -122,7 +127,7 @@ export default function ProblemOne(data: any) {
   }
 
   return (
-      <main className="font-mono px-6 text-sm lg:text-base">
+      <main className="px-6 text-sm lg:text-base">
         <Tabs>
           <TabList>
             <Tab>Code</Tab>
@@ -130,24 +135,49 @@ export default function ProblemOne(data: any) {
           </TabList>
 
           <TabPanel>
+
+            {message ? 
+              <p className="rounded bg-red-100 p-2 w-2/3">{message}</p>
+              : ''}
+
             <p>出力: </p>
-              <SketchComponent  />
-
-              <CodePane code={sourceCode} diffLine={data.diffLine} />
-
+              <SketchComponent />
+              <CodePane code={sourceCode} diffLine={[]} />
 
             {/*
             <div className="md:w-2/3 mt-2">
               <p className="bg-yellow-300 rounded p-2">[質問]: {data.question}</p>
             </div>
             */}
-            <ul className="m-2 list-decimal list-inside">方針:
-              {data.choices.map((c: any, i: number) => {
+
+            {documentUrl ? 
+              <iframe id="inlineFrameExample"
+                title="p5 document"
+                width="300"
+                height="200"
+                src={documentUrl}>
+              </iframe>
+              : ''}
+
+
+            <ul className="m-2 list-inside list-none">{optionType}:
+            {data.choices.map((c: any, i: number) => {
                 return (
-                  <li key={i}><Link href={`/problem-01/?problemState=${c.next}`} className="text-blue-500 hover:underline text-sm">{c.text}</Link></li>
+                <li key={i} className="mt-2 mb-4">
+                {optionType === 'policy' ? (
+                  <Link href={`/problem-01/?problemState=${c.next}`} 
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
+                  </Link>
+                    ) : (
+                  <Link href={`/problem-01/?problemState=${c.next}`} 
+                      className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
+                  </Link>
+                    )}
+                </li>
                 );
               })}
             </ul>
+
           </TabPanel>
 
           <TabPanel>
@@ -163,7 +193,7 @@ export default function ProblemOne(data: any) {
                 </div>
                 <div>
                   <p>出力: </p>
-                  <SketchComponent  />
+                  <SketchComponent />
                 </div>
               </div>
             </div>
