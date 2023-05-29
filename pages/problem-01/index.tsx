@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import p5Types from 'p5';
 import { GetServerSideProps } from 'next';
-import problemPic from 'public/problem_02.png';
+import problemPic from 'public/problem_01.png';
 import Sketch from 'components/Sketch';
 import CodePane from 'components/CodePane';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -59,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     problemState = context.query.problemState;
   }
 
-  const problemDataPath = path.join(process.cwd(), 'public', 'data', 'problem_02.json');
+  const problemDataPath = path.join(process.cwd(), 'public', 'data', 'problem_01.json');
   const p5MethodsPath = path.join(process.cwd(), 'public', 'data', 'p5_methods.json');
 
   const p5Methods = JSON.parse(fs.readFileSync(p5MethodsPath).toString());
@@ -129,6 +129,7 @@ export default function ProblemOne(data: any) {
     );
   }
 
+
   return (
       <main className="px-6 text-sm lg:text-base">
         <Tabs defaultIndex={tabIndex}>
@@ -148,24 +149,17 @@ export default function ProblemOne(data: any) {
               <SketchComponent />
               <CodePane code={sourceCode} diffLine={[]} />
 
-            {/*
-            <div className="md:w-2/3 mt-2">
-              <p className="bg-yellow-300 rounded p-2">[質問]: {data.question}</p>
-            </div>
-            */}
-
-
 
             <ul className="m-2 list-inside list-none">{optionType === 'policy' ? "方針:" : "クイズ:"}
             {data.choices.map((c: any, i: number) => {
                 return (
                 <li key={i} className="mt-2 mb-4">
                 {optionType === 'policy' ? (
-                  <Link href={`/problem-02/?problemState=${c.next}`} 
+                  <Link href={`/problem-01/?problemState=${c.next}`} 
                       className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
                   </Link>
                     ) : (
-                  <Link href={`/problem-02/?problemState=${c.next}`} 
+                  <Link href={`/problem-01/?problemState=${c.next}`} 
                       className="bg-purple-500 hover:bg-purple-700 text-white font-sans py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
                   </Link>
                     )}

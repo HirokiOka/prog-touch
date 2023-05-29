@@ -1,0 +1,91 @@
+{
+  "problem": "日本国旗を描いてみましょう.",
+  "start": {
+    "optionType": "policy",
+    "sourceCode": "function setup() {\n  createCanvas(480, 320);\n  background(255);\n}",
+    "choices": [
+      {
+        "text": "中心に円を描く",
+        "next": "ellipse"
+      }
+    ]
+  },
+  "ellipse": {
+    "optionType": "policy",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196); \n}",
+    "choices": [
+      {
+        "text": "p5.jsで円を描く方法を調べる",
+        "next": "ellipse_search"
+      },
+      {
+        "text": "円を描く",
+        "next": "ellipse_choice"
+      }
+    ]
+  },
+  "ellipse_search": {
+    "optionType": "policy",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196); \n}",
+    "documentUrl": "https://p5js.org/reference/#/p5/ellipse",
+    "choices": [
+      {
+        "text": "円を描く",
+        "next": "ellipse_choice"
+      }
+    ]
+  },
+  "ellipse_choice": {
+    "optionType": "quiz",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196); \n}",
+    "documentUrl": "https://p5js.org/reference/#/p5/ellipse",
+    "choices": [
+      {
+        "text": "ellipse(0, 0, 144, 144);",
+        "next": "ellipse_wrong_one"
+      },
+      {
+        "text": "ellipse(480, 320, 144, 144);",
+        "next": "ellipse_wrong_two"
+      },
+      {
+        "text": "ellipse(480/2, 320/2, 144, 144);",
+        "next": "ellipse_correct"
+      }
+    ]
+  },
+  "ellipse_wrong_one": {
+    "optionType": "policy",
+    "message": "p5.jsの座標系を確認しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(480, 320);\n  background(255);\n  ellipse(0, 0, 144, 144);\n}",
+    "choices": [
+    ]
+  },
+  "ellipse_wrong_two": {
+    "optionType": "policy",
+    "message": "p5.jsの座標系を確認しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(480, 320);\n  background(255);\n  ellipse(480, 320, 144, 144);\n}",
+    "choices": [
+    ]
+  },
+  "ellipse_correct": {
+    "optionType": "policy",
+    "sourceCode": "function setup() {\n  createCanvas(480, 320);\n  background(255);\n  ellipse(240, 160, 144, 144);\n}",
+    "choices": [
+      {
+        "text": "正解!",
+        "next": "start"
+      }
+    ]
+  },
+  "answer": {
+    "optionType": "policy",
+    "sourceCode": "function setup() {\n  createCanvas(480, 320);\n  background(255);\n  fill(255, 0, 0);\n noStroke();\n  ellipse(240, 160, 144, 144);\n}",
+    "choices": [
+      {
+        "text": "正解!",
+        "next": "start"
+      }
+    ]
+  }
+}
