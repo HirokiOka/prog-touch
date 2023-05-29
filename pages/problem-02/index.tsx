@@ -59,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     problemState = context.query.problemState;
   }
 
-  const problemDataPath = path.join(process.cwd(), 'public', 'data', 'problem_01.json');
+  const problemDataPath = path.join(process.cwd(), 'public', 'data', 'problem_02.json');
   const p5MethodsPath = path.join(process.cwd(), 'public', 'data', 'p5_methods.json');
 
   const p5Methods = JSON.parse(fs.readFileSync(p5MethodsPath).toString());
@@ -86,6 +86,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const instanceSource = generate(ast);
   const documentUrl = problemDataContent.documentUrl ?? ''; 
   const message = problemDataContent.message ?? '';
+  const tabIndex = problemDataContent.tabIndex ?? 0;
 
   return {
     props : {
@@ -94,6 +95,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
       documentUrl: documentUrl,
       sourceCode: sourceCode,
       message: message,
+      tabIndex: tabIndex,
       instanceSource: instanceSource,
       choices: problemDataContent.choices,
     },
@@ -106,6 +108,7 @@ export default function ProblemOne(data: any) {
   const instanceSource = data.instanceSource;
   const documentUrl = data.documentUrl;
   const message = data.message;
+  const tabIndex = data.tabIndex;
   const handleClick = () => {
     history.back();
   };
@@ -126,12 +129,14 @@ export default function ProblemOne(data: any) {
     );
   }
 
+
   return (
       <main className="px-6 text-sm lg:text-base">
-        <Tabs>
+        <Tabs defaultIndex={tabIndex}>
           <TabList>
             <Tab>Code</Tab>
             <Tab>Problem</Tab>
+            <Tab>Document</Tab>
           </TabList>
 
           <TabPanel>
@@ -150,14 +155,6 @@ export default function ProblemOne(data: any) {
             </div>
             */}
 
-            {documentUrl ? 
-              <iframe id="inlineFrameExample"
-                title="p5 document"
-                width="300"
-                height="200"
-                src={documentUrl}>
-              </iframe>
-              : ''}
 
 
             <ul className="m-2 list-inside list-none">{optionType === 'policy' ? "方針:" : "クイズ:"}
@@ -165,11 +162,11 @@ export default function ProblemOne(data: any) {
                 return (
                 <li key={i} className="mt-2 mb-4">
                 {optionType === 'policy' ? (
-                  <Link href={`/problem-01/?problemState=${c.next}`} 
+                  <Link href={`/problem-02/?problemState=${c.next}`} 
                       className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
                   </Link>
                     ) : (
-                  <Link href={`/problem-01/?problemState=${c.next}`} 
+                  <Link href={`/problem-02/?problemState=${c.next}`} 
                       className="bg-purple-500 hover:bg-purple-700 text-white font-sans py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
                   </Link>
                     )}
@@ -198,6 +195,17 @@ export default function ProblemOne(data: any) {
               </div>
             </div>
 
+          </TabPanel>
+
+          <TabPanel>
+            {documentUrl ? 
+              <iframe id="inlineFrameExample"
+                title="p5 document"
+                width="320"
+                height="480"
+                src={documentUrl}>
+              </iframe>
+              : ''}
           </TabPanel>
         </Tabs>
 

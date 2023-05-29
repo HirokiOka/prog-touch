@@ -36,6 +36,7 @@
     "optionType": "policy",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196); \n}",
     "documentUrl": "https://p5js.org/reference/#/p5/line",
+    "tabIndex": 2,
     "choices": [
       {
         "text": "lineを使って線を引く",
@@ -469,7 +470,7 @@
     "choices": [
       {
         "text": "線を1本引く",
-        "next": "for_line_search"
+        "next": "for_line_pre_search"
       },
       {
         "text": "変数を使ってx座標を表現する",
@@ -515,17 +516,17 @@
     "choices": [
       {
         "text": "線を引く",
-        "next": "for_line_prev"
+        "next": "for_line_pre"
       }
     ]
   },
-  "for_line_prev": {
+  "for_line_pre": {
     "optionType": "policy",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    const x = (i + 1) * 10;\n  }\n}",
     "choices": [
       {
         "text": "p5.jsで線を引く方法を調べる",
-        "next": "for_line_search"
+        "next": "for_line_pre_search"
       },
       {
         "text": "線を書く関数を使う",
@@ -533,10 +534,25 @@
       }
     ]
   },
+  "for_line_pre_search": {
+    "optionType": "policy",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
+    "choices": [
+      {
+        "text": "p5.jsで線を引く方法を調べる",
+        "next": "for_line_search"
+      },
+      {
+        "text": "線を引く",
+        "next": "for_pre_line"
+      }
+    ]
+  },
   "for_line_search": {
     "optionType": "policy",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    const x = (i + 1) * 10;\n  }\n}",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
     "documentUrl": "https://p5js.org/reference/#/p5/line",
+    "tabIndex": 2,
     "choices": [
       {
         "text": "lineを使って線を引く",
