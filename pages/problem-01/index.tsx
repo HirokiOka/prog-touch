@@ -160,17 +160,17 @@ export default function ProblemOne(data: any) {
               : ''}
 
 
-            <ul className="m-2 list-inside list-none">{optionType}:
+            <ul className="m-2 list-inside list-none">{optionType === 'policy' ? "方針:" : "クイズ:"}
             {data.choices.map((c: any, i: number) => {
                 return (
                 <li key={i} className="mt-2 mb-4">
                 {optionType === 'policy' ? (
                   <Link href={`/problem-01/?problemState=${c.next}`} 
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
+                      className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
                   </Link>
                     ) : (
                   <Link href={`/problem-01/?problemState=${c.next}`} 
-                      className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
+                      className="bg-purple-500 hover:bg-purple-700 text-white font-sans py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
                   </Link>
                     )}
                 </li>
@@ -202,7 +202,7 @@ export default function ProblemOne(data: any) {
         </Tabs>
 
 
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-1 rounded" onClick={handleClick}>一手戻る</button>
+        <button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-1 rounded" onClick={handleClick}>一手戻る</button>
         <button className="m-1 bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><Link href="/">問題一覧へ</Link></button>
 
       </main>
