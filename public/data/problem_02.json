@@ -344,8 +344,6 @@
     "message": "line()関数の引数が違います. line()の書き方を確認しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  const x = 10;\n  line(x, x, 0, 100);\n}",
     "choices": [
-      {
-      }
     ]
   },
   "line_var": {
@@ -640,7 +638,25 @@
     "choices": [
       {
         "text": "変数xを使って線を引く",
-        "next": "line_var_for"
+        "next": "var_line_choice"
+      }
+    ]
+  },
+  "var_line_choice": {
+    "optionType": "quiz",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  const x = 10;\n}",
+    "choices": [
+      {
+        "text": "line(x, x, 0, 100)",
+        "next": "pre_line_var_incorrect_one"
+      },
+      {
+        "text": "line(0, 0, x, 100)",
+        "next": "pre_line_var_incorrect_one"
+      },
+      {
+        "text": "line(x, 0, x, 100)",
+        "next": "line_var"
       }
     ]
   }

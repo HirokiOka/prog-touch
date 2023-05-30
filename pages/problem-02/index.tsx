@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import Link from 'next/link';
 import Image from 'next/image';
+import React, { useState } from 'react';
 import p5Types from 'p5';
 import { GetServerSideProps } from 'next';
 import problemPic from 'public/problem_02.png';
@@ -109,6 +110,8 @@ export default function ProblemOne(data: any) {
   const documentUrl = data.documentUrl;
   const message = data.message;
   const tabIndex = data.tabIndex;
+
+
   const handleClick = () => {
     history.back();
   };
@@ -129,6 +132,7 @@ export default function ProblemOne(data: any) {
     );
   }
 
+
   return (
       <main className="px-6 text-sm lg:text-base">
         <Tabs defaultIndex={tabIndex}>
@@ -147,13 +151,6 @@ export default function ProblemOne(data: any) {
             <p>出力: </p>
               <SketchComponent />
               <CodePane code={sourceCode} diffLine={[]} />
-
-            {/*
-            <div className="md:w-2/3 mt-2">
-              <p className="bg-yellow-300 rounded p-2">[質問]: {data.question}</p>
-            </div>
-            */}
-
 
 
             <ul className="m-2 list-inside list-none">{optionType === 'policy' ? "方針:" : "クイズ:"}
