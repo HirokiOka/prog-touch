@@ -10,7 +10,7 @@
       },
       {
         "text": "繰り返しを使う",
-        "next": "for"
+        "next": "for_init"
       },
       {
         "text": "線のx座標を表す変数を宣言する",
@@ -54,22 +54,22 @@
       },
       {
         "text": "line(10, 10, 10, 100)",
-        "next": "line_incorrect_one"
+        "next": "line_wrong_one"
       },
       {
         "text": "line(0, 0, 10, 100)",
-        "next": "line_incorrect_two"
+        "next": "line_wrong_two"
       }
     ]
   },
-  "line_incorrect_one": {
+  "line_wrong_one": {
     "optionType": "policy",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 10, 10, 100);\n}",
     "message": "線のy座標が違います.line()の引数を確認しましょう.",
     "choices": [
     ]
   },
-  "line_incorrect_two": {
+  "line_wrong_two": {
     "optionType": "policy",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(0, 0, 10, 100);\n}",
     "message": "線の座標が違います.line()の引数を確認しましょう.",
@@ -86,7 +86,7 @@
       },
       {
         "text": "繰り返しを使って複数の線を引く",
-        "next": "line_for"
+        "next": "line_for_init"
       },
       {
         "text": "変数を使ってx座標を表現する",
@@ -104,7 +104,7 @@
       },
       {
         "text": "繰り返しを使って複数の線を引く",
-        "next": "line_for"
+        "next": "line_for_init"
       },
       {
         "text": "変数を使ってx座標を表現する",
@@ -122,7 +122,7 @@
       },
       {
         "text": "繰り返しを使って複数の線を引く",
-        "next": "line_for"
+        "next": "line_for_init"
       },
       {
         "text": "変数を使ってx座標を表現する",
@@ -140,7 +140,7 @@
       },
       {
         "text": "繰り返しを使って複数の線を引く",
-        "next": "line_for"
+        "next": "line_for_init"
       },
       {
         "text": "変数を使ってx座標を表現する",
@@ -158,7 +158,7 @@
       },
       {
         "text": "繰り返しを使って複数の線を引く",
-        "next": "line_for"
+        "next": "line_for_init"
       },
       {
         "text": "変数を使ってx座標を表現する",
@@ -176,7 +176,7 @@
       },
       {
         "text": "繰り返しを使って複数の線を引く",
-        "next": "line_for"
+        "next": "line_for_init"
       },
       {
         "text": "変数を使ってx座標を表現する",
@@ -194,7 +194,7 @@
       },
       {
         "text": "繰り返しを使って複数の線を引く",
-        "next": "line_for"
+        "next": "line_for_init"
       },
       {
         "text": "変数を使ってx座標を表現する",
@@ -212,7 +212,7 @@
       },
       {
         "text": "繰り返しを使って複数の線を引く",
-        "next": "line_for"
+        "next": "line_for_init"
       },
       {
         "text": "変数を使ってx座標を表現する",
@@ -227,39 +227,112 @@
     "choices": [
     ]
   },
-  "line_for": {
+  "line_for_init": {
     "optionType": "quiz",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n}",
     "choices": [
       {
-        "text": "for (let i = 0; i < 8; i++) {  }",
-        "next": "line_for_incorrect_one"
+         "text": "for (let i = 0; ; ) {  }",
+         "next": "line_for_condition"
       },
       {
-        "text": "for (let i = 0; i < 9; i++) {  }",
-        "next": "line_for_correct"
+         "text": "for (i = 0; ; ) {  }",
+         "next": "line_for_init_wrong_one"
       },
       {
-        "text": "for (let i = 0; i <= 9; i++) {  }",
-        "next": "line_for_incorrect_two"
+         "text": "for (i; ; ) {  }",
+         "next": "line_for_init_wrong_two"
       }
     ]
   },
-  "line_for_incorrect_one": {
+  "line_for_init_wrong_one": {
+    "message": "変数の宣言を行いましょう.",
     "optionType": "policy",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 8; i++) {\n    line(10, 0, 10, 100);\n  }\n}",
-    "message": "ループの回数が違います.for文の書き方を確認してみましょう.",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (i = 0; ; ) {\n    line(10, 0, 10, 100);\n  }\n}",
     "choices": [
     ]
   },
-  "line_for_incorrect_two": {
+  "line_for_init_wrong_two": {
+    "message": "変数の宣言・初期化を行いましょう.",
     "optionType": "policy",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i <= 9; i++) {\n    line(10, 0, 10, 100);\n  }\n}",
-    "message": "ループの回数が違います.for文の書き方や演算子を確認してみましょう.",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (i; i <= 9; i++) {\n    line(10, 0, 10, 100);\n  }\n}",
     "choices": [
     ]
   },
-  "line_for_correct": {
+  "line_for_condition": {
+    "optionType": "quiz",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; ; ) {\n    line(10, 0, 10, 100);\n  }\n}",
+    "choices": [
+       {
+         "text": "for (let i = 0; i < 8; ) {  }",
+         "next": "line_for_condition_wrong_one"
+       },
+       {
+         "text": "for (let i = 0; i < 9; ) {  }",
+         "next": "line_for_afterthought"
+       },
+       {
+         "text": "for (let i = 0; i <= 9; ) {  }",
+         "next": "line_for_condition_wrong_two"
+       }
+    ]
+  },
+  "line_for_condition_wrong_one": {
+    "message": "ループの回数が少ないです.for文の条件を確認しましょう.",
+    "optionType": "quiz",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 8; ) {\n    line(10, 0, 10, 100);\n  }\n}",
+    "choices": [
+    ]
+  },
+  "line_for_condition_wrong_two": {
+    "message": "ループの回数が多いです.for文の条件を確認しましょう.",
+    "optionType": "quiz",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i <= 9; ) {\n    line(10, 0, 10, 100);\n  }\n}",
+    "choices": [
+    ]
+  },
+  "line_for_afterthought": {
+    "optionType": "quiz",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; ) {\n    line(10, 0, 10, 100);\n  }\n}",
+    "choices": [
+       {
+         "text": "for (let i = 0; i < 9; i--) {  }",
+         "next": "line_for_afterthought_wrong_one"
+       },
+       {
+         "text": "for (let i = 0; i < 9; i++) {  }",
+         "next": "line_for_afterthought_correct"
+       },
+       {
+         "text": "for (let i = 0; i < 9; i+) {  }",
+         "next": "line_for_afterthought_wrong_two"
+       }
+    ]
+  },
+  "line_for_afterthought_wrong_one": {
+     "message": "変化式が違います.for文の条件を確認しましょう.",
+     "optionType": "policy",
+     "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i--) {\n    line(10, 0, 10, 100);\n  }\n}",
+     "choices": [
+     ]
+   },
+   "line_for_afterthought_wrong_two": {
+     "message": "変化式が違います.for文の条件を確認しましょう.",
+     "optionType": "policy",
+     "isExecutable": false,
+     "message": "ループの回数が多いです.for文の条件を確認しましょう.",
+     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i+) {\n  }\n}",
+     "choices": [
+     ]
+   },
+  "line_for_afterthought_correct": {
     "optionType": "policy",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line(10, 0, 10, 100);\n  }\n}",
     "choices": [
@@ -285,7 +358,7 @@
     "choices": [
       {
         "text": "const x = i * 10;",
-        "next": "line_for_var_loop_incorrect_one"
+        "next": "line_for_var_loop_wrong_one"
       },
       {
         "text": "const x = (i + 1) *10;",
@@ -293,18 +366,18 @@
       },
       {
         "text": "const x = i + 1 * 10;",
-        "next": "line_for_var_loop_incorrect_two"
+        "next": "line_for_var_loop_wrong_two"
       }
     ]
   },
-  "line_for_var_loop_incorrect_one": {
+  "line_for_var_loop_wrong_one": {
     "optionType": "policy",
     "message": "線の本数が違います. 変数xの値を確認しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    const x = i * 10;\n    line(x, 0, x, 100);\n  }\n}",
     "choices": [
     ]
   },
-  "line_for_var_loop_incorrect_two": {
+  "line_for_var_loop_wrong_two": {
     "optionType": "policy",
     "message": "線の間隔が違います. 変数xの値を確認しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    const x = i + 1 * 10;\n    line(x, 0, x, 100);\n  }\n}",
@@ -327,11 +400,11 @@
     "choices": [
       {
         "text": "line(x, x, 0, 100)",
-        "next": "pre_line_var_incorrect_one"
+        "next": "pre_line_var_wrong_one"
       },
       {
         "text": "line(0, 0, x, 100)",
-        "next": "pre_line_var_incorrect_one"
+        "next": "pre_line_var_wrong_one"
       },
       {
         "text": "line(x, 0, x, 100)",
@@ -339,7 +412,7 @@
       }
     ]
   },
-  "pre_line_var_incorrect_one": {
+  "pre_line_var_wrong_one": {
     "optionType": "policy",
     "message": "line()関数の引数が違います. line()の書き方を確認しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  const x = 10;\n  line(x, x, 0, 100);\n}",
@@ -352,43 +425,115 @@
     "choices": [
       {
         "text": "繰り返しを使って複数の線を引く",
-        "next": "line_var_for"
+        "next": "line_var_for_init"
       }
     ]
   },
-  "line_var_for": {
+  "line_var_for_init": {
     "optionType": "quiz",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  const x = 10;\n  line(x, 0, x, 100);\n}",
     "choices": [
       {
-        "text": "for (let i = 0; i < 8; i++) {  }",
-        "next": "line_var_for_incorrect_one"
+        "text": "for (let i = 0; ; ) {  }",
+        "next": "line_var_for_condition"
       },
       {
-        "text": "for (let i = 0; i < 9; i++) {  }",
-        "next": "line_var_for_correct"
+        "text": "for (i = 0; ; ) {  }",
+        "next": "line_var_for_init_wrong_one"
       },
       {
-        "text": "for (let i = 0; i <= 9; i++) {  }",
-        "next": "line_var_for_incorrect_two"
+        "text": "for (i; ; ) {  }",
+        "next": "line_var_for_init_wrong_two"
       }
     ]
   },
-  "line_var_for_incorrect_one": {
-    "optionType": "policy",
+  "line_var_for_init_wrong_one": {
+     "message": "変数の宣言子をつけましょう.",
+     "optionType": "quiz",
+     "isExecutable": false,
+     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (i = 0; ; ) {\n    const x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+     "choices": [
+     ]
+  },
+  "line_var_for_init_wrong_two": {
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (i; ;) {\n    const x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+     "message": "変数宣言・変数の初期化を行いましょう.",
+     "optionType": "quiz",
+     "isExecutable": false,
+     "choices": [
+     ]
+  },
+  "line_var_for_condition": {
+    "optionType": "quiz",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; ) {\n    const x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "choices": [
+       {
+         "text": "for (let i = 0; i < 8; ) {  }",
+         "next": "line_var_for_condition_wrong_one"
+       },
+       {
+         "text": "for (let i = 0; i < 9; ) {  }",
+         "next": "line_var_for_afterthought"
+       },
+       {
+         "text": "for (let i = 0; i <= 9; ) {  }",
+         "next": "line_var_for_condition_wrong_two"
+       }
+    ]
+  },
+  "line_var_for_condition_wrong_one": {
     "message": "ループの回数が少ないです.for文の条件を確認しましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 8; i++) {\n    const x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "isExecutable": false,
+    "optionType": "quiz",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 8; ) {\n    const x = 10;\n    line(x, 0, x, 100);\n  }\n}",
     "choices": [
     ]
   },
-  "line_var_for_incorrect_two": {
-    "optionType": "policy",
+  "line_var_for_condition_wrong_two": {
     "message": "ループの回数が多いです.for文の条件を確認しましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i <= 9; i++) {\n    const x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "isExecutable": false,
+    "optionType": "quiz",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i <= 9; ) {\n    const x = 10;\n    line(x, 0, x, 100);\n  }\n}",
     "choices": [
     ]
   },
-  "line_var_for_correct": {
+  "line_var_for_afterthought": {
+     "optionType": "quiz",
+     "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; ) {\n    const x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+     "choices": [
+       {
+         "text": "for (let i = 0; i < 9; i--) {  }",
+         "next": "line_var_for_afterthought_wrong_one"
+       },
+       {
+         "text": "for (let i = 0; i < 9; i++) {  }",
+         "next": "line_var_for_afterthought_correct"
+       },
+       {
+         "text": "for (let i = 0; i < 9; i+) {  }",
+         "next": "line_var_for_afterthought_wrong_two"
+       }
+     ]
+   },
+   "line_var_for_afterthought_wrong_one": {
+     "message": "変化式が違います.for文の条件を確認しましょう.",
+     "optionType": "quiz",
+     "isExecutable": false,
+     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i-- ) {\n    const x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+     "choices": [
+     ]
+   },
+   "line_var_for_afterthought_wrong_two": {
+     "message": "変化式が違います.for文の条件を確認しましょう.",
+     "optionType": "quiz",
+     "isExecutable": false,
+     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i+) {\n    const x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+     "choices": [
+     ]
+   },
+  "line_var_for_afterthought_correct": {
     "optionType": "policy",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    const x = 10;\n    line(x, 0, x, 100);\n  }\n}",
     "choices": [
@@ -404,7 +549,7 @@
     "choices": [
       {
         "text": "const x = i * 10;",
-        "next": "line_var_for_fix_incorrect_one"
+        "next": "line_var_for_fix_wrong_one"
       },
       {
         "text": "const x = (i + 1) * 10;",
@@ -412,57 +557,130 @@
       },
       {
         "text": "const x = i + 1 * 10;",
-        "next": "line_var_for_fix_incorrect_two"
+        "next": "line_var_for_fix_wrong_two"
       }
     ]
   },
-  "line_var_for_fix_incorrect_one": {
-    "optionType": "policy",
+  "line_var_for_fix_wrong_one": {
+    "optionType": "quiz",
     "message": " 線の本数が少ないです. 変数xの値を確認しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    const x = i * 10;\n    line(x, 0, x, 100);\n  }\n}",
     "choices": [
     ]
   },
-  "line_var_for_fix_incorrect_two": {
-    "optionType": "policy",
+  "line_var_for_fix_wrong_two": {
+    "optionType": "quiz",
     "message": "線の間隔が短いです. 変数xへの代入の右辺を確認しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    const x = i + 1 * 10;\n    line(x, 0, x, 100);\n  }\n}",
     "choices": [
     ]
   },
-  "for": {
+  "for_init": {
     "optionType": "quiz",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  \n}",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
     "choices": [
       {
-        "text": "for (let i = 0; i < 8; i++) {  }",
-        "next": "for_incorrect_one"
+        "text": "for (let i = 0; ; ) {  }",
+        "next": "for_condition"
       },
       {
-        "text": "for (let i = 0; i < 9; i++) {  }",
-        "next": "for_correct"
+        "text": "for (i = 0; ; ) {  }",
+        "next": "for_init_wrong_one"
       },
       {
-        "text": "for (let i = 0; i <= 9; i++) {  }",
-        "next": "for_incorrect_two"
+        "text": "for (i; ; ) {  }",
+        "next": "for_init_wrong_two"
       }
     ]
   },
-  "for_incorrect_one": {
-    "optionType": "policy",
+  "for_init_wrong_one": {
+    "message": "変数の宣言子をつけましょう.",
+    "optionType": "quiz",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (i = 0; ; ) {\n  }\n}",
+    "choices": [
+    ]
+  },
+  "for_init_wrong_two": {
+    "message": "変数宣言・変数の初期化を行いましょう.",
+    "optionType": "quiz",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (i; ; ) {\n  }\n}",
+    "choices": [
+    ]
+  },
+  "for_condition": {
+    "optionType": "quiz",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; ; ) {\n  }\n}",
+    "choices": [
+      {
+        "text": "for (let i = 0; i < 8; ) {  }",
+        "next": "for_condition_wrong_one"
+      },
+      {
+        "text": "for (let i = 0; i < 9; ) {  }",
+        "next": "for_afterthought"
+      },
+      {
+        "text": "for (let i = 0; i <= 9; ) {  }",
+        "next": "for_condition_wrong_two"
+      }
+    ]
+  },
+  "for_condition_wrong_one": {
     "message": "ループの回数が少ないです.for文の条件を確認しましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 8; i++) {\n  }\n}",
+    "optionType": "quiz",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 8; ) {\n  }\n}",
     "choices": [
     ]
   },
-  "for_incorrect_two": {
-    "optionType": "policy",
+  "for_condition_wrong_two": {
     "message": "ループの回数が多いです.for文の条件を確認しましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i <= 9; i++) {\n  }\n}",
+    "optionType": "quiz",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i <= 9; ) {\n  }\n}",
     "choices": [
     ]
   },
-  "for_correct": {
+  "for_afterthought": {
+    "optionType": "quiz",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; ) {\n  }\n}",
+    "choices": [
+      {
+        "text": "for (let i = 0; i < 9; i--) {  }",
+        "next": "for_afterthought_wrong_one"
+      },
+      {
+        "text": "for (let i = 0; i < 9; i++) {  }",
+        "next": "for_afterthought_correct"
+      },
+      {
+        "text": "for (let i = 0; i < 9; i+) {  }",
+        "next": "for_afterthought_wrong_two"
+      }
+    ]
+  },
+  "for_afterthought_wrong_one": {
+    "message": "変化式が違います.for文の条件を確認しましょう.",
+    "optionType": "policy",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i--) {\n  }\n}",
+    "choices": [
+    ]
+  },
+  "for_afterthought_wrong_two": {
+    "message": "変化式が違います.for文の条件を確認しましょう.",
+    "optionType": "policy",
+    "isExecutable": false,
+    "message": "ループの回数が多いです.for文の条件を確認しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i+) {\n  }\n}",
+    "choices": [
+    ]
+  },
+  "for_afterthought_correct": {
     "optionType": "policy",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
     "choices": [
@@ -482,7 +700,7 @@
     "choices": [
       {
         "text": "const x = i * 10;",
-        "next": "for_var_incorrect_one"
+        "next": "for_var_wrong_one"
       },
       {
         "text": "const x = (i + 1) *10;",
@@ -490,18 +708,18 @@
       },
       {
         "text": "const x = i + 1 * 10;",
-        "next": "for_var_incorrect_two"
+        "next": "for_var_wrong_two"
       }
     ]
   },
-  "for_var_incorrect_one": {
+  "for_var_wrong_one": {
     "optionType": "policy",
     "message": "変数xの値を確認しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    const x = i * 10;\n  }\n}",
     "choices": [
     ]
   },
-  "for_var_incorrect_two": {
+  "for_var_wrong_two": {
     "optionType": "policy",
     "message": " 変数xの値を確認しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    const x = i + 1 * 10;\n  }\n}",
@@ -568,22 +786,22 @@
       },
       {
         "text": "line(x, x, 0, 100)",
-        "next": "for_line_incorrect_one"
+        "next": "for_line_wrong_one"
       },
       {
         "text": "line(0, 0, x, 100)",
-        "next": "for_line_incorrect_two"
+        "next": "for_line_wrong_two"
       }
     ]
   },
-  "for_line_incorrect_one": {
+  "for_line_wrong_one": {
     "optionType": "policy",
     "message": "lineの引数を確認しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    const x = (i + 1) * 10;\n    line(x, x, 0, 100);\n  }\n}",
     "choices": [
     ]
   },
-  "for_line_incorrect_two": {
+  "for_line_wrong_two": {
     "optionType": "policy",
     "message": "lineの引数を確認しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    const x = (i + 1) * 10;\n    line(0, 0, x, 100);\n  }\n}",
@@ -606,7 +824,7 @@
     "choices": [
       {
         "text": "const x = -50;",
-        "next": "var_incorrect_one"
+        "next": "var_wrong_one"
       },
       {
         "text": "const x = 10;",
@@ -614,18 +832,18 @@
       },
       {
         "text": "const x = 0;",
-        "next": "var_incorrect_two"
+        "next": "var_wrong_two"
       }
     ]
   },
-  "var_incorrect_one": {
+  "var_wrong_one": {
     "optionType": "policy",
     "message": "p5.jsの座標系を確認しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  const x = -50;\n}",
     "choices": [
     ]
   },
-  "var_incorrect_two": {
+  "var_wrong_two": {
     "optionType": "policy",
     "message": "p5.jsの座標系を確認しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  const x = 0;\n}",
@@ -638,6 +856,31 @@
     "choices": [
       {
         "text": "変数xを使って線を引く",
+        "next": "var_line"
+      }
+    ]
+  },
+  "var_line": {
+    "optionType": "policy",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  const x = 10;\n}",
+    "choices": [
+      {
+        "text": "p5.jsで線を引く方法を調べる",
+        "next": "var_line_search"
+      },
+      {
+        "text": "線を書く関数を使う",
+        "next": "var_line_choice"
+      }
+    ]
+  },
+  "var_line_search": {
+    "optionType": "policy",
+    "documentUrl": "https://p5js.org/reference/#/p5/line",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  const x = 10;\n}",
+    "choices": [
+      {
+        "text": "線を書く関数を使う",
         "next": "var_line_choice"
       }
     ]
@@ -648,11 +891,11 @@
     "choices": [
       {
         "text": "line(x, x, 0, 100)",
-        "next": "pre_line_var_incorrect_one"
+        "next": "pre_line_var_wrong_one"
       },
       {
         "text": "line(0, 0, x, 100)",
-        "next": "pre_line_var_incorrect_one"
+        "next": "pre_line_var_wrong_one"
       },
       {
         "text": "line(x, 0, x, 100)",

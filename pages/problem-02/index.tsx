@@ -54,6 +54,16 @@ const replacedNode = {
   }
 };
 
+function shuffleArray(ary: any) {
+  let result = [];
+  while (ary.length != 0) {
+    const randIndex = Math.floor(Math.random() * ary.length);
+    const removed = ary.splice(randIndex, 1)[0];
+    result.push(removed);
+  }
+  return result;
+}
+
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
   let problemState = 'start';
   if (context.query.problemState !== undefined) {
@@ -68,31 +78,37 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const problemDataContent = problemData[problemState];
 
   const sourceCode = problemDataContent.sourceCode;
-  const ast: any = parseScript(sourceCode);
-
-  replace(ast, {
-    enter: function(node: any) {
-      if (node.type === 'CallExpression') {
-        const functionName = node.callee.name;
-        if (p5Methods.includes(functionName)) node.callee.name = 'p5.' + functionName;
-        return node;
-      } else if (node.type === 'ExpressionStatement' && node.expression.callee.name === 'createCanvas') {
-        return replacedNode;
+  let ast: any = '';
+  try {
+    ast = parseScript(sourceCode);
+    replace(ast, {
+      enter: function(node: any) {
+        if (node.type === 'CallExpression') {
+          const functionName = node.callee.name;
+          if (p5Methods.includes(functionName)) node.callee.name = 'p5.' + functionName;
+          return node;
+        } else if (node.type === 'ExpressionStatement' && node.expression.callee.name === 'createCanvas') {
+          return replacedNode;
+        }
       }
-    }
-  });
+    });
+    ast.body = ast.body[0].body.body;
+  } catch(e) {
 
-  ast.body = ast.body[0].body.body;
+  }
 
-  const instanceSource = generate(ast);
+
+  const instanceSource: string = ast !== '' ? generate(ast) : '';
   const documentUrl = problemDataContent.documentUrl ?? ''; 
   const message = problemDataContent.message ?? '';
   const tabIndex = problemDataContent.tabIndex ?? 0;
+  const isExecutable = problemDataContent.isExecutable ?? true;
 
   return {
     props : {
       problem: problemData.problem,
       optionType: problemDataContent.optionType,
+      isExecutable: isExecutable,
       documentUrl: documentUrl,
       sourceCode: sourceCode,
       message: message,
@@ -104,20 +120,25 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 };
 
 export default function ProblemOne(data: any) {
+  const [prevCode, setPrevCode] = useState("");
   const optionType = data.optionType;
   const sourceCode =  data.sourceCode;
   const instanceSource = data.instanceSource;
   const documentUrl = data.documentUrl;
   const message = data.message;
   const tabIndex = data.tabIndex;
-
+  const isExecutable = data.isExecutable;
 
   const handleClick = () => {
     history.back();
   };
+  const onProgress = () => {
+    if (isExecutable) setPrevCode(instanceSource);
+  };
 
+  const targetCode = isExecutable ? instanceSource : prevCode;
   const s = (p5: p5Types, canvasParentRef: Element) => {
-    eval(instanceSource);
+    eval(targetCode);
   };
 
   const d = (p5: p5Types) => {
@@ -131,6 +152,9 @@ export default function ProblemOne(data: any) {
       />
     );
   }
+
+  //const shuffledChoices = shuffleArray(data.choices); 
+  const shuffledChoices = data.choices;
 
 
   return (
@@ -154,15 +178,15 @@ export default function ProblemOne(data: any) {
 
 
             <ul className="m-2 list-inside list-none">{optionType === 'policy' ? "方針:" : "クイズ:"}
-            {data.choices.map((c: any, i: number) => {
+            {shuffledChoices.map((c: any, i: number) => {
                 return (
                 <li key={i} className="mt-2 mb-4">
                 {optionType === 'policy' ? (
-                  <Link href={`/problem-02/?problemState=${c.next}`} 
+                  <Link href={`/problem-02/?problemState=${c.next}`} onClick={onProgress}
                       className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
                   </Link>
                     ) : (
-                  <Link href={`/problem-02/?problemState=${c.next}`} 
+                  <Link href={`/problem-02/?problemState=${c.next}`} onClick={onProgress}
                       className="bg-purple-500 hover:bg-purple-700 text-white font-sans py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
                   </Link>
                     )}
