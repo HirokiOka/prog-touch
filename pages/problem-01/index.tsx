@@ -29,13 +29,13 @@ const replacedNode = {
         "arguments": [
           {
             "type": "Literal",
-            "value": 100,
-            "raw": "100"
+            "value": 320,
+            "raw": "320"
           },
           {
             "type": "Literal",
-            "value": 100,
-            "raw": "100"
+            "value": 240,
+            "raw": "240"
           }
         ]
       },

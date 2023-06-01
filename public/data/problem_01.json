@@ -2,7 +2,7 @@
   "problem": "日本国旗を描いてみましょう.",
   "start": {
     "optionType": "policy",
-    "sourceCode": "function setup() {\n  createCanvas(480, 320);\n  background(255);\n}",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n}",
     "choices": [
       {
         "text": "中心に円を描く",
@@ -12,7 +12,7 @@
   },
   "ellipse": {
     "optionType": "policy",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196); \n}",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(255); \n}",
     "choices": [
       {
         "text": "p5.jsで円を描く方法を調べる",
@@ -41,15 +41,15 @@
     "documentUrl": "https://p5js.org/reference/#/p5/ellipse",
     "choices": [
       {
-        "text": "ellipse(0, 0, 144, 144);",
+        "text": "ellipse(0, 0, 96, 96);",
         "next": "ellipse_wrong_one"
       },
       {
-        "text": "ellipse(480, 320, 144, 144);",
+        "text": "ellipse(320, 240, 96, 96);",
         "next": "ellipse_wrong_two"
       },
       {
-        "text": "ellipse(480/2, 320/2, 144, 144);",
+        "text": "ellipse(320/2, 240/2, 96, 96);",
         "next": "ellipse_correct"
       }
     ]
@@ -57,30 +57,139 @@
   "ellipse_wrong_one": {
     "optionType": "policy",
     "message": "p5.jsの座標系を確認しましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(480, 320);\n  background(255);\n  ellipse(0, 0, 144, 144);\n}",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n  ellipse(0, 0, 96, 96);\n}",
     "choices": [
     ]
   },
   "ellipse_wrong_two": {
     "optionType": "policy",
     "message": "p5.jsの座標系を確認しましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(480, 320);\n  background(255);\n  ellipse(480, 320, 144, 144);\n}",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n  ellipse(320, 240, 96, 96);\n}",
     "choices": [
     ]
   },
   "ellipse_correct": {
     "optionType": "policy",
-    "sourceCode": "function setup() {\n  createCanvas(480, 320);\n  background(255);\n  ellipse(240, 160, 144, 144);\n}",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n  ellipse(160, 120, 96, 96);\n}",
     "choices": [
       {
-        "text": "正解!",
-        "next": "start"
+        "text": "円の色を赤にする",
+        "next": "ellipse_fill"
+      }
+    ]
+  },
+  "ellipse_fill": {
+    "optionType": "policy",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n  ellipse(160, 120, 96, 96);\n}",
+    "choices": [
+      {
+        "text": "塗る色を決める関数について調べる",
+        "next": "ellipse_fill_search"
+      },
+      {
+        "text": "赤に塗る",
+        "next": "ellipse_fill_choice"
+      }
+    ]
+  },
+  "ellipse_fill": {
+    "optionType": "policy",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n  ellipse(160, 120, 96, 96);\n}",
+    "choices": [
+      {
+        "text": "塗る色を決める関数について調べる",
+        "next": "ellipse_fill_search"
+      }
+    ]
+  },
+  "ellipse_fill_search": {
+    "optionType": "policy",
+    "documentUrl": "https://p5js.org/reference/#/p5/fill",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n  ellipse(160, 120, 96, 96);\n}",
+    "choices": [
+      {
+        "text": "fill()を使って色を指定する",
+        "next": "ellipse_fill_choice"
+      }
+    ]
+  },
+  "ellipse_fill_choice": {
+    "optionType": "quiz",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n  ellipse(160, 120, 96, 96);\n}",
+    "choices": [
+      {
+        "text": "fill(255)",
+        "next": "ellipse_fill_wrong_one"
+      },
+      {
+        "text": "fill(0, 255, 0)",
+        "next": "ellipse_fill_wrong_two"
+      },
+      {
+        "text": "fill(255, 0, 0)",
+        "next": "ellipse_fill_correct"
+      }
+    ]
+  },
+  "ellipse_fill_wrong_one": {
+    "optionType": "quiz",
+    "message": "fill(255)は白色です.ドキュメントを見直しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n  fill(255);\n  ellipse(160, 120, 96, 96);\n}",
+    "choices": [
+    ]
+  },
+  "ellipse_fill_wrong_two": {
+    "optionType": "quiz",
+    "message": "fill(0, 255, 0)は緑色です.ドキュメントを見直しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n  fill(0, 255, 0);\n  ellipse(160, 120, 96, 96);\n}",
+    "choices": [
+    ]
+  },
+  "ellipse_fill_correct": {
+    "optionType": "policy",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(160, 120, 96, 96);\n}",
+    "choices": [
+      {
+        "text": "円の縁を消す",
+        "next": "ellipse_fill_noStroke"
+      }
+    ]
+  },
+  "ellipse_fill_noStroke": {
+    "optionType": "policy",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(160, 120, 96, 96);\n}",
+    "choices": [
+      {
+        "text": "図形の縁を消す関数について調べる",
+        "next": "ellipse_fill_noStroke_search"
+      }
+    ]
+  },
+  "ellipse_fill_noStroke_search": {
+    "optionType": "policy",
+    "documentUrl": "https://p5js.org/reference/#/p5/noStroke",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(160, 120, 96, 96);\n}",
+    "choices": [
+      {
+        "text": "noStroke()を使って縁を消す",
+        "next": "ellipse_fill_noStroke_choice"
+      }
+    ]
+  },
+  "ellipse_fill_noStroke_choice": {
+    "optionType": "policy",
+    "documentUrl": "https://p5js.org/reference/#/p5/noStroke",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(160, 120, 96, 96);\n}",
+    "choices": [
+      {
+        "text": "noStroke()",
+        "next": "answer"
       }
     ]
   },
   "answer": {
     "optionType": "policy",
-    "sourceCode": "function setup() {\n  createCanvas(480, 320);\n  background(255);\n  fill(255, 0, 0);\n noStroke();\n  ellipse(240, 160, 144, 144);\n}",
+    "sourceCode": "function setup() {\n  createCanvas(320, 240);\n  background(255);\n  fill(255, 0, 0);\n  noStroke();\n  ellipse(160, 120, 96, 96);\n}",
     "choices": [
       {
         "text": "正解!",
