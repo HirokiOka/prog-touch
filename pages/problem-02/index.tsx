@@ -100,6 +100,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 
   const instanceSource: string = ast !== '' ? generate(ast) : '';
   const documentUrl = problemDataContent.documentUrl ?? ''; 
+  const suggestion = problemDataContent.suggestion ?? '';
   const message = problemDataContent.message ?? '';
   const tabIndex = problemDataContent.tabIndex ?? 0;
   const isExecutable = problemDataContent.isExecutable ?? true;
@@ -108,6 +109,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     props : {
       problem: problemData.problem,
       optionType: problemDataContent.optionType,
+      suggestion: suggestion,
       isExecutable: isExecutable,
       documentUrl: documentUrl,
       sourceCode: sourceCode,
@@ -125,6 +127,7 @@ export default function ProblemOne(data: any) {
   const sourceCode =  data.sourceCode;
   const instanceSource = data.instanceSource;
   const documentUrl = data.documentUrl;
+  const suggestion = data.suggestion;
   const message = data.message;
   const tabIndex = data.tabIndex;
   const isExecutable = data.isExecutable;
@@ -156,7 +159,6 @@ export default function ProblemOne(data: any) {
   //const shuffledChoices = shuffleArray(data.choices); 
   const shuffledChoices = data.choices;
 
-
   return (
       <main className="px-6 text-sm lg:text-base">
         <Tabs defaultIndex={tabIndex}>
@@ -171,13 +173,11 @@ export default function ProblemOne(data: any) {
             {message ? 
               <p className="rounded bg-red-100 p-2 w-2/3">{message}</p>
               : ''}
+            {suggestion ? 
+              <p className="rounded bg-blue-100 p-2">Q. {suggestion}</p>
+              : ''}
 
-            <p>出力: </p>
-              <SketchComponent />
-              <CodePane code={sourceCode} diffLine={[]} />
-
-
-            <ul className="m-2 list-inside list-none">{optionType === 'policy' ? "方針:" : "クイズ:"}
+            <ul className="m-2 p-1 list-inside list-none">
             {shuffledChoices.map((c: any, i: number) => {
                 return (
                 <li key={i} className="mt-2 mb-4">
@@ -194,6 +194,11 @@ export default function ProblemOne(data: any) {
                 );
               })}
             </ul>
+
+            <p>出力: </p>
+              <SketchComponent />
+              <CodePane code={sourceCode} diffLine={[]} />
+
 
           </TabPanel>
 

@@ -29,13 +29,13 @@ const replacedNode = {
         "arguments": [
           {
             "type": "Literal",
-            "value": 320,
-            "raw": "320"
+            "value": 160,
+            "raw": "160"
           },
           {
             "type": "Literal",
-            "value": 240,
-            "raw": "240"
+            "value": 120,
+            "raw": "120"
           }
         ]
       },
@@ -83,8 +83,9 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 
   ast.body = ast.body[0].body.body;
 
-  const instanceSource = generate(ast);
+  const instanceSource: string = ast !== '' ? generate(ast) : '';
   const documentUrl = problemDataContent.documentUrl ?? ''; 
+  const suggestion = problemDataContent.suggestion ?? '';
   const message = problemDataContent.message ?? '';
   const tabIndex = problemDataContent.tabIndex ?? 0;
 
@@ -92,6 +93,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     props : {
       problem: problemData.problem,
       optionType: problemDataContent.optionType,
+      suggestion: suggestion,
       documentUrl: documentUrl,
       sourceCode: sourceCode,
       message: message,
@@ -107,6 +109,7 @@ export default function ProblemOne(data: any) {
   const sourceCode =  data.sourceCode;
   const instanceSource = data.instanceSource;
   const documentUrl = data.documentUrl;
+  const suggestion = data.suggestion;
   const message = data.message;
   const tabIndex = data.tabIndex;
   const handleClick = () => {
@@ -144,13 +147,11 @@ export default function ProblemOne(data: any) {
             {message ? 
               <p className="rounded bg-red-100 p-2 w-2/3">{message}</p>
               : ''}
+            {suggestion ? 
+              <p className="rounded bg-blue-100 p-2">Q. {suggestion}</p>
+              : ''}
 
-            <p>出力: </p>
-              <SketchComponent />
-              <CodePane code={sourceCode} diffLine={[]} />
-
-
-            <ul className="m-2 list-inside list-none">{optionType === 'policy' ? "方針:" : "クイズ:"}
+            <ul className="m-2 p-1 list-inside list-none">  
             {data.choices.map((c: any, i: number) => {
                 return (
                 <li key={i} className="mt-2 mb-4">
@@ -167,6 +168,12 @@ export default function ProblemOne(data: any) {
                 );
               })}
             </ul>
+
+            <p>出力: </p>
+              <SketchComponent />
+              <CodePane code={sourceCode} diffLine={[]} />
+
+
 
           </TabPanel>
 
