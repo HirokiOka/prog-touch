@@ -195,9 +195,11 @@ export default function ProblemOne(data: any) {
               })}
             </ul>
 
-            <p>出力: </p>
+            <div className="p-2 rounded border border-gray-500">
+              <p>出力: </p>
               <SketchComponent />
               <CodePane code={sourceCode} diffLine={[]} />
+            </div>
 
 
           </TabPanel>
@@ -236,7 +238,7 @@ export default function ProblemOne(data: any) {
 
 
         <button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-1 rounded" onClick={handleClick}>一手戻る</button>
-        <button className="m-1 bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><Link href="/">問題一覧へ</Link></button>
+        <button className="m-2 bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><Link href="/">問題一覧へ</Link></button>
 
       </main>
   );
