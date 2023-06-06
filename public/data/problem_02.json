@@ -713,7 +713,7 @@
     "choices": [
       {
         "text": "線を1本引く",
-        "next": "for_line_pre_search"
+        "next": "for_line_pre"
       },
       {
         "text": "変数を使ってx座標を表現する",
