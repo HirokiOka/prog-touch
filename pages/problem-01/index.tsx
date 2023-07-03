@@ -7,6 +7,7 @@ import { GetServerSideProps } from 'next';
 import problemPic from 'public/problem_01.png';
 import Sketch from 'components/Sketch';
 import CodePane from 'components/CodePane';
+import React, { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { parseScript } from 'esprima';
@@ -88,12 +89,14 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const suggestion = problemDataContent.suggestion ?? '';
   const message = problemDataContent.message ?? '';
   const tabIndex = problemDataContent.tabIndex ?? 0;
+  const isExecutable = problemDataContent.isExecutable ?? true;
 
   return {
     props : {
       problem: problemData.problem,
       optionType: problemDataContent.optionType,
       suggestion: suggestion,
+      isExecutable: isExecutable,
       documentUrl: documentUrl,
       sourceCode: sourceCode,
       message: message,
@@ -105,21 +108,35 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 };
 
 export default function ProblemOne(data: any) {
+  const [prevCode, setPrevCode] = useState("");
   const optionType = data.optionType;
   const sourceCode =  data.sourceCode;
   const instanceSource = data.instanceSource;
   const documentUrl = data.documentUrl;
   const suggestion = data.suggestion;
-  const message = data.message;
+  let message = data.message;
   const tabIndex = data.tabIndex;
+  const isExecutable = data.isExecutable;
+
   const handleClick = () => {
     history.back();
   };
-
-  const s = (p5: p5Types, canvasParentRef: Element) => {
-    eval(instanceSource);
+  const onProgress = () => {
+    if (isExecutable) setPrevCode(instanceSource);
   };
 
+  const targetCode = isExecutable ? instanceSource : prevCode;
+
+  let errorMessage: string = '';
+  const s = (p5: p5Types, canvasParentRef: Element) => {
+    try {
+      eval(instanceSource);
+    } catch (e: any) {
+      errorMessage = e.toString();
+      message += '\n' + errorMessage;
+      eval(targetCode);
+    }
+  };
   const d = (p5: p5Types) => {
   };
 
@@ -156,11 +173,11 @@ export default function ProblemOne(data: any) {
                 return (
                 <li key={i} className="mt-2 mb-4">
                 {optionType === 'policy' ? (
-                  <Link href={`/problem-01/?problemState=${c.next}`} 
+                  <Link href={`/problem-01/?problemState=${c.next}`} onClick={onProgress}
                       className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
                   </Link>
                     ) : (
-                  <Link href={`/problem-01/?problemState=${c.next}`} 
+                  <Link href={`/problem-01/?problemState=${c.next}`} onClick={onProgress}
                       className="bg-purple-500 hover:bg-purple-700 text-white font-sans py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
                   </Link>
                     )}

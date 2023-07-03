@@ -172,20 +172,45 @@
     "sourceCode": "function setup() {\n  createCanvas(160, 120);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(80, 60, 48, 48);\n}",
     "choices": [
       {
-        "text": "noStroke()を使って縁を消す",
+        "text": "縁を消す関数を使う",
         "next": "ellipse_fill_noStroke_choice"
       }
     ]
   },
   "ellipse_fill_noStroke_choice": {
     "optionType": "policy",
+    "suggestion": "縁を消すコードはどれでしょうか？",
     "documentUrl": "https://p5js.org/reference/#/p5/noStroke",
     "sourceCode": "function setup() {\n  createCanvas(160, 120);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(80, 60, 48, 48);\n}",
     "choices": [
       {
+        "text": "nostroke()",
+        "next": "ellipse_fill_noStroke_wrong_one"
+      },
+      {
         "text": "noStroke()",
         "next": "answer"
+      },
+      {
+        "text": "NoStroke()",
+        "next": "ellipse_fill_noStroke_wrong_two"
       }
+    ]
+  },
+  "ellipse_fill_noStroke_wrong_one": {
+    "optionType": "policy",
+    "message": "関数のスペルを確認しましょう.",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(160, 120);\n  background(255);\n  fill(255, 0, 0);\n  nostroke();\n  ellipse(80, 60, 48, 48);\n}",
+    "choices": [
+    ]
+  },
+  "ellipse_fill_noStroke_wrong_two": {
+    "optionType": "policy",
+    "message": "関数のスペルを確認しましょう.",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(160, 120);\n  background(255);\n  fill(255, 0, 0);\n  NoStroke();\n  ellipse(80, 60, 48, 48);\n}",
+    "choices": [
     ]
   },
   "answer": {
