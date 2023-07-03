@@ -51,6 +51,7 @@
     "optionType": "quiz",
     "suggestion": "縦に直線を引くコードはどれでしょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196); \n}",
+    "documentUrl": "https://p5js.org/reference/#/p5/line",
     "choices": [
       {
         "text": "line(10, 0, 10, 100)",
