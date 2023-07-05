@@ -130,7 +130,11 @@ export default function ProblemOne(data: any) {
   let errorMessage: string = '';
   const s = (p5: p5Types, canvasParentRef: Element) => {
     try {
-      eval(instanceSource);
+      if (isExecutable) {
+        eval(instanceSource);
+      } else {
+        eval(prevCode);
+      }
     } catch (e: any) {
       errorMessage = e.toString();
       message += '\n' + errorMessage;
@@ -173,11 +177,11 @@ export default function ProblemOne(data: any) {
                 return (
                 <li key={i} className="mt-2 mb-4">
                 {optionType === 'policy' ? (
-                  <Link href={`/problem-01/?problemState=${c.next}`} onClick={onProgress}
+                  <Link href={`/problem-03/?problemState=${c.next}`} onClick={onProgress}
                       className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
                   </Link>
                     ) : (
-                  <Link href={`/problem-01/?problemState=${c.next}`} onClick={onProgress}
+                  <Link href={`/problem-03/?problemState=${c.next}`} onClick={onProgress}
                       className="bg-purple-500 hover:bg-purple-700 text-white font-sans py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
                   </Link>
                     )}

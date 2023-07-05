@@ -3,58 +3,139 @@
   "start": {
     "optionType": "policy",
     "suggestion": "初めに何をするか決めましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(160, 120);\n  background(255);\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n}",
     "choices": [
       {
-        "text": "中心に円を描く",
-        "next": "ellipse"
-      }
-    ]
-  },
-  "ellipse": {
-    "optionType": "policy",
-    "suggestion": "中心に円を描くにはどうすれば良いか考えましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(160, 120);\n  background(255); \n}",
-    "choices": [
-      {
-        "text": "p5.jsで円を描く方法を調べる",
-        "next": "ellipse_search"
+        "text": "チェック柄を描く",
+        "next": "grid"
       },
       {
         "text": "円を描く",
-        "next": "ellipse_choice"
+        "next": "ellipse"
+      },
+      {
+        "text": "縁をなくす",
+        "next": "noStroke"
       }
     ]
   },
-  "ellipse_search": {
+  "grid": {
     "optionType": "policy",
-    "suggestion": "Documentタブを選択してみましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(160, 120);\n  background(255); \n}",
-    "documentUrl": "https://p5js.org/reference/#/p5/ellipse",
+    "suggestion": "チェック柄を表現するにはどうすれば良いか考えましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n}",
     "choices": [
       {
-        "text": "ellipse()を使って円を描く",
-        "next": "ellipse_choice"
+        "text": "四角形を1つ1つ並べる",
+        "next": "grid_rect"
+      },
+      {
+        "text": "for文と四角形を使って格子を表現する",
+        "next": "grid_quiz"
       }
     ]
   },
-  "ellipse_choice": {
+  "grid_quiz": {
     "optionType": "quiz",
-    "suggestion": "中心に円を描くコードはどれでしょうか？",
-    "sourceCode": "function setup() {\n  createCanvas(160, 120);\n  background(255); \n}",
-    "documentUrl": "https://p5js.org/reference/#/p5/ellipse",
+    "suggestion": "四角形を使って格子を表現するにはfor文を二重にして平面上の座標を表現する必要があります．正しいfor文はどれでしょうか？",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n}",
     "choices": [
       {
-        "text": "ellipse(0, 0, 48, 48);",
-        "next": "ellipse_wrong_one"
+        "text": "for(let i = 0; i < 8; i--) {\n  for (let j = 0; j < 8; j-- {\n }  \n}",
+        "next": "grid_wrong_one"
       },
       {
-        "text": "ellipse(160, 120, 48, 48);",
-        "next": "ellipse_wrong_two"
+        "text": "for(let i = 0; i < 8; j++) {\n  for (let j = 0; j < 8; i++) {\n }  \n}",
+        "next": "grid_wrong_two"
       },
       {
-        "text": "ellipse(160/2, 120/2, 48, 48);",
-        "next": "ellipse_correct"
+        "text": "for(let i = 0; i < 8; i++) {\n  for (let j = 0; j < 8; j++) {\n }  \n}",
+        "next": "grid_correct"
+      }
+    ]
+  },
+  "grid_wrong_one": {
+    "optionType": "policy",
+    "message": "for文の条件が違います",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i--) {\n    for (let j = 0; j < 8; j--) {\n    }\n  }\n}",
+    "choices": [
+    ]
+  },
+  "grid_wrong_two": {
+    "optionType": "policy",
+    "message": "for文の条件が違います",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; j++) {\n    for (let j = 0; j < 8; i++) {\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "四角形を1つ1つ並べる",
+        "next": "grid_rect_one"
+      },
+      {
+        "text": "for文と四角形を使って格子を表現する",
+        "next": "grid_quiz"
+      }
+    ]
+  },
+  "grid_correct": {
+    "optionType": "policy",
+    "suggestion": "正解です!チェック柄を表現するために次は何をすべきでしょうか？",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "ループ変数を使い，四角形を敷き詰める",
+        "next": "grid_rect"
+      },
+      {
+        "text": "ループ変数を使い，線を引く",
+        "next": "grid_line"
+      }
+    ]
+  },
+  "grid_rect": {
+    "optionType": "policy",
+    "suggestion": "四角形を描く方法を考えましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "p5.jsで四角形を描く関数を調べる",
+        "next": "grid_rect_search"
+      },
+      {
+        "text": "四角形を描く関数を使う",
+        "next": "grid_rect_quiz"
+      }
+    ]
+  },
+  "grid_rect_search": {
+    "optionType": "search",
+    "suggestion": "Documentタブを確認しましょう．",
+    "documentUrl": "https://p5js.org/reference/#/p5/rect",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "四角形を描く関数を使う",
+        "next": "grid_rect_quiz"
+      }
+    ]
+  },
+  "grid_rect_quiz": {
+    "optionType": "quiz",
+    "suggestion": "四角形を敷き詰めるコードはどれでしょうか？",
+    "documentUrl": "https://p5js.org/reference/#/p5/rect",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "rect(cx, cy, cx+s, cy+s);",
+        "next": "grid_rect_wrong_one"
+      },
+      {
+        "text": "rect(0, 0, cx, cy);",
+        "next": "grid_rect_wrong_two"
+      },
+      {
+        "text": "rect(cx, cy, s, s)",
+        "next": "grid_rect_correct"
       }
     ]
   },
