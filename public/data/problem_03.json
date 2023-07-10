@@ -108,6 +108,13 @@
       }
     ]
   },
+  "grid_rect_one_by_one": {
+    "optionType": "policy",
+    "message": "この方法ではとても手間がかかってしまいます．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  rect(0, 0, s, s);\n  }",
+    "choices": [
+    ]
+  },
   "grid_rect_one_for_quiz": {
     "optionType": "quiz",
     "suggestion": "四角形を使って格子を表現するにはfor文を二重にして平面上の座標を表現する必要があります．正しいfor文はどれでしょうか？",
@@ -233,9 +240,59 @@
   },
   "grid_rect_one_draw_gray_correct": {
     "optionType": "policy",
-    "suggestion": "正解です！",
+    "suggestion": "正解です！次に何をしますか？",
     "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  }\n}",
     "choices": [
+      {
+        "text": "四角形の縁を消す",
+        "next": "rect_one_erase_edge_quiz"
+      }
+    ]
+  },
+  "rect_one_erase_edge_quiz": {
+    "optionType": "quiz",
+    "suggestion": "四角形の縁を消すにはどのコードが正しいでしょうか？",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "nostroke()",
+        "next": "rect_one_erase_edge_wrong_one"
+      },
+      {
+        "text": "NoStroke()",
+        "next": "rect_one_erase_edge_wrong_two"
+      },
+      {
+        "text": "noStroke()",
+        "next": "rect_one_erase_edge_correct"
+      }
+    ]
+  },
+  "rect_one_erase_edge_wrong_one": {
+    "optionType": "quiz",
+    "isExecutable": false,
+    "message": "関数のスペルを確認しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  nostroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  }\n}",
+    "choices": [
+    ]
+  },
+  "rect_one_erase_edge_wrong_two": {
+    "optionType": "policy",
+    "isExecutable": false,
+    "message": "関数のスペルを確認しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  NoStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  }\n}",
+    "choices": [
+    ]
+  },
+  "rect_one_erase_edge_correct": {
+    "optionType": "policy",
+    "suggestion": "正解です！次に何をしましょうか？",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "円を描く",
+        "next": "grid_circle"
+      }
     ]
   },
   "grid_quiz": {
@@ -313,12 +370,12 @@
   },
   "grid_rect_pos_quiz": {
     "optionType": "quiz",
-    "suggestion": "まず四角形の座標を変数を使って表現しましょう．どのコードが適切でしょうか？",
+    "suggestion": "四角形の座標を変数を使って表現しましょう．どのコードが適切でしょうか？",
     "documentUrl": "https://p5js.org/reference/#/p5/rect",
     "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n    }\n  }\n}",
     "choices": [
       {
-        "text": "let x = i; let y = j;",
+        "text": "let x = i; let y = j; rect(x, y, s, s);",
         "next": "grid_rect_pos_wrong_one"
       },
       {
@@ -334,90 +391,21 @@
   "grid_rect_pos_wrong_one": {
     "optionType": "policy",
     "message": "ループ変数がどのように変化するか見直してみましょう.",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n    let x = i;\n    let y = j;\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n    let x = i;\n    let y = j;\n    rect(x, y, s, s);\n    }\n  }\n}",
     "choices": [
-      {
-        "text": "let x = i; let y = j;",
-        "next": "grid_rect_pos_wrong_one"
-      },
-      {
-        "text": "let x = i + s; let y = j + s;",
-        "next": "grid_rect_pos_wrong_two"
-      },
-      {
-        "text": "let x = i * s; let y = j * s;",
-        "next": "grid_rect_pos_correct"
-      }
     ]
   },
   "grid_rect_pos_wrong_two": {
     "optionType": "policy",
     "message": "ループ変数がどのように変化するか見直してみましょう.",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n  let x = i;\n  let y = j;\n   }\n  }\n}",
-    "choices": [
-      {
-        "text": "let x = i; let y = j;",
-        "next": "grid_rect_pos_wrong_one"
-      },
-      {
-        "text": "let x = i + s; let y = j + s;",
-        "next": "grid_rect_pos_wrong_two"
-      },
-      {
-        "text": "let x = i * s; let y = j * s;",
-        "next": "grid_rect_pos_correct"
-      }
-    ]
-  },
-  "grid_rect_quiz": {
-    "optionType": "quiz",
-    "suggestion": "四角形を敷き詰めるコードはどれでしょうか？",
-    "documentUrl": "https://p5js.org/reference/#/p5/rect",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n    }\n  }\n}",
-    "choices": [
-      {
-        "text": "rect(i*s, j*s, i*s+s, j*s+s);",
-        "next": "grid_rect_wrong_one"
-      },
-      {
-        "text": "rect(0, 0, i*s, j*s);",
-        "next": "grid_rect_wrong_two"
-      },
-      {
-        "text": "rect(i*s, j*s, s, s)",
-        "next": "grid_rect_correct"
-      }
-    ]
-  },
-  "grid_rect_wrong_one": {
-    "optionType": "policy",
-    "message": "rectの引数を確認しましょう",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      rect(i, j, i+s, j+s);\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n  let x = i;\n  let y = j;\n   rect(x, y, s, s);\n    }\n  }\n}",
     "choices": [
     ]
   },
-  "grid_rect_wrong_two": {
-    "optionType": "policy",
-    "message": "rectの引数を確認しましょう",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      rect(0, 0, i, j);\n    }\n  }\n}",
-    "choices": [
-    ]
-  },
-  "grid_rect_correct": {
+  "grid_rect_pos_correct": {
     "optionType": "policy",
     "suggestion": "正解です！次にいくつかの四角形を灰色に塗ってチェック柄を完成させましょう．",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      rect(i*s, j*s, s, s);\n    }\n  }\n}",
-    "choices": [
-      {
-        "text": "四角形を灰色に塗る",
-        "next": "draw_gray_quiz"
-      }
-    ]
-  },
-  "grid_rect_correct": {
-    "optionType": "policy",
-    "suggestion": "正解です！次にいくつかの四角形を灰色に塗ってチェック柄を完成させましょう．",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      rect(i*s, j*s, s, s);\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n  let x = i * s;\n  let y = j * s;\n   rect(x, y, s, s);\n    }\n  }\n}",
     "choices": [
       {
         "text": "四角形を灰色に塗る",
@@ -428,7 +416,7 @@
   "draw_gray_quiz": {
     "optionType": "quiz",
     "suggestion": "正解画像と同じように四角形を塗るにはどのコードが正しいでしょうか？",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      rect(i*s, j*s, s, s);\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n  let x = i * s;\n  let y = j * s;\n   rect(x, y, s, s);\n    }\n  }\n}",
     "choices": [
       {
         "text": "if (i % 2 === 0) { fill(122); }",
@@ -447,36 +435,32 @@
   "draw_gray_wrong_one": {
     "optionType": "policy",
     "message": "if文の条件を確認しましょう．",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      if (i % 2 === 0) {\n        fill(122);\n        rect(i*s, j*s, s, s);\n      }\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (i % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  }\n}",
     "choices": [
     ]
   },
   "draw_gray_wrong_two": {
     "optionType": "policy",
     "message": "if文の条件を確認しましょう．",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      if (i + j % 2 === 0) {\n        fill(122);\n        rect(i*s, j*s, s, s);\n      }\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (i + j % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  }\n}",
     "choices": [
     ]
   },
   "draw_gray_correct": {
     "optionType": "policy",
     "suggestion": "正解です！次に何をしますか？",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(i*s, j*s, s, s);\n      }\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  }\n}",
     "choices": [
       {
         "text": "四角形の縁を消す",
         "next": "erase_edge_quiz"
-      },
-      {
-        "text": "四角形のx, y座標を変数を使って表す",
-        "next": "pos_var"
       }
     ]
   },
   "erase_edge_quiz": {
     "optionType": "quiz",
     "suggestion": "四角形の縁を消すにはどのコードが正しいでしょうか？",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(i*s, j*s, s, s);\n      }\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  }\n}",
     "choices": [
       {
         "text": "nostroke()",
@@ -514,15 +498,15 @@
     "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(i*s, j*s, s, s);\n      }\n    }\n  }\n}",
     "choices": [
       {
-        "text": "円を描く",
-        "next": "grid_circle"
+        "text": "四角形のx, y座標を変数を使って表す",
+        "next": "erase_pos_var"
       }
     ]
   },
   "grid_circle": {
     "optionType": "policy",
     "suggestion": "円を描くためにまず何をしますか？",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(i*s, j*s, s, s);\n      }\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  }\n}",
     "choices": [
       {
         "text": "赤い円を描く",
@@ -537,7 +521,7 @@
   "draw_red_circle_if_quiz": {
     "optionType": "quiz",
     "suggestion": "赤い円は格子の3行目まで規則的に配置されています．赤い円を配置する条件を表すif文はどれでしょうか？",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(i*s, j*s, s, s);\n      }\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  }\n}",
     "choices": [
       {
         "text": "if (((i + j) % 2 === 0) && (j < 3)) { }",
@@ -556,21 +540,21 @@
   "draw_red_circle_if_wrong_one": {
     "optionType": "policy",
     "message": "条件式を確認しましょう．",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(i*s, j*s, s, s);\n      }\n      if (((i + j) % 2 === 0) && (j < 4)) {\n      }\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  if (((i + j) % 2 === 0) && (j < 4)) {\n      }\n}\n}",
     "choices": [
     ]
   },
   "draw_red_circle_if_wrong_two": {
     "optionType": "policy",
     "message": "条件式を確認しましょう．",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(i*s, j*s, s, s);\n      }\n      if (((i + j) / 2 === 0) && (j < 3)) {\n      }\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  if (((i + j) / 2 === 0) && (j < 3)) {\n      }\n}\n}",
     "choices": [
     ]
   },
   "draw_red_circle_ellipse_quiz": {
     "optionType": "quiz",
     "suggestion": "正解です！次に実際に赤い円を描いていきましょう．",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(i*s, j*s, s, s);\n      }\n      if (((i + j) % 2 === 0) && (j < 3)) {\n      }\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  if (((i + j) % 2 === 0) && (j < 3)) {\n      }\n}\n}",
     "choices": [
       {
         "text": "fill(255, 0, 0); ellipse(i*s + s / 2, j*s + s/2, d);",
@@ -589,7 +573,7 @@
   "draw_red_circle_ellipse_wrong_one": {
     "optionType": "policy",
     "message": "ellipseの引数を確認しましょう．",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(i*s, j*s, s, s);\n      }\n      if (((i + j) % 2 === 0) && (j < 3)) {\n  fill(255, 0, 0);\n    ellipse(i*s, j*s, d);\n      }\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n    }\n  if (((i + j) % 2 === 0) && (j < 3)) {\n      fill(255, 0, 0);\n    ellipse(i*s, j*s, s);\n    }\n}\n}",
     "choices": [
     ]
   },
