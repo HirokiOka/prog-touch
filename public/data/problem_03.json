@@ -804,6 +804,23 @@
     "choices": [
     ]
   },
+
+  "ellipse": {
+    "optionType": "policy",
+    "suggestion": "チェック柄を表現するにはどうすれば良いか考えましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n}",
+    "choices": [
+      {
+        "text": "四角形を1つ1つ並べる",
+        "next": "grid_rect_one"
+      },
+      {
+        "text": "for文と四角形を使って格子を表現する",
+        "next": "grid_quiz"
+      }
+    ]
+  },
+
   "answer": {
     "optionType": "policy",
     "suggestion": "🎉🎉完成です!🎉🎉",
