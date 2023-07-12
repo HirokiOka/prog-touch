@@ -805,18 +805,362 @@
     ]
   },
 
+
   "ellipse": {
-    "optionType": "policy",
-    "suggestion": "チェック柄を表現するにはどうすれば良いか考えましょう．",
+    "optionType": "quiz",
+    "suggestion": "まず初めに，タイル状に円を敷き詰めて見ましょう．for文をどのように書けば表現できるでしょうか？",
     "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n}",
     "choices": [
       {
-        "text": "四角形を1つ1つ並べる",
-        "next": "grid_rect_one"
+        "text": "for(let i = 0; i < 8; i--) {\n  for (let j = 0; j < 8; j--) {\n }  \n}",
+        "next": "ellipse_grid_wrong_one"
       },
       {
-        "text": "for文と四角形を使って格子を表現する",
-        "next": "grid_quiz"
+        "text": "for(let i = 0; i < 8; j++) {\n  for (let j = 0; j < 8; i++) {\n }  \n}",
+        "next": "ellipse_grid_wrong_two"
+      },
+      {
+        "text": "for(let i = 0; i < 8; i++) {\n  for (let j = 0; j < 8; j++) {\n }  \n}",
+        "next": "ellipse_grid_correct"
+      }
+    ]
+  },
+
+  "ellipse_grid_wrong_one": {
+    "optionType": "policy",
+    "message": "for文の条件が違います",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i--) {\n    for (let j = 0; j < 8; j--) {\n    }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "ellipse_grid_wrong_two": {
+    "optionType": "policy",
+    "isExecutable": false,
+    "message": "for文の条件が違います",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i--) {\n    for (let j = 0; j < 8; j--) {\n    }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "ellipse_grid_correct": {
+    "optionType": "policy",
+    "isExecutable": false,
+    "suggestion": "正解です!次にループ変数を使って円をグリッド常に描画しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "ループ変数を使い，円を敷き詰める",
+        "next": "ellipse_grid_circle_quiz"
+      }
+    ]
+  },
+
+  "ellipse_grid_circle_quiz": {
+    "optionType": "quiz",
+    "suggestion": "円の座標を変数を使って表現しましょう．どのコードが適切でしょうか？",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "let x = i; let y = j; ellipse(x + s / 2, y + s / 2, s, s);",
+        "next": "ellipse_grid_circle_wrong_one"
+      },
+      {
+        "text": "let x = i + s; let y = j + s; ellipse(x, y, d, d);",
+        "next": "ellipse_grid_circle_wrong_two"
+      },
+      {
+        "text": "let x = i * s; let y = j * s; ellipse(x + s / 2, y + s / 2, d, d);",
+        "next": "ellipse_grid_circle_correct"
+      }
+    ]
+  },
+
+  "ellipse_grid_circle_wrong_one": {
+    "optionType": "policy",
+    "message": "ループ変数がどのように変化するか見直してみましょう.",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i;\n      let y = j;\n      ellipse(x + s / 2, y + s / 2, s, s);\n    }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "ellipse_grid_circle_wrong_two": {
+    "optionType": "policy",
+    "message": "ループ変数がどのように変化するか見直してみましょう.",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i + s;\n      let y = j + s;\n      ellipse(x, y, d, d);\n    }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "ellipse_grid_circle_correct": {
+    "optionType": "policy",
+    "suggestion": "正解です！次に，正解画像のような赤い円と黒い円を描画しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      ellipse(x + s / 2, y + s / 2, d, d);\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "赤い円を描く",
+        "next": "ellipse_red_circle_if_quiz"
+      },
+      {
+        "text": "黒い円を描く",
+        "next": "ellipse_black_circle_if_quiz"
+      }
+    ]
+  },
+
+  "ellipse_red_circle_if_quiz": {
+    "optionType": "quiz",
+    "suggestion": "赤い円は格子の3行目まで規則的に配置されています．赤い円を配置する条件を表すif文はどれでしょうか？",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      ellipse(x + s / 2, y + s / 2, d, d);\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "if (((i + j) % 2 === 0) && (j < 3)) { }",
+        "next": "ellise_red_circle_if_correct"
+      },
+      {
+        "text": "if (((i + j) % 2 === 0) && (j < 4)) { }",
+        "next": "ellise_red_circle_if_wrong_one"
+      },
+      {
+        "text": "if (((i + j) / 2 === 0) && (j < 3)) { }",
+        "next": "ellise_red_circle_if_wrong_two"
+      }
+    ]
+  },
+
+  "ellise_red_circle_if_wrong_one": {
+    "optionType": "policy",
+    "message": "条件式を確認しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (j < 4)) {\n      ellipse(x + s / 2, y + s / 2, d, d);\n      }\n  }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "ellise_red_circle_if_wrong_two": {
+    "optionType": "policy",
+    "message": "条件式を確認しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) / 2 === 0) && (j < 3)) {\n      ellipse(x + s / 2, y + s / 2, d, d);\n      }\n  }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "ellise_red_circle_if_correct": {
+    "optionType": "quiz",
+    "suggestion": "正解です！次に実際に赤い円を描いていきましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (j < 3)) {\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "fill(255, 0, 0);",
+        "next": "ellipse_red_circle_draw_correct"
+      },
+      {
+        "text": "fill(0, 255, 0);",
+        "next": "ellipse_red_circle_draw_wrong_one"
+      },
+      {
+        "text": "fill(255);",
+        "next": "ellipse_red_circle_draw_wrong_two"
+      }
+    ]
+  },
+
+  "ellipse_red_circle_draw_wrong_one": {
+    "optionType": "policy",
+    "message": "fillの引数を確認しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (j < 3)) {\n        fill(0, 255, 0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "ellipse_red_circle_draw_wrong_two": {
+    "optionType": "policy",
+    "message": "fillの引数を確認しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (j < 3)) {\n      fill(255);\n      ellipse(x + s / 2, y + s / 2, d, d);\n      }\n  }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "ellipse_red_circle_draw_correct": {
+    "optionType": "policy",
+    "suggestion": "正解です！次に何をしましょうか？",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (j < 3)) {\n        fill(255, 0, 0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "黒い円を描画する",
+        "next": "second_ellipse_black_circle_if_quiz"
+      }
+    ]
+  },
+
+  "second_ellipse_black_circle_if_quiz": {
+    "optionType": "quiz",
+    "suggestion": "黒い円は格子の6行目から8行目まで規則的に配置されています．黒い円を配置する条件を表すif文はどれでしょうか？",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (j < 3)) {\n        fill(255, 0, 0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "if (((i + j) % 2 === 0) && (4 < j)) { }",
+        "next": "ellipse_correct"
+      },
+      {
+        "text": "if (((i + j) % 2 === 0) && (j < 8)) { }",
+        "next": "second_ellipse_black_circle_if_wrong_one"
+      },
+      {
+        "text": "if (((i + j) / 2 === 0) && (6 < j)) { }",
+        "next": "second_ellipse_black_circle_if_wrong_two"
+      }
+    ]
+  },
+
+  "second_ellipse_black_circle_if_wrong_one": {
+    "optionType": "policy",
+    "message": "条件式を確認しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (j < 3)) {\n        fill(255, 0, 0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n      if (((i + j) % 2 === 0) && (j < 8)) {\n        fill(0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "second_ellipse_black_circle_if_wrong_two": {
+    "optionType": "policy",
+    "message": "条件式を確認しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (j < 3)) {\n        fill(255, 0, 0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n      if (((i + j) % 2 === 0) && (6 < j)) {\n        fill(0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "ellipse_black_circle_if_quiz": {
+    "optionType": "quiz",
+    "suggestion": "黒い円は格子の6行目から8行目まで規則的に配置されています．赤い円を配置する条件を表すif文はどれでしょうか？",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      ellipse(x + s / 2, y + s / 2, d, d);\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "if (((i + j) % 2 === 0) && (4 < j)) { }",
+        "next": "ellise_black_circle_if_correct"
+      },
+      {
+        "text": "if (((i + j) % 2 === 0) && (j < 8)) { }",
+        "next": "ellise_black_circle_if_wrong_one"
+      },
+      {
+        "text": "if (((i + j) / 2 === 0) && (6 < j)) { }",
+        "next": "ellise_black_circle_if_wrong_two"
+      }
+    ]
+  },
+
+  "ellise_black_circle_if_wrong_one": {
+    "optionType": "policy",
+    "message": "条件式を確認しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (j < 8)) {\n      ellipse(x + s / 2, y + s / 2, d, d);\n      }\n  }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "ellise_black_circle_if_wrong_two": {
+    "optionType": "policy",
+    "message": "条件式を確認しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) / 2 === 0) && (6 < j)) {\n      ellipse(x + s / 2, y + s / 2, d, d);\n      }\n  }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "ellise_black_circle_if_correct": {
+    "optionType": "quiz",
+    "suggestion": "正解です！次に実際に黒い円を描いていきましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (4 < j)) {\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "fill(0);",
+        "next": "ellipse_black_circle_draw_correct"
+      },
+      {
+        "text": "fill(255, 255, 255);",
+        "next": "ellipse_black_circle_draw_wrong_one"
+      },
+      {
+        "text": "fill(255);",
+        "next": "ellipse_black_circle_draw_wrong_two"
+      }
+    ]
+  },
+
+  "ellipse_black_circle_draw_wrong_one": {
+    "optionType": "policy",
+    "message": "fillの引数を確認しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (4 < j)) {\n        fill(255, 255, 255);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "ellipse_black_circle_draw_wrong_two": {
+    "optionType": "policy",
+    "message": "fillの引数を確認しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (4 < j)) {\n        fill(255);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "ellipse_black_circle_draw_correct": {
+    "optionType": "policy",
+    "suggestion": "正解です！次に何をしましょうか？",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (4 < j)) {\n        fill(0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "赤い円を描画する",
+        "next": "second_ellipse_red_circle_if_quiz"
+      }
+    ]
+  },
+
+  "second_ellipse_red_circle_if_quiz": {
+    "optionType": "quiz",
+    "suggestion": "赤い円は格子の3行目まで規則的に配置されています．黒い円を配置する条件を表すif文はどれでしょうか？",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (4 < j)) {\n        fill(0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "if (((i + j) % 2 === 0) && (j < 3)) { }",
+        "next": "second_ellipse_red_circle_if_correct"
+      },
+      {
+        "text": "if (((i + j) % 2 === 0) && (j < 4)) { }",
+        "next": "second_ellipse_red_circle_if_wrong_one"
+      },
+      {
+        "text": "if (((i + j) / 2 === 0) && (j < 3)) { }",
+        "next": "second_ellipse_red_circle_if_wrong_two"
+      }
+    ]
+  },
+
+  "second_ellipse_red_circle_if_wrong_one": {
+    "optionType": "policy",
+    "message": "条件式を確認しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (j < 4)) {\n        fill(255, 0, 0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n      if (((i + j) % 2 === 0) && (4 < j)) {\n        fill(0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "second_ellipse_red_circle_if_wrong_two": {
+    "optionType": "policy",
+    "message": "条件式を確認しましょう．",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) / 2 === 0) && (j < 3)) {\n        fill(255, 0, 0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n      if (((i + j) % 2 === 0) && (4 < j)) {\n        fill(0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "ellipse_correct": {
+    "optionType": "policy",
+    "suggestion": "正解です！次に何をしますか？",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (j < 3)) {\n        fill(255, 0, 0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n      if (((i + j) % 2 === 0) && (4 < j)) {\n        fill(0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "円の縁を消す",
+        "next": "ellipse_erase_edge"
+      },
+      {
+        "text": "チェック柄を描く",
+        "next": "ellipse_grid"
       }
     ]
   },
@@ -824,7 +1168,7 @@
   "answer": {
     "optionType": "policy",
     "suggestion": "🎉🎉完成です!🎉🎉",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n      if (((i + j) % 2 === 0) && (j < 3)) {\n        fill(255, 0, 0);\n        ellipse(x + s / 2, y + s / 2, d);\n      }\n      if (((i + j) % 2 === 0) && (4 < j)) {\n        fill(0);\n        ellipse(x + s / 2, y + s / 2, d);\n      }\n    }\n  }\n}",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 0) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n      if (((i + j) % 2 === 0) && (j < 3)) {\n        fill(255, 0, 0);\n        ellipse(x + s / 2, y + s / 2, d);\n      }\n      if (((i + j) % 2 === 0) && (4 < j)) {\n        fill(0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
     "choices": [
     ]
   }

@@ -1,0 +1,16 @@
+  "second_ellipse_black_circle_if_correct": {
+    "optionType": "policy",
+    "suggestion": "正解です！次に何をしますか？",
+    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if (((i + j) % 2 === 0) && (j < 3)) {\n        fill(255, 0, 0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n      if (((i + j) % 2 === 0) && (4 < j)) {\n        fill(0);\n        ellipse(x + s / 2, y + s / 2, d, d);\n      }\n    }\n  }\n}",
+    "choices": [
+      {
+        "text": "チェック柄を描く",
+        "next": "ellipse_grid"
+      },
+      {
+        "text": "円の縁を消す",
+        "next": "ellipse_erase_edge"
+      }
+    ]
+  },
+

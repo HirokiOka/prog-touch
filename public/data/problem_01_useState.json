@@ -1,9 +1,9 @@
 {
   "problem": "日本国旗を描いてみましょう.",
+  "baseCode": "function setup() {\n  createCanvas(160, 120);\n  background(255);\n}",
   "start": {
     "optionType": "policy",
     "suggestion": "初めに何をするか決めましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(160, 120);\n  background(255);\n}",
     "choices": [
       {
         "text": "中心に円を描く",
