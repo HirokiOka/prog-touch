@@ -15,43 +15,53 @@ import { replace } from 'estraverse';
 import { generate } from 'escodegen';
 
 const replacedNode = {
-  "type": "ExpressionStatement",
-  "expression": {
-    "type": "CallExpression",
-    "callee": {
-      "type": "MemberExpression",
-      "computed": false,
-      "object": {
-        "type": "CallExpression",
-        "callee": {
-          "type": "Identifier",
-          "name": "p5.createCanvas"
-        },
-        "arguments": [
-          {
-            "type": "Literal",
-            "value": 400,
-            "raw": "400"
-          },
-          {
-            "type": "Literal",
-            "value": 400,
-            "raw": "400"
-          }
-        ]
-      },
-      "property": {
-        "type": "Identifier",
-        "name": "parent"
-      }
-    },
-    "arguments": [
+    "type": "VariableDeclaration",
+    "declarations": [
       {
-        "type": "Identifier",
-        "name": "canvasParentRef"
+        "type": "VariableDeclarator",
+        "id": {
+          "type": "Identifier",
+          "name": "cnv"
+        },
+        "init": {
+          "type": "CallExpression",
+          "callee": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "p5.createCanvas"
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": 400,
+                  "raw": "400"
+                },
+                {
+                  "type": "Literal",
+                  "value": 400,
+                  "raw": "400"
+                }
+              ]
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "parent"
+            }
+          },
+          "arguments": [
+            {
+              "type": "Identifier",
+              "name": "canvasParentRef"
+            }
+          ]
+        }
       }
-    ]
-  }
+    ],
+    "kind": "let"
 };
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
@@ -83,8 +93,13 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   });
 
   ast.body = ast.body[0].body.body;
+  const resizeSnippet = `
+cnv.style("width", "200px");
+cnv.style("height", "200px");
+`;
 
-  const instanceSource: string = ast !== '' ? generate(ast) : '';
+  let instanceSource: string = ast !== '' ? generate(ast) : '';
+  instanceSource += resizeSnippet;
   const documentUrl = problemDataContent.documentUrl ?? ''; 
   const suggestion = problemDataContent.suggestion ?? '';
   const message = problemDataContent.message ?? '';
@@ -107,7 +122,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   };
 };
 
-export default function ProblemOne(data: any) {
+export default function ProblemThree(data: any) {
   const [prevCode, setPrevCode] = useState("");
   const optionType = data.optionType;
   const sourceCode =  data.sourceCode;
