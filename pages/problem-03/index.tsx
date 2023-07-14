@@ -94,8 +94,8 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 
   ast.body = ast.body[0].body.body;
   const resizeSnippet = `
-cnv.style("width", "200px");
-cnv.style("height", "200px");
+cnv.style("width", "140px");
+cnv.style("height", "140px");
 `;
 
   let instanceSource: string = ast !== '' ? generate(ast) : '';
