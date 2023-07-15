@@ -13,7 +13,7 @@
   },
   "ellipse": {
     "optionType": "policy",
-    "suggestion": "中心に円を描くにはどうすれば良いか考えましょう.",
+    "suggestion": "中心に円を描くコードを書くにはどうすれば良いか考えましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255); \n}",
     "choices": [
       {
@@ -21,8 +21,8 @@
         "next": "ellipse_search"
       },
       {
-        "text": "円を描く",
-        "next": "ellipse_choice"
+        "text": "円を描く関数を使う",
+        "next": "ellipse_quiz"
       }
     ]
   },
@@ -34,11 +34,11 @@
     "choices": [
       {
         "text": "ellipse()を使って円を描く",
-        "next": "ellipse_choice"
+        "next": "ellipse_quiz"
       }
     ]
   },
-  "ellipse_choice": {
+  "ellipse_quiz": {
     "optionType": "quiz",
     "suggestion": "中心に円を描くコードはどれでしょうか？",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255); \n}",
@@ -93,8 +93,8 @@
         "next": "ellipse_fill_search"
       },
       {
-        "text": "赤に塗る",
-        "next": "ellipse_fill_choice"
+        "text": "赤に塗る関数を使う",
+        "next": "ellipse_fill_quiz"
       }
     ]
   },
@@ -106,11 +106,11 @@
     "choices": [
       {
         "text": "fill()を使って色を指定する",
-        "next": "ellipse_fill_choice"
+        "next": "ellipse_fill_quiz"
       }
     ]
   },
-  "ellipse_fill_choice": {
+  "ellipse_fill_quiz": {
     "optionType": "quiz",
     "suggestion": "円を赤色に塗るコードはどれでしょうか？",
     "documentUrl": "https://p5js.org/reference/#/p5/fill",
@@ -166,7 +166,7 @@
       },
       {
         "text": "縁を消す関数を使う",
-        "next": "ellipse_fill_noStroke_choice"
+        "next": "ellipse_fill_noStroke_quiz"
       }
     ]
   },
@@ -178,11 +178,11 @@
     "choices": [
       {
         "text": "縁を消す関数を使う",
-        "next": "ellipse_fill_noStroke_choice"
+        "next": "ellipse_fill_noStroke_quiz"
       }
     ]
   },
-  "ellipse_fill_noStroke_choice": {
+  "ellipse_fill_noStroke_quiz": {
     "optionType": "quiz",
     "suggestion": "縁を消すコードはどれでしょうか？",
     "documentUrl": "https://p5js.org/reference/#/p5/noStroke",
