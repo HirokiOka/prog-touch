@@ -29,43 +29,44 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 };
 
 
-export default function ProblemOne(data: any) {
+export default function ProblemTwo(data: any) {
   const [prevCode, setPrevCode] = useState("");
   const optionType = data.optionType;
   const sourceCode =  data.sourceCode;
   const instanceSource = data.instanceSource;
   const documentUrl = data.documentUrl;
   const suggestion = data.suggestion;
-  const message = data.message;
+  let message = data.message;
   const tabIndex = data.tabIndex;
   const isExecutable = data.isExecutable;
 
-  const handleClick = () => {
-    history.back();
-  };
-  const onProgress = () => {
-    if (isExecutable) setPrevCode(instanceSource);
-  };
 
   const targetCode = isExecutable ? instanceSource : prevCode;
+  let errorMessage: string = '';
   const s = (p5: p5Types, canvasParentRef: Element) => {
-    eval(targetCode);
+    const width = 160;
+    const height = 120;
+    try {
+      eval(instanceSource);
+    } catch (e: any) {
+      errorMessage = e.toString();
+      message += '\n' + errorMessage;
+      eval(targetCode);
+    }
   };
-
   const d = (p5: p5Types) => {
   };
 
-  const SketchComponent = () => {
+  const SketchComponent = React.memo(function SketchMemo() {
     return (
       <Sketch
         setup={s}
         draw={d}
       />
     );
-  }
+  });
 
   //const shuffledChoices = shuffleArray(data.choices); 
-  const shuffledChoices = data.choices;
 
   return (
       <main className="px-6 text-sm lg:text-base">
@@ -74,10 +75,10 @@ export default function ProblemOne(data: any) {
             <Tab>Code</Tab>
             <Tab>Problem</Tab>
             <Tab>Document</Tab>
+            <Tab>History</Tab>
           </TabList>
 
           <TabPanel>
-
             {message ? 
               <p className="rounded bg-red-100 p-2 w-2/3">{message}</p>
               : ''}
@@ -85,20 +86,28 @@ export default function ProblemOne(data: any) {
               <p className="rounded bg-blue-100 p-2">Q. {suggestion}</p>
               : ''}
 
-            <ul className="m-2 p-1 list-inside list-none">
-            {shuffledChoices.map((c: any, i: number) => {
+            <ul className="m-1 p-1 list-inside list-none">  
+              {data.choices.map((c: any, i: number) => {
+                const choiceText: string = c.text;
+                const choiceNext: string = c.next;
+                const linkClass = optionType === 'policy' ? 'bg-blue-500 hover:bg-blue-700' : 'bg-purple-500 hover:bg-purple-700 text-white font-sans';
+                
                 return (
-                <li key={i} className="mt-2 mb-4">
-                {optionType === 'policy' ? (
-                  <Link href={`/problem-02/?problemState=${c.next}`} onClick={onProgress}
-                      className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
-                  </Link>
-                    ) : (
-                  <Link href={`/problem-02/?problemState=${c.next}`} onClick={onProgress}
-                      className="bg-purple-500 hover:bg-purple-700 text-white font-sans py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
-                  </Link>
-                    )}
-                </li>
+                  <li key={i} className="mt-2 mb-4">
+                    <Link 
+                      href={`/problem-02/?problemState=${choiceNext}`} 
+                      onClick={() => { 
+                        if (isExecutable) setPrevCode(instanceSource);
+                        if (optionType === 'policy' && sessionStorage != null &&
+                          (Object.values(sessionStorage).includes(choiceText) === false)) {
+                          sessionStorage.setItem(sessionStorage.length.toString(), `${choiceText}`);
+                          console.log(sessionStorage);
+                          }
+                        }}
+                      className={`${linkClass} text-white py-1 px-4 rounded-full text-sm`}>
+                      {i+1}: {choiceText}
+                    </Link>
+                  </li>
                 );
               })}
             </ul>
@@ -108,8 +117,6 @@ export default function ProblemOne(data: any) {
               <SketchComponent />
               <CodePane code={sourceCode} diffLines={[]} />
             </div>
-
-
           </TabPanel>
 
           <TabPanel>
@@ -129,7 +136,6 @@ export default function ProblemOne(data: any) {
                 </div>
               </div>
             </div>
-
           </TabPanel>
 
           <TabPanel>
@@ -142,11 +148,35 @@ export default function ProblemOne(data: any) {
               </iframe>
               : ''}
           </TabPanel>
+
+          <TabPanel>
+            <ol className="list-decimal list-inside">
+              {Object.entries(sessionStorage).sort((a: any, b: any) => a[0] - b[0]).map((e, i) =>  {
+                return (
+                    <li key={i} className="text-white m-2 py-1 px-4 rounded-full bg-yellow-500 w-1/2">{e[1]}</li>
+                );
+              })}
+            </ol>
+          </TabPanel>
         </Tabs>
 
-
-        <button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-1 rounded" onClick={handleClick}>一手戻る</button>
-        <button className="m-2 bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><Link href="/">問題一覧へ</Link></button>
+        <button 
+          className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-1 rounded"
+          onClick={() => {
+            if (sessionStorage.length !== 0) {
+              const delIndex = sessionStorage.length - 1;
+              sessionStorage.removeItem(delIndex.toString());
+            }
+            history.back();
+          }}>
+          一手戻る
+        </button>
+        <button
+          className="m-2 bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <Link href="/" onClick={() => { sessionStorage.clear(); }}>
+            問題一覧へ
+            </Link>
+        </button>
 
       </main>
   );
