@@ -216,7 +216,9 @@ export default function ProblemOne(data: any) {
                 <p>正解：</p>
                 <Image
                   src={problemPic}
-                  alt="Image of problem (Section2-2)"
+                  width="160"
+                  height="120"
+                  alt="Image of problem 01"
                 />
                 </div>
                 <div>
@@ -225,7 +227,6 @@ export default function ProblemOne(data: any) {
                 </div>
               </div>
             </div>
-
           </TabPanel>
 
           <TabPanel>
@@ -253,7 +254,13 @@ export default function ProblemOne(data: any) {
 
         <button 
           className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-1 rounded"
-          onClick={handleClick}>
+          onClick={() => {
+            if (sessionStorage.length !== 0) {
+              const delIndex = sessionStorage.length - 1;
+              sessionStorage.removeItem(delIndex.toString());
+            }
+            history.back();
+          }}>
           一手戻る
         </button>
         <button

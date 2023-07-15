@@ -198,7 +198,7 @@ export default function ProblemOne(data: any) {
             <div className="p-2 rounded border border-gray-500">
               <p>出力: </p>
               <SketchComponent />
-              <CodePane code={sourceCode} diffLine={[]} />
+              <CodePane code={sourceCode} diffLines={[]} />
             </div>
 
 
