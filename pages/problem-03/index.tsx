@@ -1,5 +1,3 @@
-import * as fs from 'fs';
-import * as path from 'path';
 import Link from 'next/link';
 import Image from 'next/image';
 import p5Types from 'p5';
@@ -10,116 +8,14 @@ import CodePane from 'components/CodePane';
 import React, { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { parseScript } from 'esprima';
-import { replace } from 'estraverse';
-import { generate } from 'escodegen';
+import { getProblemData } from '../../utils/getProblemData';
 
-const replacedNode = {
-    "type": "VariableDeclaration",
-    "declarations": [
-      {
-        "type": "VariableDeclarator",
-        "id": {
-          "type": "Identifier",
-          "name": "cnv"
-        },
-        "init": {
-          "type": "CallExpression",
-          "callee": {
-            "type": "MemberExpression",
-            "computed": false,
-            "object": {
-              "type": "CallExpression",
-              "callee": {
-                "type": "Identifier",
-                "name": "p5.createCanvas"
-              },
-              "arguments": [
-                {
-                  "type": "Literal",
-                  "value": 400,
-                  "raw": "400"
-                },
-                {
-                  "type": "Literal",
-                  "value": 400,
-                  "raw": "400"
-                }
-              ]
-            },
-            "property": {
-              "type": "Identifier",
-              "name": "parent"
-            }
-          },
-          "arguments": [
-            {
-              "type": "Identifier",
-              "name": "canvasParentRef"
-            }
-          ]
-        }
-      }
-    ],
-    "kind": "let"
-};
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
-  let problemState = 'start';
-  if (context.query.problemState !== undefined) {
-    problemState = context.query.problemState;
-  }
-
-  const problemDataPath = path.join(process.cwd(), 'public', 'data', 'problem_03.json');
-  const p5MethodsPath = path.join(process.cwd(), 'public', 'data', 'p5_methods.json');
-
-  const p5Methods = JSON.parse(fs.readFileSync(p5MethodsPath).toString());
-  const problemData = JSON.parse(fs.readFileSync(problemDataPath).toString());
-  const problemDataContent = problemData[problemState];
-
-  const sourceCode = problemDataContent.sourceCode;
-  const ast: any = parseScript(sourceCode);
-
-  replace(ast, {
-    enter: function(node: any) {
-      if (node.type === 'CallExpression') {
-        const functionName = node.callee.name;
-        if (p5Methods.includes(functionName)) node.callee.name = 'p5.' + functionName;
-        return node;
-      } else if (node.type === 'ExpressionStatement' && node.expression.callee.name === 'createCanvas') {
-        return replacedNode;
-      }
-    }
-  });
-
-  ast.body = ast.body[0].body.body;
-  const resizeSnippet = `
-cnv.style("width", "140px");
-cnv.style("height", "140px");
-`;
-
-  let instanceSource: string = ast !== '' ? generate(ast) : '';
-  instanceSource += resizeSnippet;
-  const documentUrl = problemDataContent.documentUrl ?? ''; 
-  const suggestion = problemDataContent.suggestion ?? '';
-  const message = problemDataContent.message ?? '';
-  const tabIndex = problemDataContent.tabIndex ?? 0;
-  const isExecutable = problemDataContent.isExecutable ?? true;
-
-  return {
-    props : {
-      problem: problemData.problem,
-      optionType: problemDataContent.optionType,
-      suggestion: suggestion,
-      isExecutable: isExecutable,
-      documentUrl: documentUrl,
-      sourceCode: sourceCode,
-      message: message,
-      tabIndex: tabIndex,
-      instanceSource: instanceSource,
-      choices: problemDataContent.choices,
-    },
-  };
+  const width = 400;
+  const height = 400;
+  const { props } = await getProblemData(context, 'problem_03.json', width, height);
+  return { props };
 };
 
 export default function ProblemThree(data: any) {
