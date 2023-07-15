@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import p5Types from 'p5';
 import { GetServerSideProps } from 'next';
 import problemPic from 'public/problem_01.png';
@@ -107,7 +108,9 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   };
 };
 
+
 export default function ProblemOne(data: any) {
+
   const [prevCode, setPrevCode] = useState("");
   const optionType = data.optionType;
   const sourceCode =  data.sourceCode;
@@ -117,18 +120,20 @@ export default function ProblemOne(data: any) {
   let message = data.message;
   const tabIndex = data.tabIndex;
   const isExecutable = data.isExecutable;
+  const choicedText = '';
+
 
   const handleClick = () => {
     history.back();
   };
-  const onProgress = () => {
-    if (isExecutable) setPrevCode(instanceSource);
-  };
+
 
   const targetCode = isExecutable ? instanceSource : prevCode;
 
   let errorMessage: string = '';
   const s = (p5: p5Types, canvasParentRef: Element) => {
+    const width = 160;
+    const height = 120;
     try {
       eval(instanceSource);
     } catch (e: any) {
@@ -140,14 +145,14 @@ export default function ProblemOne(data: any) {
   const d = (p5: p5Types) => {
   };
 
-  const SketchComponent = () => {
+  const SketchComponent = React.memo(() => {
     return (
       <Sketch
         setup={s}
         draw={d}
       />
     );
-  }
+  });
 
 
   return (
@@ -157,6 +162,7 @@ export default function ProblemOne(data: any) {
             <Tab>Code</Tab>
             <Tab>Problem</Tab>
             <Tab>Document</Tab>
+            <Tab>Policy</Tab>
           </TabList>
 
           <TabPanel>
@@ -169,19 +175,27 @@ export default function ProblemOne(data: any) {
               : ''}
 
             <ul className="m-1 p-1 list-inside list-none">  
-            {data.choices.map((c: any, i: number) => {
+              {data.choices.map((c: any, i: number) => {
+                const choiceText: string = c.text;
+                const choiceNext: string = c.next;
+                const linkClass = optionType === 'policy' ? 'bg-blue-500 hover:bg-blue-700' : 'bg-purple-500 hover:bg-purple-700 text-white font-sans';
+                
                 return (
-                <li key={i} className="mt-2 mb-4">
-                {optionType === 'policy' ? (
-                  <Link href={`/problem-01/?problemState=${c.next}`} onClick={onProgress}
-                      className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
-                  </Link>
-                    ) : (
-                  <Link href={`/problem-01/?problemState=${c.next}`} onClick={onProgress}
-                      className="bg-purple-500 hover:bg-purple-700 text-white font-sans py-1 px-4 rounded-full text-sm">{i+1}: {c.text}
-                  </Link>
-                    )}
-                </li>
+                  <li key={i} className="mt-2 mb-4">
+                    <Link 
+                      href={`/problem-01/?problemState=${choiceNext}`} 
+                      onClick={() => { 
+                        if (isExecutable) setPrevCode(instanceSource);
+                        if (optionType === 'policy' && sessionStorage != null &&
+                          (Object.values(sessionStorage).includes(choiceText) === false)) {
+                          sessionStorage.setItem(sessionStorage.length.toString(), `${choiceText}`);
+                          console.log(sessionStorage);
+                          }
+                        }}
+                      className={`${linkClass} text-white py-1 px-4 rounded-full text-sm`}>
+                      {i+1}: {choiceText}
+                    </Link>
+                  </li>
                 );
               })}
             </ul>
@@ -224,6 +238,16 @@ export default function ProblemOne(data: any) {
                 src={documentUrl}>
               </iframe>
               : ''}
+          </TabPanel>
+
+          <TabPanel>
+            <ol className='list-decimal'>
+              {Object.entries(sessionStorage).sort((a: any, b: any) => a[0] - b[0]).map((e, i) =>  {
+                return (
+                    <li key={i} className="rounded bg-yellow-500 p-1 my-1 w-1/2">{e[1]}</li>
+                );
+              })}
+            </ol>
           </TabPanel>
         </Tabs>
 
