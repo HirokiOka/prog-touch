@@ -146,13 +146,15 @@ export default function ProblemThree(data: any) {
           </TabPanel>
 
           <TabPanel>
-            <ol className="list-decimal list-inside">
-              {Object.entries(sessionStorage).sort((a: any, b: any) => a[0] - b[0]).map((e, i) =>  {
-                return (
-                    <li key={i} className="text-white m-2 py-1 px-4 rounded-full bg-yellow-500 w-1/2">{e[1]}</li>
-                );
-              })}
-            </ol>
+            {typeof sessionStorage !== "undefined" ?
+              <ol className="list-decimal list-inside">
+                {Object.entries(sessionStorage).sort((a: any, b: any) => a[0] - b[0]).map((e, i) =>  {
+                  return (
+                      <li key={i} className="text-white m-2 py-1 px-4 rounded-full bg-yellow-500 w-1/2">{e[1]}</li>
+                  );
+                })}
+              </ol>
+            : ''}
           </TabPanel>
 
         </Tabs>
