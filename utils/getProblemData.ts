@@ -5,49 +5,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 
-/*
-const genReplaceNode = (canvasWidth: number, canvasHeight: number) => {
-  return {
-    "type": "ExpressionStatement",
-    "expression": {
-      "type": "CallExpression",
-      "callee": {
-        "type": "MemberExpression",
-        "computed": false,
-        "object": {
-          "type": "CallExpression",
-          "callee": {
-            "type": "Identifier",
-            "name": "p5.createCanvas"
-          },
-          "arguments": [
-            {
-              "type": "Literal",
-              "value": canvasWidth,
-              "raw": `${canvasWidth}`
-            },
-            {
-              "type": "Literal",
-              "value": canvasHeight,
-              "raw": `${canvasHeight}`
-            }
-          ]
-        },
-        "property": {
-          "type": "Identifier",
-          "name": "parent"
-        }
-      },
-      "arguments": [
-        {
-          "type": "Identifier",
-          "name": "canvasParentRef"
-        }
-      ]
-    }
-  };
-};
-*/
 const genReplaceNode = (canvasWidth: number, canvasHeight: number) => {
   return {
     "type": "VariableDeclaration",

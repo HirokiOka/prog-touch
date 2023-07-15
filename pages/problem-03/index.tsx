@@ -42,15 +42,11 @@ export default function ProblemThree(data: any) {
     const width = 400;
     const height = 400;
     try {
-      if (isExecutable) {
-        eval(instanceSource);
-      } else {
-        eval(prevCode);
-      }
+      eval(targetCode);
     } catch (e: any) {
       errorMessage = e.toString();
       message += '\n' + errorMessage;
-      eval(targetCode);
+      eval(prevCode);
     }
   };
   const d = (p5: p5Types) => {
@@ -125,7 +121,9 @@ export default function ProblemThree(data: any) {
                 <p>正解：</p>
                 <Image
                   src={problemPic}
-                  alt="Image of problem (Section2-q2)"
+                  width="140"
+                  height="140"
+                  alt="Image of problem 03"
                 />
                 </div>
                 <div>

@@ -44,14 +44,14 @@ export default function ProblemTwo(data: any) {
   const targetCode = isExecutable ? instanceSource : prevCode;
   let errorMessage: string = '';
   const s = (p5: p5Types, canvasParentRef: Element) => {
-    const width = 160;
-    const height = 120;
+    const width = 100;
+    const height = 100;
     try {
-      eval(instanceSource);
+      eval(targetCode);
     } catch (e: any) {
       errorMessage = e.toString();
       message += '\n' + errorMessage;
-      eval(targetCode);
+      eval(prevCode);
     }
   };
   const d = (p5: p5Types) => {
@@ -127,6 +127,8 @@ export default function ProblemTwo(data: any) {
                 <p>正解：</p>
                 <Image
                   src={problemPic}
+                  width="100"
+                  height="100"
                   alt="Image of problem (Section2-2)"
                 />
                 </div>
