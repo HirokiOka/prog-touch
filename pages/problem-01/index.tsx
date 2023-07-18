@@ -1,15 +1,21 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import p5Types from 'p5';
 import { GetServerSideProps } from 'next';
+import p5Types from 'p5';
 import problemPic from 'public/problem_01.png';
 import Sketch from 'components/Sketch';
 import CodePane from 'components/CodePane';
-import React, { useState } from 'react';
+import React, { useState, SyntheticEvent } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { getProblemData } from '../../utils/getProblemData';
 
+const handleClick = async() => {
+  //event.preventDefault();
+  const res = await fetch('/api/click', { method: 'POST' });
+  const data = await res.json();
+  console.log(data);
+};
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const width = 160;
@@ -94,6 +100,7 @@ export default function ProblemOne(data: any) {
                           (Object.values(sessionStorage).includes(choiceText) === false)) {
                           sessionStorage.setItem(sessionStorage.length.toString(), `${choiceText}`);
                           console.log(sessionStorage);
+                          handleClick();
                           }
                         }}
                       className={`${linkClass} text-white py-1 px-4 rounded-full text-sm`}>
