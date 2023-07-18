@@ -35,12 +35,12 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 export default function ProblemOne(data: any) {
 
   const [prevCode, setPrevCode] = useState("");
-  const optionType = data.optionType;
-  const sourceCode =  data.sourceCode;
-  const instanceSource = data.instanceSource;
-  const documentUrl = data.documentUrl;
-  const suggestion = data.suggestion;
-  let message = data.message;
+  const optionType: string = data.optionType;
+  const sourceCode: string =  data.sourceCode;
+  const instanceSource: string = data.instanceSource;
+  const documentUrl: string = data.documentUrl;
+  const suggestion: string = data.suggestion;
+  let message: string = data.message;
   const tabIndex = data.tabIndex;
   const isExecutable = data.isExecutable;
 
@@ -103,9 +103,14 @@ export default function ProblemOne(data: any) {
                       href={`/problem-01/?problemState=${choiceNext}`} 
                       onClick={async () => { 
                         if (isExecutable) setPrevCode(instanceSource);
-                        if (optionType === 'policy' && typeof sessionStorage !== "undefined" &&
+                        if (typeof sessionStorage !== "undefined" &&
                           (Object.values(sessionStorage).includes(choiceText) === false)) {
-                          sessionStorage.setItem(sessionStorage.length.toString(), `${choiceText}`);
+                          const policyData = {
+                            "type": optionType,
+                            "choice": choiceText,
+                          };
+                          sessionStorage.setItem(sessionStorage.length.toString(), JSON.stringify(policyData));
+
                           const curretDate = getCurrentTimestamp();
                           const userName = 'test';
                           const bodyData = {
@@ -173,8 +178,14 @@ export default function ProblemOne(data: any) {
             {typeof sessionStorage !== "undefined" ?
               <ol className="list-decimal list-inside">
                 {Object.entries(sessionStorage).sort((a: any, b: any) => a[0] - b[0]).map((e, i) =>  {
+                  const policyData = JSON.parse(e[1]);
+                  const policyText = policyData['choice'];
+                  const policyType = policyData['type'];
+                  const classType = (policyType === 'policy') ? 'bg-blue-500 hover:bg-blue-700' : 'bg-purple-500 hover:bg-purple-700 text-white font-sans';
                   return (
-                      <li key={i} className="text-white m-2 py-1 px-4 rounded-full bg-yellow-500 w-1/2">{e[1]}</li>
+                      <li key={i} className={`${classType} text-white my-1 py-1 px-4 rounded-full text-sm w-1/2`}>
+                        {policyData['choice']}
+                      </li>
                   );
                 })}
             </ol>
