@@ -3,11 +3,12 @@ import { sql } from '@vercel/postgres';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
-    const userName = 'John';
-    const clickedTime = '2023-07-18 15:44:55';
-    const choice = '円を描く';
+    const reqData = JSON.parse(req.body);
+    const userName = reqData.userName;
+    const clickedTime = reqData.clickedTime;
+    const choice = reqData.choice;
     try {
-      await sql`INSERT INTO clicks (userName, clickedTime, choice) VALUES (${userName}, ${clickedTime}, ${choice})`;
+      await sql`INSERT INTO user_log (userName, clickedTime, choice) VALUES (${userName}, ${clickedTime}, ${choice})`;
       res.status(200).json({ status: 'success', userName, clickedTime, choice });
     } catch (e) {
       res.status(500).json({ status: 'error', error: e });
