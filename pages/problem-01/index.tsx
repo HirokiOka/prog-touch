@@ -63,7 +63,13 @@ export default function ProblemOne(data: any) {
           </TabList>
 
           <TabPanel>
-            <SolutionTab problemData={problemData} onClick={handleClick} />
+            <SolutionTab
+              problemData={problemData}
+              onClick={handleClick}
+              problemDir="problem-01"
+              canvasWidth={160}
+              canvasHeight={120}
+            />
           </TabPanel>
 
           <TabPanel>

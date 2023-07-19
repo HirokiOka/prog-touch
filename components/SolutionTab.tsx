@@ -14,9 +14,12 @@ interface ProblemProps {
     targetCode: string;
   },
   onClick: (choiceText: string, optionType: string) => void;
+  problemDir: string;
+  canvasWidth: number;
+  canvasHeight: number;
 }
 
-const SolutionTab: React.FC<ProblemProps> =  ({ problemData, onClick }) => {
+const SolutionTab: React.FC<ProblemProps> =  ({ problemData, onClick, problemDir, canvasWidth, canvasHeight }) => {
   return (
     <>
       {problemData.message ? 
@@ -34,7 +37,7 @@ const SolutionTab: React.FC<ProblemProps> =  ({ problemData, onClick }) => {
           return (
             <li key={i} className="mt-2 mb-4">
               <Link 
-                href={`/problem-01/?problemState=${choiceNext}`} 
+                href={`/${problemDir}/?problemState=${choiceNext}`} 
                 onClick={() => onClick(choiceText, problemData.optionType)}
                 className={`${linkClass} text-white py-1 px-4 rounded-full text-sm`}>
                 {i+1}: {choiceText}
@@ -49,6 +52,8 @@ const SolutionTab: React.FC<ProblemProps> =  ({ problemData, onClick }) => {
         <SketchComponent
           instanceSource={problemData.instanceSource}
           targetCode={problemData.targetCode}
+          canvasWidth={canvasWidth}
+          canvasHeight={canvasHeight}
         />
         <CodePane code={problemData.sourceCode} diffLines={[]} />
       </div>

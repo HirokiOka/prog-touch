@@ -5,12 +5,14 @@ import p5Types from 'p5';
 type SourceProps = {
   instanceSource: string;
   targetCode: string;
+  canvasWidth: number;
+  canvasHeight: number;
 };
 
-const SketchComponent = memo<SourceProps>(({ instanceSource, targetCode }) => {
+const SketchComponent = memo<SourceProps>(({ instanceSource, targetCode, canvasWidth, canvasHeight }) => {
   const s = (p5: p5Types, canvasParentRef: Element) => {
-    const width = 160;
-    const height = 120;
+    const width = canvasWidth;
+    const height = canvasHeight;
     try {
       eval(instanceSource);
     } catch (e: any) {
