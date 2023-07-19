@@ -1,6 +1,11 @@
-import Sketch from 'components/Sketch';
 import { memo } from 'react';
 import p5Types from 'p5';
+import dynamic from 'next/dynamic';
+
+const Sketch = dynamic(import('react-p5'), {
+  loading: () => <>loading...</>,
+  ssr: false,
+});
 
 type SourceProps = {
   instanceSource: string;

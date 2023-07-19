@@ -26,7 +26,7 @@ export default function ProblemOne(data: any) {
   const instanceSource = data.instanceSource;
   const isExecutable = data.isExecutable;
 
-  const targetCode = data.isExecutable ? instanceSource : prevCode;
+  const targetCode = isExecutable ? instanceSource : prevCode;
 
   const problemData = {
     message: data.message,
@@ -73,7 +73,13 @@ export default function ProblemOne(data: any) {
           </TabPanel>
 
           <TabPanel>
-            <ProblemTab problemText={problemText} problemPic={problemPic} instanceSource={instanceSource} />
+            <ProblemTab
+              problemText={problemText} 
+              problemPic={problemPic} 
+              instanceSource={instanceSource}
+              canvasWidth={160}
+              canvasHeight={120}
+            />
           </TabPanel>
 
           <TabPanel>

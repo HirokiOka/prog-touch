@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import SketchComponent from 'components/SketchComponent';
 import CodePane from 'components/CodePane';
+import { FC } from 'react';
 
 interface ProblemProps {
   problemData: {
@@ -19,7 +20,7 @@ interface ProblemProps {
   canvasHeight: number;
 }
 
-const SolutionTab: React.FC<ProblemProps> =  ({ problemData, onClick, problemDir, canvasWidth, canvasHeight }) => {
+const SolutionTab: FC<ProblemProps> =  ({ problemData, onClick, problemDir, canvasWidth, canvasHeight }) => {
   return (
     <>
       {problemData.message ? 
@@ -50,6 +51,7 @@ const SolutionTab: React.FC<ProblemProps> =  ({ problemData, onClick, problemDir
       <div className="p-2 rounded border border-gray-500">
         <p>出力: </p>
         <SketchComponent
+          key={problemData.instanceSource}
           instanceSource={problemData.instanceSource}
           targetCode={problemData.targetCode}
           canvasWidth={canvasWidth}

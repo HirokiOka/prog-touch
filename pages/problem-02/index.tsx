@@ -85,7 +85,13 @@ export default function ProblemTwo(data: any) {
           </TabPanel>
 
           <TabPanel>
-            <ProblemTab problemText={problemText} problemPic={problemPic} instanceSource={instanceSource} />
+            <ProblemTab
+              problemText={problemText}
+              problemPic={problemPic}
+              instanceSource={instanceSource}
+              canvasWidth={100}
+              canvasHeight={100}
+            />
           </TabPanel>
 
           <TabPanel>

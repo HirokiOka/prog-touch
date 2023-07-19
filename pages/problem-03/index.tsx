@@ -74,7 +74,13 @@ export default function ProblemThree(data: any) {
           </TabPanel>
 
           <TabPanel>
-            <ProblemTab problemText={problemText} problemPic={problemPic} instanceSource={instanceSource} />
+            <ProblemTab
+              problemText={problemText}
+              problemPic={problemPic}
+              instanceSource={instanceSource}
+              canvasWidth={400}
+              canvasHeight={400}
+            />
           </TabPanel>
 
           <TabPanel>

@@ -6,9 +6,17 @@ type ProblemInfo = {
   problemText: string;
   problemPic: any;
   instanceSource: string;
+  canvasWidth: number;
+  canvasHeight: number;
 };
 
-const ProblemTab: FC<ProblemInfo> = ({ problemText, problemPic, instanceSource }) => {
+const ProblemTab: FC<ProblemInfo> = ({ problemText, problemPic, instanceSource, canvasWidth, canvasHeight}) => {
+  let width = canvasWidth;
+  let height = canvasHeight;
+  if (width / height === 1 && 400 <= width) {
+    width = 140;
+    height = 140;
+  }
   return (
     <div className="md:w-2/3">
       <p className="bg-gray-300 rounded p-2 my-2">[問題]: {problemText}</p>
@@ -17,16 +25,19 @@ const ProblemTab: FC<ProblemInfo> = ({ problemText, problemPic, instanceSource }
         <p>正解：</p>
         <Image
           src={problemPic}
-          width="160"
-          height="120"
-          alt="Image of problem 01"
+          width={width}
+          height={height}
+          alt="Image of problem"
         />
         </div>
         <div>
           <p>出力: </p>
           <SketchComponent
+            key={instanceSource}
             instanceSource={instanceSource}
             targetCode={instanceSource}
+            canvasWidth={canvasWidth}
+            canvasHeight={canvasHeight}
           />
         </div>
       </div>
