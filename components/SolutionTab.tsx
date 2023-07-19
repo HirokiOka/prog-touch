@@ -31,9 +31,9 @@ const SolutionTab: FC<ProblemProps> =  ({ problemData, onClick, problemDir, canv
         : ''}
 
       <ul className="m-1 p-1 list-inside list-none">  
-        {problemData.choices.map((c, i) => {
-          const choiceNext: string =  c.next;
-          const choiceText: string =  c.text;
+        {problemData.choices.map((c: any, i: number) => {
+          const choiceNext: string =  c["next"];
+          const choiceText: string =  c["text"];
           const linkClass = problemData.optionType === 'policy' ? 'bg-blue-500 hover:bg-blue-700' : 'bg-purple-500 hover:bg-purple-700 text-white font-sans';
           return (
             <li key={i} className="mt-2 mb-4">

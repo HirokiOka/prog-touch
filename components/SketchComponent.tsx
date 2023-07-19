@@ -14,7 +14,7 @@ type SourceProps = {
   canvasHeight: number;
 };
 
-const SketchComponent = memo<SourceProps>(({ instanceSource, targetCode, canvasWidth, canvasHeight }) => {
+const SketchComponent = memo<SourceProps>(function sketch({ instanceSource, targetCode, canvasWidth, canvasHeight }) {
   const s = (p5: p5Types, canvasParentRef: Element) => {
     const width = canvasWidth;
     const height = canvasHeight;
