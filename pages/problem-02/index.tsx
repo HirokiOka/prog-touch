@@ -11,6 +11,16 @@ import SolutionTab from 'components/SolutionTab';
 import TransitionButtons from 'components/TransitionButtons';
 import { postData } from  'utils/postData';
 
+interface ProblemData {
+  message: string;
+  suggestion: string;
+  choices: string[];
+  optionType: string;
+  isExecutable: boolean;
+  instanceSource: string;
+  sourceCode: string;
+  prevCode: string;
+};
 
 const width = 100;
 const height = 100;
@@ -39,7 +49,7 @@ export default function ProblemTwo(data: any) {
   const instanceSource = data.instanceSource;
   const isExecutable: boolean = data.isExecutable;
 
-  const problemData = {
+  const problemData: ProblemData = {
     message: data.message,
     suggestion: data.suggestion,
     choices: [...data.choices],
@@ -87,6 +97,7 @@ export default function ProblemTwo(data: any) {
             <ProblemTab
               problemText={problemText}
               problemPic={problemPic}
+              isExecutable={isExecutable}
               instanceSource={instanceSource}
               prevCode={prevCode}
               canvasWidth={width}

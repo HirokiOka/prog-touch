@@ -7,11 +7,12 @@ type ProblemInfo = {
   problemPic: any;
   instanceSource: string;
   prevCode: string;
+  isExecutable: boolean;
   canvasWidth: number;
   canvasHeight: number;
 };
 
-const ProblemTab: FC<ProblemInfo> = ({ problemText, problemPic, instanceSource, prevCode, canvasWidth, canvasHeight}) => {
+const ProblemTab: FC<ProblemInfo> = ({ problemText, problemPic, instanceSource, prevCode, isExecutable, canvasWidth, canvasHeight}) => {
   let width = canvasWidth;
   let height = canvasHeight;
   if (width / height === 1 && 400 <= width) {
@@ -35,6 +36,7 @@ const ProblemTab: FC<ProblemInfo> = ({ problemText, problemPic, instanceSource, 
           <p>出力: </p>
           <SketchComponent
             key={instanceSource}
+            isExecutable={isExecutable}
             instanceSource={instanceSource}
             prevCode={prevCode}
             canvasWidth={canvasWidth}

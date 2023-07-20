@@ -11,10 +11,21 @@ import SolutionTab from 'components/SolutionTab';
 import TransitionButtons from 'components/TransitionButtons';
 import { postData } from  'utils/postData';
 
+interface ProblemData {
+  message: string;
+  suggestion: string;
+  choices: string[];
+  optionType: string;
+  isExecutable: boolean;
+  instanceSource: string;
+  sourceCode: string;
+  prevCode: string;
+};
+
+const width = 400;
+const height = 400;
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
-  const width = 400;
-  const height = 400;
   const { props } = await getProblemData(context, 'problem_03.json', width, height);
   return { props };
 };
@@ -27,9 +38,8 @@ export default function ProblemThree(data: any) {
   const instanceSource = data.instanceSource;
   const isExecutable = data.isExecutable;
 
-  const targetCode = data.isExecutable ? instanceSource : prevCode;
 
-  const problemData = {
+  const problemData: ProblemData = {
     message: data.message,
     suggestion: data.suggestion,
     choices: [...data.choices],
@@ -37,7 +47,7 @@ export default function ProblemThree(data: any) {
     isExecutable: data.isExecutable,
     instanceSource: instanceSource,
     sourceCode: data.sourceCode,
-    targetCode: targetCode
+    prevCode: prevCode
   };
 
   const handleClick = async (choiceText: string, optionType: string) => {
@@ -68,8 +78,8 @@ export default function ProblemThree(data: any) {
               problemData={problemData}
               onClick={handleClick}
               problemDir="problem-03"
-              canvasWidth={400}
-              canvasHeight={400}
+              canvasWidth={width}
+              canvasHeight={height}
             />
           </TabPanel>
 
@@ -77,9 +87,11 @@ export default function ProblemThree(data: any) {
             <ProblemTab
               problemText={problemText}
               problemPic={problemPic}
+              isExecutable={isExecutable}
               instanceSource={instanceSource}
-              canvasWidth={400}
-              canvasHeight={400}
+              prevCode={prevCode}
+              canvasWidth={width}
+              canvasHeight={height}
             />
           </TabPanel>
 

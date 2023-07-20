@@ -87,6 +87,7 @@ export default function ProblemOne(data: any) {
             <ProblemTab
               problemText={problemText} 
               problemPic={problemPic} 
+              isExecutable={isExecutable}
               instanceSource={instanceSource}
               prevCode={prevCode}
               canvasWidth={width}
