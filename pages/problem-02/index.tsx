@@ -12,6 +12,9 @@ import TransitionButtons from 'components/TransitionButtons';
 import { postData } from  'utils/postData';
 
 
+const width = 100;
+const height = 100;
+
 function shuffleArray(ary: any) {
   let result = [];
   while (ary.length != 0) {
@@ -23,8 +26,6 @@ function shuffleArray(ary: any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
-  const width = 100;
-  const height = 100;
   const { props } = await getProblemData(context, 'problem_02.json', width, height);
   return { props };
 };
@@ -36,9 +37,7 @@ export default function ProblemTwo(data: any) {
   const documentUrl: string = data.documentUrl;
   const tabIndex = data.tabIndex;
   const instanceSource = data.instanceSource;
-  const isExecutable = data.isExecutable;
-
-  const targetCode = data.isExecutable ? instanceSource : prevCode;
+  const isExecutable: boolean = data.isExecutable;
 
   const problemData = {
     message: data.message,
@@ -48,7 +47,7 @@ export default function ProblemTwo(data: any) {
     isExecutable: data.isExecutable,
     instanceSource: instanceSource,
     sourceCode: data.sourceCode,
-    targetCode: targetCode
+    prevCode: prevCode
   };
 
   const handleClick = async (choiceText: string, optionType: string) => {
@@ -76,11 +75,11 @@ export default function ProblemTwo(data: any) {
 
           <TabPanel>
             <SolutionTab 
-            problemData={problemData}
-            onClick={handleClick}
-            problemDir="problem-02"
-            canvasWidth={100}
-            canvasHeight={100}
+              problemData={problemData}
+              onClick={handleClick}
+              problemDir="problem-02"
+              canvasWidth={width}
+              canvasHeight={height}
             />
           </TabPanel>
 
@@ -89,8 +88,9 @@ export default function ProblemTwo(data: any) {
               problemText={problemText}
               problemPic={problemPic}
               instanceSource={instanceSource}
-              canvasWidth={100}
-              canvasHeight={100}
+              prevCode={prevCode}
+              canvasWidth={width}
+              canvasHeight={height}
             />
           </TabPanel>
 

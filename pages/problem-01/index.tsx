@@ -11,9 +11,21 @@ import SolutionTab from 'components/SolutionTab';
 import TransitionButtons from 'components/TransitionButtons';
 import { postData } from  'utils/postData';
 
+interface ProblemData {
+  message: string;
+  suggestion: string;
+  choices: string[];
+  optionType: string;
+  isExecutable: boolean;
+  instanceSource: string;
+  sourceCode: string;
+  prevCode: string;
+};
+
+const width = 160;
+const height = 120;
+
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
-  const width = 160;
-  const height = 120;
   const { props } = await getProblemData(context, 'problem_01.json', width, height);
   return { props };
 };
@@ -22,13 +34,12 @@ export default function ProblemOne(data: any) {
   const [prevCode, setPrevCode] = useState("");
   const problemText: string = data.problem;
   const documentUrl: string = data.documentUrl;
-  const tabIndex = data.tabIndex;
-  const instanceSource = data.instanceSource;
-  const isExecutable = data.isExecutable;
+  const tabIndex: number = data.tabIndex;
+  const instanceSource: string = data.instanceSource;
+  const isExecutable: boolean = data.isExecutable;
 
-  const targetCode = isExecutable ? instanceSource : prevCode;
 
-  const problemData = {
+  const problemData: ProblemData = {
     message: data.message,
     suggestion: data.suggestion,
     choices: [...data.choices],
@@ -36,7 +47,7 @@ export default function ProblemOne(data: any) {
     isExecutable: data.isExecutable,
     instanceSource: instanceSource,
     sourceCode: data.sourceCode,
-    targetCode: targetCode
+    prevCode: prevCode,
   };
 
   const handleClick = async (choiceText: string, optionType: string) => {
@@ -67,8 +78,8 @@ export default function ProblemOne(data: any) {
               problemData={problemData}
               onClick={handleClick}
               problemDir="problem-01"
-              canvasWidth={160}
-              canvasHeight={120}
+              canvasWidth={width}
+              canvasHeight={height}
             />
           </TabPanel>
 
@@ -77,8 +88,9 @@ export default function ProblemOne(data: any) {
               problemText={problemText} 
               problemPic={problemPic} 
               instanceSource={instanceSource}
-              canvasWidth={160}
-              canvasHeight={120}
+              prevCode={prevCode}
+              canvasWidth={width}
+              canvasHeight={height}
             />
           </TabPanel>
 

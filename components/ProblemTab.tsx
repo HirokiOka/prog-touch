@@ -6,11 +6,12 @@ type ProblemInfo = {
   problemText: string;
   problemPic: any;
   instanceSource: string;
+  prevCode: string;
   canvasWidth: number;
   canvasHeight: number;
 };
 
-const ProblemTab: FC<ProblemInfo> = ({ problemText, problemPic, instanceSource, canvasWidth, canvasHeight}) => {
+const ProblemTab: FC<ProblemInfo> = ({ problemText, problemPic, instanceSource, prevCode, canvasWidth, canvasHeight}) => {
   let width = canvasWidth;
   let height = canvasHeight;
   if (width / height === 1 && 400 <= width) {
@@ -35,7 +36,7 @@ const ProblemTab: FC<ProblemInfo> = ({ problemText, problemPic, instanceSource, 
           <SketchComponent
             key={instanceSource}
             instanceSource={instanceSource}
-            targetCode={instanceSource}
+            prevCode={prevCode}
             canvasWidth={canvasWidth}
             canvasHeight={canvasHeight}
           />
