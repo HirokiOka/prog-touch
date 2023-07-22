@@ -56,16 +56,21 @@ export default function ProblemThree(data: any) {
     prevCode: prevCode
   };
 
-  const handleClick = async (choiceText: string, optionType: string) => {
+  const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
     if (isExecutable) setPrevCode(instanceSource);
     if (typeof sessionStorage !== undefined &&
       (Object.values(sessionStorage).includes(choiceText) === false)) {
       const policyData = {
-        "type": optionType,
-        "choice": choiceText,
+        'type': optionType,
+        'choice': choiceText,
       };
       sessionStorage.setItem(sessionStorage.length.toString(), JSON.stringify(policyData));
-      await postData(choiceText);
+      const userActionData = {
+        'state': problemState,
+        'action': choiceText,
+        'actionType': optionType,
+      };
+      await postData(userActionData);
     }
   };
 

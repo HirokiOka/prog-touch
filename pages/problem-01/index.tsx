@@ -56,7 +56,7 @@ export default function ProblemOne(data: any) {
     prevCode: prevCode,
   };
 
-  const handleClick = async (choiceText: string, optionType: string) => {
+  const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
     if (isExecutable) setPrevCode(instanceSource);
     if (typeof sessionStorage !== undefined &&
       (Object.values(sessionStorage).includes(choiceText) === false)) {
@@ -65,7 +65,12 @@ export default function ProblemOne(data: any) {
         "choice": choiceText,
       };
       sessionStorage.setItem(sessionStorage.length.toString(), JSON.stringify(policyData));
-      await postData(choiceText);
+      const userActionData = {
+        'state': problemState,
+        'action': choiceText,
+        'actionType': optionType,
+      };
+      await postData(userActionData);
     }
   };
 

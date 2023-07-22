@@ -1,9 +1,12 @@
 const HistoryTab = () => {
+  if (typeof sessionStorage === undefined) return <></>;
+  const storageCopy = sessionStorage;
+  delete storageCopy.userName;
+  
   return (
-  <>
-    {typeof sessionStorage !== undefined ?
+    <>
           <ol className="list-decimal list-inside">
-            {Object.entries(sessionStorage).sort((a: any, b: any) => a[0] - b[0]).map((e, i) =>  {
+            {Object.entries(storageCopy).sort((a: any, b: any) => a[0] - b[0]).map((e, i) =>  {
               const policyData = JSON.parse(e[1]);
               let classType = '';
               if (policyData['type'] === 'policy') {
@@ -24,7 +27,6 @@ const HistoryTab = () => {
               );
             })}
           </ol>
-    : ''}
       </>
     );
 };

@@ -16,7 +16,7 @@ interface SolutionProps {
     sourceCode: string;
     prevCode: string;
   },
-  onClick: (choiceText: string, optionType: string) => void;
+  onClick: (choiceText: string, optionType: string, problemState: string) => void;
   problemDir: string;
   canvasWidth: number;
   canvasHeight: number;
@@ -24,6 +24,7 @@ interface SolutionProps {
 
 const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, canvasWidth, canvasHeight }) => {
   const optionType = problemData.optionType;
+  const problemState = problemData.problemState;
   const isExecutable: boolean = problemData.isExecutable;
 
   return (
@@ -51,7 +52,7 @@ const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, can
             <li key={i} className="mt-2 mb-4">
               <Link 
                 href={`/${problemDir}/?problemState=${choiceNext}`} 
-                onClick={() => onClick(choiceText, optionType)}
+                onClick={() => onClick(choiceText, optionType, problemState)}
                 className={`${linkClass} text-white py-1 px-4 rounded-full text-sm`}>
                 {i+1}: {choiceText}
               </Link>
