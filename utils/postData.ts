@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import ja from 'date-fns/locale/ja';
 import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
 
 type UserActionData = {
@@ -12,7 +13,7 @@ export async function postData (userActionData: UserActionData) {
   const jstTime = utcToZonedTime(currentTime, 'Asia/Tokyo');
   const formattedJstTime = format(jstTime,
                                   'yyyy-MM-dd HH:mm:ssXXX',
-                                  { timeZone: 'Asia/Tokyo' });
+                                  { locale: ja });
   let userName = 'anonymous';
   if (typeof sessionStorage !== "undefined" && sessionStorage.getItem('userName') !== null) {
     userName = sessionStorage.getItem('userName') ?? 'anonymous';
