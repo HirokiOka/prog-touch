@@ -32,6 +32,10 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 };
 
 export default function ProblemThree(data: any) {
+  let userName: string = 'anonymous';
+  if (typeof sessionStorage !== 'undefined') {
+    userName = sessionStorage.getItem('userName') ?? 'anonymous';
+  }
   const [prevCode, setPrevCode] = useState("");
   const problemText: string = data.problem;
   const documentUrl: string = data.documentUrl;
@@ -67,6 +71,7 @@ export default function ProblemThree(data: any) {
 
   return (
       <main className="px-6 text-sm lg:text-base">
+        <p suppressHydrationWarning={true} className="m-1">ユーザ名: {userName}</p>
         <Tabs defaultIndex={tabIndex}>
           <TabList>
             <Tab>解答</Tab>

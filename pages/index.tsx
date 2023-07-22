@@ -6,16 +6,21 @@ const setUserName = () => {
 };
 
 export default function Home() {
+  let userName: string = 'anonymous';
+  if (typeof sessionStorage !== 'undefined') {
+    userName = sessionStorage.getItem('userName') ?? 'anonymous';
+  }
   return (
     <>
       <main className="px-6">
-        <h1 className="text-2xl font-bold p-1">課題</h1>
+        <p suppressHydrationWarning={true} className="m-1">ユーザ名: {userName}</p>
         <button
           onClick={setUserName}
-          className="mx-2 my-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          className="m-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
           ユーザ名を入力
         </button>
-        <ul className="m-2 text-xl list-disc list-inside">
+        <h1 className="text-2xl font-bold p-1">課題</h1>
+        <ul className="m-1 text-xl list-disc list-inside">
           <li><Link href="/problem-01" className="text-blue-500 hover:underline">プログラム課題1 </Link></li>
           <li><Link href="/problem-02" className="text-blue-500 hover:underline">プログラム課題2 </Link></li>
           <li><Link href="/problem-03" className="text-blue-500 hover:underline">プログラム課題3 </Link></li>
