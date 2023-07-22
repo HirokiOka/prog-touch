@@ -40,7 +40,7 @@ const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, can
           if (optionType === 'policy') {
             linkClass = 'bg-blue-500 hover:bg-blue-700';
           } else if (optionType === 'design') {
-            linkClass = 'bg-yellow-600 hover:bg-yellow-700';
+            linkClass = 'bg-yellow-500 hover:bg-yellow-700';
           } else if (optionType === 'coding') {
             linkClass = 'bg-purple-500 hover:bg-purple-700 text-white font-sans';
           }

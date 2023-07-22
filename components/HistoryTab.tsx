@@ -9,11 +9,11 @@ const HistoryTab = () => {
               if (policyData['type'] === 'policy') {
                 classType = 'px-y bg-blue-500 '
               } else if (policyData['type'] === 'design') {
-                classType = 'bg-yellow-500 list-none mx-4';
+                classType = 'bg-yellow-500 mx-4';
               } else if (policyData['type'] === 'coding') {
-                classType = 'bg-purple-500  font-sans list-none mx-8';
+                classType = 'bg-purple-500  font-sans mx-8';
               } else if (policyData['type'] === 'wrong') {
-                classType = 'bg-red-500 list-none mx-8';
+                classType = 'bg-red-500 mx-8';
               }
 
               return (
