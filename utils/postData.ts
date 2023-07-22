@@ -12,11 +12,14 @@ function getCurrentTimestamp(): string {
 }
 
 export async function postData (choiceText: string) {
-  const curretDate = getCurrentTimestamp();
-  const userName = 'test';
+  const clickedTime = getCurrentTimestamp();
+  let userName = 'anonymous';
+  if (typeof sessionStorage !== "undefined" && sessionStorage.getItem('userName') !== null) {
+    userName = sessionStorage.getItem('userName') ?? 'anonymous';
+  }
   const bodyData = {
     'userName': userName,
-    'clickedTime': curretDate,
+    'clickedTime': clickedTime,
     'choice': choiceText
   };
   const res = await fetch('/api/click',{
