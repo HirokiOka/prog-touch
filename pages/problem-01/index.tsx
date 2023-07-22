@@ -12,6 +12,7 @@ import TransitionButtons from 'components/TransitionButtons';
 import { postData } from  'utils/postData';
 
 interface ProblemData {
+  problemState: string;
   message: string;
   suggestion: string;
   choices: string[];
@@ -40,6 +41,7 @@ export default function ProblemOne(data: any) {
 
 
   const problemData: ProblemData = {
+    problemState: data.problemState,
     message: data.message,
     suggestion: data.suggestion,
     choices: [...data.choices],

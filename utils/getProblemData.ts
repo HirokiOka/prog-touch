@@ -108,6 +108,7 @@ export const getProblemData = async (context: any, filename: string, canvasWidth
   return {
     props : {
       problem: problemData.problem,
+      problemState: problemState,
       optionType: problemDataContent.optionType,
       suggestion: suggestion,
       isExecutable: isExecutable,

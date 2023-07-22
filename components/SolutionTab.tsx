@@ -1,10 +1,12 @@
 import Link from 'next/link';
+import { FC } from 'react';
 import SketchComponent from 'components/SketchComponent';
 import CodePane from 'components/CodePane';
-import { FC } from 'react';
+import HistoryTab from 'components/HistoryTab';
 
 interface SolutionProps {
   problemData: {
+    problemState: string;
     message: string;
     suggestion: string;
     choices: string[];
@@ -23,6 +25,7 @@ interface SolutionProps {
 const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, canvasWidth, canvasHeight }) => {
   const optionType = problemData.optionType;
   const isExecutable: boolean = problemData.isExecutable;
+
   return (
     <>
       {problemData.message ? 
@@ -69,6 +72,9 @@ const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, can
         />
         <CodePane code={problemData.sourceCode} diffLines={[]} />
       </div>
+      {problemData.problemState === 'answer' ? 
+        <HistoryTab />
+      : ''}
     </>
   );
 };
