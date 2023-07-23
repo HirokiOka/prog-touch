@@ -26,7 +26,7 @@ interface ProblemData {
 const width = 160;
 const height = 120;
 
-export const getServerSideProps: GetServerSideProps = async (context: any) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { props } = await getProblemData(context, 'problem_01.json', width, height);
   return { props };
 };

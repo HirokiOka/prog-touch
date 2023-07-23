@@ -30,4 +30,5 @@ export async function postData (userActionData: UserActionData) {
     body: JSON.stringify(bodyData)
   });
   const data = await res.json();
+  console.log(data);
 }

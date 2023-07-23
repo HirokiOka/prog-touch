@@ -1,4 +1,7 @@
 import * as diff from 'diff';
+import * as fs from 'fs';
+import * as path from 'path';
+
 
 export const calcDiffLineNumbers = (bSource: string, aSource: string) => {
   const diffLines = diff.diffLines(bSource, aSource);
@@ -30,3 +33,4 @@ export const calcDiffLineNumbers = (bSource: string, aSource: string) => {
   }
   return { addedLineNumbers, removedLineNumbers };
 };
+
