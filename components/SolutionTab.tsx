@@ -30,10 +30,10 @@ const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, can
   return (
     <>
       {problemData.message ? 
-        <p className="rounded bg-red-100 p-2 w-2/3">{problemData.message}</p>
+        <p className="rounded bg-red-100 p-2">{problemData.message}</p>
         : ''}
       {problemData.suggestion ? 
-        <p className="rounded bg-blue-100 p-2 w-2/3">Q. {problemData.suggestion}</p>
+        <p className="rounded bg-blue-100 p-2">Q. {problemData.suggestion}</p>
         : ''}
 
       <ul className="m-1 p-1 list-inside list-none">  
@@ -74,7 +74,10 @@ const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, can
         <CodePane code={problemData.sourceCode} diffLines={[]} />
       </div>
       {problemData.problemState === 'answer' ? 
-        <HistoryTab />
+        <>
+          <p className="mt-2">あなたの方針:</p>
+          <HistoryTab />
+        </>
       : ''}
     </>
   );
