@@ -49,7 +49,7 @@
   },
   "pre_line": {
     "optionType": "coding",
-    "suggestion": "縦に直線を引くコードはどれでしょうか？",
+    "suggestion": "画像の上端から縦に直線を引くコードはどれでしょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196); \n}",
     "documentUrl": "https://p5js.org/reference/#/p5/line",
     "choices": [
