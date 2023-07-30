@@ -21,6 +21,7 @@ interface ProblemData {
   instanceSource: string;
   sourceCode: string;
   prevCode: string;
+  prevViewCode: string;
 };
 
 const width = 160;
@@ -34,6 +35,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default function ProblemOne(data: any) {
   const [userName, setUserName] = useState('anonymous');
   const [prevCode, setPrevCode] = useState("");
+  const [prevViewCode, setPrevViewCode] = useState("");
   const problemText: string = data.problem;
   const documentUrl: string = data.documentUrl;
   const tabIndex: number = data.tabIndex;
@@ -51,6 +53,7 @@ export default function ProblemOne(data: any) {
     instanceSource: instanceSource,
     sourceCode: data.sourceCode,
     prevCode: prevCode,
+    prevViewCode: prevViewCode,
   };
 
   useEffect(() => {
@@ -62,6 +65,7 @@ export default function ProblemOne(data: any) {
 
   const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
     if (isExecutable) setPrevCode(instanceSource);
+    setPrevViewCode(data.sourceCode);
     if (typeof sessionStorage !== 'undefined' &&
       (Object.values(sessionStorage).includes(choiceText) === false)) {
       const policyData = {

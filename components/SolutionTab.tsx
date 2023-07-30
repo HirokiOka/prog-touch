@@ -3,6 +3,7 @@ import { FC } from 'react';
 import SketchComponent from 'components/SketchComponent';
 import CodePane from 'components/CodePane';
 import HistoryTab from 'components/HistoryTab';
+import { calcDiffLineNumbers } from 'utils/calcDiffLineNumbers';
 
 interface SolutionProps {
   problemData: {
@@ -15,6 +16,7 @@ interface SolutionProps {
     instanceSource: string;
     sourceCode: string;
     prevCode: string;
+    prevViewCode: string;
   },
   onClick: (choiceText: string, optionType: string, problemState: string) => void;
   problemDir: string;
@@ -26,6 +28,13 @@ const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, can
   const optionType = problemData.optionType;
   const problemState = problemData.problemState;
   const isExecutable: boolean = problemData.isExecutable;
+  const sourceCode = problemData.sourceCode;
+  const prevCode = problemData.prevCode;
+  const prevViewCode = problemData.prevViewCode;
+  const instanceSource = problemData.instanceSource;
+  console.log(prevViewCode);
+  const diffLines = calcDiffLineNumbers(prevViewCode, sourceCode);
+  console.log(diffLines);
 
   return (
     <>
@@ -64,14 +73,14 @@ const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, can
       <div className="p-2 rounded border border-gray-500">
         <p>出力: </p>
         <SketchComponent
-          key={problemData.instanceSource}
-          instanceSource={problemData.instanceSource}
+          key={instanceSource}
+          instanceSource={instanceSource}
           isExecutable={isExecutable}
-          prevCode={problemData.prevCode}
+          prevCode={prevCode}
           canvasWidth={canvasWidth}
           canvasHeight={canvasHeight}
         />
-        <CodePane code={problemData.sourceCode} diffLines={[]} />
+        <CodePane code={sourceCode} diffLines={diffLines.addedLineNumbers} />
       </div>
       {problemData.problemState === 'answer' ? 
         <>

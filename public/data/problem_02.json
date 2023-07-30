@@ -22,7 +22,7 @@
   "line_prev": {
     "optionType": "design",
     "suggestion": "線を引くにはどうすれば良いでしょうか?",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196); \n}",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
     "choices": [
       {
         "text": "p5.jsで線を引く方法を調べる",
@@ -37,7 +37,7 @@
   "line_design": {
     "optionType": "design",
     "suggestion": "Documentタブを選択してみましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196); \n}",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
     "documentUrl": "https://p5js.org/reference/#/p5/line",
     "choices": [
       {
@@ -49,7 +49,7 @@
   "pre_line": {
     "optionType": "coding",
     "suggestion": "画像の上端から縦に直線を引くコードはどれでしょうか？",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196); \n}",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
     "documentUrl": "https://p5js.org/reference/#/p5/line",
     "choices": [
       {

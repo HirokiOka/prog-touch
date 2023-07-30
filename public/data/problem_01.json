@@ -14,7 +14,7 @@
   "ellipse": {
     "optionType": "design",
     "suggestion": "中心に円を描くコードを書くにはどうすれば良いか考えましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255); \n}",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
     "choices": [
       {
         "text": "p5.jsで円を描く方法を調べる",
@@ -29,7 +29,7 @@
   "ellipse_design": {
     "optionType": "design",
     "suggestion": "Documentタブを選択してみましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255); \n}",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
     "documentUrl": "https://p5js.org/reference/#/p5/ellipse",
     "choices": [
       {
@@ -41,7 +41,7 @@
   "ellipse_coding": {
     "optionType": "coding",
     "suggestion": "中心に円を描くコードはどれでしょうか？width, heightはそれぞれ出力画像の幅と高さを表しています．",
-    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255); \n}",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
     "documentUrl": "https://p5js.org/reference/#/p5/ellipse",
     "choices": [
       {
