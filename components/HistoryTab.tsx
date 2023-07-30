@@ -10,14 +10,15 @@ const HistoryTab = () => {
 
   useEffect(() => {
     if (typeof sessionStorage !== 'undefined') {
-      const storedStorage = sessionStorage;
+      const storedStorage = JSON.parse(JSON.stringify(sessionStorage));
       delete storedStorage.userName;
-      const sortedPolicies: PolicyInfo[] = Object.
-        entries(storedStorage).
-        sort((a: any, b: any) => a[0] - b[0]).
-        map((e: any, _) => {
-          return JSON.parse(e[1]);
-        });
+      const sortedPolicies: PolicyInfo[] = 
+        Object.
+          entries(storedStorage).
+          sort((a: any, b: any) => a[0] - b[0]).
+          map((e: any, _) => {
+            return JSON.parse(e[1]);
+          });
       setPolicies([...sortedPolicies]);
     }
   }, []);

@@ -7,6 +7,11 @@ function removeChoiceItems() {
     sessionStorage.removeItem(key);
   });
 }
+const backActionData = {
+  'state': '',
+  'action': 'back',
+  'actionType': 'back'
+};
 
 const TransitionButtons = () => {
   return (
@@ -15,11 +20,6 @@ const TransitionButtons = () => {
         className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-1 rounded"
         onClick={async () => {
           if (typeof sessionStorage === "undefined") return;
-          const backActionData = {
-            'state': '',
-            'action': 'back',
-            'actionType': 'back'
-          };
           await postData(backActionData);
           if (sessionStorage.length !== 0) {
             const delIndex = sessionStorage.length - 1;

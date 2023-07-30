@@ -74,7 +74,7 @@ export default function ProblemOne(data: any) {
         'action': choiceText,
         'actionType': optionType,
       };
-      //await postData(userActionData);
+      await postData(userActionData);
     }
   };
 
