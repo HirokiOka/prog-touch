@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import problemPic from 'public/problem_03.png';
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { getProblemData } from 'utils/getProblemData';
@@ -32,17 +32,20 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 };
 
 export default function ProblemThree(data: any) {
-  let userName: string = 'anonymous';
-  if (typeof sessionStorage !== 'undefined') {
-    userName = sessionStorage.getItem('userName') ?? 'anonymous';
-  }
+  const [userName, setUserName] = useState('anonymous');
   const [prevCode, setPrevCode] = useState("");
   const problemText: string = data.problem;
   const documentUrl: string = data.documentUrl;
-  const tabIndex = data.tabIndex;
-  const instanceSource = data.instanceSource;
-  const isExecutable = data.isExecutable;
+  const tabIndex: number = data.tabIndex;
+  const instanceSource: string = data.instanceSource;
+  const isExecutable: boolean = data.isExecutable;
 
+  useEffect(() => {
+    if (typeof sessionStorage !== 'undefined') {
+      const storedUserName = sessionStorage.getItem('userName');
+      if (storedUserName) setUserName(storedUserName);
+    }
+  }, []);
 
   const problemData: ProblemData = {
     problemState: data.problemState,
@@ -70,7 +73,7 @@ export default function ProblemThree(data: any) {
         'action': choiceText,
         'actionType': optionType,
       };
-      await postData(userActionData);
+      //await postData(userActionData);
     }
   };
 

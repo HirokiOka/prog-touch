@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import problemPic from 'public/problem_02.png';
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { getProblemData } from 'utils/getProblemData';
@@ -26,33 +26,18 @@ interface ProblemData {
 const width = 100;
 const height = 100;
 
-function shuffleArray(ary: any) {
-  let result = [];
-  while (ary.length != 0) {
-    const randIndex = Math.floor(Math.random() * ary.length);
-    const removed = ary.splice(randIndex, 1)[0];
-    result.push(removed);
-  }
-  return result;
-}
-
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const { props } = await getProblemData(context, 'problem_02.json', width, height);
   return { props };
 };
 
-
 export default function ProblemTwo(data: any) {
-  let userName: string = 'anonymous';
-  if (typeof sessionStorage !== 'undefined') {
-    userName = sessionStorage.getItem('userName') ?? 'anonymous';
-  }
-
+  const [userName, setUserName] = useState('anonymous');
   const [prevCode, setPrevCode] = useState("");
   const problemText: string = data.problem;
   const documentUrl: string = data.documentUrl;
-  const tabIndex = data.tabIndex;
-  const instanceSource = data.instanceSource;
+  const tabIndex: number = data.tabIndex;
+  const instanceSource: string = data.instanceSource;
   const isExecutable: boolean = data.isExecutable;
 
   const problemData: ProblemData = {
@@ -67,9 +52,16 @@ export default function ProblemTwo(data: any) {
     prevCode: prevCode
   };
 
+  useEffect(() => {
+    if (typeof sessionStorage !== 'undefined') {
+      const storedUserName = sessionStorage.getItem('userName');
+      if (storedUserName) setUserName(storedUserName);
+    }
+  }, []);
+
   const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
     if (isExecutable) setPrevCode(instanceSource);
-    if (typeof sessionStorage !== undefined &&
+    if (typeof sessionStorage !== 'undefined' &&
       (Object.values(sessionStorage).includes(choiceText) === false)) {
       const policyData = {
         'type': optionType,
@@ -81,7 +73,7 @@ export default function ProblemTwo(data: any) {
         'action': choiceText,
         'actionType': optionType,
       };
-      await postData(userActionData);
+      //await postData(userActionData);
     }
   };
 

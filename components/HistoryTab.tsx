@@ -1,31 +1,49 @@
+import { useState, useEffect } from 'react';
+
+interface PolicyInfo {
+  type: string;
+  choice: string;
+};
+
 const HistoryTab = () => {
-  if (typeof sessionStorage === undefined) return <></>;
-  const storageCopy = sessionStorage;
-  delete storageCopy.userName;
+  const [policies, setPolicies] = useState<PolicyInfo[]>([]);
+
+  useEffect(() => {
+    if (typeof sessionStorage !== 'undefined') {
+      const storedStorage = sessionStorage;
+      delete storedStorage.userName;
+      const sortedPolicies: PolicyInfo[] = Object.
+        entries(storedStorage).
+        sort((a: any, b: any) => a[0] - b[0]).
+        map((e: any, _) => {
+          return JSON.parse(e[1]);
+        });
+      setPolicies([...sortedPolicies]);
+    }
+  }, []);
   
   return (
     <>
-          <ol className="list-decimal list-inside">
-            {Object.entries(storageCopy).sort((a: any, b: any) => a[0] - b[0]).map((e, i) =>  {
-              const policyData = JSON.parse(e[1]);
-              let classType = '';
-              if (policyData['type'] === 'policy') {
-                classType = 'px-y bg-blue-500 '
-              } else if (policyData['type'] === 'design') {
-                classType = 'bg-yellow-500 mx-4';
-              } else if (policyData['type'] === 'coding') {
-                classType = 'bg-purple-500  font-sans mx-8';
-              } else if (policyData['type'] === 'wrong') {
-                classType = 'bg-red-500 mx-8';
-              }
+      <ol className="list-decimal list-inside">
+        {policies.map((policyData: PolicyInfo, i: number) =>  {
+          let classType = '';
+          if (policyData['type'] === 'policy') {
+            classType = 'px-y bg-blue-500 '
+          } else if (policyData['type'] === 'design') {
+            classType = 'bg-yellow-500 mx-4';
+          } else if (policyData['type'] === 'coding') {
+            classType = 'bg-purple-500  font-sans mx-8';
+          } else if (policyData['type'] === 'wrong') {
+            classType = 'bg-red-500 mx-8';
+          }
 
-              return (
-                <li key={i}
-                  className={`${classType} my-1 py-1 px-4 text-white rounded-full text-sm w-1/2`}>
-                    {policyData['choice']}
-                </li>
-              );
-            })}
+          return (
+            <li key={i}
+              className={`${classType} my-1 py-1 px-4 text-white rounded-full text-sm w-1/2`}>
+                {policyData['choice']}
+            </li>
+          );
+        })}
           </ol>
       </>
     );

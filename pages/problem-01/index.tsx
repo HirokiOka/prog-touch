@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import problemPic from 'public/problem_01.png';
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { getProblemData } from 'utils/getProblemData';
@@ -32,10 +32,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 export default function ProblemOne(data: any) {
-  let userName: string = 'anonymous';
-  if (typeof sessionStorage !== 'undefined') {
-    userName = sessionStorage.getItem('userName') ?? 'anonymous';
-  }
+  const [userName, setUserName] = useState('anonymous');
   const [prevCode, setPrevCode] = useState("");
   const problemText: string = data.problem;
   const documentUrl: string = data.documentUrl;
@@ -56,9 +53,16 @@ export default function ProblemOne(data: any) {
     prevCode: prevCode,
   };
 
+  useEffect(() => {
+    if (typeof sessionStorage !== 'undefined') {
+      const storedUserName = sessionStorage.getItem('userName');
+      if (storedUserName) setUserName(storedUserName);
+    }
+  }, []);
+
   const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
     if (isExecutable) setPrevCode(instanceSource);
-    if (typeof sessionStorage !== undefined &&
+    if (typeof sessionStorage !== 'undefined' &&
       (Object.values(sessionStorage).includes(choiceText) === false)) {
       const policyData = {
         "type": optionType,
@@ -70,7 +74,7 @@ export default function ProblemOne(data: any) {
         'action': choiceText,
         'actionType': optionType,
       };
-      await postData(userActionData);
+      //await postData(userActionData);
     }
   };
 
