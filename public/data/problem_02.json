@@ -39,7 +39,6 @@
     "suggestion": "Documentタブを選択してみましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196); \n}",
     "documentUrl": "https://p5js.org/reference/#/p5/line",
-    "tabIndex": 2,
     "choices": [
       {
         "text": "lineを使って線を引く",
@@ -96,7 +95,7 @@
       },
       {
         "text": "変数を使ってx座標を表現する",
-        "next": "line_var"
+        "next": "pre_line_var"
       }
     ]
   },
@@ -115,7 +114,7 @@
       },
       {
         "text": "変数を使ってx座標を表現する",
-        "next": "line_var"
+        "next": "pre_line_var"
       }
     ]
   },
@@ -134,7 +133,7 @@
       },
       {
         "text": "変数を使ってx座標を表現する",
-        "next": "line_var"
+        "next": "pre_line_var"
       }
     ]
   },
@@ -153,7 +152,7 @@
       },
       {
         "text": "変数を使ってx座標を表現する",
-        "next": "line_var"
+        "next": "pre_line_var"
       }
     ]
   },
@@ -172,7 +171,7 @@
       },
       {
         "text": "変数を使ってx座標を表現する",
-        "next": "line_var"
+        "next": "pre_line_var"
       }
     ]
   },
@@ -191,7 +190,7 @@
       },
       {
         "text": "変数を使ってx座標を表現する",
-        "next": "line_var"
+        "next": "pre_line_var"
       }
     ]
   },
@@ -210,7 +209,7 @@
       },
       {
         "text": "変数を使ってx座標を表現する",
-        "next": "line_var"
+        "next": "pre_line_var"
       }
     ]
   },
@@ -229,7 +228,7 @@
       },
       {
         "text": "変数を使ってx座標を表現する",
-        "next": "line_var"
+        "next": "pre_line_var"
       }
     ]
   },
@@ -240,7 +239,20 @@
     "choices": [
     ]
   },
+
   "line_for_init": {
+    "optionType": "design",
+    "suggestion": "繰り返しを使って線を引くためにどうしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n}",
+    "choices": [
+      {
+         "text": "for文を使う",
+         "next": "line_for_init_coding"
+      }
+    ]
+  },
+
+  "line_for_init_coding": {
     "optionType": "coding",
     "suggestion": "正解画像と同じ分だけ繰り返しを行うコードを記述しましょう.\nまずはループ変数を用意しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n}",
@@ -259,6 +271,7 @@
       }
     ]
   },
+
   "line_for_init_wrong_one": {
     "message": "変数の宣言を行いましょう.",
     "optionType": "wrong",
@@ -362,10 +375,10 @@
   "line_for_var": {
     "optionType": "design",
     "suggestion": "ループ変数iを使って変化する直線のx座標を表現しましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line(10, 0, 10, 100);\n  }\n}",
     "choices": [
       {
-        "text": "xにループ変数を使い，複数の線をかく",
+        "text": "ループ変数を使い，線のx座標を表現する",
         "next": "line_for_var_loop"
       }
     ]
@@ -373,18 +386,18 @@
   "line_for_var_loop": {
     "optionType": "coding",
     "suggestion": "ループ変数を用いてx座標を表現してください.",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line(10, 0, 10, 100);\n  }\n}",
     "choices": [
       {
-        "text": "let x = i * 10;",
+        "text": "let x = i * 10; line(x, 0, x, 100);",
         "next": "line_for_var_loop_wrong_one"
       },
       {
-        "text": "let x = (i + 1) *10;",
+        "text": "let x = (i + 1) *10; line(x, 0, x, 100);",
         "next": "answer"
       },
       {
-        "text": "let x = i + 1 * 10;",
+        "text": "let x = i + 1 * 10; line(x, 0, x, 100);",
         "next": "line_for_var_loop_wrong_two"
       }
     ]
@@ -403,25 +416,39 @@
     "choices": [
     ]
   },
+
   "pre_line_var": {
-    "optionType": "coding",
-    "suggestion": "xを使って線をひくコードはどれでしょうか？",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n}",
+    "optionType": "design",
+    "suggestion": "線のx座標を表現するためにどうしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n}",
     "choices": [
       {
-        "text": "line(x, x, 0, 100)",
+        "text": "線のx座標の値を変数で表現する",
+        "next": "pre_line_var_coding"
+      }
+    ]
+  },
+
+  "pre_line_var_coding": {
+    "optionType": "coding",
+    "suggestion": "変数xを使って線をひくコードはどれでしょうか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n}",
+    "choices": [
+      {
+        "text": "let x = 10; line(x, x, 0, 100)",
         "next": "pre_line_var_wrong_one"
       },
       {
-        "text": "line(0, 0, x, 100)",
-        "next": "pre_line_var_wrong_one"
+        "text": "let x = 10; line(0, 0, x, 100)",
+        "next": "pre_line_var_wrong_two"
       },
       {
-        "text": "line(x, 0, x, 100)",
+        "text": "let x = 10; line(x, 0, x, 100)",
         "next": "line_var"
       }
     ]
   },
+
   "pre_line_var_wrong_one": {
     "optionType": "wrong",
     "message": "line()関数の引数が違います. line()の書き方を確認しましょう.",
@@ -429,9 +456,18 @@
     "choices": [
     ]
   },
+
+  "pre_line_var_wrong_two": {
+    "optionType": "wrong",
+    "message": "line()関数の引数が違います. line()の書き方を確認しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n  line(0, 0, x, 100);\n}",
+    "choices": [
+    ]
+  },
+
   "line_var": {
     "optionType": "policy",
-    "suggestion": "次に何をしましょうか？",
+    "suggestion": "正解です！次に何をしましょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n  line(x, 0, x, 100);\n}",
     "choices": [
       {
@@ -441,6 +477,18 @@
     ]
   },
   "line_var_for_init": {
+    "optionType": "design",
+    "suggestion": "繰り返しを使って線を引くためにどうしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n  line(x, 0, x, 100);\n}",
+    "choices": [
+      {
+        "text": "for文を使う",
+        "next": "line_var_for_init_coding"
+      }
+    ]
+  },
+
+  "line_var_for_init_coding": {
     "optionType": "coding",
     "suggestion": "正解画像と同じ分だけ繰り返しを行うコードを記述しましょう.\nまずはループ変数を用意しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n  line(x, 0, x, 100);\n}",
@@ -593,6 +641,17 @@
     ]
   },
   "for_init": {
+    "optionType": "design",
+    "suggestion": "正解画像と同じ分だけ繰り返しを行うにはどうすれば良いか考えましょう.\n",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
+    "choices": [
+      {
+        "text": "for文を使う",
+        "next": "for_init_quiz"
+      }
+    ]
+  },
+  "for_init_quiz": {
     "optionType": "coding",
     "suggestion": "正解画像と同じ分だけ繰り返しを行うコードを記述しましょう.\nまずはループ変数を用意しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
@@ -700,6 +759,7 @@
     "choices": [
     ]
   },
+
   "for_afterthought_correct": {
     "optionType": "policy",
     "suggestion": "正解です! 次に何をしましょうか？",
@@ -707,15 +767,92 @@
     "choices": [
       {
         "text": "線を1本引く",
-        "next": "for_line_pre"
+        "next": "for_one_line"
       },
       {
-        "text": "変数を使ってx座標を表現する",
+        "text": "それぞれ線のx座標を繰り返しを使って表す",
         "next": "for_var"
       }
     ]
   },
+
+  "for_one_line": {
+    "optionType": "design",
+    "suggestion": "線を引くにはどうプログラムすれば良いか考えましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
+    "choices": [
+      {
+        "text": "p5.jsで線を引く方法を調べる",
+        "next": "for_one_line_design"
+      },
+      {
+        "text": "線を書く関数を使う",
+        "next": "for_one_line_coding"
+      }
+    ]
+  },
+
+  "for_one_line_design": {
+    "optionType": "design",
+    "suggestion": "Documentタブを選択してみましょう.",
+    "documentUrl": "https://p5js.org/reference/#/p5/line",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
+    "choices": [
+      {
+        "text": "線を書く関数を使う",
+        "next": "for_one_line_coding"
+      }
+    ]
+  },
+
+  "for_one_line_coding": {
+    "optionType": "coding",
+    "suggestion": "画像の上端から縦に直線を引くコードはどれでしょうか？",
+    "documentUrl": "https://p5js.org/reference/#/p5/line",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
+    "choices": [
+      {
+        "text": "line(10, 0, 10, 100)",
+        "next": "line_for_afterthought_correct"
+      },
+      {
+        "text": "line(10, 10, 10, 100)",
+        "next": "for_one_line_wrong_one"
+      },
+      {
+        "text": "line(0, 0, 10, 100)",
+        "next": "for_one_line_wrong_two"
+      }
+    ]
+  },
+
+
+  "for_one_line_wrong_one": {
+    "optionType": "wrong",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line(10, 10, 10, 100);\n  }\n}",
+    "message": "線のy座標が違います.line()の引数を確認しましょう.",
+    "choices": [
+    ]
+  },
+  "for_one_line_wrong_two": {
+    "optionType": "worng",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line(0, 0, 10, 100);\n  }\n}",
+    "message": "線の座標が違います.line()の引数を確認しましょう.",
+    "choices": [
+    ]
+  },
   "for_var": {
+    "optionType": "design",
+    "suggestion": "線のx座標を表現するにはどうすれば良いでしょうか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
+    "choices": [
+      {
+        "text": "ループ変数を使ってx座標を表現する",
+        "next": "for_var_coding"
+      }
+    ]
+  },
+  "for_var_coding": {
     "optionType": "coding",
     "suggestion": "変数iを使ってxを表現するにはどのコードが正しいでしょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
@@ -779,7 +916,6 @@
     "suggestion": "Documentタブを選択してみましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
     "documentUrl": "https://p5js.org/reference/#/p5/line",
-    "tabIndex": 2,
     "choices": [
       {
         "text": "line()を使って線を引く",
@@ -827,7 +963,20 @@
     "choices": [
     ]
   },
+
   "var": {
+    "optionType": "design",
+    "suggestion": "線のx座標を表現するためにどうしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
+    "choices": [
+      {
+        "text": "xという変数を宣言し，最も左側の線のx座標の数値で初期化する",
+        "next": "var_coding"
+      }
+    ]
+  },
+
+  "var_coding": {
     "optionType": "coding",
     "suggestion": "最も左側の線のx座標を表す変数を定義するにはどれが正しいでしょうか?",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
@@ -872,7 +1021,7 @@
     ]
   },
   "var_line": {
-    "optionType": "policy",
+    "optionType": "design",
     "suggestion": "線を引くコードを書くにはどうすれば良いでしょうか?",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n}",
     "choices": [

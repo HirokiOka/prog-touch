@@ -1,6 +1,6 @@
 import * as diff from 'diff';
-import * as fs from 'fs';
-import * as path from 'path';
+//import * as fs from 'fs';
+//import * as path from 'path';
 
 
 export const calcDiffLineNumbers = (bSource: string, aSource: string) => {
