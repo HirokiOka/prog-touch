@@ -12,7 +12,8 @@ type ProblemInfo = {
   canvasHeight: number;
 };
 
-const ProblemTab: FC<ProblemInfo> = ({ problemText, problemPic, instanceSource, prevCode, isExecutable, canvasWidth, canvasHeight}) => {
+
+const ProblemTab: FC<ProblemInfo> = ({ problemText, problemPic, instanceSource, prevCode, isExecutable, canvasWidth, canvasHeight }) => {
   let width = canvasWidth;
   let height = canvasHeight;
   if (width / height === 1 && 400 <= width) {

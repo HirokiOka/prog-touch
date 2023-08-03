@@ -3,6 +3,7 @@ import { FC } from 'react';
 import SketchComponent from 'components/SketchComponent';
 import CodePane from 'components/CodePane';
 import HistoryTab from 'components/HistoryTab';
+import { postData } from 'utils/postData';
 
 interface SolutionProps {
   problemData: {
@@ -21,6 +22,7 @@ interface SolutionProps {
   canvasWidth: number;
   canvasHeight: number;
 }
+
 
 const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, canvasWidth, canvasHeight }) => {
   const optionType = problemData.optionType;
@@ -52,7 +54,9 @@ const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, can
             <li key={i} className="mt-2 mb-4">
               <Link 
                 href={`/${problemDir}/?problemState=${choiceNext}`} 
-                onClick={() => onClick(choiceText, optionType, problemState)}
+                onClick={async () => {
+                  onClick(choiceText, optionType, problemState);
+                }}
                 className={`${linkClass} text-white py-1 px-4 rounded-full text-sm`}>
                 {i+1}: {choiceText}
               </Link>
