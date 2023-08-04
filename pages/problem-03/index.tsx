@@ -21,6 +21,7 @@ interface ProblemData {
   instanceSource: string;
   sourceCode: string;
   prevCode: string;
+  prevViewCode: string;
 };
 
 const width = 400;
@@ -34,6 +35,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 export default function ProblemThree(data: any) {
   const [userName, setUserName] = useState('anonymous');
   const [prevCode, setPrevCode] = useState("");
+  const [prevViewCode, setPrevViewCode] = useState("");
   const problemText: string = data.problem;
   const documentUrl: string = data.documentUrl;
   const tabIndex: number = data.tabIndex;
@@ -56,7 +58,8 @@ export default function ProblemThree(data: any) {
     isExecutable: data.isExecutable,
     instanceSource: instanceSource,
     sourceCode: data.sourceCode,
-    prevCode: prevCode
+    prevCode: prevCode,
+    prevViewCode: prevViewCode,
   };
 
   const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
