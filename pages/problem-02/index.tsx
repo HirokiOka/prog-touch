@@ -81,10 +81,28 @@ export default function ProblemTwo(data: any) {
     }
   };
 
+  const onSelect = (tabIndex: number) => {
+    const tabSelectData = {
+      'state': data.problemState,
+      'action': 'tabSelect',
+      'actionType': '',
+    };
+    if (tabIndex === 0) {
+      tabSelectData.actionType = 'SolutionTab';
+    } else if (tabIndex ===1) {
+      tabSelectData.actionType = 'ProblemTab';
+    } else if (tabIndex ===2) {
+      tabSelectData.actionType = 'DocumentTab';
+    } else if (tabIndex ===3) {
+      tabSelectData.actionType = 'HistoryTab';
+    }
+    postData(tabSelectData);
+  };
+
   return (
       <main className="px-6 text-sm lg:text-base">
         <p suppressHydrationWarning={true} className="m-1">ユーザ名: {userName}</p>
-        <Tabs defaultIndex={tabIndex}>
+        <Tabs onSelect={onSelect}>
           <TabList>
             <Tab>解答</Tab>
             <Tab>問題</Tab>
