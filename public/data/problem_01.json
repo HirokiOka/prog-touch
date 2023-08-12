@@ -2,7 +2,7 @@
   "problem": "日本国旗を描いてみましょう.",
   "start": {
     "optionType": "policy",
-    "suggestion": "初めに何をするか決めましょう.",
+    "message": "初めに何をするか決めましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
     "choices": [
       {
@@ -13,7 +13,7 @@
   },
   "ellipse": {
     "optionType": "design",
-    "suggestion": "中心に円を描くコードを書くにはどうすれば良いか考えましょう.",
+    "message": "中心に円を描くコードを書くにはどうすれば良いか考えましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
     "choices": [
       {
@@ -28,7 +28,7 @@
   },
   "ellipse_design": {
     "optionType": "design",
-    "suggestion": "Documentタブを選択してみましょう.",
+    "message": "Documentタブを選択してみましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
     "documentUrl": "https://p5js.org/reference/#/p5/ellipse",
     "choices": [
@@ -40,17 +40,17 @@
   },
   "ellipse_coding": {
     "optionType": "coding",
-    "suggestion": "中心に円を描くコードはどれでしょうか？width, heightはそれぞれ出力画像の幅と高さを表しています．",
+    "message": "中心に円を描くコードはどれでしょうか？width, heightはそれぞれ出力画像の幅と高さを表しています．",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
     "documentUrl": "https://p5js.org/reference/#/p5/ellipse",
     "choices": [
       {
         "text": "ellipse(0, 0, height*3/5, height*3/5);",
-        "next": "ellipse_wrong_A"
+        "next": "ellipse_error_A"
       },
       {
         "text": "ellipse(width, height, height*3/5, height*3/5);",
-        "next": "ellipse_wrong_B"
+        "next": "ellipse_error_B"
       },
       {
         "text": "ellipse(width/2, height/2, height*3/5, height*3/5);",
@@ -58,15 +58,15 @@
       }
     ]
   },
-  "ellipse_wrong_A": {
-    "optionType": "wrong",
+  "ellipse_error_A": {
+    "optionType": "error",
     "message": "p5.jsの座標系を確認しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(0, 0, height*3/5, height*3/5);\n}",
     "choices": [
     ]
   },
-  "ellipse_wrong_B": {
-    "optionType": "wrong",
+  "ellipse_error_B": {
+    "optionType": "error",
     "message": "p5.jsの座標系を確認しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width, height, height*3/5, height*3/5);\n}",
     "choices": [
@@ -74,7 +74,7 @@
   },
   "ellipse_correct": {
     "optionType": "policy",
-    "suggestion": "正解です! 次に何をするか決めましょう.",
+    "message": "正解です! 次に何をするか決めましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
@@ -85,7 +85,7 @@
   },
   "fill": {
     "optionType": "design",
-    "suggestion": "円に色を塗る方法を考えましょう.",
+    "message": "円に色を塗る方法を考えましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
@@ -100,7 +100,7 @@
   },
   "fill_design": {
     "optionType": "design",
-    "suggestion": "Documentタブを選択してみましょう.",
+    "message": "Documentタブを選択してみましょう.",
     "documentUrl": "https://p5js.org/reference/#/p5/fill",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
@@ -112,17 +112,17 @@
   },
   "fill_coding": {
     "optionType": "coding",
-    "suggestion": "円を赤色に塗るコードはどれでしょうか？",
+    "message": "円を赤色に塗るコードはどれでしょうか？",
     "documentUrl": "https://p5js.org/reference/#/p5/fill",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
         "text": "fill(255)",
-        "next": "fill_wrong_A"
+        "next": "fill_error_A"
       },
       {
         "text": "fill(0, 255, 0)",
-        "next": "fill_wrong_B"
+        "next": "fill_error_B"
       },
       {
         "text": "fill(255, 0, 0)",
@@ -130,15 +130,15 @@
       }
     ]
   },
-  "fill_wrong_A": {
-    "optionType": "wrong",
+  "fill_error_A": {
+    "optionType": "error",
     "message": "fill(255)は白色です.ドキュメントを見直しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
     ]
   },
-  "fill_wrong_B": {
-    "optionType": "wrong",
+  "fill_error_B": {
+    "optionType": "error",
     "message": "fill(0, 255, 0)は緑色です.ドキュメントを見直しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(0, 255, 0);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
@@ -146,7 +146,7 @@
   },
   "fill_correct": {
     "optionType": "policy",
-    "suggestion": "正解です! しかし正解画像と比べると円の縁が黒色になっています.",
+    "message": "正解です! しかし正解画像と比べると円の縁が黒色になっています.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
@@ -157,7 +157,7 @@
   },
   "fill_noStroke": {
     "optionType": "design",
-    "suggestion": "円の縁を消すにはどうすれば良いか考えましょう.",
+    "message": "円の縁を消すにはどうすれば良いか考えましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
@@ -172,7 +172,7 @@
   },
   "noStroke_design": {
     "optionType": "design",
-    "suggestion": "Documentタブを選択してみましょう.",
+    "message": "Documentタブを選択してみましょう.",
     "documentUrl": "https://p5js.org/reference/#/p5/noStroke",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
@@ -184,13 +184,13 @@
   },
   "noStroke_coding": {
     "optionType": "coding",
-    "suggestion": "縁を消すコードはどれでしょうか？",
+    "message": "縁を消すコードはどれでしょうか？",
     "documentUrl": "https://p5js.org/reference/#/p5/noStroke",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
         "text": "nostroke();",
-        "next": "noStroke_wrong_A"
+        "next": "noStroke_error_A"
       },
       {
         "text": "noStroke();",
@@ -198,20 +198,20 @@
       },
       {
         "text": "NoStroke();",
-        "next": "noStroke_wrong_B"
+        "next": "noStroke_error_B"
       }
     ]
   },
-  "noStroke_wrong_A": {
-    "optionType": "wrong",
+  "noStroke_error_A": {
+    "optionType": "error",
     "message": "関数のスペルを確認しましょう.",
     "isExecutable": false,
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  nostroke();\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
     ]
   },
-  "noStroke_wrong_B": {
-    "optionType": "wrong",
+  "noStroke_error_B": {
+    "optionType": "error",
     "message": "関数のスペルを確認しましょう.",
     "isExecutable": false,
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  NoStroke();\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
@@ -220,7 +220,7 @@
   },
   "answer": {
     "optionType": "policy",
-    "suggestion": "🎉🎉完成です!🎉🎉",
+    "message": "🎉🎉完成です!🎉🎉",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  noStroke();\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
     ]

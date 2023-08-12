@@ -2,7 +2,7 @@
   "problem": "日本国旗を描いてみましょう.",
   "start": {
     "optionType": "policy",
-    "suggestion": "初めに何をするか決めましょう.",
+    "message": "初めに何をするか決めましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
     "choices": [
       {
@@ -18,7 +18,7 @@
 
   "ellipse": {
     "optionType": "design",
-    "suggestion": "中心に円を描くコードを書くにはどうすれば良いか考えましょう.",
+    "message": "中心に円を描くコードを書くにはどうすれば良いか考えましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
     "choices": [
       {
@@ -34,7 +34,7 @@
 
   "ellipse_correct": {
     "optionType": "policy",
-    "suggestion": "正解です! 次に何をするか決めましょう.",
+    "message": "正解です! 次に何をするか決めましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
@@ -50,7 +50,7 @@
 
   "fill": {
     "optionType": "design",
-    "suggestion": "円に色を塗る方法を考えましょう.",
+    "message": "円に色を塗る方法を考えましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
@@ -66,7 +66,7 @@
 
   "fill_correct": {
     "optionType": "policy",
-    "suggestion": "正解です! しかし正解画像と比べると円の縁が黒色になっています.",
+    "message": "正解です! しかし正解画像と比べると円の縁が黒色になっています.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
@@ -82,7 +82,7 @@
 
   "fill_noStroke": {
     "optionType": "design",
-    "suggestion": "円の縁を消すにはどうすれば良いか考えましょう.",
+    "message": "円の縁を消すにはどうすれば良いか考えましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
@@ -98,68 +98,48 @@
 
   "answer": {
     "optionType": "policy",
-    "suggestion": "🎉🎉完成です!🎉🎉",
+    "message": "🎉🎉完成です!🎉🎉",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  noStroke();\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": []
   },
 
   "rect_error": {
     "optionType": "error",
-    "suggestion": "間違いです。日本の国旗には四角形はありません。再度考えてみましょう。",
-    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
+    "message": "間違いです。日本の国旗には四角形はありません。再度考えてみましょう。",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  rect(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
-      {
-        "text": "中心に円を描く",
-        "next": "ellipse"
-      }
     ]
   },
 
   "fill_blue_error": {
     "optionType": "error",
-    "suggestion": "間違いです。日本の国旗には青色の円はありません。再度考えてみましょう。",
-    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
+    "message": "間違いです。日本の国旗には青色の円はありません。再度考えてみましょう。",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(0, 0, 255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
-      {
-        "text": "円を赤色に塗る",
-        "next": "fill"
-      }
     ]
   },
 
   "fill_green_error": {
     "optionType": "error",
-    "suggestion": "間違いです。日本の国旗には緑色の円はありません。再度考えてみましょう。",
+    "message": "間違いです。日本の国旗には緑色の円はありません。再度考えてみましょう。",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
-      {
-        "text": "円を赤色に塗る",
-        "next": "fill"
-      }
     ]
   },
 
   "stroke_yellow_error": {
     "optionType": "error",
-    "suggestion": "間違いです。円の縁を黄色にするのではなく、縁を消す必要があります。再度考えてみましょう。",
+    "message": "間違いです。円の縁を黄色にするのではなく、縁を消す必要があります。再度考えてみましょう。",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  stroke(255, 255, 0);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
-      {
-        "text": "円の縁を消す",
-        "next": "fill_noStroke"
-      }
     ]
   },
 
   "stroke_weight_error": {
     "optionType": "error",
-    "suggestion": "間違いです。縁の太さを変えるのではなく、縁を消す必要があります。再度考えてみましょう。",
+    "message": "間違いです。縁の太さを変えるのではなく、縁を消す必要があります。再度考えてみましょう。",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  strokeWeight(5);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
-      {
-        "text": "円の縁を消す",
-        "next": "fill_noStroke"
-      }
     ]
   }
 }

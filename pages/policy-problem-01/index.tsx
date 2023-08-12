@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import problemPic from 'public/problem_01.png';
-import { useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { getProblemData } from 'utils/getProblemData';
@@ -13,7 +13,6 @@ import { postData } from  'utils/postData';
 type ProblemData = {
   problemState: string;
   message: string;
-  suggestion: string;
   choices: string[];
   optionType: string;
   isExecutable: boolean;
@@ -25,6 +24,7 @@ type ProblemData = {
 
 const width = 160;
 const height = 120;
+
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { props } = await getProblemData(context, 'gpt-gen-policy/problem_01.json', width, height);
@@ -44,7 +44,6 @@ export default function ProblemOne(data: any) {
   const problemData: ProblemData = {
     problemState: data.problemState,
     message: data.message,
-    suggestion: data.suggestion,
     choices: [...data.choices],
     optionType: data.optionType,
     isExecutable: data.isExecutable,
@@ -54,16 +53,7 @@ export default function ProblemOne(data: any) {
     prevViewCode: prevViewCode,
   };
 
-  useEffect(() => {
-    if (typeof sessionStorage !== 'undefined') {
-      const storedUserName = sessionStorage.getItem('userName');
-      if (storedUserName) setUserName(storedUserName);
-    }
-  }, []);
-
-  const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
-    if (isExecutable) setPrevCode(instanceSource);
-    setPrevViewCode(data.sourceCode);
+  function updateSessionStorage(choiceText: string, optionType: string) {
     if (typeof sessionStorage !== 'undefined' &&
       (Object.values(sessionStorage).includes(choiceText) === false)) {
       const policyData = {
@@ -71,13 +61,27 @@ export default function ProblemOne(data: any) {
         "choice": choiceText,
       };
       sessionStorage.setItem(sessionStorage.length.toString(), JSON.stringify(policyData));
-      const userActionData = {
-        'state': problemState,
-        'action': choiceText,
-        'actionType': optionType,
-      };
-      //await postData(userActionData);
     }
+  }
+
+  useEffect(() => {
+    if (typeof sessionStorage !== 'undefined') {
+      const storedUserName = sessionStorage.getItem('userName');
+      if (storedUserName) setUserName(storedUserName);
+    }
+  }, []);
+
+
+  const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
+    if (isExecutable) setPrevCode(instanceSource);
+    setPrevViewCode(data.sourceCode);
+    updateSessionStorage(choiceText, optionType);
+    const userActionData = {
+      'state': problemState,
+      'action': choiceText,
+      'actionType': optionType,
+    };
+    //await postData(userActionData);
   };
 
   const onSelect = (tabIndex: number) => {
@@ -91,11 +95,9 @@ export default function ProblemOne(data: any) {
     } else if (tabIndex ===1) {
       tabSelectData.actionType = 'ProblemTab';
     } else if (tabIndex ===2) {
-      tabSelectData.actionType = 'DocumentTab';
-    } else if (tabIndex ===3) {
       tabSelectData.actionType = 'HistoryTab';
     }
-    postData(tabSelectData);
+    //postData(tabSelectData);
   };
 
   return (

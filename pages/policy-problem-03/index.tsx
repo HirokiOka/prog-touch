@@ -13,7 +13,6 @@ import { postData } from  'utils/postData';
 type ProblemData = {
   problemState: string;
   message: string;
-  suggestion: string;
   choices: string[];
   optionType: string;
   isExecutable: boolean;
@@ -25,6 +24,17 @@ type ProblemData = {
 
 const width = 400;
 const height = 400;
+
+function updateSessionStorage(choiceText: string, optionType: string) {
+  if (typeof sessionStorage !== 'undefined' &&
+    (Object.values(sessionStorage).includes(choiceText) === false)) {
+    const policyData = {
+      "type": optionType,
+      "choice": choiceText,
+    };
+    sessionStorage.setItem(sessionStorage.length.toString(), JSON.stringify(policyData));
+  }
+}
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const { props } = await getProblemData(context, 'policy_problem_03.json', width, height);
@@ -63,20 +73,13 @@ export default function ProblemThree(data: any) {
 
   const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
     if (isExecutable) setPrevCode(instanceSource);
-    if (typeof sessionStorage !== undefined &&
-      (Object.values(sessionStorage).includes(choiceText) === false)) {
-      const policyData = {
-        'type': optionType,
-        'choice': choiceText,
-      };
-      sessionStorage.setItem(sessionStorage.length.toString(), JSON.stringify(policyData));
-      const userActionData = {
-        'state': problemState,
-        'action': choiceText,
-        'actionType': optionType,
-      };
-      //await postData(userActionData);
-    }
+    updateSessionStorage(choiceText, optionType);
+    const userActionData = {
+      'state': problemState,
+      'action': choiceText,
+      'actionType': optionType,
+    };
+    //await postData(userActionData);
   };
 
   const onSelect = (tabIndex: number) => {

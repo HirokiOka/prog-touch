@@ -2,7 +2,7 @@
   "problem": "繰り返しを使って描画する練習として、9本の縦線を書くプログラムを作成してみましょう。",
   "start": {
     "optionType": "policy",
-    "suggestion": "初めに何をするか決めましょう.",
+    "message": "初めに何をするか決めましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
     "choices": [
       {
@@ -21,7 +21,7 @@
   },
   "line_prev": {
     "optionType": "design",
-    "suggestion": "線を引くにはどうすれば良いでしょうか?",
+    "message": "線を引くにはどうすれば良いでしょうか?",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
     "choices": [
       {
@@ -33,7 +33,7 @@
 
   "line": {
     "optionType": "policy",
-    "suggestion": "次に何をしましょうか？",
+    "message": "次に何をしましょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n}",
     "choices": [
       {
@@ -52,7 +52,7 @@
   },
   "line_2": {
     "optionType": "policy",
-    "suggestion": "正解です! 次に何をしましょうか？",
+    "message": "正解です! 次に何をしましょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n}",
     "choices": [
       {
@@ -71,7 +71,7 @@
   },
   "line_3": {
     "optionType": "policy",
-    "suggestion": "次に何をしましょうか？",
+    "message": "次に何をしましょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n  line(30, 0, 30, 100);\n}",
     "choices": [
       {
@@ -90,7 +90,7 @@
   },
   "line_4": {
     "optionType": "policy",
-    "suggestion": "次に何をしましょうか？",
+    "message": "次に何をしましょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n  line(30, 0, 30, 100);\n  line(40, 0, 40, 100);\n}",
     "choices": [
       {
@@ -109,7 +109,7 @@
   },
   "line_5": {
     "optionType": "policy",
-    "suggestion": "次に何をしましょうか？",
+    "message": "次に何をしましょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n  line(30, 0, 30, 100);\n  line(40, 0, 40, 100);\n  line(50, 0, 50, 100);\n}",
     "choices": [
       {
@@ -128,7 +128,7 @@
   },
   "line_6": {
     "optionType": "policy",
-    "suggestion": "次に何をしましょうか？",
+    "message": "次に何をしましょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n  line(30, 0, 30, 100);\n  line(40, 0, 40, 100);\n  line(50, 0, 50, 100);\n  line(60, 0, 60, 100);\n}",
     "choices": [
       {
@@ -147,7 +147,7 @@
   },
   "line_7": {
     "optionType": "policy",
-    "suggestion": "次に何をしましょうか？",
+    "message": "次に何をしましょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n  line(30, 0, 30, 100);\n  line(40, 0, 40, 100);\n  line(50, 0, 50, 100);\n  line(60, 0, 60, 100);\n  line(70, 0, 70, 100);\n}",
     "choices": [
       {
@@ -166,7 +166,7 @@
   },
   "line_8": {
     "optionType": "policy",
-    "suggestion": "次に何をしましょうか？",
+    "message": "次に何をしましょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n  line(30, 0, 30, 100);\n  line(40, 0, 40, 100);\n  line(50, 0, 50, 100);\n  line(60, 0, 60, 100);\n  line(70, 0, 70, 100);\n  line(80, 0, 80, 100);\n}",
     "choices": [
       {
@@ -193,7 +193,7 @@
 
   "line_for_init": {
     "optionType": "design",
-    "suggestion": "正解画像と同じ分だけ繰り返しを行う手順を考えましょう.",
+    "message": "正解画像と同じ分だけ繰り返しを行う手順を考えましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n}",
     "choices": [
        {
@@ -231,7 +231,7 @@
 
   "line_for_afterthought_correct": {
     "optionType": "design",
-    "suggestion": "正解です! 次に繰り返しを使ってlineを書く必要があります.",
+    "message": "正解です! 次に繰り返しを使ってlineを書く必要があります.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line(10, 0, 10, 100);\n  }\n}",
     "choices": [
       {
@@ -243,7 +243,7 @@
 
   "pre_line_var": {
     "optionType": "design",
-    "suggestion": "線のx座標を表現するためにどうしますか？",
+    "message": "線のx座標を表現するためにどうしますか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n}",
     "choices": [
       {
@@ -255,7 +255,7 @@
 
   "line_var": {
     "optionType": "policy",
-    "suggestion": "正解です！次に何をしましょうか？",
+    "message": "正解です！次に何をしましょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n  line(x, 0, x, 100);\n}",
     "choices": [
       {
@@ -267,7 +267,7 @@
 
   "line_var_for_init": {
     "optionType": "design",
-    "suggestion": "正解画像と同じ分だけ繰り返しを行う手順を考えましょう",
+    "message": "正解画像と同じ分だけ繰り返しを行う手順を考えましょう",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n  line(x, 0, x, 100);\n}",
     "choices": [
        {
@@ -305,7 +305,7 @@
 
   "line_var_for_afterthought_correct": {
     "optionType": "policy",
-    "suggestion": "正解です! 次にループ変数iを使って線を繰り返し引く必要があります.",
+    "message": "正解です! 次にループ変数iを使って線を繰り返し引く必要があります.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = 10;\n    line(x, 0, x, 100);\n  }\n}",
     "choices": [
       {
@@ -317,7 +317,7 @@
 
   "for_init": {
     "optionType": "design",
-    "suggestion": "正解画像と同じ分だけ繰り返しを行う手順を考えましょう.",
+    "message": "正解画像と同じ分だけ繰り返しを行う手順を考えましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
     "choices": [
        {
@@ -356,7 +356,7 @@
 
   "for_afterthought_correct": {
     "optionType": "policy",
-    "suggestion": "正解です! 次に何をしましょうか？",
+    "message": "正解です! 次に何をしましょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
     "choices": [
       {
@@ -372,7 +372,7 @@
 
   "for_one_line": {
     "optionType": "design",
-    "suggestion": "線を引くにはどうプログラムすれば良いか考えましょう.",
+    "message": "線を引くにはどうプログラムすれば良いか考えましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
     "choices": [
       {
@@ -384,7 +384,7 @@
 
   "for_one_line_correct": {
     "optionType": "design",
-    "suggestion": "次にどうしますか？",
+    "message": "次にどうしますか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  line(10, 0, 10, 100);\n  }\n}",
     "choices": [
       {
@@ -396,7 +396,7 @@
 
   "for_var": {
     "optionType": "design",
-    "suggestion": "線のx座標を表現するにはどうすれば良いでしょうか？",
+    "message": "線のx座標を表現するにはどうすれば良いでしょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
     "choices": [
       {
@@ -408,7 +408,7 @@
 
   "for_var_correct": {
     "optionType": "policy",
-    "suggestion": "正解です！次に何をしますか？",
+    "message": "正解です！次に何をしますか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = (i + 1) * 10;\n  }\n}",
     "choices": [
       {
@@ -420,7 +420,7 @@
 
   "for_line_pre": {
     "optionType": "design",
-    "suggestion": "線を引くにはどうプログラムすれば良いか考えましょう.",
+    "message": "線を引くにはどうプログラムすれば良いか考えましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = (i + 1) * 10;\n  }\n}",
     "choices": [
       {
@@ -432,7 +432,7 @@
 
   "answer": {
     "optionType": "policy",
-    "suggestion": "🎉🎉完成です!🎉🎉",
+    "message": "🎉🎉完成です!🎉🎉",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = (i + 1) * 10;\n    line(x, 0, x, 100);\n  }\n}",
     "choices": [
     ]
@@ -440,7 +440,7 @@
 
   "var": {
     "optionType": "design",
-    "suggestion": "線のx座標を表現するためにどうしますか？",
+    "message": "線のx座標を表現するためにどうしますか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
     "choices": [
       {
@@ -452,7 +452,7 @@
 
   "var_correct": {
     "optionType": "policy",
-    "suggestion": "正解です! 次に変数xを使って線を引いてみましょう.",
+    "message": "正解です! 次に変数xを使って線を引いてみましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n}",
     "choices": [
       {
@@ -464,7 +464,7 @@
 
   "var_line": {
     "optionType": "design",
-    "suggestion": "線を引くコードを書くにはどうすれば良いでしょうか?",
+    "message": "線を引くコードを書くにはどうすれば良いでしょうか?",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n}",
     "choices": [
       {

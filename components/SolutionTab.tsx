@@ -10,7 +10,6 @@ interface SolutionProps {
   problemData: {
     problemState: string;
     message: string;
-    suggestion: string;
     choices: string[];
     optionType: string;
     isExecutable: boolean;
@@ -38,13 +37,11 @@ const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, can
 
   return (
     <>
-      {problemData.message ? 
-        <p className="rounded bg-red-100 p-2">{problemData.message}</p>
-        : ''}
-
-      {problemData.suggestion ?
-        <p className="rounded bg-blue-100 p-2">Q. {problemData.suggestion}</p>
-        : ''}
+      {problemData.message && (
+        <p className={`rounded bg-${problemData.optionType === 'error' ? 'red' : 'blue'}-100 p-2`}>
+          {problemData.optionType === 'error' ? problemData.message : `Q. ${problemData.message}`}
+        </p>
+      )}
 
 
       <ul className="m-1 p-1 list-inside list-none">  
