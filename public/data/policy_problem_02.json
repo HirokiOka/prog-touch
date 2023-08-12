@@ -1,0 +1,476 @@
+{
+  "problem": "繰り返しを使って描画する練習として、9本の縦線を書くプログラムを作成してみましょう。",
+  "start": {
+    "optionType": "policy",
+    "suggestion": "初めに何をするか決めましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
+    "choices": [
+      {
+        "text": "線を1本引いてみる",
+        "next": "line_prev"
+      },
+      {
+        "text": "繰り返しを使う",
+        "next": "for_init"
+      },
+      {
+        "text": "線の座標を変数で表す",
+        "next": "var"
+      }
+    ]
+  },
+  "line_prev": {
+    "optionType": "design",
+    "suggestion": "線を引くにはどうすれば良いでしょうか?",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
+    "choices": [
+      {
+        "text": "線を書く関数を使う",
+        "next": "line"
+      }
+    ]
+  },
+
+  "line": {
+    "optionType": "policy",
+    "suggestion": "次に何をしましょうか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n}",
+    "choices": [
+      {
+        "text": "同様に線を1本引く",
+        "next": "line_2"
+      },
+      {
+        "text": "繰り返しを使って複数の線を引く",
+        "next": "line_for_init"
+      },
+      {
+        "text": "変数を使ってx座標を表現する",
+        "next": "pre_line_var"
+      }
+    ]
+  },
+  "line_2": {
+    "optionType": "policy",
+    "suggestion": "正解です! 次に何をしましょうか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n}",
+    "choices": [
+      {
+        "text": "同様に線を1本引く",
+        "next": "line_3"
+      },
+      {
+        "text": "繰り返しを使って複数の線を引く",
+        "next": "line_for_init"
+      },
+      {
+        "text": "変数を使ってx座標を表現する",
+        "next": "pre_line_var"
+      }
+    ]
+  },
+  "line_3": {
+    "optionType": "policy",
+    "suggestion": "次に何をしましょうか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n  line(30, 0, 30, 100);\n}",
+    "choices": [
+      {
+        "text": "同様に線を1本引く",
+        "next": "line_4"
+      },
+      {
+        "text": "繰り返しを使って複数の線を引く",
+        "next": "line_for_init"
+      },
+      {
+        "text": "変数を使ってx座標を表現する",
+        "next": "pre_line_var"
+      }
+    ]
+  },
+  "line_4": {
+    "optionType": "policy",
+    "suggestion": "次に何をしましょうか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n  line(30, 0, 30, 100);\n  line(40, 0, 40, 100);\n}",
+    "choices": [
+      {
+        "text": "同様に線を1本引く",
+        "next": "line_5"
+      },
+      {
+        "text": "繰り返しを使って複数の線を引く",
+        "next": "line_for_init"
+      },
+      {
+        "text": "変数を使ってx座標を表現する",
+        "next": "pre_line_var"
+      }
+    ]
+  },
+  "line_5": {
+    "optionType": "policy",
+    "suggestion": "次に何をしましょうか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n  line(30, 0, 30, 100);\n  line(40, 0, 40, 100);\n  line(50, 0, 50, 100);\n}",
+    "choices": [
+      {
+        "text": "同様に線を1本引く",
+        "next": "line_6"
+      },
+      {
+        "text": "繰り返しを使って複数の線を引く",
+        "next": "line_for_init"
+      },
+      {
+        "text": "変数を使ってx座標を表現する",
+        "next": "pre_line_var"
+      }
+    ]
+  },
+  "line_6": {
+    "optionType": "policy",
+    "suggestion": "次に何をしましょうか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n  line(30, 0, 30, 100);\n  line(40, 0, 40, 100);\n  line(50, 0, 50, 100);\n  line(60, 0, 60, 100);\n}",
+    "choices": [
+      {
+        "text": "同様に線を1本引く",
+        "next": "line_7"
+      },
+      {
+        "text": "繰り返しを使って複数の線を引く",
+        "next": "line_for_init"
+      },
+      {
+        "text": "変数を使ってx座標を表現する",
+        "next": "pre_line_var"
+      }
+    ]
+  },
+  "line_7": {
+    "optionType": "policy",
+    "suggestion": "次に何をしましょうか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n  line(30, 0, 30, 100);\n  line(40, 0, 40, 100);\n  line(50, 0, 50, 100);\n  line(60, 0, 60, 100);\n  line(70, 0, 70, 100);\n}",
+    "choices": [
+      {
+        "text": "同様に線を1本引く",
+        "next": "line_8"
+      },
+      {
+        "text": "繰り返しを使って複数の線を引く",
+        "next": "line_for_init"
+      },
+      {
+        "text": "変数を使ってx座標を表現する",
+        "next": "pre_line_var"
+      }
+    ]
+  },
+  "line_8": {
+    "optionType": "policy",
+    "suggestion": "次に何をしましょうか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n  line(30, 0, 30, 100);\n  line(40, 0, 40, 100);\n  line(50, 0, 50, 100);\n  line(60, 0, 60, 100);\n  line(70, 0, 70, 100);\n  line(80, 0, 80, 100);\n}",
+    "choices": [
+      {
+        "text": "同様に線を1本引く",
+        "next": "line_9"
+      },
+      {
+        "text": "繰り返しを使って複数の線を引く",
+        "next": "line_for_init"
+      },
+      {
+        "text": "変数を使ってx座標を表現する",
+        "next": "pre_line_var"
+      }
+    ]
+  },
+  "line_9": {
+    "optionType": "error",
+    "message": "繰り返しを使っていません.重複する処理をまとめることを考えてみましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n  line(30, 0, 30, 100);\n  line(40, 0, 40, 100);\n  line(50, 0, 50, 100);\n  line(60, 0, 60, 100);\n  line(70, 0, 70, 100);\n  line(80, 0, 80, 100);\n  line(90, 0, 90, 100);\n}",
+    "choices": [
+    ]
+  },
+
+  "line_for_init": {
+    "optionType": "design",
+    "suggestion": "正解画像と同じ分だけ繰り返しを行う手順を考えましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n}",
+    "choices": [
+       {
+         "text": "ループ変数iが0から始まり、iが9より小さい間、iを1減少させる",
+         "next": "line_for_afterthought_error_one"
+       },
+       {
+         "text": "ループ変数iが0から始まり、iが9以下の間、iを1増加させる",
+         "next": "line_for_afterthought_correct"
+       },
+       {
+         "text": "ループ変数iが1から始まり、iが9より小さい間、iを1増加させる",
+         "next": "line_for_afterthought_error_two"
+       }
+    ]
+  },
+
+  "line_for_afterthought_error_one": {
+     "message": "繰り返しの条件を確認しましょう.",
+     "optionType": "error",
+     "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i--) {\n    line(10, 0, 10, 100);\n  }\n}",
+     "choices": [
+     ]
+   },
+
+   "line_for_afterthought_error_two": {
+     "message": "繰り返しの条件を確認しましょう.",
+     "optionType": "error",
+     "isExecutable": false,
+     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 1; i < 9; i++) {\n  }\n}",
+     "choices": [
+     ]
+   },
+
+  "line_for_afterthought_correct": {
+    "optionType": "design",
+    "suggestion": "正解です! 次に繰り返しを使ってlineを書く必要があります.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line(10, 0, 10, 100);\n  }\n}",
+    "choices": [
+      {
+        "text": "変数を使ってx座標を表現する",
+        "next": "answer"
+      }
+    ]
+  },
+
+  "pre_line_var": {
+    "optionType": "design",
+    "suggestion": "線のx座標を表現するためにどうしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n}",
+    "choices": [
+      {
+        "text": "線のx座標の値を変数で表現する",
+        "next": "line_var"
+      }
+    ]
+  },
+
+  "line_var": {
+    "optionType": "policy",
+    "suggestion": "正解です！次に何をしましょうか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n  line(x, 0, x, 100);\n}",
+    "choices": [
+      {
+        "text": "繰り返しを使って複数の線を引く",
+        "next": "line_var_for_init"
+      }
+    ]
+  },
+
+  "line_var_for_init": {
+    "optionType": "design",
+    "suggestion": "正解画像と同じ分だけ繰り返しを行う手順を考えましょう",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n  line(x, 0, x, 100);\n}",
+    "choices": [
+       {
+         "text": "ループ変数iが0から始まり、iが9より小さい間、iを1減少させる",
+         "next": "line_var_for_afterthought_error_one"
+       },
+       {
+         "text": "ループ変数iが0から始まり、iが9以下の間、iを1増加させる",
+         "next": "line_var_for_afterthought_correct"
+       },
+       {
+         "text": "ループ変数iが1から始まり、iが9より小さい間、iを1増加させる",
+         "next": "line_var_for_afterthought_error_two"
+       }
+    ]
+  },
+
+   "line_var_for_afterthought_error_one": {
+     "message": "繰り返しの条件を確認しましょう.",
+     "optionType": "error",
+     "isExecutable": false,
+     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i-- ) {\n    let x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+     "choices": [
+     ]
+   },
+
+   "line_var_for_afterthought_error_two": {
+     "message": "繰り返しの条件を確認しましょう.",
+     "optionType": "error",
+     "isExecutable": false,
+     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 1; i < 9; i++) {\n    let x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+     "choices": [
+     ]
+   },
+
+  "line_var_for_afterthought_correct": {
+    "optionType": "policy",
+    "suggestion": "正解です! 次にループ変数iを使って線を繰り返し引く必要があります.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "choices": [
+      {
+        "text": "ループ変数iを使ってxを変化させる",
+        "next": "answer"
+      }
+    ]
+  },
+
+  "for_init": {
+    "optionType": "design",
+    "suggestion": "正解画像と同じ分だけ繰り返しを行う手順を考えましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
+    "choices": [
+       {
+         "text": "ループ変数iが0から始まり、iが9より小さい間、iを1減少させる",
+         "next": "for_afterthought_error_one"
+       },
+       {
+         "text": "ループ変数iが0から始まり、iが9以下の間、iを1増加させる",
+         "next": "for_afterthought_correct"
+       },
+       {
+         "text": "ループ変数iが1から始まり、iが9より小さい間、iを1増加させる",
+         "next": "for_afterthought_error_two"
+       }
+    ]
+  },
+  
+
+  "for_afterthought_error_one": {
+    "message": "繰り返しの条件を確認しましょう.",
+    "optionType": "error",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i--) {\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "for_afterthought_error_two": {
+    "message": "繰り返しの条件を確認しましょう.",
+    "optionType": "error",
+    "isExecutable": false,
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 1; i < 9; i+) {\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "for_afterthought_correct": {
+    "optionType": "policy",
+    "suggestion": "正解です! 次に何をしましょうか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
+    "choices": [
+      {
+        "text": "線を1本引く",
+        "next": "for_one_line"
+      },
+      {
+        "text": "それぞれ線のx座標を繰り返しを使って表す",
+        "next": "for_var"
+      }
+    ]
+  },
+
+  "for_one_line": {
+    "optionType": "design",
+    "suggestion": "線を引くにはどうプログラムすれば良いか考えましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
+    "choices": [
+      {
+        "text": "線を書く関数を使う",
+        "next": "for_one_line_correct"
+      }
+    ]
+  },
+
+  "for_one_line_correct": {
+    "optionType": "design",
+    "suggestion": "次にどうしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  line(10, 0, 10, 100);\n  }\n}",
+    "choices": [
+      {
+        "text": "ループ変数を線を繰り返し表示する",
+        "next": "answer"
+      }
+    ]
+  },
+
+  "for_var": {
+    "optionType": "design",
+    "suggestion": "線のx座標を表現するにはどうすれば良いでしょうか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
+    "choices": [
+      {
+        "text": "ループ変数を使ってx座標を表現する",
+        "next": "for_var_correct"
+      }
+    ]
+  },
+
+  "for_var_correct": {
+    "optionType": "policy",
+    "suggestion": "正解です！次に何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = (i + 1) * 10;\n  }\n}",
+    "choices": [
+      {
+        "text": "線を引く",
+        "next": "for_line_pre"
+      }
+    ]
+  },
+
+  "for_line_pre": {
+    "optionType": "design",
+    "suggestion": "線を引くにはどうプログラムすれば良いか考えましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = (i + 1) * 10;\n  }\n}",
+    "choices": [
+      {
+        "text": "線を書く関数を使う",
+        "next": "answer"
+      }
+    ]
+  },
+
+  "answer": {
+    "optionType": "policy",
+    "suggestion": "🎉🎉完成です!🎉🎉",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = (i + 1) * 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "var": {
+    "optionType": "design",
+    "suggestion": "線のx座標を表現するためにどうしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
+    "choices": [
+      {
+        "text": "xという変数を宣言し，最も左側の線のx座標の数値で初期化する",
+        "next": "var_correct"
+      }
+    ]
+  },
+
+  "var_correct": {
+    "optionType": "policy",
+    "suggestion": "正解です! 次に変数xを使って線を引いてみましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n}",
+    "choices": [
+      {
+        "text": "変数xを使って線を引く",
+        "next": "var_line"
+      }
+    ]
+  },
+
+  "var_line": {
+    "optionType": "design",
+    "suggestion": "線を引くコードを書くにはどうすれば良いでしょうか?",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n}",
+    "choices": [
+      {
+        "text": "線を書く関数を使う",
+        "next": "line_var"
+      }
+    ]
+  }
+}

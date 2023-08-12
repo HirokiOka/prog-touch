@@ -34,18 +34,18 @@ const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, can
   const prevCode = problemData.prevCode;
   const prevViewCode = problemData.prevViewCode;
   const instanceSource = problemData.instanceSource;
-  console.log(prevViewCode);
   const diffLines = calcDiffLineNumbers(prevViewCode, sourceCode);
-  console.log(diffLines);
 
   return (
     <>
       {problemData.message ? 
         <p className="rounded bg-red-100 p-2">{problemData.message}</p>
         : ''}
-      {problemData.suggestion ? 
+
+      {problemData.suggestion ?
         <p className="rounded bg-blue-100 p-2">Q. {problemData.suggestion}</p>
         : ''}
+
 
       <ul className="m-1 p-1 list-inside list-none">  
         {problemData.choices.map((c: any, i: number) => {

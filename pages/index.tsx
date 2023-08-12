@@ -31,6 +31,7 @@ export default function Home() {
           ユーザ名を入力
         </button>
         <h1 className="text-2xl font-bold p-1">課題</h1>
+        <h1 className="text-lg">コード選択あり</h1>
         <ul className="m-1 text-xl list-disc list-inside">
           <li>
             <Link
@@ -49,6 +50,31 @@ export default function Home() {
           <li>
             <Link
               href="/problem-03"
+              className="text-blue-500 hover:underline">
+              プログラム課題3
+            </Link>
+          </li>
+        </ul>
+
+        <h1 className="text-lg">コード選択なし</h1>
+        <ul className="m-1 text-xl list-disc list-inside">
+          <li>
+            <Link
+              href="/policy-problem-01"
+              className="text-blue-500 hover:underline">
+              プログラム課題1
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/policy-problem-02"
+              className="text-blue-500 hover:underline">
+              プログラム課題2
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/policy-problem-03"
               className="text-blue-500 hover:underline">
               プログラム課題3
             </Link>
