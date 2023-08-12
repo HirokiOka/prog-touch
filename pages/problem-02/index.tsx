@@ -44,7 +44,6 @@ export default function ProblemTwo(data: any) {
   const problemData: ProblemData = {
     problemState: data.problemState,
     message: data.message,
-    suggestion: data.suggestion,
     choices: [...data.choices],
     optionType: data.optionType,
     isExecutable: data.isExecutable,
