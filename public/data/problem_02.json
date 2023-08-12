@@ -101,7 +101,7 @@
   },
   "line_2": {
     "optionType": "policy",
-    "message": "正解です! 次に何をしましょうか？",
+    "message": "次に何をしましょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n}",
     "choices": [
       {

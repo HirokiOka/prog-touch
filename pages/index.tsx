@@ -30,7 +30,7 @@ export default function Home() {
           className="m-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
           ユーザ名を入力
         </button>
-        <h1 className="text-2xl font-bold p-1">課題</h1>
+        <h1 className="text-2xl font-bold p-1">プログラム課題</h1>
         <h1 className="text-lg">コード選択あり</h1>
         <ul className="m-1 text-xl list-disc list-inside">
           <li>

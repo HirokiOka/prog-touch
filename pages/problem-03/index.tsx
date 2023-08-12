@@ -11,10 +11,9 @@ import SolutionTab from 'components/SolutionTab';
 import TransitionButtons from 'components/TransitionButtons';
 import { postData } from  'utils/postData';
 
-interface ProblemData {
+type ProblemData = {
   problemState: string;
   message: string;
-  suggestion: string;
   choices: string[];
   optionType: string;
   isExecutable: boolean;

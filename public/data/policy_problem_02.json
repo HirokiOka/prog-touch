@@ -1,5 +1,5 @@
 {
-  "problem": "繰り返しを使って描画する練習として、9本の縦線を書くプログラムを作成してみましょう。",
+  "problem": "繰り返しを使って描画する練習として, 9本の縦線を書くプログラムを作成してみましょう. それぞれの線の間隔は10pxです.",
   "start": {
     "optionType": "policy",
     "message": "初めに何をするか決めましょう.",
@@ -52,7 +52,7 @@
   },
   "line_2": {
     "optionType": "policy",
-    "message": "正解です! 次に何をしましょうか？",
+    "message": "次に何をしましょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n  line(20, 0, 20, 100);\n}",
     "choices": [
       {
@@ -231,7 +231,7 @@
 
   "line_for_afterthought_correct": {
     "optionType": "design",
-    "message": "正解です! 次に繰り返しを使ってlineを書く必要があります.",
+    "message": "正解です!🎉 次に繰り返しを使って複数の線を引く必要があります.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line(10, 0, 10, 100);\n  }\n}",
     "choices": [
       {
@@ -255,7 +255,7 @@
 
   "line_var": {
     "optionType": "policy",
-    "message": "正解です！次に何をしましょうか？",
+    "message": "次に何をしましょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n  line(x, 0, x, 100);\n}",
     "choices": [
       {
@@ -304,7 +304,7 @@
    },
 
   "line_var_for_afterthought_correct": {
-    "optionType": "policy",
+    "optionType": "design",
     "message": "正解です! 次にループ変数iを使って線を繰り返し引く必要があります.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = 10;\n    line(x, 0, x, 100);\n  }\n}",
     "choices": [
@@ -383,13 +383,29 @@
   },
 
   "for_one_line_correct": {
-    "optionType": "design",
+    "optionType": "policy",
     "message": "次にどうしますか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  line(10, 0, 10, 100);\n  }\n}",
     "choices": [
       {
-        "text": "ループ変数を線を繰り返し表示する",
+        "text": "繰り返しを使って複数の線を引く",
+        "next": "for_one_line_nine"
+      }
+    ]
+  },
+
+  "for_one_line_nine": {
+    "optionType": "design",
+    "message": "繰り返しを使って複数の線を引くためにどうしますか?",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  line(10, 0, 10, 100);\n  }\n}",
+    "choices": [
+      {
+        "text": "ループ変数を使って9本の線を引く",
         "next": "answer"
+      },
+      {
+        "text": "線を書く関数をあと8行追加する",
+        "next": "for_error"
       }
     ]
   },
@@ -408,7 +424,7 @@
 
   "for_var_correct": {
     "optionType": "policy",
-    "message": "正解です！次に何をしますか？",
+    "message": "次に何をしますか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = (i + 1) * 10;\n  }\n}",
     "choices": [
       {
@@ -424,7 +440,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = (i + 1) * 10;\n  }\n}",
     "choices": [
       {
-        "text": "線を書く関数を使う",
+        "text": "線を書く関数とxを使い, 9本の線を引く",
         "next": "answer"
       }
     ]
@@ -444,8 +460,12 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
     "choices": [
       {
-        "text": "xという変数を宣言し，最も左側の線のx座標の数値で初期化する",
+        "text": "xという変数を宣言し, 最も左側の線のx座標の数値で初期化する",
         "next": "var_correct"
+      },
+      {
+        "text": "xという変数を宣言し, 0で初期化する",
+        "next": "var_error"
       }
     ]
   },
@@ -471,6 +491,22 @@
         "text": "線を書く関数を使う",
         "next": "line_var"
       }
+    ]
+  },
+
+  "var_error": {
+    "optionType": "error",
+    "message": "x座標が0となる線はありません.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 0;\n}",
+    "choices": [
+    ]
+  },
+
+  "for_error": {
+    "optionType": "error",
+    "message": "無駄な重複部分があります. 繰り返しを利用しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line(10, 0, 10, 100);\n    line(20, 0, 20, 100);\n    line(30, 0, 30, 100);\n    line(40, 0, 40, 100);\n    line(50, 0, 50, 100);\n    line(60, 0, 60, 100);\n    line(70, 0, 70, 100);\n    line(80, 0, 80, 100);\n    line(90, 0, 90, 100);\n  }\n}",
+    "choices": [
     ]
   }
 }

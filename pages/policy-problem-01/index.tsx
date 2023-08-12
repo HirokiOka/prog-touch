@@ -27,7 +27,7 @@ const height = 120;
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { props } = await getProblemData(context, 'gpt-gen-policy/problem_01.json', width, height);
+  const { props } = await getProblemData(context, 'policy_problem_01.json', width, height);
   return { props };
 };
 

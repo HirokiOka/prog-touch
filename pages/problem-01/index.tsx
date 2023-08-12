@@ -11,10 +11,9 @@ import SolutionTab from 'components/SolutionTab';
 import TransitionButtons from 'components/TransitionButtons';
 import { postData } from  'utils/postData';
 
-interface ProblemData {
+type ProblemData = {
   problemState: string;
   message: string;
-  suggestion: string;
   choices: string[];
   optionType: string;
   isExecutable: boolean;
@@ -46,7 +45,6 @@ export default function ProblemOne(data: any) {
   const problemData: ProblemData = {
     problemState: data.problemState,
     message: data.message,
-    suggestion: data.suggestion,
     choices: [...data.choices],
     optionType: data.optionType,
     isExecutable: data.isExecutable,
