@@ -45,7 +45,7 @@
         "next": "line_for_init"
       },
       {
-        "text": "変数を使ってx座標を表現する",
+        "text": "変数を使って線の座標を表現する",
         "next": "pre_line_var"
       }
     ]
@@ -64,7 +64,7 @@
         "next": "line_for_init"
       },
       {
-        "text": "変数を使ってx座標を表現する",
+        "text": "変数を使って線の座標を表現する",
         "next": "pre_line_var"
       }
     ]
@@ -83,7 +83,7 @@
         "next": "line_for_init"
       },
       {
-        "text": "変数を使ってx座標を表現する",
+        "text": "変数を使って線の座標を表現する",
         "next": "pre_line_var"
       }
     ]
@@ -102,7 +102,7 @@
         "next": "line_for_init"
       },
       {
-        "text": "変数を使ってx座標を表現する",
+        "text": "変数を使って線の座標を表現する",
         "next": "pre_line_var"
       }
     ]
@@ -121,7 +121,7 @@
         "next": "line_for_init"
       },
       {
-        "text": "変数を使ってx座標を表現する",
+        "text": "変数を使って線の座標を表現する",
         "next": "pre_line_var"
       }
     ]
@@ -140,7 +140,7 @@
         "next": "line_for_init"
       },
       {
-        "text": "変数を使ってx座標を表現する",
+        "text": "変数を使って線の座標を表現する",
         "next": "pre_line_var"
       }
     ]
@@ -159,7 +159,7 @@
         "next": "line_for_init"
       },
       {
-        "text": "変数を使ってx座標を表現する",
+        "text": "変数を使って線の座標を表現する",
         "next": "pre_line_var"
       }
     ]
@@ -178,7 +178,7 @@
         "next": "line_for_init"
       },
       {
-        "text": "変数を使ってx座標を表現する",
+        "text": "変数を使って線の座標を表現する",
         "next": "pre_line_var"
       }
     ]
@@ -235,7 +235,7 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    line(10, 0, 10, 100);\n  }\n}",
     "choices": [
       {
-        "text": "変数を使ってx座標を表現する",
+        "text": "変数を使って線の座標を表現する",
         "next": "answer"
       }
     ]
@@ -243,12 +243,16 @@
 
   "pre_line_var": {
     "optionType": "design",
-    "message": "線のx座標を表現するためにどうしますか？",
+    "message": "線の座標を表現するためにどうしますか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n}",
     "choices": [
       {
         "text": "線のx座標の値を変数で表現する",
         "next": "line_var"
+      },
+      {
+        "text": "線のy座標の値を変数で表現する",
+        "next": "line_var_error"
       }
     ]
   },
@@ -305,11 +309,11 @@
 
   "line_var_for_afterthought_correct": {
     "optionType": "design",
-    "message": "正解です! 次にループ変数iを使って線を繰り返し引く必要があります.",
+    "message": "正解です! 次に線を繰り返し引く必要があります.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = 10;\n    line(x, 0, x, 100);\n  }\n}",
     "choices": [
       {
-        "text": "ループ変数iを使ってxを変化させる",
+        "text": "ループ変数iを使って変数xを変化させる",
         "next": "answer"
       }
     ]
@@ -372,7 +376,7 @@
 
   "for_one_line": {
     "optionType": "design",
-    "message": "線を引くにはどうプログラムすれば良いか考えましょう.",
+    "message": "線を引くにはどうすれば良いか考えましょう.",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
     "choices": [
       {
@@ -412,12 +416,16 @@
 
   "for_var": {
     "optionType": "design",
-    "message": "線のx座標を表現するにはどうすれば良いでしょうか？",
+    "message": "線の座標を表現するにはどうすれば良いでしょうか？",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
     "choices": [
       {
-        "text": "ループ変数を使ってx座標を表現する",
+        "text": "ループ変数を使って線のx座標を表現する",
         "next": "for_var_correct"
+      },
+      {
+        "text": "ループ変数を使って線のy座標を表現する",
+        "next": "for_var_error"
       }
     ]
   },
@@ -443,14 +451,6 @@
         "text": "線を書く関数とxを使い, 9本の線を引く",
         "next": "answer"
       }
-    ]
-  },
-
-  "answer": {
-    "optionType": "policy",
-    "message": "🎉🎉完成です!🎉🎉",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = (i + 1) * 10;\n    line(x, 0, x, 100);\n  }\n}",
-    "choices": [
     ]
   },
 
@@ -484,13 +484,37 @@
 
   "var_line": {
     "optionType": "design",
-    "message": "線を引くコードを書くにはどうすれば良いでしょうか?",
+    "message": "線を引くにはどうすれば良いでしょうか?",
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n}",
     "choices": [
       {
         "text": "線を書く関数を使う",
         "next": "line_var"
       }
+    ]
+  },
+
+  "answer": {
+    "optionType": "policy",
+    "message": "🎉🎉完成です!🎉🎉",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n    let x = (i + 1) * 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "line_var_error": {
+    "optionType": "error",
+    "message": "変数のy座標は変化しません.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let y = 0;\n  line(10, y, 10, y+100);  \n}",
+    "choices": [
+    ]
+  },
+
+  "for_var_error": {
+    "optionType": "error",
+    "message": "変数のy座標は変化しません.",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; i++) {\n  }\n}",
+    "choices": [
     ]
   },
 
