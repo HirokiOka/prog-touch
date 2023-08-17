@@ -40,7 +40,7 @@ const HistoryTab = () => {
 
           return (
             <li key={i}
-              className={`${classType} my-1 py-1 px-4 text-white rounded-full text-sm w-1/2`}>
+              className={`${classType} my-1 py-1 px-4 text-white rounded-full text-sm`}>
                 {policyData['choice']}
             </li>
           );
