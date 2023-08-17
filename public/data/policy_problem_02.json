@@ -197,15 +197,15 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  line(10, 0, 10, 100);\n}",
     "choices": [
        {
-         "text": "ループ変数iが0から始まり、iが9より小さい間、iを1減少させる",
+         "text": "ループ変数iが0から始まり,iが9より小さい間,iを1減少させる",
          "next": "line_for_afterthought_error_one"
        },
        {
-         "text": "ループ変数iが0から始まり、iが9以下の間、iを1増加させる",
+         "text": "ループ変数iが0から始まり,iが9以下の間,iを1増加させる",
          "next": "line_for_afterthought_correct"
        },
        {
-         "text": "ループ変数iが1から始まり、iが9より小さい間、iを1増加させる",
+         "text": "ループ変数iが1から始まり,iが9より小さい間,iを1増加させる",
          "next": "line_for_afterthought_error_two"
        }
     ]
@@ -275,15 +275,15 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n  line(x, 0, x, 100);\n}",
     "choices": [
        {
-         "text": "ループ変数iが0から始まり、iが9より小さい間、iを1減少させる",
+         "text": "ループ変数iが0から始まり,iが9より小さい間,iを1減少させる",
          "next": "line_var_for_afterthought_error_one"
        },
        {
-         "text": "ループ変数iが0から始まり、iが9以下の間、iを1増加させる",
+         "text": "ループ変数iが0から始まり,iが9以下の間,iを1増加させる",
          "next": "line_var_for_afterthought_correct"
        },
        {
-         "text": "ループ変数iが1から始まり、iが9より小さい間、iを1増加させる",
+         "text": "ループ変数iが1から始まり,iが9より小さい間,iを1増加させる",
          "next": "line_var_for_afterthought_error_two"
        }
     ]
@@ -325,15 +325,15 @@
     "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n}",
     "choices": [
        {
-         "text": "ループ変数iが0から始まり、iが9より小さい間、iを1減少させる",
+         "text": "ループ変数iが0から始まり,iが9より小さい間,iを1減少させる",
          "next": "for_afterthought_error_one"
        },
        {
-         "text": "ループ変数iが0から始まり、iが9以下の間、iを1増加させる",
+         "text": "ループ変数iが0から始まり,iが9以下の間,iを1増加させる",
          "next": "for_afterthought_correct"
        },
        {
-         "text": "ループ変数iが1から始まり、iが9より小さい間、iを1増加させる",
+         "text": "ループ変数iが1から始まり,iが9より小さい間,iを1増加させる",
          "next": "for_afterthought_error_two"
        }
     ]
