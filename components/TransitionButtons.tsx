@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { postData } from  'utils/postData';
+import { useRouter } from 'next/router';
 
 function removeChoiceItems() {
   if (typeof sessionStorage === "undefined") return;
@@ -24,6 +25,7 @@ async function handleReload() {
 }
 
 const TransitionButtons = () => {
+  const router = useRouter();
   return (
     <>
       <button 
@@ -36,10 +38,13 @@ const TransitionButtons = () => {
       </button>
 
       <button
-        className="m-2 bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          <Link href="/" onClick={() => removeChoiceItems() }>
-          問題一覧へ
-          </Link>
+        className="m-2 bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={() => {
+          removeChoiceItems();
+          router.push('/');
+        }
+      }>
+        問題一覧へ
       </button>
     </>
   );

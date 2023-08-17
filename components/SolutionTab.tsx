@@ -61,13 +61,13 @@ const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, can
             linkClass = 'bg-purple-500 hover:bg-purple-700 text-white font-sans';
           }
           return (
-            <li key={i} className="mt-2 mb-4">
+            <li key={i} className={`${linkClass} mt-1 py-1 px-4 text-white rounded-full text-sm`}>
               <Link 
                 href={`/${problemDir}/?problemState=${choiceNext}`} 
                 onClick={async () => {
                   onClick(choiceText, optionType, problemState);
                 }}
-                className={`${linkClass} text-white py-1 px-4 rounded-full text-sm`}>
+                className="">
                 {i+1}: {choiceText}
               </Link>
             </li>

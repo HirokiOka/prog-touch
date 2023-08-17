@@ -34,7 +34,7 @@ const HistoryTab = () => {
             classType = 'bg-yellow-500 mx-4';
           } else if (policyData['type'] === 'coding') {
             classType = 'bg-purple-500  font-sans mx-8';
-          } else if (policyData['type'] === 'wrong') {
+          } else if (policyData['type'] === 'error') {
             classType = 'bg-red-500 mx-8';
           }
 
