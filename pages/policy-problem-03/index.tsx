@@ -37,7 +37,7 @@ function updateSessionStorage(choiceText: string, optionType: string) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
-  const { props } = await getProblemData(context, 'policy_problem_03.json', width, height);
+  const { props } = await getProblemData(context, 'only-policy/policy_problem_03.json', width, height);
   return { props };
 };
 

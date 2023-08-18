@@ -25,9 +25,8 @@ type ProblemData = {
 const width = 160;
 const height = 120;
 
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { props } = await getProblemData(context, 'only-policy/policy_problem_01.json', width, height);
+  const { props } = await getProblemData(context, 'one-choice/problem_01.json', width, height);
   return { props };
 };
 
@@ -114,7 +113,7 @@ export default function ProblemOne(data: any) {
             <SolutionTab
               problemData={problemData}
               onClick={handleClick}
-              problemDir="policy-problem-01"
+              problemDir="one-choice-problem-01"
               canvasWidth={width}
               canvasHeight={height}
             />

@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
-import problemPic from 'public/problem_01.png';
-import { FC, useState, useEffect } from 'react';
+import problemPic from 'public/problem_03.png';
+import { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { getProblemData } from 'utils/getProblemData';
@@ -22,24 +22,41 @@ type ProblemData = {
   prevViewCode: string;
 };
 
-const width = 160;
-const height = 120;
+const width = 400;
+const height = 400;
 
+function updateSessionStorage(choiceText: string, optionType: string) {
+  if (typeof sessionStorage !== 'undefined' &&
+    (Object.values(sessionStorage).includes(choiceText) === false)) {
+    const policyData = {
+      "type": optionType,
+      "choice": choiceText,
+    };
+    sessionStorage.setItem(sessionStorage.length.toString(), JSON.stringify(policyData));
+  }
+}
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { props } = await getProblemData(context, 'only-policy/policy_problem_01.json', width, height);
+export const getServerSideProps: GetServerSideProps = async (context: any) => {
+  const { props } = await getProblemData(context, 'one-choice/cleaned_modified_problem_03.json', width, height);
   return { props };
 };
 
-export default function ProblemOne(data: any) {
+export default function ProblemThree(data: any) {
   const [userName, setUserName] = useState('anonymous');
   const [prevCode, setPrevCode] = useState("");
   const [prevViewCode, setPrevViewCode] = useState("");
   const problemText: string = data.problem;
+  const documentUrl: string = data.documentUrl;
   const tabIndex: number = data.tabIndex;
   const instanceSource: string = data.instanceSource;
   const isExecutable: boolean = data.isExecutable;
 
+  useEffect(() => {
+    if (typeof sessionStorage !== 'undefined') {
+      const storedUserName = sessionStorage.getItem('userName');
+      if (storedUserName) setUserName(storedUserName);
+    }
+  }, []);
 
   const problemData: ProblemData = {
     problemState: data.problemState,
@@ -53,28 +70,8 @@ export default function ProblemOne(data: any) {
     prevViewCode: prevViewCode,
   };
 
-  function updateSessionStorage(choiceText: string, optionType: string) {
-    if (typeof sessionStorage !== 'undefined' &&
-      (Object.values(sessionStorage).includes(choiceText) === false)) {
-      const policyData = {
-        "type": optionType,
-        "choice": choiceText,
-      };
-      sessionStorage.setItem(sessionStorage.length.toString(), JSON.stringify(policyData));
-    }
-  }
-
-  useEffect(() => {
-    if (typeof sessionStorage !== 'undefined') {
-      const storedUserName = sessionStorage.getItem('userName');
-      if (storedUserName) setUserName(storedUserName);
-    }
-  }, []);
-
-
   const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
     if (isExecutable) setPrevCode(instanceSource);
-    setPrevViewCode(data.sourceCode);
     updateSessionStorage(choiceText, optionType);
     const userActionData = {
       'state': problemState,
@@ -95,9 +92,11 @@ export default function ProblemOne(data: any) {
     } else if (tabIndex ===1) {
       tabSelectData.actionType = 'ProblemTab';
     } else if (tabIndex ===2) {
+      tabSelectData.actionType = 'DocumentTab';
+    } else if (tabIndex ===3) {
       tabSelectData.actionType = 'HistoryTab';
     }
-    //postData(tabSelectData);
+    postData(tabSelectData);
   };
 
   return (
@@ -114,7 +113,7 @@ export default function ProblemOne(data: any) {
             <SolutionTab
               problemData={problemData}
               onClick={handleClick}
-              problemDir="policy-problem-01"
+              problemDir="one-choice-problem-03"
               canvasWidth={width}
               canvasHeight={height}
             />
@@ -122,8 +121,8 @@ export default function ProblemOne(data: any) {
 
           <TabPanel>
             <ProblemTab
-              problemText={problemText} 
-              problemPic={problemPic} 
+              problemText={problemText}
+              problemPic={problemPic}
               isExecutable={isExecutable}
               instanceSource={instanceSource}
               prevCode={prevCode}
@@ -131,7 +130,6 @@ export default function ProblemOne(data: any) {
               canvasHeight={height}
             />
           </TabPanel>
-
 
           <TabPanel>
             <HistoryTab />
