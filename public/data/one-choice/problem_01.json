@@ -10,6 +10,10 @@
         "next": "ellipse"
       },
       {
+        "text": "図形を塗る色を赤に指定する",
+        "next": "fill"
+      },
+      {
         "text": "四角形を描く",
         "next": "rect_error"
       }
@@ -36,6 +40,118 @@
     ]
   },
 
+  "fill": {
+    "optionType": "design",
+    "message": "図形を塗る色を赤に指定するにはどうすれば良いか考えましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
+    "choices": [
+      {
+        "text": "図形を塗る色を赤に指定する",
+        "next": "fill_coding"
+      },
+      {
+        "text": "背景色を赤に設定する",
+        "next": "fill_bg_error_coding"
+      }
+    ]
+  },
+
+  "fill_coding": {
+    "optionType": "design",
+    "message": "対応するコードを挿入しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
+    "choices": [
+      {
+        "text": "fill(255, 0, 0);",
+        "next": "fill_correct"
+      }
+    ]
+  },
+
+  "fill_bg_error_coding": {
+    "optionType": "error",
+    "message": "対応するコードを挿入しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
+    "choices": [
+      {
+        "text": "background(255, 0, 0);",
+        "next": "fill_bg_error"
+      }
+    ]
+  },
+
+  "fill_correct": {
+    "optionType": "design",
+    "message": "正解です.次にどうしますか?",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n}",
+    "choices": [
+      {
+        "text": "円を描く",
+        "next": "fill_ellipse"
+      },
+      {
+        "text": "四角形を描く",
+        "next": "fill_rect_error_coding"
+      }
+    ]
+  },
+
+  "fill_rect_error_coding": {
+    "optionType": "coding",
+    "message": "対応するコードを挿入しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n}",
+    "choices": [
+      {
+        "text": "rect(0, 0, height*3/5, height*3/5);",
+        "next": "fill_rect_error"
+      }
+    ]
+  },
+
+  "fill_ellipse": {
+    "optionType": "design",
+    "message": "円を描くためにどうしますか?",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n}",
+    "choices": [
+      {
+        "text": "円を描く関数を使い, canvasの中心に円を描く",
+        "next": "fill_ellipse_coding"
+      },
+      {
+        "text": "円を描く関数を使い, 原点に円を描く",
+        "next": "fill_ellipse_error_coding"
+      },
+      {
+        "text": "四角形を描く関数を使い, 原点に円を描く",
+        "next": "fill_rect_error_coding"
+      }
+    ]
+  },
+
+  "fill_ellipse_coding": {
+    "optionType": "coding",
+    "message": "対応するコードを挿入しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n}",
+    "choices": [
+      {
+        "text": "ellipse(width/2, height/2, height*3/5, height*3/5);",
+        "next": "ellipse_fill_correct"
+      }
+    ]
+  },
+
+  "fill_ellipse_error_coding": {
+    "optionType": "coding",
+    "message": "対応するコードを挿入しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n}",
+    "choices": [
+      {
+        "text": "ellipse(0, 0, height*3/5, height*3/5);",
+        "next": "fill_ellipse_error"
+      }
+    ]
+  },
+
   "ellipse_coding": {
     "optionType": "coding",
     "message": "円を描く関数を使い, canvasの中心に円を描くコードを挿入しましょう.",
@@ -55,76 +171,96 @@
     "choices": [
       {
         "text": "円を赤色に塗る",
-        "next": "fill"
-      },
-      {
-        "text": "円を青色に塗る",
-        "next": "fill_blue_error"
+        "next": "ellipse_fill"
       }
     ]
   },
 
-  "fill": {
+  "ellipse_fill": {
     "optionType": "design",
     "message": "円に色を塗る方法を考えましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
-        "text": "赤に塗る関数を使う",
-        "next": "fill_coding"
+        "text": "図形を塗る色を赤に指定する関数を円を描く関数の前に書く",
+        "next": "ellipse_fill_coding"
       },
       {
-        "text": "緑に塗る関数を使う",
-        "next": "fill_green_error"
+        "text": "背景色を赤に設定する",
+        "next": "ellipse_fill_bg_error_coding"
+      },
+      {
+        "text": "図形を塗る色を赤に指定する関数を円を描く関数の後に書く",
+        "next": "ellipse_fill_error_coding"
       }
     ]
   },
 
-  "fill_coding": {
+  "ellipse_fill_coding": {
     "optionType": "coding",
     "message": "円を赤色に塗るコードを挿入しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
         "text": "fill(255, 0, 0)",
-        "next": "fill_correct"
+        "next": "ellipse_fill_correct"
       }
     ]
   },
 
-  "fill_correct": {
+  "ellipse_fill_bg_error_coding": {
+    "optionType": "coding",
+    "message": "対応するコードを挿入しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
+    "choices": [
+      {
+        "text": "background(255, 0, 0)",
+        "next": "ellipse_fill_bg_error"
+      }
+    ]
+  },
+
+  "ellipse_fill_error_coding": {
+    "optionType": "coding",
+    "message": "円を赤色に塗るコードを挿入しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
+    "choices": [
+      {
+        "text": "fill(255, 0, 0)",
+        "next": "ellipse_fill_error"
+      }
+    ]
+  },
+
+  "ellipse_fill_correct": {
     "optionType": "policy",
     "message": "正解です!🎉 しかし正解画像と比べると円の縁が黒色になっています.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
         "text": "円の縁を消す",
-        "next": "fill_noStroke"
-      },
-      {
-        "text": "縁を黄色にする",
-        "next": "stroke_yellow_error"
+        "next": "ellipse_fill_noStroke"
       }
     ]
   },
 
-  "fill_noStroke": {
+  "ellipse_fill_noStroke": {
     "optionType": "design",
     "message": "円の縁を消すにはどうすれば良いか考えましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
         "text": "縁を消す関数を使う",
-        "next": "noStroke_coding"
+        "next": "ellipse_fill_noStroke_coding"
       },
       {
         "text": "縁の太さを変える",
-        "next": "stroke_weight_error"
+        "next": "stroke_weight_error_coding"
       }
     ]
   },
 
-  "noStroke_coding": {
+  "ellipse_fill_noStroke_coding": {
     "optionType": "coding",
     "message": "縁を消すコードを挿入しましょう.",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
@@ -136,6 +272,18 @@
     ]
   },
 
+  "stroke_weight_error_coding": {
+    "optionType": "coding",
+    "message": "対応するコードを挿入しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
+    "choices": [
+      {
+        "text": "strokeWeight(5);",
+        "next": "stroke_weight_error"
+      }
+    ]
+  },
+
   "answer": {
     "optionType": "policy",
     "message": "🎉🎉完成です!🎉🎉",
@@ -143,10 +291,26 @@
     "choices": []
   },
 
+  "fill_bg_error_coding": {
+    "optionType": "error",
+    "message": "間違いです. 日本の国旗の背景色は白です. 再度考えてみましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n background(255, 0, 0); \n}",
+    "choices": [
+    ]
+  },
+
   "rect_error": {
     "optionType": "error",
     "message": "間違いです. 日本の国旗には四角形はありません. 再度考えてみましょう. ",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  rect(0, 0, height*3/5, height*3/5);\n}",
+    "choices": [
+    ]
+  },
+
+  "fill_rect_error": {
+    "optionType": "error",
+    "message": "間違いです. 日本の国旗には四角形はありません. 再度考えてみましょう. ",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  rect(0, 0, height*3/5, height*3/5);\n}",
     "choices": [
     ]
   },
@@ -159,26 +323,18 @@
     ]
   },
 
-  "fill_blue_error": {
+  "ellipse_fill_bg_error": {
     "optionType": "error",
-    "message": "間違いです. 日本の国旗には青色の円はありません. 再度考えてみましょう. ",
-    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(0, 0, 255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
+    "message": "間違いです. 日本の国旗の背景色は白です. 再度考えてみましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  background(255, 0, 0);\n ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
     ]
   },
 
-  "fill_green_error": {
+  "ellipse_fill_error": {
     "optionType": "error",
-    "message": "間違いです. 日本の国旗には緑色の円はありません. 再度考えてみましょう. ",
-    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
-    "choices": [
-    ]
-  },
-
-  "stroke_yellow_error": {
-    "optionType": "error",
-    "message": "間違いです. 円の縁を黄色にするのではなく, 縁を消す必要があります. 再度考えてみましょう. ",
-    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n  stroke(255, 255, 0);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
+    "message": "間違いです. fill関数は図形を描画する関数の前で使用する必要があります.",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n  fill(255, 0, 0);\n}",
     "choices": [
     ]
   },
