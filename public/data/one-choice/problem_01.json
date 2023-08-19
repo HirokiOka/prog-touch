@@ -81,7 +81,7 @@
   },
 
   "fill_correct": {
-    "optionType": "design",
+    "optionType": "policy",
     "message": "正解です.次にどうしますか?",
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  fill(255, 0, 0);\n}",
     "choices": [
