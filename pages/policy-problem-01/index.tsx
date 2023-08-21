@@ -82,6 +82,7 @@ export default function ProblemOne(data: any) {
       'actionType': optionType,
     };
     //await postData(userActionData);
+    postData(userActionData);
   };
 
   const onSelect = (tabIndex: number) => {
@@ -97,7 +98,7 @@ export default function ProblemOne(data: any) {
     } else if (tabIndex ===2) {
       tabSelectData.actionType = 'HistoryTab';
     }
-    //postData(tabSelectData);
+    postData(tabSelectData);
   };
 
   return (
@@ -106,7 +107,7 @@ export default function ProblemOne(data: any) {
         <Tabs onSelect={onSelect}>
           <TabList>
             <Tab>解答</Tab>
-            <Tab>問題</Tab>
+            <Tab>課題</Tab>
             <Tab>履歴</Tab>
           </TabList>
 

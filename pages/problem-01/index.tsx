@@ -76,7 +76,8 @@ export default function ProblemOne(data: any) {
         'action': choiceText,
         'actionType': optionType,
       };
-      await postData(userActionData);
+      //await postData(userActionData);
+      postData(userActionData);
     }
   };
 
@@ -104,7 +105,7 @@ export default function ProblemOne(data: any) {
         <Tabs onSelect={onSelect}>
           <TabList>
             <Tab>解答</Tab>
-            <Tab>問題</Tab>
+            <Tab>課題</Tab>
             <Tab>ドキュメント</Tab>
             <Tab>履歴</Tab>
           </TabList>
