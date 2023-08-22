@@ -44,7 +44,8 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 export default function ProblemTwo(data: any) {
   const [userName, setUserName] = useState('anonymous');
   const [prevCode, setPrevCode] = useState("");
-  const [prevViewCode, setViewPrevCode] = useState("");
+  //const [prevViewCode, setViewPrevCode] = useState("");
+  const [prevViewCode, setPrevViewCode] = useState("");
   const problemText: string = data.problem;
   const documentUrl: string = data.documentUrl;
   const tabIndex: number = data.tabIndex;
@@ -72,7 +73,7 @@ export default function ProblemTwo(data: any) {
 
   const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
     if (isExecutable) setPrevCode(instanceSource);
-    setViewPrevCode(data.sourceCode);
+    setPrevViewCode(data.sourceCode);
     updateSessionStorage(choiceText, optionType);
     const userActionData = {
       'state': problemState,
@@ -132,7 +133,6 @@ export default function ProblemTwo(data: any) {
               canvasHeight={height}
             />
           </TabPanel>
-
 
           <TabPanel>
             <HistoryTab />
