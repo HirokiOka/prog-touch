@@ -34,30 +34,6 @@ export default function Home() {
         </div>
 
         <h1 className="text-2xl font-bold p-1">プログラム課題</h1>
-        <h1 className="text-lg px-2">コード選択あり (3択)</h1>
-        <ul className="text-xl list-disc list-inside">
-          <li>
-            <Link
-              href="/problem-01"
-              className="text-blue-500 hover:underline">
-              課題1
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/problem-02"
-              className="text-blue-500 hover:underline">
-              課題2
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/problem-03"
-              className="text-blue-500 hover:underline">
-              課題3
-            </Link>
-          </li>
-        </ul>
 
         <h1 className="text-lg px-2 pt-2">コード選択あり (1択)</h1>
         <ul className="text-xl list-disc list-inside">
@@ -84,30 +60,6 @@ export default function Home() {
           </li>
         </ul>
 
-        <h1 className="text-lg pt-2 px-2">コード選択なし</h1>
-        <ul className="text-xl list-disc list-inside">
-          <li>
-            <Link
-              href="/policy-problem-01"
-              className="text-blue-500 hover:underline">
-              課題1
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/policy-problem-02"
-              className="text-blue-500 hover:underline">
-              課題2
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/policy-problem-03"
-              className="text-blue-500 hover:underline">
-              課題3
-            </Link>
-          </li>
-        </ul>
       </main>
     </>
   );
