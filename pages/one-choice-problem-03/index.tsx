@@ -72,6 +72,7 @@ export default function ProblemThree(data: any) {
 
   const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
     if (isExecutable) setPrevCode(instanceSource);
+    setPrevViewCode(data.sourceCode);
     updateSessionStorage(choiceText, optionType);
     const userActionData = {
       'state': problemState,

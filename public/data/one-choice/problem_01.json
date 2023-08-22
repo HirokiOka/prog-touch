@@ -31,10 +31,34 @@
       },
       {
         "text": "円を描く関数を使い, 原点に円を描く",
-        "next": "ellipse_error"
+        "next": "ellipse_error_coding"
       },
       {
         "text": "四角形を描く関数を使い, 原点に円を描く",
+        "next": "rect_error_coding"
+      }
+    ]
+  },
+
+  "ellipse_error_coding": {
+    "optionType": "coding",
+    "message": "対応するコードを挿入しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
+    "choices": [
+      {
+        "text": "ellipse(0, 0, height*3/5, height*3/5);",
+        "next": "ellipse_error"
+      }
+    ]
+  },
+
+  "rect_error_coding": {
+    "optionType": "coding",
+    "message": "対応するコードを挿入しましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n}",
+    "choices": [
+      {
+        "text": "rect(0, 0, height*3/5, height*3/5);",
         "next": "rect_error"
       }
     ]
@@ -202,7 +226,7 @@
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
-        "text": "fill(255, 0, 0)",
+        "text": "fill(255, 0, 0);",
         "next": "ellipse_fill_correct"
       }
     ]
@@ -214,7 +238,7 @@
     "sourceCode": "function setup() {\n  createCanvas(180, 120);\n  background(255);\n  ellipse(width/2, height/2, height*3/5, height*3/5);\n}",
     "choices": [
       {
-        "text": "background(255, 0, 0)",
+        "text": "background(255, 0, 0);",
         "next": "ellipse_fill_bg_error"
       }
     ]

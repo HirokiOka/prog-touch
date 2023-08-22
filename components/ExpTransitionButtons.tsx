@@ -40,7 +40,7 @@ const TransitionButtons = () => {
         className="m-2 bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         onClick={() => {
           removeChoiceItems();
-          router.push('/');
+          router.push('/experiment');
         }
       }>
         問題一覧へ

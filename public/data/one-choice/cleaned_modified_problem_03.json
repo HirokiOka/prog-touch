@@ -353,7 +353,7 @@
     "choices": [
       {
         "text": "黒い円を描画する",
-        "next": "second_draw_black_circle_if_algorithm_coding"
+        "next": "second_draw_black_circle_if_algorithm"
       }
     ]
   },
@@ -1037,17 +1037,6 @@
       {
         "text": "ellipse( x + s/2, y + s/2, d); fill(255, 0, 0);",
         "next": "draw_red_circle_ellipse_correct"
-      }
-    ]
-  },
-  "second_draw_black_circle_if_algorithm_coding": {
-    "optionType": "coding",
-    "message": "対応するコードを挿入しましょう.",
-    "sourceCode": "function setup() {\n  let s = 50;\n  let d = 40;\n  createCanvas(400, 400);\n  background(255);\n  noStroke();\n  for (let i = 0; i < 8; i++) {\n    for (let j = 0; j < 8; j++) {\n      let x = i * s;\n      let y = j * s;\n      if ((i + j) % 2 === 1) {\n        fill(122);\n        rect(x, y, s, s);\n      }\n      if (((i + j) % 2 === 1) && (j < 3)) {\n        fill(255, 0, 0);\n        ellipse(x + s / 2, y + s / 2, d);\n      }\n    }\n  }\n}",
-    "choices": [
-      {
-        "text": "",
-        "next": "second_draw_black_circle_if_algorithm"
       }
     ]
   },

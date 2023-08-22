@@ -380,7 +380,7 @@
     "optionType": "coding",
     "isExecutable": false,
     "message": "繰り返しのコードを挿入しましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; ) {\n    let x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n    line(x, 0, x, 100);\n  }\n}",
      "choices": [
        {
          "text": "for (let i = 0; i < 9; i--) {  }",
@@ -393,7 +393,7 @@
     "optionType": "coding",
     "isExecutable": false,
     "message": "繰り返しのコードを挿入しましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; ) {\n    let x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n    line(x, 0, x, 100);\n  }\n}",
      "choices": [
        {
          "text": "for (let i = 0; i < 9; i++) {  }",
@@ -406,7 +406,7 @@
     "optionType": "coding",
     "isExecutable": false,
     "message": "繰り返しのコードを挿入しましょう.",
-    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  for (let i = 0; i < 9; ) {\n    let x = 10;\n    line(x, 0, x, 100);\n  }\n}",
+    "sourceCode": "function setup() {\n  createCanvas(100, 100);\n  background(196);\n  let x = 10;\n    line(x, 0, x, 100);\n  }\n}",
      "choices": [
        {
          "text": "for (let i = 1; i < 9; i++) {  }",

@@ -4,7 +4,6 @@ import SketchComponent from 'components/SketchComponent';
 import CodePane from 'components/CodePane';
 import HistoryTab from 'components/HistoryTab';
 import { calcDiffLineNumbers } from 'utils/calcDiffLineNumbers';
-import { postData } from 'utils/postData';
 
 interface SolutionProps {
   problemData: {
