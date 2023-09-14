@@ -35,7 +35,6 @@ export default function Home() {
 
         <h1 className="text-2xl font-bold p-1">プログラム課題</h1>
 
-        <h1 className="text-lg px-2 pt-2">コード選択あり (1択)</h1>
         <ul className="text-xl list-disc list-inside">
           <li>
             <Link
