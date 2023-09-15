@@ -1,13 +1,13 @@
 import { GetServerSideProps } from 'next';
-import problemPic from 'public/problem_03.png';
+import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
+import problemPic from 'public/problem_01.png';
 import { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { getProblemData } from 'utils/getProblemData';
-import ProblemTab from 'components/ProblemTab';
-import DocumentTab from 'components/DocumentTab';
 import HistoryTab from 'components/HistoryTab';
-import SolutionTab from 'components/SolutionTab';
+import TaskTab from 'components/TaskTab';
 import TransitionButtons from 'components/TransitionButtons';
 import { postData } from  'utils/postData';
 
@@ -23,30 +23,24 @@ type ProblemData = {
   prevViewCode: string;
 };
 
-const width = 400;
-const height = 400;
-
-export const getServerSideProps: GetServerSideProps = async (context: any) => {
-  const { props } = await getProblemData(context, 'problem_03.json', width, height);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { id } = context.query;
+  const { props } = await getProblemData(context, id);
   return { props };
 };
 
-export default function ProblemThree(data: any) {
+export default function ProblemOne(data: any): NextPage {
+
   const [userName, setUserName] = useState('anonymous');
   const [prevCode, setPrevCode] = useState("");
   const [prevViewCode, setPrevViewCode] = useState("");
   const problemText: string = data.problem;
-  const documentUrl: string = data.documentUrl;
   const tabIndex: number = data.tabIndex;
   const instanceSource: string = data.instanceSource;
   const isExecutable: boolean = data.isExecutable;
-
-  useEffect(() => {
-    if (typeof sessionStorage !== 'undefined') {
-      const storedUserName = sessionStorage.getItem('userName');
-      if (storedUserName) setUserName(storedUserName);
-    }
-  }, []);
+  const problemId = data.id;
+  const viewWidth = data.viewWidth;
+  const viewHeight = data.viewHeight;
 
   const problemData: ProblemData = {
     problemState: data.problemState,
@@ -60,23 +54,36 @@ export default function ProblemThree(data: any) {
     prevViewCode: prevViewCode,
   };
 
-  const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
-    if (isExecutable) setPrevCode(instanceSource);
-    if (typeof sessionStorage !== undefined &&
+  function updateSessionStorage(choiceText: string, optionType: string) {
+    if (typeof sessionStorage !== 'undefined' &&
       (Object.values(sessionStorage).includes(choiceText) === false)) {
       const policyData = {
-        'type': optionType,
-        'choice': choiceText,
+        "type": optionType,
+        "choice": choiceText,
       };
       sessionStorage.setItem(sessionStorage.length.toString(), JSON.stringify(policyData));
-      const userActionData = {
-        'state': problemState,
-        'action': choiceText,
-        'actionType': optionType,
-      };
-      //await postData(userActionData);
-      postData(userActionData);
     }
+  }
+
+  useEffect(() => {
+    if (typeof sessionStorage !== 'undefined') {
+      const storedUserName = sessionStorage.getItem('userName');
+      if (storedUserName) setUserName(storedUserName);
+    }
+  }, []);
+
+
+  const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
+    if (isExecutable) setPrevCode(instanceSource);
+    setPrevViewCode(data.sourceCode);
+    updateSessionStorage(choiceText, optionType);
+    const userActionData = {
+      'state': problemState,
+      'action': choiceText,
+      'actionType': optionType,
+    };
+    //await postData(userActionData);
+    postData(userActionData);
   };
 
   const onSelect = (tabIndex: number) => {
@@ -90,8 +97,6 @@ export default function ProblemThree(data: any) {
     } else if (tabIndex ===1) {
       tabSelectData.actionType = 'ProblemTab';
     } else if (tabIndex ===2) {
-      tabSelectData.actionType = 'DocumentTab';
-    } else if (tabIndex ===3) {
       tabSelectData.actionType = 'HistoryTab';
     }
     postData(tabSelectData);
@@ -103,35 +108,19 @@ export default function ProblemThree(data: any) {
         <Tabs onSelect={onSelect}>
           <TabList>
             <Tab>解答</Tab>
-            <Tab>課題</Tab>
-            <Tab>ドキュメント</Tab>
             <Tab>履歴</Tab>
           </TabList>
 
           <TabPanel>
-            <SolutionTab
+            <TaskTab
               problemData={problemData}
               onClick={handleClick}
-              problemDir="problem-03"
-              canvasWidth={width}
-              canvasHeight={height}
+              problemId={problemId}
+              canvasWidth={viewWidth}
+              canvasHeight={viewHeight}
+              problemText={problemText} 
             />
-          </TabPanel>
-
-          <TabPanel>
-            <ProblemTab
-              problemText={problemText}
-              problemPic={problemPic}
-              isExecutable={isExecutable}
-              instanceSource={instanceSource}
-              prevCode={prevCode}
-              canvasWidth={width}
-              canvasHeight={height}
-            />
-          </TabPanel>
-
-          <TabPanel>
-            <DocumentTab documentUrl={documentUrl}/>
+            
           </TabPanel>
 
           <TabPanel>

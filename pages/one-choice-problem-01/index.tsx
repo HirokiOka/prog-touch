@@ -1,12 +1,11 @@
 import { GetServerSideProps } from 'next';
 import problemPic from 'public/problem_01.png';
-import { FC, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { getProblemData } from 'utils/getProblemData';
-import ProblemTab from 'components/ProblemTab';
 import HistoryTab from 'components/HistoryTab';
-import SolutionTab from 'components/SolutionTab';
+import TaskTab from 'components/TaskTab';
 import TransitionButtons from 'components/TransitionButtons';
 import { postData } from  'utils/postData';
 
@@ -106,30 +105,20 @@ export default function ProblemOne(data: any) {
         <Tabs onSelect={onSelect}>
           <TabList>
             <Tab>解答</Tab>
-            <Tab>課題</Tab>
             <Tab>履歴</Tab>
           </TabList>
 
           <TabPanel>
-            <SolutionTab
+            <TaskTab
               problemData={problemData}
               onClick={handleClick}
               problemDir="one-choice-problem-01"
               canvasWidth={width}
               canvasHeight={height}
-            />
-          </TabPanel>
-
-          <TabPanel>
-            <ProblemTab
               problemText={problemText} 
               problemPic={problemPic} 
-              isExecutable={isExecutable}
-              instanceSource={instanceSource}
-              prevCode={prevCode}
-              canvasWidth={width}
-              canvasHeight={height}
             />
+            
           </TabPanel>
 
           <TabPanel>
