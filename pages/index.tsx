@@ -33,26 +33,25 @@ export default function Home() {
           </button>
         </div>
 
-        <h1 className="text-2xl font-bold p-1">プログラム課題</h1>
-
+        <h1 className="text-2xl font-bold p-1">課題一覧</h1>
         <ul className="text-xl list-disc list-inside">
           <li>
             <Link
-              href="/one-choice-problem-01"
+              href="/problem/1"
               className="text-blue-500 hover:underline">
               課題1
             </Link>
           </li>
           <li>
             <Link
-              href="/one-choice-problem-02"
+              href="/problem/2"
               className="text-blue-500 hover:underline">
               課題2
             </Link>
           </li>
           <li>
             <Link
-              href="/one-choice-problem-03"
+              href="/problem/3"
               className="text-blue-500 hover:underline">
               課題3
             </Link>

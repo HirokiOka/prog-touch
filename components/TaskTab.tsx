@@ -19,7 +19,7 @@ interface SolutionProps {
     prevViewCode: string;
   },
   onClick: (choiceText: string, optionType: string, problemState: string) => void;
-  problemDir: string;
+  problemId: string;
   canvasWidth: number;
   canvasHeight: number;
   problemText: string;
@@ -28,7 +28,6 @@ interface SolutionProps {
 
 type ProblemInfo = {
   problemText: string;
-  problemPic: any;
   instanceSource: string;
   prevCode: string;
   isExecutable: boolean;
@@ -36,7 +35,7 @@ type ProblemInfo = {
   canvasHeight: number;
 };
 
-const ProblemPane: FC<ProblemInfo> = ({ problemText, problemPic, instanceSource, prevCode, isExecutable, canvasWidth, canvasHeight }) => {
+const ProblemPane: FC<ProblemInfo> = ({ problemText }) => {
   return (
     <div className="md:w-2/3">
       <p className="bg-gray-300 rounded p-2 my-2">[課題]: {problemText}</p>
@@ -44,7 +43,9 @@ const ProblemPane: FC<ProblemInfo> = ({ problemText, problemPic, instanceSource,
   );
 };
 
-const TaskTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, canvasWidth, canvasHeight, problemText, problemPic }) => {
+const TaskTab: FC<SolutionProps> =  ({ problemData, onClick, problemId, canvasWidth, canvasHeight, problemText}) => {
+  const problemPic = `/problem_0${problemId}.png`;
+
   const optionType = problemData.optionType;
   const problemState = problemData.problemState;
   const isExecutable: boolean = problemData.isExecutable;
@@ -64,7 +65,6 @@ const TaskTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, canvasW
     <>
       <ProblemPane 
         problemText={problemText} 
-        problemPic={problemPic} 
         isExecutable={isExecutable}
         instanceSource={instanceSource}
         prevCode={prevCode}
@@ -96,7 +96,7 @@ const TaskTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, canvasW
           return (
             <li key={i} className={`${linkClass} mt-1 py-1 px-4 text-white rounded-full text-sm`}>
               <Link 
-                href={`/${problemDir}/?problemState=${choiceNext}`} 
+                href={`/problem/${problemId}?problemState=${choiceNext}`} 
                 onClick={async () => {
                   onClick(choiceText, optionType, problemState);
                 }}

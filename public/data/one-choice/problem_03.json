@@ -1,5 +1,9 @@
 {
   "problem": "二重ループと条件分岐を使う問題です. チェッカーを描画しましょう. 格子模様はi行j列の色は「i+jが偶数か？」で分岐するとうまく塗分けられます.",
+  "viewWidth": 120,
+  "viewHeight": 120,
+  "canvasWidth": 400,
+  "canvasHeight": 400,
   "start": {
     "optionType": "policy",
     "message": "初めに何をするか決めましょう.",

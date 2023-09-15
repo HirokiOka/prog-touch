@@ -28,6 +28,7 @@ const SketchComponent = memo<SourceProps>(function sketch({ instanceSource, prev
     } else {
       try {
         eval(prevCode);
+        p5.resizeCanvas(width, height);
       } catch (e: any) {
         console.log(e);
       }
