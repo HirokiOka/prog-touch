@@ -24,7 +24,7 @@ type ProblemData = {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { id } = context.query;
+  const { id }: any = context.query;
   const { props } = await getProblemData(context, id);
   return { props };
 };
