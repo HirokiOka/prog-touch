@@ -23,7 +23,6 @@ interface SolutionProps {
   canvasWidth: number;
   canvasHeight: number;
   problemText: string;
-  problemPic: any;
 }
 
 type ProblemInfo = {

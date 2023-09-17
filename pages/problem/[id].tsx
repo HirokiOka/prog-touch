@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return { props };
 };
 
-export default function ProblemOne(data: any): NextPage {
+export default function ProblemOne(data: any) {
 
   const [userName, setUserName] = useState('anonymous');
   const [prevCode, setPrevCode] = useState("");
