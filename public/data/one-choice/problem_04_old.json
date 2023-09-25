@@ -1,0 +1,94 @@
+{
+    "problem": "複数の円を描画しましょう. ただし,内側5つは青色, 外側5つは赤色で描きましょう.",
+    "viewWidth": 120,
+    "viewHeight": 120,
+    "canvasWidth": 120,
+    "canvasHeight": 120,
+    "start": {
+        "optionType": "policy",
+        "message": "どのアプローチで円を描画しますか？",
+        "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
+        "choices": [
+            {
+                "text": "円を10回描画する",
+                "next": "draw_10_circles"
+            },
+            {
+                "text": "内側の円と外側の円で色を塗り分ける",
+                "next": "change_stroke"
+            }
+        ]
+    },
+    "asnwer": {
+        "optionType": "answer",
+        "message": "正解です！以下が完成したコードです。",
+        "sourceCode": "function setup(){\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    if (i < 5) {\n      stroke(0, 0, 255);\n    } else {\n      stroke(255, 0, 0);\n    }\n    ellipse(width/2, height/2, d, d);\n  }\n}",
+        "choices": []
+    },
+    "draw_10_circles": {
+        "optionType": "design",
+        "message": "10回ループを回して円を描画するにはどうすれば良いでしょうか？",
+        "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
+        "choices": [
+            {
+                "text": "forループを使用する",
+                "next": "for_loop_coding"
+            },
+            {
+                "text": "whileループを使用する",
+                "next": "while_loop_error"
+            }
+        ]
+    },
+    "for_loop_coding": {
+        "optionType": "coding",
+        "message": "対応するコードを挿入しましょう。",
+        "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
+        "choices": [
+            {
+                "text": "for(let i = 0; i < 10; i++) { /* drawing code here */ }",
+                "next": "for_loop_correct"
+            }
+        ]
+    },
+    "change_stroke": {
+        "optionType": "design",
+        "message": "内側の円と外側の円で色を変更するにはどうすればよいでしょうか？",
+        "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
+        "choices": [
+            {
+                "text": "if文を使用して条件分岐する",
+                "next": "if_statement_coding"
+            }
+        ]
+    },
+    "if_statement_coding": {
+        "optionType": "coding",
+        "message": "対応するコードを挿入しましょう。",
+        "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
+        "choices": [
+            {
+                "text": "if (i < 5) { /* blue */ } else { /* red */ }",
+                "next": "if_statement_correct"
+            }
+        ]
+    },
+    "for_loop_correct": {
+        "optionType": "answer",
+        "message": "正解です！forループを使って10回円を描画しました。",
+        "sourceCode": "function setup(){\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    if (i < 5) {\n      stroke(0, 0, 255);\n    } else {\n      stroke(255, 0, 0);\n    }\n    ellipse(width/2, height/2, d, d);\n  }\n}",
+        "choices": []
+    },
+    "if_statement_correct": {
+        "optionType": "answer",
+        "message": "正解です！条件分岐を用いて色を変更しました。",
+        "sourceCode": "function setup(){\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    if (i < 5) {\n      stroke(0, 0, 255);\n    } else {\n      stroke(255, 0, 0);\n    }\n    ellipse(width/2, height/2, d, d);\n  }\n}",
+        "choices": []
+    },
+    "while_loop_error": {
+        "optionType": "error",
+        "message": "間違いです。この場合、forループが適しています。",
+        "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
+        "choices": []
+    }
+}
