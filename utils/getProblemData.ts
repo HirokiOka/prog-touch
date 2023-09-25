@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 
-const genReplaceNode = (canvasWidth: number, canvasHeight: number) => {
+const genReplaceNode = (viewWidth: number, viewHeight: number) => {
   return {
     "type": "VariableDeclaration",
     "declarations": [
@@ -29,13 +29,13 @@ const genReplaceNode = (canvasWidth: number, canvasHeight: number) => {
               "arguments": [
                 {
                   "type": "Literal",
-                  "value": canvasWidth,
-                  "raw": `${canvasWidth}`
+                  "value": viewWidth,
+                  "raw": `${viewWidth}`
                 },
                 {
                   "type": "Literal",
-                  "value": canvasHeight,
-                  "raw": `${canvasHeight}`
+                  "value": viewHeight,
+                  "raw": `${viewHeight}`
                 }
               ]
             },
@@ -57,18 +57,23 @@ const genReplaceNode = (canvasWidth: number, canvasHeight: number) => {
   };
 };
 
-export const getProblemData = async (context: any, filename: string, canvasWidth: number, canvasHeight: number) => {
+export const getProblemData = async (context: any, id: string) => {
   let problemState = 'start';
   if (context.query.problemState !== undefined) {
     problemState = context.query.problemState;
   }
 
+  const filename = `one-choice/problem_0${id}.json`;
   const problemDataPath = path.join(process.cwd(), 'public', 'data', filename);
   const p5MethodsPath = path.join(process.cwd(), 'public', 'data', 'p5_methods.json');
 
   const p5Methods = JSON.parse(fs.readFileSync(p5MethodsPath).toString());
   const problemData = JSON.parse(fs.readFileSync(problemDataPath).toString());
   const problemDataContent = problemData[problemState];
+  const viewWidth = problemData.viewWidth;
+  const viewHeight = problemData.viewHeight;
+  const canvasWidth = problemData.canvasWidth;
+  const canvasHeight = problemData.canvasHeight;
 
   const sourceCode = problemDataContent.sourceCode;
 
@@ -92,13 +97,21 @@ export const getProblemData = async (context: any, filename: string, canvasWidth
   }
 
   let instanceSource: string = ast !== '' ? generate(ast) : '';
-  if (canvasWidth / canvasHeight === 1 && 400 <= canvasWidth) {
+  const resizeSnippet = `
+  cnv.style("width", "${viewWidth}px");
+  cnv.style("height", "${viewHeight}px");
+  `;
+  instanceSource += resizeSnippet;
+  console.log(instanceSource);
+  /*
+  if (viewWidth / viewHeight === 1 && 400 <= viewWidth) {
     const resizeSnippet = `
     cnv.style("width", "140px");
     cnv.style("height", "140px");
     `;
     instanceSource += resizeSnippet;
   }
+  */
   const documentUrl = problemDataContent.documentUrl ?? ''; 
   const suggestion = problemDataContent.suggestion ?? '';
   const message = problemDataContent.message ?? '';
@@ -107,6 +120,7 @@ export const getProblemData = async (context: any, filename: string, canvasWidth
 
   return {
     props : {
+      id: id,
       problem: problemData.problem,
       problemState: problemState,
       optionType: problemDataContent.optionType,
@@ -118,6 +132,8 @@ export const getProblemData = async (context: any, filename: string, canvasWidth
       tabIndex: tabIndex,
       instanceSource: instanceSource,
       choices: problemDataContent.choices,
+      viewWidth: viewWidth,
+      viewHeight: viewHeight
     },
   };
 };

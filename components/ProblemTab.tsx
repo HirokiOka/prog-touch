@@ -22,7 +22,7 @@ const ProblemTab: FC<ProblemInfo> = ({ problemText, problemPic, instanceSource, 
   }
   return (
     <div className="md:w-2/3">
-      <p className="bg-gray-300 rounded p-2 my-2">[問題]: {problemText}</p>
+      <p className="bg-gray-300 rounded p-2 my-2">[課題]: {problemText}</p>
       <div className="grid grid-cols-2 md:grid-cols-4">
         <div>
         <p>正解：</p>

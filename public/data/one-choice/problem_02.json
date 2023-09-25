@@ -1,5 +1,9 @@
 {
   "problem": "繰り返しを使って描画する練習として, 9本の縦線を書くプログラムを作成してみましょう. それぞれの線の間隔は10pxです.",
+  "viewWidth": 100,
+  "viewHeight": 100,
+  "canvasWidth": 100,
+  "canvasHeight": 100,
   "start": {
     "optionType": "policy",
     "message": "初めに何をするか決めましょう.",
