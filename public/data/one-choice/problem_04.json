@@ -4,163 +4,257 @@
   "viewHeight": 120,
   "canvasWidth": 120,
   "canvasHeight": 120,
+
   "start": {
     "optionType": "policy",
-    "message": "どのアプローチで円を描画しますか？",
+    "message": "何をしますか？",
     "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
     "choices": [
       {
         "text": "円を10回描画する",
-        "next": "first_draw_10_circles"
+        "next": "draw_ten"
       },
       {
-        "text": "内側の円と外側の円で色を塗り分ける",
-        "next": "first_change_stroke"
+        "text": "図形の塗りつぶしをなくす",
+        "next": "noFill_algorithm"
       }
     ]
   },
 
-  "draw_10_circles": {
-    "optionType": "design",
-    "message": "10回円を描画するにはどうすれば良いでしょうか？",
+  "noFill_algorithm": {
+    "optionType": "algorithm",
+    "message": "何をしますか？",
     "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
     "choices": [
       {
-        "text": "forループを使用する",
-        "next": "for_loop_coding"
-      },
-      {
-        "text": "円を描く関数を10回書く",
-        "next": "manual_error"
+        "text": "塗りつぶしをなくす関数を使う",
+        "next": "noFill_confirm"
       }
     ]
-  },
-  "for_loop_coding": {
-    "optionType": "coding",
-    "message": "対応するコードを挿入しましょう。",
-    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
-    "choices": [
-      {
-        "text": "for(let i = 0; i < 10; i++) { }",
-        "next": "for_loop_correct"
-      }
-    ]
-  },
-  "change_stroke": {
-    "optionType": "design",
-    "message": "内側の円と外側の円で色を変更するにはどうすればよいでしょうか？",
-    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
-    "choices": [
-      {
-        "text": "if文を使用して条件分岐する",
-        "next": "if_statement_coding"
-      }
-    ]
-  },
-  "if_statement_coding": {
-    "optionType": "coding",
-    "message": "対応するコードを挿入しましょう。",
-    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
-    "choices": [
-      {
-        "text": "if (i < 5) { /* blue */ } else { /* red */ }",
-        "next": "if_statement_correct"
-      }
-    ]
-  },
-  "for_loop_correct": {
-    "optionType": "answer",
-    "message": "正解です！forループを使って10回円を描画しました。",
-    "sourceCode": "function setup(){\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    if (i < 5) {\n      stroke(0, 0, 255);\n    } else {\n      stroke(255, 0, 0);\n    }\n    ellipse(width/2, height/2, d, d);\n  }\n}",
-    "choices": []
   },
 
-  "if_statement_correct": {
-    "optionType": "answer",
-    "message": "正解です！条件分岐を用いて色を変更しました。",
-    "sourceCode": "function setup(){\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    if (i < 5) {\n      stroke(0, 0, 255);\n    } else {\n      stroke(255, 0, 0);\n    }\n    ellipse(width/2, height/2, d, d);\n  }\n}",
-    "choices": []
-  },
-
-  "while_loop_error": {
-    "optionType": "error",
-    "message": "間違いです。この場合、forループが適しています。",
-    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
-    "choices": []
-  },
-
-  "first_draw_10_circles": {
-    "optionType": "design",
-    "message": "1回目: 10回ループを回して円を描画するにはどうすれば良いでしょうか？",
+  "noFill_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか？",
     "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
     "choices": [
       {
-        "text": "forループを使用する",
-        "next": "first_for_loop_coding"
-      },
-      {
-        "text": "円を描く関数を10回書く",
-        "next": "manual_error"
+        "text": "noFill();",
+        "next": "noFill"
       }
     ]
   },
-  "first_for_loop_coding": {
-    "optionType": "coding",
-    "message": "1回目: 対応するコードを挿入しましょう。",
-    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
-    "choices": [
-      {
-        "text": "for(let i = 0; i < 10; i++) { let d = (i + 1) * 10;  ellipse(width/2, height/2, d, d); }",
-        "next": "second_policy"
-      }
-    ]
-  },
-  "second_policy": {
+
+  "noFill": {
     "optionType": "policy",
-    "message": "次に何をしますか？",
-    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n for (let i = 0; i < 10; i++) {\n    let d = (i + 1) * 10;\n      ellipse(width / 2, height / 2, d, d);\n    }\n}",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n}",
     "choices": [
       {
-        "text": "内側の円と外側の円で色を塗り分ける",
-        "next": "second_change_stroke"
+        "text": "円を10回描画する",
+        "next": "noFill_draw_ten"
       }
     ]
   },
 
-  "second_change_stroke": {
-    "optionType": "design",
-    "message": "2回目: 内側の円と外側の円で色を変更するにはどうすればよいでしょうか？",
-    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n for (let i = 0; i < 10; i++) {\n    let d = (i + 1) * 10;\n      ellipse(width / 2, height / 2, d, d);\n    }\n}",
+  "noFill_draw_ten": {
+    "optionType": "algorithm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n}",
     "choices": [
       {
-        "text": "if文を使用して条件分岐する",
-        "next": "second_if_statement_coding"
+        "text": "円を1個描いてみる",
+        "next": "noFill_draw_one_confirm"
+      },
+      {
+        "text": "繰り返しを使って円を10個描く",
+        "next": "noFill_loop_draw_confirm"
       }
     ]
   },
 
-  "second_if_statement_coding": {
-    "optionType": "coding",
-    "message": "2回目: 対応するコードを挿入しましょう。",
-    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n for (let i = 0; i < 10; i++) {\n    let d = (i + 1) * 10;\n      ellipse(width / 2, height / 2, d, d);\n    }\n}",
+  "noFill_draw_one_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n}",
     "choices": [
       {
-        "text": "if (i < 5) { /* blue */ } else { /* red */ }",
-        "next": "final_answer"
+        "text": "ellipse(width/2, height/2, 10, 10);",
+        "next": "noFill_draw_one"
       }
     ]
   },
 
-  "asnwer": {
+  "noFill_draw_one": {
+    "optionType": "algorithm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  ellipse(width/2, height/2, 10, 10);\n}",
+    "choices": [
+      {
+        "text": "繰り返しを使って円を10個描く",
+        "next": "noFill_loop_draw_confirm"
+      }
+    ]
+  },
+
+  "noFill_loop_draw_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n}",
+    "choices": [
+      {
+        "text": "for(let i = 0; i < 10; i++) { ellipse(width/2, height/2, (i + 1) * 10, (i + 1) * 10); }",
+        "next": "noFill_loop_draw"
+      }
+    ]
+  },
+
+  "noFill_loop_draw": {
+    "optionType": "algorithm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    ellipse(width/2, height/2, d, d);\n  }\n}",
+    "choices": [
+      {
+        "text": "条件分岐を使い, 内側5個を青色，外側を赤色で描く",
+        "next": "noFill_if_stroke_confirm"
+      }
+    ]
+  },
+
+  "noFill_if_stroke_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    ellipse(width/2, height/2, d, d);\n  }\n}",
+    "choices": [
+      {
+        "text": "if (i < 5) { stroke(0, 0, 255); } else { stroke(255, 0, 0); }",
+        "next": "noFill_if_stroke"
+      }
+    ]
+  },
+
+  "noFill_if_stroke": {
     "optionType": "answer",
-    "message": "正解です！以下が完成したコードです。",
-    "sourceCode": "function setup(){\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    if (i < 5) {\n      stroke(0, 0, 255);\n    } else {\n      stroke(255, 0, 0);\n    }\n    ellipse(width/2, height/2, d, d);\n  }\n}",
-    "choices": []
+    "message": "正解です🎉",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    if (i < 5) {\n      stroke(0, 0, 255);\n    } else {\n      stroke(255, 0, 0);\n    }\n    ellipse(width/2, height/2, d, d);\n  }\n}",
+    "choices": [
+    ]
   },
-  "final_answer": {
-    "optionType": "answer",
-    "message": "正解です！すべてのフェーズを完了しました。",
-    "sourceCode": "function setup(){\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    if (i < 5) {\n      stroke(0, 0, 255);\n    } else {\n      stroke(255, 0, 0);\n    }\n    ellipse(width/2, height/2, d, d);\n  }\n}",
-    "choices": []
+
+  "draw_ten": {
+    "optionType": "algorithm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
+    "choices": [
+      {
+        "text": "中心に円を1個描く",
+        "next": "draw_one_confirm"
+      },
+      {
+        "text": "繰り返しを使って円を10個描く",
+        "next": "loop_draw_confirm"
+      }
+    ]
+  },
+
+  "draw_one_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
+    "choices": [
+      {
+        "text": "ellipse(width/2, height/2, 10, 10);",
+        "next": "draw_one"
+      }
+    ]
+  },
+
+  "draw_one": {
+    "optionType": "algorithm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  ellipse(width/2, height/2, 10, 10);\n}",
+    "choices": [
+      {
+        "text": "円の塗りつぶしを無くす",
+        "next": "draw_one_noFill_confirm"
+      },
+      {
+        "text": "繰り返しを使って円を10個描く",
+        "next": "draw_one_loop_confirm"
+      }
+    ]
+  },
+
+  "draw_one_loop_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  ellipse(width/2, height/2, 10, 10);\n}",
+    "choices": [
+      {
+        "text": "for(let i = 0; i < 10; i++) { ellipse(width/2, height/2, (i + 1) * 10, (i + 1) * 10); }",
+        "next": "draw_one_loop"
+      }
+    ]
+  },
+
+  "draw_one_loop": {
+    "optionType": "algorithm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    ellipse(width/2, height/2, d, d);\n  }\n}",
+    "choices": [
+      {
+        "text": "円の塗りつぶしを無くす",
+        "next": "loop_draw_noFill_confirm"
+      }
+    ]
+  },
+
+  "draw_one_noFill_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  ellipse(width/2, height/2, 10, 10);\n}",
+    "choices": [
+      {
+        "text": "noFill();",
+        "next": "noFill_draw_one"
+      }
+    ]
+  },
+
+  "loop_draw_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
+    "choices": [
+      {
+        "text": "for(let i = 0; i < 10; i++) { ellipse(width/2, height/2, (i + 1) * 10, (i + 1) * 10); }",
+        "next": "loop_draw"
+      }
+    ]
+  },
+
+  "loop_draw": {
+    "optionType": "algorithm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    ellipse(width/2, height/2, d, d);\n  }\n}",
+    "choices": [
+      {
+        "text": "円の塗りつぶしを無くす",
+        "next": "loop_draw_noFill_confirm"
+      }
+    ]
+  },
+
+  "loop_draw_noFill_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか？",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    ellipse(width/2, height/2, d, d);\n  }\n}",
+    "choices": [
+      {
+        "text": "noFill();",
+        "next": "noFill_loop_draw"
+      }
+    ]
   }
+
 }

@@ -87,9 +87,9 @@ const TaskTab: FC<SolutionProps> =  ({ problemData, onClick, problemId, canvasWi
           let linkClass = '';
           if (optionType === 'policy') {
             linkClass = 'bg-blue-500 hover:bg-blue-700';
-          } else if (optionType === 'design') {
+          } else if (optionType === 'design' || optionType === 'algorithm') {
             linkClass = 'bg-yellow-500 hover:bg-yellow-700';
-          } else if (optionType === 'coding') {
+          } else if (optionType === 'coding' || optionType === 'confirm') {
             linkClass = 'bg-purple-500 hover:bg-purple-700 text-white font-sans';
           }
           return (

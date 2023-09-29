@@ -30,9 +30,9 @@ const HistoryTab = () => {
           let classType = '';
           if (policyData['type'] === 'policy') {
             classType = 'px-y bg-blue-500 '
-          } else if (policyData['type'] === 'design') {
+          } else if (policyData['type'] === 'design' || policyData['type'] === 'algorithm') {
             classType = 'bg-yellow-500 mx-4';
-          } else if (policyData['type'] === 'coding') {
+          } else if (policyData['type'] === 'coding' || policyData['type'] === 'confirm') {
             classType = 'bg-purple-500  font-sans mx-8';
           } else if (policyData['type'] === 'error') {
             classType = 'bg-red-500 mx-8';
