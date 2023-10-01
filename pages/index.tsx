@@ -35,6 +35,11 @@ export default function Home() {
         </div>
 
         <h1 className="text-2xl font-bold p-1">課題一覧</h1>
+            <Link
+              href="/problem/1"
+              className="text-blue-500 hover:underline">
+              チュートリアル課題
+            </Link>
         <h2 className="text-xl">2. 計算で図形を描く</h2>
         <ul className="text-lg list-disc list-inside px-6">
           <li>
