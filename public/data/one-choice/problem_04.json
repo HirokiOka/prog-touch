@@ -33,6 +33,10 @@
       {
         "text": "円を描く関数を使い, 中心に円を1個描く",
         "next": "draw_one_confirm"
+      },
+      {
+        "text": "円を描く関数を使い, 原点に円を1個描く",
+        "next": "draw_one_origin_confirm"
       }
     ]
   },
@@ -45,6 +49,18 @@
       {
         "text": "ellipse(width/2, height/2, 10, 10);",
         "next": "draw_one"
+      }
+    ]
+  },
+
+  "draw_one_origin_confirm": {
+    "optionType": "confirm",
+    "message": "円を原点に1個描くコードを確認しましょう",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
+    "choices": [
+      {
+        "text": "ellipse(0, 0, 10, 10);",
+        "next": "draw_one_error"
       }
     ]
   },
@@ -97,6 +113,22 @@
       {
         "text": "繰り返しを使って円を10個描く",
         "next": "draw_one_loop_confirm"
+      },
+      {
+        "text": "円を書く関数を10回書く",
+        "next": "draw_one_tenx_confirm"
+      }
+    ]
+  },
+
+  "draw_one_tenx_confirm": {
+    "optionType": "confirm",
+    "message": "円を書く関数を10回使うコードを確認しましょう",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  ellipse(width/2, height/2, 10, 10);\n}",
+    "choices": [
+      {
+        "text": "ellipse(width/2, height/2, 10, 10); ellipse(width/2, height/2, 20, 20); ellipse(width/2, height/2, 30, 30); ellipse(width/2, height/2, 40, 40); ellipse(width/2, height/2, 50, 50); ellipse(width/2, height/2, 60, 60); ellipse(width/2, height/2, 70, 70); ellipse(width/2, height/2, 80, 80); ellipse(width/2, height/2, 90, 90); ellipse(width/2, height/2, 100, 100);",
+        "next": "draw_one_tenx_error"
       }
     ]
   },
@@ -157,6 +189,10 @@
       {
         "text": "繰り返しを使って円を10個描く",
         "next": "loop_draw_confirm"
+      },
+      {
+        "text": "円を描く関数を10回使う",
+        "next": "draw_ten_tenx_confirm"
       }
     ]
   },
@@ -172,6 +208,19 @@
       }
     ]
   },
+
+  "draw_ten_tenx_confirm": {
+    "optionType": "confirm",
+    "message": "円を書く関数を10回使うコードを確認しましょう",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n}",
+    "choices": [
+      {
+        "text": "ellipse(width/2, height/2, 10, 10); ellipse(width/2, height/2, 20, 20); ellipse(width/2, height/2, 30, 30); ellipse(width/2, height/2, 40, 40); ellipse(width/2, height/2, 50, 50); ellipse(width/2, height/2, 60, 60); ellipse(width/2, height/2, 70, 70); ellipse(width/2, height/2, 80, 80); ellipse(width/2, height/2, 90, 90); ellipse(width/2, height/2, 100, 100);",
+        "next": "draw_one_tenx_error"
+      }
+    ]
+  },
+
 
   "loop_draw": {
     "optionType": "policy",
@@ -245,6 +294,10 @@
       {
         "text": "円を描く関数を使い, 中心に円を1個描く",
         "next": "noFill_draw_one_confirm"
+      },
+      {
+        "text": "円を描く関数を使い, 原点に円を1個描く",
+        "next": "noFill_draw_one_origin_confirm"
       }
     ]
   },
@@ -261,13 +314,25 @@
     ]
   },
 
+  "noFill_draw_one_origin_confirm": {
+    "optionType": "confirm",
+    "message": "円を原点に1個描くコードを確認しましょう",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n}",
+    "choices": [
+      {
+        "text": "ellipse(0, 0, 10, 10);",
+        "next": "noFill_draw_one_origin_error"
+      }
+    ]
+  },
+
   "noFill_draw_one": {
     "optionType": "policy",
     "message": "次に何をしますか？",
     "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  ellipse(width/2, height/2, 10, 10);\n}",
     "choices": [
       {
-        "text": "繰り返しを使って円を10個描く",
+        "text": "円を10個描く",
         "next": "noFill_loop_draw_algorithm"
       }
     ]
@@ -281,6 +346,10 @@
       {
         "text": "繰り返しを使って円を10個描く",
         "next": "noFill_loop_draw_confirm"
+      },
+      {
+        "text": "円を描く関数を10回使う",
+        "next": "noFill_loop_draw_tenx_confirm"
       }
     ]
   },
@@ -293,6 +362,18 @@
       {
         "text": "for(let i = 0; i < 10; i++) { ellipse(width/2, height/2, (i + 1) * 10, (i + 1) * 10); }",
         "next": "noFill_loop_draw"
+      }
+    ]
+  },
+
+  "noFill_loop_draw_tenx_confirm": {
+    "optionType": "confirm",
+    "message": "円を10個描くコードを確認しましょう",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n}",
+    "choices": [
+      {
+        "text": "ellipse(width/2, height/2, 10, 10); ellipse(width/2, height/2, 20, 20); ellipse(width/2, height/2, 30, 30); ellipse(width/2, height/2, 40, 40); ellipse(width/2, height/2, 50, 50); ellipse(width/2, height/2, 60, 60); ellipse(width/2, height/2, 70, 70); ellipse(width/2, height/2, 80, 80); ellipse(width/2, height/2, 90, 90); ellipse(width/2, height/2, 100, 100);",
+        "next": "noFill_loop_draw_tenx_error"
       }
     ]
   },
@@ -317,6 +398,22 @@
       {
         "text": "条件分岐を使い, 内側の円5個を青色,外側の円5個を赤色で描く",
         "next": "noFill_if_stroke_confirm"
+      },
+      {
+        "text": "条件分岐を使い, 外側の円5個を青色,内側の円5個を赤色で描く",
+        "next": "noFill_if_stroke_alt_confirm"
+      }
+    ]
+  },
+  
+  "noFill_if_stroke_alt_confirm": {
+    "optionType": "confirm",
+    "message": "条件分岐で色を塗り分けるコードを確認しましょう",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    ellipse(width/2, height/2, d, d);\n  }\n}",
+    "choices": [
+      {
+        "text": "if (i < 5) { stroke(255, 0, 0); } else { stroke(0, 0, 255); }",
+        "next": "noFill_if_stroke_error"
       }
     ]
   },
@@ -337,6 +434,46 @@
     "optionType": "answer",
     "message": "🎉正解です🎉",
     "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    if (i < 5) {\n      stroke(0, 0, 255);\n    } else {\n      stroke(255, 0, 0);\n    }\n    ellipse(width/2, height/2, d, d);\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "draw_one_error": {
+    "optionType": "error",
+    "message": "p5.jsでは原点は左上です. キャンバスの中心に円を描きましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  ellipse(0, 0, 10, 10);\n}",
+    "choices": [
+    ]
+  },
+
+  "draw_one_tenx_error": {
+    "optionType": "error",
+    "message": "重複する処理がたくさんあります. 繰り返しを使ってみましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  ellipse(width/2, height/2, 10, 10);\n  ellipse(width/2, height/2, 20, 20);\n  ellipse(width/2, height/2, 30, 30);\n  ellipse(width/2, height/2, 40, 40);\n  ellipse(width/2, height/2, 50, 50);\n  ellipse(width/2, height/2, 60, 60);\n  ellipse(width/2, height/2, 70, 70);\n  ellipse(width/2, height/2, 80, 80);\n  ellipse(width/2, height/2, 90, 90);\n  ellipse(width/2, height/2, 100, 100);\n}",
+    "choices": [
+    ]
+  },
+
+  "noFill_if_stroke_error": {
+    "optionType": "answer",
+    "message": "塗る色が逆です.",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  for(let i = 0; i < 10; i++){\n    let d = (i + 1) * 10;\n    if (i < 5) {\n      stroke(255, 0, 0);\n    } else {\n      stroke(0, 0, 255);\n    }\n    ellipse(width/2, height/2, d, d);\n  }\n}",
+    "choices": [
+    ]
+  },
+
+  "noFill_draw_one_origin_error": {
+    "optionType": "error",
+    "message": "p5.jsでは原点は左上です. キャンバスの中心に円を描きましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  ellipse(0, 0, 10, 10);\n}",
+    "choices": [
+    ]
+  },
+
+  "noFill_loop_draw_tenx_error": {
+    "optionType": "error",
+    "message": "重複する処理がたくさんあります. 繰り返しを使ってみましょう.",
+    "sourceCode": "function setup() {\n  createCanvas(120, 120);\n  background(255);\n  noFill();\n  ellipse(width/2, height/2, 10, 10);\n  ellipse(width/2, height/2, 20, 20);\n  ellipse(width/2, height/2, 30, 30);\n  ellipse(width/2, height/2, 40, 40);\n  ellipse(width/2, height/2, 50, 50);\n  ellipse(width/2, height/2, 60, 60);\n  ellipse(width/2, height/2, 70, 70);\n  ellipse(width/2, height/2, 80, 80);\n  ellipse(width/2, height/2, 90, 90);\n  ellipse(width/2, height/2, 100, 100);\n}",
     "choices": [
     ]
   }
