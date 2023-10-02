@@ -27,6 +27,7 @@ interface SolutionProps {
 
 const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, canvasWidth, canvasHeight }) => {
   const optionType = problemData.optionType;
+  const problemId = problemData.problemId;
   const problemState = problemData.problemState;
   const isExecutable: boolean = problemData.isExecutable;
   const sourceCode = problemData.sourceCode;
