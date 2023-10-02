@@ -60,6 +60,8 @@ const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, can
             linkClass = 'bg-yellow-500 hover:bg-yellow-700';
           } else if (optionType === 'coding') {
             linkClass = 'bg-purple-500 hover:bg-purple-700 text-white font-sans';
+          } else if (optionType === 'answer') {
+            onClick('answer', optionType, problemState, problemId);
           }
           return (
             <li key={i} className={`${linkClass} mt-1 py-1 px-4 text-white rounded-full text-sm`}>
