@@ -9,12 +9,13 @@ function removeChoiceItems() {
   });
 }
 
-async function handleReload() {
+async function handleReload(problemId: string) {
   if (typeof sessionStorage === "undefined") return;
   const backActionData = {
     'state': '',
     'action': 'back',
-    'actionType': 'back'
+    'actionType': 'back',
+    'problemId': problemId
   };
   await postData(backActionData);
   if (sessionStorage.length !== 0) {
@@ -23,14 +24,14 @@ async function handleReload() {
   }
 }
 
-const TransitionButtons = () => {
+const TransitionButtons = (problemId: any) => {
   const router = useRouter();
   return (
     <>
       <button 
         className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-1 rounded"
         onClick={async () => {
-          handleReload();
+          handleReload(problemId);
           history.back();
         }}>
         一手戻る

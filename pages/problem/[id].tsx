@@ -35,10 +35,11 @@ export default function ProblemOne(data: any) {
   const [prevCode, setPrevCode] = useState("");
   const [prevViewCode, setPrevViewCode] = useState("");
   const problemText: string = data.problem;
+  const problemId: string = data.problemId;
   const tabIndex: number = data.tabIndex;
   const instanceSource: string = data.instanceSource;
   const isExecutable: boolean = data.isExecutable;
-  const problemId = data.id;
+  const problemNumber = data.id;
   const viewWidth = data.viewWidth;
   const viewHeight = data.viewHeight;
 
@@ -81,6 +82,7 @@ export default function ProblemOne(data: any) {
       'state': problemState,
       'action': choiceText,
       'actionType': optionType,
+      'problemId': problemId
     };
     //await postData(userActionData);
     postData(userActionData);
@@ -91,6 +93,7 @@ export default function ProblemOne(data: any) {
       'state': data.problemState,
       'action': 'tabSelect',
       'actionType': '',
+      'problemId': problemId
     };
     if (tabIndex === 0) {
       tabSelectData.actionType = 'SolutionTab';
@@ -115,7 +118,7 @@ export default function ProblemOne(data: any) {
             <TaskTab
               problemData={problemData}
               onClick={handleClick}
-              problemId={problemId}
+              problemNumber={problemNumber}
               canvasWidth={viewWidth}
               canvasHeight={viewHeight}
               problemText={problemText} 
@@ -128,7 +131,9 @@ export default function ProblemOne(data: any) {
           </TabPanel>
         </Tabs>
 
-        <TransitionButtons />
+        <TransitionButtons
+          problemId={problemId}
+        />
       </main>
   );
 }

@@ -1,4 +1,5 @@
 {
+  "problemId": "tutorial",
   "problem": "日本国旗を描いてみましょう. 赤い円の直径はcanvasの縦幅の3/5です.",
   "viewWidth": 160,
   "viewHeight": 120,

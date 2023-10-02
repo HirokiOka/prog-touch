@@ -6,6 +6,7 @@ type UserActionData = {
   'state': string;
   'action': string;
   'actionType': string;
+  'problemId': string;
 };
 
 export async function postData (userActionData: UserActionData) {
@@ -24,6 +25,7 @@ export async function postData (userActionData: UserActionData) {
     'state': userActionData.state,
     'action': userActionData.action,
     'action_type': userActionData.actionType,
+    'problem_id': userActionData.problemId
   };
   const res = await fetch('/api/click',{
     method: 'POST',
