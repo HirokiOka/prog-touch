@@ -12,8 +12,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const problem_id = reqData.problem_id;
     try {
       await sql`INSERT INTO user_log (user_name, clicked_time, state, action, action_type, problem_id) VALUES (${user_name}, ${clicked_time}, ${state}, ${action}, ${action_type}, ${problem_id})`;
-      res.status(200).json({ status: 'success', user_name, clicked_time, state, action, action_type });
+      res.status(200).json({ status: 'success', user_name, clicked_time, state, action, action_type, problem_id });
     } catch (e) {
+      console.log(e);
       res.status(500).json({ status: 'error', error: e });
     }
   } else {

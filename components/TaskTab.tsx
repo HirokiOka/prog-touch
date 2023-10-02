@@ -9,6 +9,7 @@ import Image from 'next/image';
 interface SolutionProps {
   problemData: {
     problemState: string;
+    problemId: string;
     message: string;
     choices: string[];
     optionType: string;
@@ -18,7 +19,7 @@ interface SolutionProps {
     prevCode: string;
     prevViewCode: string;
   },
-  onClick: (choiceText: string, optionType: string, problemState: string) => void;
+  onClick: (choiceText: string, optionType: string, problemState: string, problemId: string) => void;
   problemNumber: string;
   canvasWidth: number;
   canvasHeight: number;
@@ -46,6 +47,7 @@ const TaskTab: FC<SolutionProps> =  ({ problemData, onClick, problemNumber, canv
   const problemPic = `/problem_0${problemNumber}.png`;
 
   const optionType = problemData.optionType;
+  const problemId: string = problemData.problemId;
   const problemState = problemData.problemState;
   const isExecutable: boolean = problemData.isExecutable;
   const sourceCode = problemData.sourceCode;
@@ -92,14 +94,14 @@ const TaskTab: FC<SolutionProps> =  ({ problemData, onClick, problemNumber, canv
           } else if (optionType === 'coding' || optionType === 'confirm') {
             linkClass = 'bg-purple-500 hover:bg-purple-700 text-white font-sans';
           } else if (optionType === 'answer') {
-            onClick("", optionType, problemState);
+            onClick("", optionType, problemState, problemId);
           }
           return (
             <li key={i} className={`${linkClass} mt-1 py-1 px-4 text-white rounded-full text-sm`}>
               <Link 
                 href={`/problem/${problemNumber}?problemState=${choiceNext}`} 
                 onClick={async () => {
-                  onClick(choiceText, optionType, problemState);
+                  onClick(choiceText, optionType, problemState, problemId);
                 }}
                 className="">
                 {i+1}: {choiceText}

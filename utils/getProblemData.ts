@@ -102,7 +102,6 @@ export const getProblemData = async (context: any, id: string) => {
   cnv.style("height", "${viewHeight}px");
   `;
   instanceSource += resizeSnippet;
-  console.log(instanceSource);
   /*
   if (viewWidth / viewHeight === 1 && 400 <= viewWidth) {
     const resizeSnippet = `
@@ -122,6 +121,7 @@ export const getProblemData = async (context: any, id: string) => {
     props : {
       id: id,
       problem: problemData.problem,
+      problemId: problemData.problemId,
       problemState: problemState,
       optionType: problemDataContent.optionType,
       suggestion: suggestion,

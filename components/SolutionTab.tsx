@@ -8,6 +8,7 @@ import { calcDiffLineNumbers } from 'utils/calcDiffLineNumbers';
 interface SolutionProps {
   problemData: {
     problemState: string;
+    problemId: string;
     message: string;
     choices: string[];
     optionType: string;
@@ -17,7 +18,7 @@ interface SolutionProps {
     prevCode: string;
     prevViewCode: string;
   },
-  onClick: (choiceText: string, optionType: string, problemState: string) => void;
+  onClick: (choiceText: string, optionType: string, problemState: string, problemId: string) => void;
   problemDir: string;
   canvasWidth: number;
   canvasHeight: number;
@@ -64,7 +65,7 @@ const SolutionTab: FC<SolutionProps> =  ({ problemData, onClick, problemDir, can
               <Link 
                 href={`/${problemDir}/?problemState=${choiceNext}`} 
                 onClick={async () => {
-                  onClick(choiceText, optionType, problemState);
+                  onClick(choiceText, optionType, problemState, problemId);
                 }}
                 className="">
                 {i+1}: {choiceText}

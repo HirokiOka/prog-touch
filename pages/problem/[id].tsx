@@ -1,7 +1,6 @@
 import { GetServerSideProps } from 'next';
-import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import problemPic from 'public/problem_01.png';
+//import type { NextPage } from 'next';
+//import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -13,6 +12,7 @@ import { postData } from  'utils/postData';
 
 type ProblemData = {
   problemState: string;
+  problemId: string;
   message: string;
   choices: string[];
   optionType: string;
@@ -45,6 +45,7 @@ export default function ProblemOne(data: any) {
 
   const problemData: ProblemData = {
     problemState: data.problemState,
+    problemId: data.problemId,
     message: data.message,
     choices: [...data.choices],
     optionType: data.optionType,
@@ -74,7 +75,7 @@ export default function ProblemOne(data: any) {
   }, []);
 
 
-  const handleClick = async (choiceText: string, optionType: string, problemState: string) => {
+  const handleClick = async (choiceText: string, optionType: string, problemState: string, problemId: string) => {
     if (isExecutable) setPrevCode(instanceSource);
     setPrevViewCode(data.sourceCode);
     updateSessionStorage(choiceText, optionType);
