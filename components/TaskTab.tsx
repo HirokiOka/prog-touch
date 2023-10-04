@@ -14,8 +14,10 @@ interface SolutionProps {
     choices: string[];
     optionType: string;
     isExecutable: boolean;
-    instanceSource: string;
-    sourceCode: string;
+    instancedSetup: string;
+    instancedDraw: string;
+    setupFunction: string;
+    drawFunction: string;
     prevCode: string;
     prevViewCode: string;
   },
@@ -28,7 +30,8 @@ interface SolutionProps {
 
 type ProblemInfo = {
   problemText: string;
-  instanceSource: string;
+  instancedSetup: string;
+  instancedDraw: string;
   prevCode: string;
   isExecutable: boolean;
   canvasWidth: number;
@@ -60,11 +63,12 @@ const TaskTab: FC<SolutionProps> =  ({
   const problemId: string = problemData.problemId;
   const problemState = problemData.problemState;
   const isExecutable: boolean = problemData.isExecutable;
-  const sourceCode = problemData.sourceCode;
+  const setupFunction = problemData.setupFunction;
   const prevCode = problemData.prevCode;
   const prevViewCode = problemData.prevViewCode;
-  const instanceSource = problemData.instanceSource;
-  const diffLines = calcDiffLineNumbers(prevViewCode, sourceCode);
+  const instancedSetup = problemData.instancedSetup;
+  const instancedDraw = problemData.instancedDraw;
+  const diffLines = calcDiffLineNumbers(prevViewCode, setupFunction);
   let width = canvasWidth;
   let height = canvasHeight;
   if (width / height === 1 && 400 <= width) {
@@ -77,7 +81,8 @@ const TaskTab: FC<SolutionProps> =  ({
       <ProblemPane 
         problemText={problemText} 
         isExecutable={isExecutable}
-        instanceSource={instanceSource}
+        instancedSetup={instancedSetup}
+        instancedDraw={instancedDraw}
         prevCode={prevCode}
         canvasWidth={canvasWidth}
         canvasHeight={canvasHeight}
@@ -135,8 +140,9 @@ const TaskTab: FC<SolutionProps> =  ({
           <div>
             <p>あなたの出力: </p>
             <SketchComponent
-              key={instanceSource}
-              instanceSource={instanceSource}
+              key={instancedSetup}
+              instancedSetup={instancedSetup}
+              instancedDraw={instancedDraw}
               isExecutable={isExecutable}
               prevCode={prevCode}
               canvasWidth={width}
@@ -144,7 +150,7 @@ const TaskTab: FC<SolutionProps> =  ({
             />
           </div>
         </div>
-      <CodePane code={sourceCode} diffLines={diffLines.addedLineNumbers} />
+      <CodePane code={setupFunction} diffLines={diffLines.addedLineNumbers} />
       </div>
       {problemData.problemState === 'answer' ? 
         <>

@@ -8,20 +8,29 @@ const Sketch = dynamic(import('react-p5'), {
 });
 
 type SourceProps = {
-  instanceSource: string;
+  instancedSetup: string;
+  instancedDraw: string;
   prevCode: string;
   isExecutable: boolean;
   canvasWidth: number;
   canvasHeight: number;
 };
 
-const SketchComponent = memo<SourceProps>(function sketch({ instanceSource, prevCode, isExecutable, canvasWidth, canvasHeight }) {
+const SketchComponent = memo<SourceProps>(function sketch({
+    instancedSetup,
+    instancedDraw,
+    prevCode,
+    isExecutable,
+    canvasWidth,
+    canvasHeight
+  }) {
+
   const s = (p5: p5Types, canvasParentRef: Element) => {
     const width = canvasWidth;
     const height = canvasHeight;
     if (isExecutable) {
       try {
-        eval(instanceSource);
+        eval(instancedSetup);
       } catch (e: any) {
         console.log(e);
       }
@@ -34,8 +43,10 @@ const SketchComponent = memo<SourceProps>(function sketch({ instanceSource, prev
       }
     }
   };
+
   const d = (p5: p5Types) => {
   };
+
   return (
     <Sketch
       setup={s}

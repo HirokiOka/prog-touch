@@ -75,11 +75,11 @@ export const getProblemData = async (context: any, id: string) => {
   const canvasWidth = problemData.canvasWidth;
   const canvasHeight = problemData.canvasHeight;
 
-  const sourceCode = problemDataContent.sourceCode;
+  const setupFunction = problemDataContent.setupFunction;
 
   let ast: any = '';
   try {
-    ast = parseScript(sourceCode);
+    ast = parseScript(setupFunction);
     replace(ast, {
       enter: function(node: any) {
         if (node.type === 'CallExpression') {
@@ -93,24 +93,15 @@ export const getProblemData = async (context: any, id: string) => {
     });
     ast.body = ast.body[0].body.body;
   } catch(e) {
-
+    console.log(e);
   }
 
-  let instanceSource: string = ast !== '' ? generate(ast) : '';
+  let instancedSetup: string = ast !== '' ? generate(ast) : '';
   const resizeSnippet = `
   cnv.style("width", "${viewWidth}px");
   cnv.style("height", "${viewHeight}px");
   `;
-  instanceSource += resizeSnippet;
-  /*
-  if (viewWidth / viewHeight === 1 && 400 <= viewWidth) {
-    const resizeSnippet = `
-    cnv.style("width", "140px");
-    cnv.style("height", "140px");
-    `;
-    instanceSource += resizeSnippet;
-  }
-  */
+  instancedSetup += resizeSnippet;
   const documentUrl = problemDataContent.documentUrl ?? ''; 
   const suggestion = problemDataContent.suggestion ?? '';
   const message = problemDataContent.message ?? '';
@@ -127,10 +118,10 @@ export const getProblemData = async (context: any, id: string) => {
       suggestion: suggestion,
       isExecutable: isExecutable,
       documentUrl: documentUrl,
-      sourceCode: sourceCode,
+      setupFunction: setupFunction,
+      instancedSetup: instancedSetup,
       message: message,
       tabIndex: tabIndex,
-      instanceSource: instanceSource,
       choices: problemDataContent.choices,
       viewWidth: viewWidth,
       viewHeight: viewHeight

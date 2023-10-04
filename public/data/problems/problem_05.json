@@ -7,9 +7,10 @@
   "canvasHeight": 120,
 
   "start": {
-    "optiontype": "policy",
+    "optionType": "policy",
     "message": "初めに何をしますか？",
-    "sourcecode": "let count;\nlet cycle;\nfunction setup(){\n  createCanvas(200, 200);\n  count = 0;\n  cycle = 100;\n}\nfunction draw(){\n  background(160, 192, 255);\n  count = (count + 1) % cycle;\n ellipse(width / 2, height / 2, size);\n}",
+    "setupFunction": "let count;\nlet cycle;\nfunction setup(){\n  createCanvas(200, 200);\n}",
+    "drawFunctin": "function draw(){\n  background(160, 192, 255);\n}",
     "choices": [
       {
         "text": "dummy",

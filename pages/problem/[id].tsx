@@ -17,8 +17,10 @@ type ProblemData = {
   choices: string[];
   optionType: string;
   isExecutable: boolean;
-  instanceSource: string;
-  sourceCode: string;
+  instancedSetup: string;
+  instancedDraw: string;
+  setupFunction: string;
+  drawFunction: string;
   prevCode: string;
   prevViewCode: string;
 };
@@ -37,7 +39,8 @@ export default function ProblemOne(data: any) {
   const problemText: string = data.problem;
   const problemId: string = data.problemId;
   const tabIndex: number = data.tabIndex;
-  const instanceSource: string = data.instanceSource;
+  const instancedSetup: string = data.instancedSetup;
+  const instancedDraw: string = data.instancedDraw;
   const isExecutable: boolean = data.isExecutable;
   const problemNumber = data.id;
   const viewWidth = data.viewWidth;
@@ -50,8 +53,10 @@ export default function ProblemOne(data: any) {
     choices: [...data.choices],
     optionType: data.optionType,
     isExecutable: data.isExecutable,
-    instanceSource: instanceSource,
-    sourceCode: data.sourceCode,
+    instancedSetup: instancedSetup,
+    instancedDraw: instancedDraw,
+    setupFunction: data.setupFunction,
+    drawFunction: data.drawFunction,
     prevCode: prevCode,
     prevViewCode: prevViewCode,
   };
@@ -76,8 +81,8 @@ export default function ProblemOne(data: any) {
 
 
   const handleClick = async (choiceText: string, optionType: string, problemState: string, problemId: string) => {
-    if (isExecutable) setPrevCode(instanceSource);
-    setPrevViewCode(data.sourceCode);
+    if (isExecutable) setPrevCode(instancedSetup);
+    setPrevViewCode(data.setupFunction);
     updateSessionStorage(choiceText, optionType);
     const userActionData = {
       'state': problemState,
