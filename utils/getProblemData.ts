@@ -76,6 +76,7 @@ export const getProblemData = async (context: any, id: string) => {
   const canvasHeight = problemData.canvasHeight;
 
   const setupFunction = problemDataContent.setupFunction;
+  const drawFunction = problemDataContent.drawFunction ?? '';
 
   let ast: any = '';
   try {
@@ -102,10 +103,7 @@ export const getProblemData = async (context: any, id: string) => {
   cnv.style("height", "${viewHeight}px");
   `;
   instancedSetup += resizeSnippet;
-  const documentUrl = problemDataContent.documentUrl ?? ''; 
-  const suggestion = problemDataContent.suggestion ?? '';
   const message = problemDataContent.message ?? '';
-  const tabIndex = problemDataContent.tabIndex ?? 0;
   const isExecutable = problemDataContent.isExecutable ?? true;
 
   return {
@@ -115,13 +113,11 @@ export const getProblemData = async (context: any, id: string) => {
       problemId: problemData.problemId,
       problemState: problemState,
       optionType: problemDataContent.optionType,
-      suggestion: suggestion,
       isExecutable: isExecutable,
-      documentUrl: documentUrl,
       setupFunction: setupFunction,
+      drawFunction: drawFunction,
       instancedSetup: instancedSetup,
       message: message,
-      tabIndex: tabIndex,
       choices: problemDataContent.choices,
       viewWidth: viewWidth,
       viewHeight: viewHeight

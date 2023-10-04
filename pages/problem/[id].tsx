@@ -32,13 +32,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 export default function ProblemOne(data: any) {
+  console.log(data);
 
   const [userName, setUserName] = useState('anonymous');
   const [prevCode, setPrevCode] = useState("");
   const [prevViewCode, setPrevViewCode] = useState("");
   const problemText: string = data.problem;
   const problemId: string = data.problemId;
-  const tabIndex: number = data.tabIndex;
   const instancedSetup: string = data.instancedSetup;
   const instancedDraw: string = data.instancedDraw;
   const isExecutable: boolean = data.isExecutable;
@@ -52,7 +52,7 @@ export default function ProblemOne(data: any) {
     message: data.message,
     choices: [...data.choices],
     optionType: data.optionType,
-    isExecutable: data.isExecutable,
+    isExecutable: isExecutable,
     instancedSetup: instancedSetup,
     instancedDraw: instancedDraw,
     setupFunction: data.setupFunction,
@@ -80,7 +80,12 @@ export default function ProblemOne(data: any) {
   }, []);
 
 
-  const handleClick = async (choiceText: string, optionType: string, problemState: string, problemId: string) => {
+  const handleClick = async (
+    choiceText: string,
+    optionType: string,
+    problemState: string,
+    problemId: string
+  ) => {
     if (isExecutable) setPrevCode(instancedSetup);
     setPrevViewCode(data.setupFunction);
     updateSessionStorage(choiceText, optionType);
@@ -90,7 +95,6 @@ export default function ProblemOne(data: any) {
       'actionType': optionType,
       'problemId': problemId
     };
-    //await postData(userActionData);
     postData(userActionData);
   };
 
@@ -104,8 +108,6 @@ export default function ProblemOne(data: any) {
     if (tabIndex === 0) {
       tabSelectData.actionType = 'SolutionTab';
     } else if (tabIndex ===1) {
-      tabSelectData.actionType = 'ProblemTab';
-    } else if (tabIndex ===2) {
       tabSelectData.actionType = 'HistoryTab';
     }
     postData(tabSelectData);
@@ -129,7 +131,6 @@ export default function ProblemOne(data: any) {
               canvasHeight={viewHeight}
               problemText={problemText} 
             />
-            
           </TabPanel>
 
           <TabPanel>

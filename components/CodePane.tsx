@@ -11,7 +11,7 @@ type CodeProps = {
 const CodePane:FC<CodeProps> = ({ setupFunction, drawFunction, diffLines }) => {
   const viewCode: string = (drawFunction === undefined)
     ? setupFunction
-    : (setupFunction + drawFunction);
+    : (setupFunction + '\n' + drawFunction);
   return (
     <>
       <h2 className="pt-2">あなたのコード：</h2>
