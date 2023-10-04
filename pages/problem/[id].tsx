@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
-//import type { NextPage } from 'next';
-//import { useRouter } from 'next/router';
+import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
