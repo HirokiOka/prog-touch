@@ -58,6 +58,15 @@ export default function Home() {
           </li>
         </ul>
         <h2 className="text-xl">3. アニメーションとインタラクション</h2>
+        <ul className="text-lg list-disc list-inside px-6">
+          <li>
+            <Link
+              href="/problem/5"
+              className="text-blue-500 hover:underline">
+              section3-q1: 心臓の鼓動のようなアニメーション
+            </Link>
+          </li>
+        </ul>
         <h2 className="text-xl">4. たくさんの値をまとめて扱う</h2>
         <h2 className="text-xl">5. 関数を使って長いプログラムを整理する</h2>
       </main>

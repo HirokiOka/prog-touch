@@ -1,0 +1,20 @@
+{
+  "problemId": "3-q1",
+  "problem": "円が周期的に大きくなったり小さくなり，キーを押していると鼓動が早くなって離すとゆっくりになるアニメーションを作成しましょう",
+  "viewWidth": 120,
+  "viewHeight": 120,
+  "canvasWidth": 120,
+  "canvasHeight": 120,
+
+  "start": {
+    "optiontype": "policy",
+    "message": "初めに何をしますか？",
+    "sourcecode": "let count;\nlet cycle;\nfunction setup(){\n  createCanvas(200, 200);\n  count = 0;\n  cycle = 100;\n}\nfunction draw(){\n  background(160, 192, 255);\n  count = (count + 1) % cycle;\n ellipse(width / 2, height / 2, size);\n}",
+    "choices": [
+      {
+        "text": "dummy",
+        "next": "dummy"
+      }
+    ]
+  }
+}

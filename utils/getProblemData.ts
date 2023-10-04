@@ -63,7 +63,7 @@ export const getProblemData = async (context: any, id: string) => {
     problemState = context.query.problemState;
   }
 
-  const filename = `one-choice/problem_0${id}.json`;
+  const filename = `problems/problem_0${id}.json`;
   const problemDataPath = path.join(process.cwd(), 'public', 'data', filename);
   const p5MethodsPath = path.join(process.cwd(), 'public', 'data', 'p5_methods.json');
 

@@ -43,8 +43,18 @@ const ProblemPane: FC<ProblemInfo> = ({ problemText }) => {
   );
 };
 
-const TaskTab: FC<SolutionProps> =  ({ problemData, onClick, problemNumber, canvasWidth, canvasHeight, problemText}) => {
-  const problemPic = `/problem_0${problemNumber}.png`;
+const TaskTab: FC<SolutionProps> =  ({
+    problemData,
+    onClick,
+    problemNumber,
+    canvasWidth,
+    canvasHeight,
+    problemText
+  }) => {
+
+  const problemImagePath = (parseInt(problemNumber) < 5)
+    ? `/problem_0${problemNumber}.png`
+    : `/problem_0${problemNumber}.gif`;
 
   const optionType = problemData.optionType;
   const problemId: string = problemData.problemId;
@@ -116,7 +126,7 @@ const TaskTab: FC<SolutionProps> =  ({ problemData, onClick, problemNumber, canv
           <div>
             <p>正解出力：</p>
             <Image
-              src={problemPic}
+              src={problemImagePath}
               width={width}
               height={height}
               alt="Image of problem"
