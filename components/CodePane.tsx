@@ -1,8 +1,17 @@
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import { FC } from 'react';
 import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
-const CodePane = (props: any) => {
-  const ADDED = props.diffLines;
+type CodeProps = {
+  setupFunction: string;
+  drawFunction: string;
+  diffLines: Number[];
+};
+
+const CodePane:FC<CodeProps> = ({ setupFunction, drawFunction, diffLines }) => {
+  const viewCode: string = (drawFunction === undefined)
+    ? setupFunction
+    : (setupFunction + drawFunction);
   return (
     <>
       <h2 className="pt-2">あなたのコード：</h2>
@@ -19,13 +28,13 @@ const CodePane = (props: any) => {
                     display: 'block',
                     backgroundColor: '',
                     };
-                  if (ADDED.includes(lineNumber)) {
+                  if (diffLines.includes(lineNumber)) {
                     style.backgroundColor = '#dbffdb';
                   }
                   return { style };
                 }}
                 >
-                {props.code}
+                {viewCode}
               </SyntaxHighlighter>
             </code>
           </pre>

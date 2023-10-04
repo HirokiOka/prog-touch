@@ -28,23 +28,6 @@ interface SolutionProps {
   problemText: string;
 }
 
-type ProblemInfo = {
-  problemText: string;
-  instancedSetup: string;
-  instancedDraw: string;
-  prevCode: string;
-  isExecutable: boolean;
-  canvasWidth: number;
-  canvasHeight: number;
-};
-
-const ProblemPane: FC<ProblemInfo> = ({ problemText }) => {
-  return (
-    <div className="md:w-2/3">
-      <p className="bg-gray-300 rounded p-2 my-2">[課題]: {problemText}</p>
-    </div>
-  );
-};
 
 const TaskTab: FC<SolutionProps> =  ({
     problemData,
@@ -64,6 +47,7 @@ const TaskTab: FC<SolutionProps> =  ({
   const problemState = problemData.problemState;
   const isExecutable: boolean = problemData.isExecutable;
   const setupFunction = problemData.setupFunction;
+  const drawFunction = problemData.drawFunction;
   const prevCode = problemData.prevCode;
   const prevViewCode = problemData.prevViewCode;
   const instancedSetup = problemData.instancedSetup;
@@ -78,15 +62,10 @@ const TaskTab: FC<SolutionProps> =  ({
 
   return (
     <>
-      <ProblemPane 
-        problemText={problemText} 
-        isExecutable={isExecutable}
-        instancedSetup={instancedSetup}
-        instancedDraw={instancedDraw}
-        prevCode={prevCode}
-        canvasWidth={canvasWidth}
-        canvasHeight={canvasHeight}
-      />
+      <div className="md:w-2/3">
+        <p className="bg-gray-300 rounded p-2 my-2">[課題]: {problemText}</p>
+      </div>
+
       {
         problemData.message && (
           problemData.optionType === "error" ? (
@@ -150,7 +129,11 @@ const TaskTab: FC<SolutionProps> =  ({
             />
           </div>
         </div>
-      <CodePane code={setupFunction} diffLines={diffLines.addedLineNumbers} />
+      <CodePane
+        setupFunction={setupFunction}
+        drawFunction={drawFunction}
+        diffLines={diffLines.addedLineNumbers}
+      />
       </div>
       {problemData.problemState === 'answer' ? 
         <>
