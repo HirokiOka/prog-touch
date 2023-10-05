@@ -106,7 +106,7 @@ const TaskTab: FC<SolutionProps> =  ({
       </ul>
 
       <div className="p-2 rounded border border-gray-500">
-        <div className="grid grid-cols-2 md:grid-cols-4">
+        <div className="grid grid-cols-2">
           <div>
             <p>正解出力：</p>
             <Image
@@ -116,7 +116,7 @@ const TaskTab: FC<SolutionProps> =  ({
               alt="Image of problem"
             />
           </div>
-          <div>
+          <div className="top">
             <p>あなたの出力: </p>
             <SketchComponent
               key={instancedSetup}

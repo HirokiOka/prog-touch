@@ -5,6 +5,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 
+const p5MethodsPath = path.join(process.cwd(), 'public', 'data', 'p5_methods.json');
+const p5Methods = JSON.parse(fs.readFileSync(p5MethodsPath).toString());
 const genReplaceNode = (viewWidth: number, viewHeight: number) => {
   return {
     "type": "VariableDeclaration",
@@ -57,6 +59,7 @@ const genReplaceNode = (viewWidth: number, viewHeight: number) => {
   };
 };
 
+
 export const getProblemData = async (context: any, id: string) => {
   let problemState = 'start';
   if (context.query.problemState !== undefined) {
@@ -65,9 +68,7 @@ export const getProblemData = async (context: any, id: string) => {
 
   const filename = `problems/problem_0${id}.json`;
   const problemDataPath = path.join(process.cwd(), 'public', 'data', filename);
-  const p5MethodsPath = path.join(process.cwd(), 'public', 'data', 'p5_methods.json');
 
-  const p5Methods = JSON.parse(fs.readFileSync(p5MethodsPath).toString());
   const problemData = JSON.parse(fs.readFileSync(problemDataPath).toString());
   const problemDataContent = problemData[problemState];
   const viewWidth = problemData.viewWidth;
@@ -78,10 +79,11 @@ export const getProblemData = async (context: any, id: string) => {
   const setupFunction = problemDataContent.setupFunction;
   const drawFunction = problemDataContent.drawFunction ?? '';
 
-  let ast: any = '';
+  let setupAst: any = '';
+  let instancedSetup: string = '';
   try {
-    ast = parseScript(setupFunction);
-    replace(ast, {
+    setupAst = parseScript(setupFunction);
+    replace(setupAst, {
       enter: function(node: any) {
         if (node.type === 'CallExpression') {
           const functionName = node.callee.name;
@@ -89,20 +91,57 @@ export const getProblemData = async (context: any, id: string) => {
           return node;
         } else if (node.type === 'ExpressionStatement' && node.expression.callee.name === 'createCanvas') {
           return genReplaceNode(canvasWidth, canvasHeight);
+        }else {
+          return node;
         }
       }
     });
-    ast.body = ast.body[0].body.body;
+    const setupFuncIdx: number = setupAst.body.length - 1;
+    if (setupFuncIdx === 0) {
+      setupAst.body = setupAst.body[setupFuncIdx].body.body;
+      instancedSetup = (setupAst !== '') ? generate(setupAst) : '';
+      const resizeSnippet = `
+cnv.style("width", "${viewWidth}px");
+cnv.style("height", "${viewHeight}px");
+      `;
+      instancedSetup += resizeSnippet;
+    } else {
+      const setupFuncBody = setupAst.body[setupFuncIdx].body;
+      const cnvDeclaration = setupFuncBody.body[0];
+      setupAst.body[setupFuncIdx] = cnvDeclaration;
+      instancedSetup = setupAst !== '' ? generate(setupAst) : '';
+      const resizeSnippet = `
+cnv.style("width", "${viewWidth}px");
+cnv.style("height", "${viewHeight}px");
+      `;
+      instancedSetup += resizeSnippet;
+    }
   } catch(e) {
     console.log(e);
   }
 
-  let instancedSetup: string = ast !== '' ? generate(ast) : '';
-  const resizeSnippet = `
-  cnv.style("width", "${viewWidth}px");
-  cnv.style("height", "${viewHeight}px");
-  `;
-  instancedSetup += resizeSnippet;
+  let instancedDraw ='';
+  if (drawFunction !== '') {
+    let drawAst: any = '';
+    try {
+      drawAst = parseScript(drawFunction);
+      replace(drawAst, {
+        enter: function(node: any) {
+          if (node.type === 'CallExpression') {
+            const functionName = node.callee.name;
+            if (p5Methods.includes(functionName)) node.callee.name = 'p5.' + functionName;
+            return node;
+          }
+        }
+      });
+    const drawFuncIdx: number = drawAst.body.length - 1;
+    drawAst.body[0] = drawAst.body[drawFuncIdx].body;
+    } catch(e) {
+      console.log(e);
+    }
+    instancedDraw = (drawAst !== '') ? generate(drawAst) : '';
+  }
+
   const message = problemDataContent.message ?? '';
   const isExecutable = problemDataContent.isExecutable ?? true;
 
@@ -111,16 +150,17 @@ export const getProblemData = async (context: any, id: string) => {
       id: id,
       problem: problemData.problem,
       problemId: problemData.problemId,
+      message: message,
       problemState: problemState,
       optionType: problemDataContent.optionType,
+      viewWidth: viewWidth,
+      viewHeight: viewHeight,
       isExecutable: isExecutable,
       setupFunction: setupFunction,
       drawFunction: drawFunction,
       instancedSetup: instancedSetup,
-      message: message,
+      instancedDraw: instancedDraw,
       choices: problemDataContent.choices,
-      viewWidth: viewWidth,
-      viewHeight: viewHeight
     },
   };
 };

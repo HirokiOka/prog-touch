@@ -16,6 +16,7 @@ type SourceProps = {
   canvasHeight: number;
 };
 
+
 const SketchComponent = memo<SourceProps>(function sketch({
     instancedSetup,
     instancedDraw,
@@ -37,7 +38,6 @@ const SketchComponent = memo<SourceProps>(function sketch({
     } else {
       try {
         eval(prevCode);
-        p5.resizeCanvas(width, height);
       } catch (e: any) {
         console.log(e);
       }
@@ -45,14 +45,21 @@ const SketchComponent = memo<SourceProps>(function sketch({
   };
 
   const d = (p5: p5Types) => {
+    if (isExecutable && instancedDraw !== '') {
+        try {
+          eval(instancedDraw);
+        } catch (e: any) {
+          console.log(e);
+        }
+      }
   };
 
   return (
-    <Sketch
-      setup={s}
-      draw={d}
-    />
+    <div className="">
+      <Sketch setup={s} draw={d} />
+    </div>
   );
 });
+
 
 export default SketchComponent;
