@@ -1,7 +1,15 @@
 const fs = require('fs');
 
 const baseSetupFunction = 'let count;\nlet cycle;\nfunction setup(){\n  createCanvas(200, 200);\n}';
+const rowBaseSetupFunction = `let count;
+let cycle;
+  function setup(){
+  createCanvas(200, 200);
+}`;
 const baseDrawFunction = 'function draw(){\n  background(160, 192, 255);\n}';
+const rowBaseDrawFunction = `function draw(){
+  background(160, 192, 255);
+}`;
 
 const problemMetaData = {
   problemId: "3-q1",
@@ -17,57 +25,63 @@ const problemMetaData = {
 const statesInfo = [
   {
     stateName: 'start',
-    optionText: '円を描く',
+    nextText: '円を描く',
     nextState: 'draw_cirlcle_algorithm',
   },
   {
     stateName: 'draw_cirlcle_algorithm',
-    optionText: '円を描く関数を使う',
+    nextText: '円を描く関数を使う',
     nextState: 'draw_cirlcle_confirm',
   },
   {
     stateName: 'draw_cirlcle_confirm',
-    optionText: 'let size = 50; ellipse(width/2, height/2, size);',
+    nextText: 'let size = 50; ellipse(width/2, height/2, size);',
     nextState: 'draw_cirlcle',
+    insertFunction: 'draw',
+    lineNumber: 2
   },
   {
     stateName: 'draw_cirlcle',
-    optionText: '円の鼓動を表現する',
+    nextText: '円の鼓動を表現する',
     nextState: 'draw_heartbeat_algorithm',
   },
   {
     stateName: 'draw_heartbeat_algorithm',
-    optionText: '円の鼓動を表現するための変数を宣言する',
+    nextText: '円の鼓動を表現するための変数を宣言する',
     nextState: 'draw_heartbeat_var_confirm',
   },
   {
     stateName: 'draw_heartbeat_var_confirm',
-    optionText: ' let count = 0; let cycle = 100; let size = 50; let increment = 1;',
+    nextText: ' let count = 0; let cycle = 100; let size = 50; let increment = 1;',
     nextState: 'draw_heartbeat_var',
+    insertFunction: 'setup',
+    lineNumber: 0
   },
   {
     stateName: 'draw_heartbeat_var',
-    optionText: '円の大きさを変化させる',
+    nextText: '円の大きさを変化させる',
     nextState: 'draw_heartbeat_var_change_confirm',
   },
   {
     stateName: 'draw_heartbeat_var_change_confirm',
-    optionText: 'if (count < cycle/2) { size = count + 50; } else { size = (cycle - count) + 50; }',
+    nextText: 'if (count < cycle/2) { size = count + 50; } else { size = (cycle - count) + 50; }',
     nextState: 'draw_heartbeat_var_change',
+    insertFunction: 'draw',
+    lineNumber: 8
   },
   {
     stateName: 'draw_heartbeat_var_change',
-    optionText: 'キー入力で鼓動の早さを変化させる',
+    nextText: 'キー入力で鼓動の早さを変化させる',
     nextState: 'key_input_algorithm',
   },
   {
     stateName: 'key_input_algorithm',
-    optionText: 'キー入力の有無を判別し, 鼓動の早さを変える',
+    nextText: 'キー入力の有無を判別し, 鼓動の早さを変える',
     nextState: 'key_input_confirm',
   },
   {
     stateName: 'key_input_confirm',
-    optionText: 'if (keyIsPressed) { increment = 2; } else { increment = 1; }',
+    nextText: 'if (keyIsPressed) { increment = 2; } else { increment = 1; }',
     nextState: 'key_input',
   },
 ];
@@ -78,14 +92,30 @@ statesInfo.forEach((stateEntry, i) => {
   const entryData = {
     optionType:'',
     message: '',
-    setupFunction: baseSetupFunction,
-    drawFunction: baseDrawFunction,
+    lineNumber:'',
+    setupFunction: rowBaseSetupFunction,
+    drawFunction: rowBaseDrawFunction,
     choices: [],
   };
+  //Add Properties
   entryData.optionType = getOptionTypeFromName(stateEntry.stateName);
+  if (entryData.optionType === 'confirm' && stateEntry.lineNumber !== null) {
+    if (stateEntry.insertFunction === 'setup') {
+      let splittedSetup = rowBaseSetupFunction.split('\n');
+      splittedSetup.splice(stateEntry.lineNumber, 0, stateEntry.nextText);
+      splittedSetup.join('\n');
+      entryData.setupFunction = splittedSetup.join('\n');
+      console.log(entryData.setupFunction);
+    } else {
+      let splittedDraw = rowBaseDrawFunction.split('\n');
+      splittedDraw.splice(stateEntry.lineNumber, 0, stateEntry.nextText);
+      entryData.drawFunction = splittedDraw.join('\n');
+      console.log(entryData.drawFunction);
+    }
+  }
   entryData.message = '何をしますか?';
   entryData.choices.push({
-    text: stateEntry.optionText,
+    text: stateEntry.nextText,
     next: stateEntry.nextState
   });
   problemData[stateEntry.stateName] = entryData;

@@ -26,9 +26,13 @@ const SketchComponent = memo<SourceProps>(function sketch({
     canvasHeight
   }) {
 
+  const width = canvasWidth;
+  const height = canvasHeight;
+  let count = 0;
+  let cycle = 100;
+  let increment = 1;
+  let size = 50;
   const s = (p5: p5Types, canvasParentRef: Element) => {
-    const width = canvasWidth;
-    const height = canvasHeight;
     if (isExecutable) {
       try {
         eval(instancedSetup);
@@ -45,6 +49,7 @@ const SketchComponent = memo<SourceProps>(function sketch({
   };
 
   const d = (p5: p5Types) => {
+    let keyIsPressed = p5.keyIsPressed;
     if (isExecutable && instancedDraw !== '') {
         try {
           eval(instancedDraw);

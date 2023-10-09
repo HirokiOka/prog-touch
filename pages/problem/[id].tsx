@@ -32,7 +32,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 export default function ProblemOne(data: any) {
-  console.log(data);
 
   const [userName, setUserName] = useState('anonymous');
   const [prevCode, setPrevCode] = useState("");
