@@ -38,7 +38,7 @@ const TaskTab: FC<SolutionProps> =  ({
     problemText
   }) => {
 
-  const problemImagePath = (parseInt(problemNumber) < 5)
+  const problemImagePath = (parseInt(problemNumber) !== 5)
     ? `/problem_0${problemNumber}.png`
     : `/problem_0${problemNumber}.gif`;
 

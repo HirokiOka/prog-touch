@@ -1,0 +1,392 @@
+{
+  "problemId": "4-1",
+  "problem": "ランダムな数値が10個含まれている配列の平均値，最大値，最小値を求めましょう．また，配列の値を棒グラフとして可視化しましょう．",
+  "viewWidth": 120,
+  "viewHeight": 120,
+  "canvasWidth": 120,
+  "canvasHeight": 120,
+  "start": {
+    "optionType": "policy",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "genArray_algorithm"
+      }
+    ]
+  },
+  "genArray_algorithm": {
+    "optionType": "algorithm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "genArray_confirm"
+      }
+    ]
+  },
+  "genArray_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_sum_poicy"
+      }
+    ]
+  },
+  "calc_sum_poicy": {
+    "optionType": "policy",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_sum_algorithm"
+      }
+    ]
+  },
+  "calc_sum_algorithm": {
+    "optionType": "algorithm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_sum_confirm"
+      }
+    ]
+  },
+  "calc_sum_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_ave_policy"
+      }
+    ]
+  },
+  "calc_ave_policy": {
+    "optionType": "policy",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_ave_algorithm"
+      }
+    ]
+  },
+  "calc_ave_algorithm": {
+    "optionType": "algorithm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_ave_confirm"
+      }
+    ]
+  },
+  "calc_ave_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_max_policy"
+      }
+    ]
+  },
+  "calc_max_policy": {
+    "optionType": "policy",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_max_assign_algorithm"
+      }
+    ]
+  },
+  "calc_max_assign_algorithm": {
+    "optionType": "algorithm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_max_assign_confirm"
+      }
+    ]
+  },
+  "calc_max_assign_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_max_for_algorithm"
+      }
+    ]
+  },
+  "calc_max_for_algorithm": {
+    "optionType": "algorithm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_max_for_confirm"
+      }
+    ]
+  },
+  "calc_max_for_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_min_policy"
+      }
+    ]
+  },
+  "calc_min_policy": {
+    "optionType": "policy",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_min_assign_algorithm"
+      }
+    ]
+  },
+  "calc_min_assign_algorithm": {
+    "optionType": "algorithm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_min_assign_confirm"
+      }
+    ]
+  },
+  "calc_min_assign_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_min_for_algorithm"
+      }
+    ]
+  },
+  "calc_min_for_algorithm": {
+    "optionType": "algorithm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "calc_min_for_confirm"
+      }
+    ]
+  },
+  "calc_min_for_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "draw_scale_policy"
+      }
+    ]
+  },
+  "draw_scale_policy": {
+    "optionType": "policy",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n  for(let i = 0; i < scores.length; i++){\n    if (scores[i] < smallest) {\n      smallest = scores[i];\n    }\n  }\n  console.log(smallest);\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "draw_scale_algorithm"
+      }
+    ]
+  },
+  "draw_scale_algorithm": {
+    "optionType": "algorithm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n  for(let i = 0; i < scores.length; i++){\n    if (scores[i] < smallest) {\n      smallest = scores[i];\n    }\n  }\n  console.log(smallest);\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "draw_scale_confirm"
+      }
+    ]
+  },
+  "draw_scale_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n  for(let i = 0; i < scores.length; i++){\n    if (scores[i] < smallest) {\n      smallest = scores[i];\n    }\n  }\n  console.log(smallest);\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "draw_bar_chart_policy"
+      }
+    ]
+  },
+  "draw_bar_chart_policy": {
+    "optionType": "policy",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n  for(let i = 0; i < scores.length; i++){\n    if (scores[i] < smallest) {\n      smallest = scores[i];\n    }\n  }\n  console.log(smallest);\n\n  //棒グラフ\n  const n = 10;\n  for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "draw_bar_chart_algorithm"
+      }
+    ]
+  },
+  "draw_bar_chart_algorithm": {
+    "optionType": "algorithm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n  for(let i = 0; i < scores.length; i++){\n    if (scores[i] < smallest) {\n      smallest = scores[i];\n    }\n  }\n  console.log(smallest);\n\n  //棒グラフ\n  const n = 10;\n  for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "draw_bar_chart_confirm"
+      }
+    ]
+  },
+  "draw_bar_chart_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n  for(let i = 0; i < scores.length; i++){\n    if (scores[i] < smallest) {\n      smallest = scores[i];\n    }\n  }\n  console.log(smallest);\n\n  //棒グラフ\n  const n = 10;\n  for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "fill_bar_chart_policy"
+      }
+    ]
+  },
+  "fill_bar_chart_policy": {
+    "optionType": "policy",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n  for(let i = 0; i < scores.length; i++){\n    if (scores[i] < smallest) {\n      smallest = scores[i];\n    }\n  }\n  console.log(smallest);\n\n  //棒グラフ\n  const n = 10;\n  for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "fill_bar_chart_algorithm"
+      }
+    ]
+  },
+  "fill_bar_chart_algorithm": {
+    "optionType": "algorithm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n  for(let i = 0; i < scores.length; i++){\n    if (scores[i] < smallest) {\n      smallest = scores[i];\n    }\n  }\n  console.log(smallest);\n\n  //棒グラフ\n  const n = 10;\n  for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "fill_bar_chart_confirm"
+      }
+    ]
+  },
+  "fill_bar_chart_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n  for(let i = 0; i < scores.length; i++){\n    if (scores[i] < smallest) {\n      smallest = scores[i];\n    }\n  }\n  console.log(smallest);\n\n  //棒グラフ\n  const n = 10;\n  for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "draw_ave_line_policy"
+      }
+    ]
+  },
+  "draw_ave_line_policy": {
+    "optionType": "policy",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n  for(let i = 0; i < scores.length; i++){\n    if (scores[i] < smallest) {\n      smallest = scores[i];\n    }\n  }\n  console.log(smallest);\n\n  //棒グラフ\n  const n = 10;\n  for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }\n\n  noStroke();\n  for(let i = 0; i < scores.length; i++){\n    const dx = width / scores.length;\n    const h = height * scores[i] / 100;\n    if (scores[i] === largest) {\n      fill(255, 0, 0);\n    } else if (scores[i] === smallest) {\n      fill(0, 0, 255);\n    } else {\n      fill(122);\n    }\n    rect(i * dx + 2, height - h, dx - 4, h);\n    fill(0);\n    text(scores[i].toPrecision(3), i * dx, height - h);\n  }\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "draw_ave_line_algorithm"
+      }
+    ]
+  },
+  "draw_ave_line_algorithm": {
+    "optionType": "algorithm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n  for(let i = 0; i < scores.length; i++){\n    if (scores[i] < smallest) {\n      smallest = scores[i];\n    }\n  }\n  console.log(smallest);\n\n  //棒グラフ\n  const n = 10;\n  for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }\n\n  noStroke();\n  for(let i = 0; i < scores.length; i++){\n    const dx = width / scores.length;\n    const h = height * scores[i] / 100;\n    if (scores[i] === largest) {\n      fill(255, 0, 0);\n    } else if (scores[i] === smallest) {\n      fill(0, 0, 255);\n    } else {\n      fill(122);\n    }\n    rect(i * dx + 2, height - h, dx - 4, h);\n    fill(0);\n    text(scores[i].toPrecision(3), i * dx, height - h);\n  }\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "draw_ave_line_confirm"
+      }
+    ]
+  },
+  "draw_ave_line_confirm": {
+    "optionType": "confirm",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n  for(let i = 0; i < scores.length; i++){\n    if (scores[i] < smallest) {\n      smallest = scores[i];\n    }\n  }\n  console.log(smallest);\n\n  //棒グラフ\n  const n = 10;\n  for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }\n\n  noStroke();\n  for(let i = 0; i < scores.length; i++){\n    const dx = width / scores.length;\n    const h = height * scores[i] / 100;\n    if (scores[i] === largest) {\n      fill(255, 0, 0);\n    } else if (scores[i] === smallest) {\n      fill(0, 0, 255);\n    } else {\n      fill(122);\n    }\n    rect(i * dx + 2, height - h, dx - 4, h);\n    fill(0);\n    text(scores[i].toPrecision(3), i * dx, height - h);\n  }\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": "answer"
+      }
+    ]
+  },
+  "answer": {
+    "optionType": "policy",
+    "message": "何をしますか?",
+    "setupFunction": "function setup(){\n  createCanvas(400, 400);\n  background(240);\n\n  for(let i = 0; i < 10; i++){\n    scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入\n  }\n  console.log(scores);\n\n  let sum = 0;\n  for(let i = 0; i < scores.length; i++){\n    sum += scores[i];\n  }\n  console.log(sum);  \n\n  //平均値\n  let average = sum / scores.length;\n  console.log(average);  \n\n  //最大値\n  let largest = 0;\n  for(let i = 0; i < scores.length; i++){\n    if (largest < scores[i]) {\n      largest = scores[i];\n    }\n  }\n  console.log(largest);  \n\n  //最小値\n  let smallest = 100;\n  for(let i = 0; i < scores.length; i++){\n    if (scores[i] < smallest) {\n      smallest = scores[i];\n    }\n  }\n  console.log(smallest);\n\n  //棒グラフ\n  const n = 10;\n  for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }\n\n  noStroke();\n  for(let i = 0; i < scores.length; i++){\n    const dx = width / scores.length;\n    const h = height * scores[i] / 100;\n    if (scores[i] === largest) {\n      fill(255, 0, 0);\n    } else if (scores[i] === smallest) {\n      fill(0, 0, 255);\n    } else {\n      fill(122);\n    }\n    rect(i * dx + 2, height - h, dx - 4, h);\n    fill(0);\n    text(scores[i].toPrecision(3), i * dx, height - h);\n  }\n\n  stroke(0, 255, 0);\n  const ah = height * average/100\n  line(0, height -  ah, width, height-ah);\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "",
+        "next": ""
+      }
+    ]
+  }
+}

@@ -8,6 +8,7 @@ import { getProblemData } from 'utils/getProblemData';
 import HistoryTab from 'components/HistoryTab';
 import TaskTab from 'components/TaskTab';
 import TransitionButtons from 'components/TransitionButtons';
+import ConsoleOutput from 'components/ConsoleOutput';
 import { postData } from  'utils/postData';
 
 type ProblemData = {
@@ -130,6 +131,7 @@ export default function ProblemOne(data: any) {
               canvasHeight={viewHeight}
               problemText={problemText} 
             />
+            <ConsoleOutput />
           </TabPanel>
 
           <TabPanel>

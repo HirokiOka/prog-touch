@@ -89,7 +89,10 @@ export const getProblemData = async (context: any, id: string) => {
           const functionName = node.callee.name;
           if (p5Methods.includes(functionName)) node.callee.name = 'p5.' + functionName;
           return node;
-        } else if (node.type === 'ExpressionStatement' && node.expression.callee.name === 'createCanvas') {
+        } else if (node.type === 'ExpressionStatement'
+                   && node.expression.callee !== null
+                   && node.expression.type !== 'AssignmentExpression'
+                   && node.expression.callee.name === 'createCanvas') {
           return genReplaceNode(canvasWidth, canvasHeight);
         }else {
           return node;
@@ -145,6 +148,7 @@ cnv.style("height", "${viewHeight}px");
   const message = problemDataContent.message ?? '';
   const isExecutable = problemDataContent.isExecutable ?? true;
 
+  console.log(instancedSetup);
   return {
     props : {
       id: id,
