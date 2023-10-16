@@ -573,7 +573,7 @@ const c9 = `function setup(){
 
 const stateNames = [
   { name: 'start', code: c0 },
- { name: 'genArray_algorithm', code: c0 },
+ { name:'genArray_algorithm', code: c0 },
  { name:'genArray_confirm', code: c0 },
  { name:'calc_sum_poicy', code: c1 },
  { name:'calc_sum_algorithm', code: c1 },
