@@ -107,7 +107,7 @@ cnv.style("height", "${viewHeight}px");
       `;
     let setupFuncIdx: number = setupAst.body.length - 1;
     if (id === '7') {
-      const declaredFunctions = Object.values(setupAst.body).map(v => v.id.name);
+      const declaredFunctions = Object.values(setupAst.body).map((v: any) => v.id.name);
       if (declaredFunctions.includes('setup')) {
         setupFuncIdx = declaredFunctions.findIndex(e => e == 'setup');
       }
