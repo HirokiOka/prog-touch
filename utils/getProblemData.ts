@@ -81,6 +81,7 @@ export const getProblemData = async (context: any, id: string) => {
 
   let setupAst: any = '';
   let instancedSetup: string = '';
+
   try {
     setupAst = parseScript(setupFunction);
     replace(setupAst, {
@@ -99,26 +100,34 @@ export const getProblemData = async (context: any, id: string) => {
         }
       }
     });
-    const setupFuncIdx: number = setupAst.body.length - 1;
-    if (setupFuncIdx === 0) {
-      setupAst.body = setupAst.body[setupFuncIdx].body.body;
-      instancedSetup = (setupAst !== '') ? generate(setupAst) : '';
-      const resizeSnippet = `
+
+    const resizeSnippet = `
 cnv.style("width", "${viewWidth}px");
 cnv.style("height", "${viewHeight}px");
       `;
-      instancedSetup += resizeSnippet;
+    let setupFuncIdx: number = setupAst.body.length - 1;
+    if (id === '7') {
+      const declaredFunctions = Object.values(setupAst.body).map(v => v.id.name);
+      if (declaredFunctions.includes('setup')) {
+        setupFuncIdx = declaredFunctions.findIndex(e => e == 'setup');
+      }
+    }
+    let snippet = '';
+    for (let i = setupFuncIdx+1; i < setupAst.body.length; i++) {
+      snippet += '\n' + generate(setupAst.body[i]);
+    }
+
+    if (setupFuncIdx === 0) {
+      setupAst.body = setupAst.body[setupFuncIdx].body.body;
     } else {
       const setupFuncBody = setupAst.body[setupFuncIdx].body;
       const cnvDeclaration = setupFuncBody.body[0];
       setupAst.body[setupFuncIdx] = cnvDeclaration;
-      instancedSetup = setupAst !== '' ? generate(setupAst) : '';
-      const resizeSnippet = `
-cnv.style("width", "${viewWidth}px");
-cnv.style("height", "${viewHeight}px");
-      `;
-      instancedSetup += resizeSnippet;
     }
+
+    instancedSetup = (setupAst !== '') ? generate(setupAst) : '';
+    instancedSetup += snippet;
+    instancedSetup += resizeSnippet;
   } catch(e) {
     console.log(e);
   }

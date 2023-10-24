@@ -32,7 +32,11 @@ const SketchComponent = memo<SourceProps>(function sketch({
   let cycle = 100;
   let increment = 1;
   let size = 50;
+  const TWO_PI = 6.283185307179586;
+  const HALF_PI = TWO_PI / 4;
+
   const s = (p5: p5Types, canvasParentRef: Element) => {
+    const CLOSE = p5.CLOSE;
     if (isExecutable) {
       try {
         eval(instancedSetup);

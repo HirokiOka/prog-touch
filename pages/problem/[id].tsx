@@ -131,7 +131,13 @@ export default function ProblemOne(data: any) {
               canvasHeight={viewHeight}
               problemText={problemText} 
             />
+
+          {(parseInt(problemNumber) === 6) ? (
             <ConsoleOutput />
+            ): (
+            <></>
+            )
+          }
           </TabPanel>
 
           <TabPanel>

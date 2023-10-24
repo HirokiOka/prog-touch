@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [userName, setUserName] = useState('anonymous');
-  const sectionTwo: number[] = [4, 3];
 
   const inputUserName = () => {
     const inputName: string = window.prompt('名前を入力してください:') ?? ''; 
@@ -78,6 +77,15 @@ export default function Home() {
           </li>
         </ul>
         <h2 className="text-xl">5. 関数を使って長いプログラムを整理する</h2>
+        <ul className="text-lg list-disc list-inside px-6">
+          <li>
+            <Link
+              href="/problem/7"
+              className="text-blue-500 hover:underline">
+              section5-1: 描画関数を作る
+            </Link>
+          </li>
+        </ul>
       </main>
     </>
   );
