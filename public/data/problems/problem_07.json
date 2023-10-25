@@ -106,8 +106,16 @@
     "drawFunction": "",
     "choices": [
       {
-        "text": "星を描く処理を関数として宣言する",
+        "text": "座標を引数とし, 星を描く処理を関数にする",
         "next": "star_function_confirm_1"
+      },
+      {
+        "text": "引数を指定せず, 星を描く処理を関数にする",
+        "next": "star_function_noArg_confirm"
+      },
+      {
+        "text": "大きさを引数とし，星を描く処理を関数にする",
+        "next": "star_function_size_confirm"
       }
     ]
   },
@@ -122,6 +130,34 @@
       {
         "text": "function star(cx, cy, r){ beginShape(); for (let i = 0; i < 5; i++){ let theta = TWO_PI * i * 2 / 5 - HALF_PI; let x = cx + cos(theta) * r; let y = cy + sin(theta) * r; vertex(x,y); } endShape(CLOSE); }",
         "next": "star_function_algorithm_2"
+      }
+    ]
+  },
+
+  "star_function_noArg_confirm": {
+    "optionType": "confirm",
+    "isExecutable": "true",
+    "message": "星を描く処理を関数として宣言するコードを確認しましょう",
+    "setupFunction": "function setup(){\n  createCanvas(120, 120);\n  background(0, 51, 153);\n  noStroke();\n\n  fill(255, 204, 0);\n  beginShape();\n  for(let i = 0; i < 5; i++){\n    let theta = TWO_PI * i * 2 / 5 - HALF_PI;\n    let x = width/2 + cos(theta) * 50;\n    let y = height/2 + sin(theta) * 50;\n    vertex(x, y);\n  }\n  endShape(CLOSE);\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "function star(){ beginShape(); for (let i = 0; i < 5; i++){ let theta = TWO_PI * i * 2 / 5 - HALF_PI; let x = width/2 + cos(theta) * 50; let y = height/2 + sin(theta) * 50; vertex(x,y); } endShape(CLOSE); }",
+        "next": "star_function_noArg_error"
+      }
+    ]
+  },
+
+  "star_function_size_confirm": {
+    "optionType": "confirm",
+    "isExecutable": "true",
+    "message": "星を描く処理を関数として宣言するコードを確認しましょう",
+    "setupFunction": "function setup(){\n  createCanvas(120, 120);\n  background(0, 51, 153);\n  noStroke();\n\n  fill(255, 204, 0);\n  beginShape();\n  for(let i = 0; i < 5; i++){\n    let theta = TWO_PI * i * 2 / 5 - HALF_PI;\n    let x = width/2 + cos(theta) * 50;\n    let y = height/2 + sin(theta) * 50;\n    vertex(x, y);\n  }\n  endShape(CLOSE);\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "function star(r){ beginShape(); for (let i = 0; i < 5; i++){ let theta = TWO_PI * i * 2 / 5 - HALF_PI; let x = width/2 + cos(theta) * r; let y = height/2 + sin(theta) * r; vertex(x,y); } endShape(CLOSE); }",
+        "next": "star_function_size_error"
       }
     ]
   },
@@ -239,6 +275,26 @@
     "isExecutable": "true",
     "message": "この問題では関数を使って星を描きましょう.",
     "setupFunction": "function setup(){\n  createCanvas(120, 120);\n  background(0, 51, 153);\n  noStroke();\n\n  fill(255, 204, 0);\n  textAlign('center', 'center');\n  textSize(100);\n  text('★', width/2, height/2);\n }",
+    "drawFunction": "",
+    "choices": [
+    ]
+  },
+
+  "star_function_noArg_error": {
+    "optionType": "error",
+    "isExecutable": "true",
+    "message": "今回は座標を指定して円状に星を描く必要があります. 関数の引数を考え直しましょう.",
+    "setupFunction": "function setup(){\n  createCanvas(120, 120);\n  background(0, 51, 153);\n  noStroke();\n\n  fill(255, 204, 0);\n  beginShape();\n  for(let i = 0; i < 5; i++){\n    let theta = TWO_PI * i * 2 / 5 - HALF_PI;\n    let x = width/2 + cos(theta) * 50;\n    let y = height/2 + sin(theta) * 50;\n    vertex(x, y);\n  }\n  endShape(CLOSE);\n}\n\nfunction star(){\n  beginShape();\n  for (let i = 0; i < 5; i++){\n    let theta = TWO_PI * i * 2 / 5 - HALF_PI;\n    let x = width/2 + cos(theta) * 50;\n    let y = height/2 + sin(theta) * 50;\n    vertex(x,y);\n  }\n  endShape(CLOSE);\n}",
+    "drawFunction": "",
+    "choices": [
+    ]
+  },
+
+  "star_function_size_error": {
+    "optionType": "error",
+    "isExecutable": "true",
+    "message": "今回は座標を指定して円状に星を描く必要があります. 関数の引数を考え直しましょう.",
+    "setupFunction": "function setup(){\n  createCanvas(120, 120);\n  background(0, 51, 153);\n  noStroke();\n\n  fill(255, 204, 0);\n  beginShape();\n  for(let i = 0; i < 5; i++){\n    let theta = TWO_PI * i * 2 / 5 - HALF_PI;\n    let x = width/2 + cos(theta) * 50;\n    let y = height/2 + sin(theta) * 50;\n    vertex(x, y);\n  }\n  endShape(CLOSE);\n}\n\nfunction star(r){\n  beginShape();\n  for (let i = 0; i < 5; i++){\n    let theta = TWO_PI * i * 2 / 5 - HALF_PI;\n    let x = width/2 + cos(theta) * r;\n    let y = height/2 + sin(theta) * r;\n    vertex(x,y);\n  }\n  endShape(CLOSE);\n}",
     "drawFunction": "",
     "choices": [
     ]
