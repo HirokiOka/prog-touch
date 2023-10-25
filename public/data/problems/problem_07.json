@@ -34,6 +34,10 @@
       {
         "text": "キャンバスの中心から円を5等分し, 360 * 1/5 ずつずらしてポイントした5点を繋げる",
         "next": "draw_star_e_confirm"
+      },
+      {
+        "text": "文字列★を描画する",
+        "next": "draw_string_star_e_confirm"
       }
     ]
   },
@@ -62,6 +66,20 @@
       {
         "text": "fill(255, 204, 0); beginShape(); for(let i = 0; i < 5; i++){ let theta = TWO_PI * i / 5 - HALF_PI; let x = width/2 + cos(theta) * 50; let y = height/2 + sin(theta) * 50; vertex(x,y); }",
         "next": "draw_star_e_error"
+      }
+    ]
+  },
+
+  "draw_string_star_e_confirm": {
+    "optionType": "confirm",
+    "isExecutable": "true",
+    "message": "文字列★を表示するコードを確認しましょう",
+    "setupFunction": "function setup(){\n  createCanvas(120, 120);\n  background(0, 51, 153);\n  noStroke();\n}",
+    "drawFunction": "",
+    "choices": [
+      {
+        "text": "fill(255, 204, 0); textAlign('center', 'center'); textSize(100); text('★', width/2, height/2);",
+        "next": "draw_string_star_e_error"
       }
     ]
   },
@@ -211,6 +229,16 @@
     "isExecutable": "true",
     "message": "点の配置が違います. どのように角度をずらせば星を描けるかを考えましょう.",
     "setupFunction": "function setup(){\n  createCanvas(120, 120);\n  background(0, 51, 153);\n  noStroke();\n\n  fill(255, 204, 0);\n  beginShape();\n  for(let i = 0; i < 5; i++){\n    let theta = TWO_PI * i / 5 - HALF_PI;\n    let x = width/2 + cos(theta) * 50;\n    let y = height/2 + sin(theta) * 50;\n    vertex(x, y);\n  }\n  endShape(CLOSE);\n}",
+    "drawFunction": "",
+    "choices": [
+    ]
+  },
+
+  "draw_string_star_e_error": {
+    "optionType": "error",
+    "isExecutable": "true",
+    "message": "この問題では関数を使って星を描きましょう.",
+    "setupFunction": "function setup(){\n  createCanvas(120, 120);\n  background(0, 51, 153);\n  noStroke();\n\n  fill(255, 204, 0);\n  textAlign('center', 'center');\n  textSize(100);\n  text('★', width/2, height/2);\n }",
     "drawFunction": "",
     "choices": [
     ]

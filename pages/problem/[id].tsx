@@ -107,7 +107,7 @@ export default function ProblemOne(data: any) {
     };
     if (tabIndex === 0) {
       tabSelectData.actionType = 'SolutionTab';
-    } else if (tabIndex ===1) {
+    } else if (tabIndex === 1) {
       tabSelectData.actionType = 'HistoryTab';
     }
     postData(tabSelectData);

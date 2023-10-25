@@ -91,14 +91,18 @@ const TaskTab: FC<SolutionProps> =  ({
             onClick("", optionType, problemState, problemId);
           }
           return (
-            <li key={i} className={`${linkClass} mt-1 py-1 px-4 text-white rounded-full text-sm`}>
-              <Link 
-                href={`/problem/${problemNumber}?problemState=${choiceNext}`} 
-                onClick={async () => {
-                  onClick(choiceText, optionType, problemState, problemId);
-                }}
-                className="">
-                {i+1}: {choiceText}
+            <li
+              key={i}
+              className={`${linkClass} mt-1 py-1 px-4 text-white rounded-full text-sm`}
+            >
+              <Link
+              href={`/problem/${problemNumber}?problemState=${choiceNext}`}
+              onClick={async () => {
+                onClick(choiceText, optionType, problemState, problemId);
+              }}
+              className=''
+              >
+              {i+1}: {choiceText}
               </Link>
             </li>
           );
