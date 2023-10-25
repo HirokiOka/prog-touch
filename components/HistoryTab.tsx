@@ -21,7 +21,7 @@ const HistoryTab = () => {
           });
       setPolicies([...sortedPolicies]);
     }
-  }, [policies]);
+  }, []);
   
   return (
     <>

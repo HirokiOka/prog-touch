@@ -75,9 +75,9 @@ export default function ProblemOne(data: any) {
   useEffect(() => {
     if (typeof sessionStorage !== 'undefined') {
       const storedUserName = sessionStorage.getItem('userName');
-      if (storedUserName) setUserName(storedUserName);
+      if (storedUserName && userName !== storedUserName) setUserName(storedUserName);
     }
-  }, []);
+  }, [userName]);
 
 
   const handleClick = async (

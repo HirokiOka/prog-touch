@@ -135,12 +135,12 @@ const TaskTab: FC<SolutionProps> =  ({
         diffLines={diffLines.addedLineNumbers}
       />
       </div>
-      {problemData.problemState === 'answer' ? 
+      {problemData.optionType === 'answer' && (
         <>
           <p className="mt-2">あなたの方針:</p>
           <HistoryTab />
         </>
-      : ''}
+      )}
     </>
   );
 };
