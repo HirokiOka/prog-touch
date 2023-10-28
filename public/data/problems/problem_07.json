@@ -237,7 +237,7 @@
   "draw_string_star_e_error": {
     "optionType": "error",
     "isExecutable": "true",
-    "message": "この問題では関数を使って星を描きましょう.",
+    "message": "良いアプローチです. しかし今回は関数を使うことが求められているため, 関数を使って星を描きましょう.",
     "setupFunction": "function setup(){\n  createCanvas(120, 120);\n  background(0, 51, 153);\n  noStroke();\n\n  fill(255, 204, 0);\n  textAlign('center', 'center');\n  textSize(100);\n  text('★', width/2, height/2);\n }",
     "drawFunction": "",
     "choices": [
