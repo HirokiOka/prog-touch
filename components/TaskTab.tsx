@@ -93,7 +93,7 @@ const TaskTab: FC<SolutionProps> =  ({
           return (
             <li
               key={i}
-              className={`${linkClass} mt-1 py-1 px-4 text-white rounded-full text-sm`}
+              className={`${linkClass} mt-1 py-1 px-4 text-white rounded-md text-sm`}
             >
               <Link
               href={`/problem/${problemNumber}?problemState=${choiceNext}`}
