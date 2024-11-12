@@ -14,12 +14,12 @@
         "choices": [
             {
                 "text": "円を描く",
-                "next": "draw_cirlcle_algorithm"
+                "next": "draw_circle_algorithm"
             }
         ]
     },
 
-    "draw_cirlcle_algorithm": {
+    "draw_circle_algorithm": {
         "optionType": "algorithm",
         "message": "円を描くためにどうしますか?",
         "lineNumber": "",
@@ -28,12 +28,12 @@
         "choices": [
             {
                 "text": "円を描く関数を使う",
-                "next": "draw_cirlcle_confirm"
+                "next": "draw_circle_confirm"
             }
         ]
     },
 
-    "draw_cirlcle_confirm": {
+    "draw_circle_confirm": {
         "optionType": "confirm",
         "message": "円を描くコードを確認しましょう",
         "lineNumber": "",
@@ -42,16 +42,16 @@
         "choices": [
             {
                 "text": "let size = 50; ellipse(width/2, height/2, size);",
-                "next": "draw_cirlcle"
+                "next": "draw_circle"
             }
         ]
     },
 
-    "draw_cirlcle": {
+    "draw_circle": {
         "optionType": "policy",
         "message": "次に何をしますか?",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  function setup(){\n  createCanvas(200, 200);\n}",
+        "setupFunction": "let size = 50;\nfunction setup(){\n  createCanvas(200, 200);\n}",
         "drawFunction": "function draw(){\n  background(160, 192, 255);\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
             {
@@ -65,7 +65,7 @@
         "optionType": "algorithm",
         "message": "円の鼓動を表現するために何をしますか?",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  function setup(){\n  createCanvas(200, 200);\n}",
+        "setupFunction": "let size = 50;\nfunction setup(){\n  createCanvas(200, 200);\n}",
         "drawFunction": "function draw(){\n  background(160, 192, 255);\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
             {
@@ -79,7 +79,7 @@
         "optionType": "confirm",
         "message": "宣言する変数を確認しましょう",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  function setup(){\n  createCanvas(200, 200);\n}",
+        "setupFunction": "let size = 50;\nfunction setup(){\n  createCanvas(200, 200);\n}",
         "drawFunction": "function draw(){\n  background(160, 192, 255);\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
             {
@@ -93,7 +93,7 @@
         "optionType": "algorithm",
         "message": "円の鼓動を表現するために次に何をしますか?",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  let count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
+        "setupFunction": "let size = 50;\nlet count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
         "drawFunction": "function draw(){\n  background(160, 192, 255);\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
             {
@@ -112,7 +112,7 @@
         "optionType": "confirm",
         "message": "countを増加させるコードを確認しましょう",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  let count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
+        "setupFunction": "let size = 50;\nlet count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
         "drawFunction": "function draw(){\n  background(160, 192, 255);\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
             {
@@ -126,7 +126,7 @@
         "optionType": "confirm",
         "message": "countを0-100の間で増加させるコードを確認しましょう",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  let count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
+        "setupFunction": "let size = 50;\nlet count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
         "drawFunction": "function draw(){\n  background(160, 192, 255);\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
             {
@@ -140,8 +140,8 @@
         "optionType": "algorithm",
         "message": "円の鼓動を表現するために次に何をしますか?",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  let count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
-        "drawFunction": "function draw(){\n  background(160, 192, 255);\n count = (count + increment) % cycle;\n let size = 50;\n  ellipse(width/2, height/2, size);\n}",
+        "setupFunction": "let size = 50;\nlet count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
+        "drawFunction": "function draw(){\n  background(160, 192, 255);\n  count = (count + increment) % cycle;\n  let size = 50;\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
             {
                 "text": "countが増加するにつれて円を大きくする",
@@ -159,8 +159,8 @@
         "optionType": "confirm",
         "message": "countが増加するにつれて円を大きくするコードを確認しましょう",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  let count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
-        "drawFunction": "function draw(){\n  background(160, 192, 255);\n count = (count + increment) % cycle;\n  ellipse(width/2, height/2, size);\n}",
+        "setupFunction": "let size = 50;\nlet count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
+        "drawFunction": "function draw(){\n  background(160, 192, 255);\n  count = (count + increment) % cycle;\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
             {
                 "text": "size = count + 50;",
@@ -173,8 +173,8 @@
         "optionType": "confirm",
         "message": "countの値によって円を小さくしたり大きくしたりするコードを確認しましょう",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  let count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
-        "drawFunction": "function draw(){\n  background(160, 192, 255);\n count = (count + increment) % cycle;\n let size = 50;\n  ellipse(width/2, height/2, size);\n}",
+        "setupFunction": "let size = 50;\nlet count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
+        "drawFunction": "function draw(){\n  background(160, 192, 255);\n  count = (count + increment) % cycle;\n  let size = 50;\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
             {
                 "text": "if (count < cycle/2) { size = count + 50; } else { size = (cycle - count) + 50; }",
@@ -187,8 +187,8 @@
         "optionType": "policy",
         "message": "次に何をしますか?",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  let count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
-        "drawFunction": "function draw(){\n  background(160, 192, 255);\n count = (count + increment) % cycle;\n  if (count < cycle/2) {\n size = count + 50;\n } else {\n size = (cycle - count) + 50;\n }\n ellipse(width/2, height/2, size);\n}",
+        "setupFunction": "let size = 50;\nlet count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
+        "drawFunction": "function draw(){\n  background(160, 192, 255);\n  count = (count + increment) % cycle;\n  if (count < cycle/2) {\n    size = count + 50;\n  } else {\n    size = (cycle - count) + 50;\n  }\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
             {
                 "text": "キー入力で鼓動の早さを変化させる",
@@ -201,8 +201,8 @@
         "optionType": "algorithm",
         "message": "キー入力で鼓動の早さを変化させるために何をしますか？",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  let count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
-        "drawFunction": "function draw(){\n  background(160, 192, 255);\n count = (count + increment) % cycle;\n  if (count < cycle/2) {\n size = count + 50;\n } else {\n size = (cycle - count) + 50;\n }\n ellipse(width/2, height/2, size);\n}",
+        "setupFunction": "let size = 50;\nlet count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
+        "drawFunction": "function draw(){\n  background(160, 192, 255);\n  count = (count + increment) % cycle;\n  if (count < cycle/2) {\n    size = count + 50;\n  } else {\n    size = (cycle - count) + 50;\n  }\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
             {
                 "text": "キー入力があるときは鼓動の入力を倍にする",
@@ -215,8 +215,8 @@
         "optionType": "confirm",
         "message": "キー入力があるときは鼓動の入力を倍にするコードを確認しましょう",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  let count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
-        "drawFunction": "function draw(){\n  background(160, 192, 255);\n count = (count + increment) % cycle;\n  if (count < cycle/2) {\n size = count + 50;\n } else {\n size = (cycle - count) + 50;\n }\n ellipse(width/2, height/2, size);\n}",
+        "setupFunction": "let size = 50;\nlet count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
+        "drawFunction": "function draw(){\n  background(160, 192, 255);\n  count = (count + increment) % cycle;\n  if (count < cycle/2) {\n    size = count + 50;\n  } else {\n    size = (cycle - count) + 50;\n  }\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
             {
                 "text": "if (keyIsPressed) { increment = 2; } else { increment = 1; }",
@@ -229,8 +229,8 @@
         "optionType": "answer",
         "message": "🎉正解です🎉",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  let count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
-        "drawFunction": "function draw(){\n  background(160, 192, 255);\n count = (count + increment) % cycle;\n  if (keyIsPressed) {\n  increment = 2;\n} else {\n increment = 1;\n  }\n  if (count < cycle/2) {\n size = count + 50;\n } else {\n size = (cycle - count) + 50;\n }\n ellipse(width/2, height/2, size);\n}",
+        "setupFunction": "let size = 50;\nlet count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
+        "drawFunction": "function draw(){\n  background(160, 192, 255);\n  count = (count + increment) % cycle;\n  if (keyIsPressed) {\n    increment = 2;\n  } else {\n    increment = 1;\n  }\n  if (count < cycle/2) {\n    size = count + 50;\n  } else {\n    size = (cycle - count) + 50;\n  }\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
             {
                 "text": "if (keyIsPressed) { increment = 2; } else { increment = 1; }",
@@ -243,8 +243,8 @@
         "optionType": "error",
         "message": "円が小さくなる処理も記述しましょう",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  let count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
-        "drawFunction": "function draw(){\n  background(160, 192, 255);\n count = (count + increment) % cycle;\n  size = count + 50;\n  ellipse(width/2, height/2, size);\n}",
+        "setupFunction": "let size = 50;\nlet count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
+        "drawFunction": "function draw(){\n  background(160, 192, 255);\n  count = (count + increment) % cycle;\n  size = count + 50;\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
         ]
     },
@@ -253,7 +253,7 @@
         "optionType": "error",
         "message": "円の大きさを周期的に変化させるようにcountを変化させましょう",
         "lineNumber": "",
-        "setupFunction": "let size = 50;\n  let count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
+        "setupFunction": "let size = 50;\nlet count = 0;\nlet cycle = 100;\nlet increment = 1;\nfunction setup(){\n  createCanvas(200, 200);\n}",
         "drawFunction": "function draw(){\n  background(160, 192, 255);\n  count = count + increment\n  ellipse(width/2, height/2, size);\n}",
         "choices": [
         ]
